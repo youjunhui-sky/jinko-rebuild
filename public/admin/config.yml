@@ -4,10 +4,10 @@
 # ⚙️ 后端: 用 GitHub OAuth 直登 (无需第三方代理)
 backend:
   name: github
-  repo: YOUR_GITHUB_USERNAME/jinko-rebuild   # ⚠️ 部署后改成真实仓库
+  repo: youjunhui-sky/jinko-rebuild
   branch: main
-  base_url: https://decap-proxy.netlify.app   # 临时代理, 可换成自建 (步骤 4)
-  auth_endpoint: api/auth
+  base_url: https://jinko-cms-oauth.youjh120608.workers.dev
+  auth_endpoint: oauth/auth
 
 # 🌐 本地开发模式: 改成 git-gateway 或 proxy backend
 # local_backend: true
@@ -17,8 +17,8 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 # 📝 站点 URL (用于内嵌预览)
-site_url: https://jinkosolar.us
-display_url: https://jinkosolar.us
+site_url: https://jinko-rebuild.youjh120608.workers.dev
+display_url: https://jinko-rebuild.youjh120608.workers.dev
 logo_url: /logo.svg
 
 # 🎨 编辑器界面
