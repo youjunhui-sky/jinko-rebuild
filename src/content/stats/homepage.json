@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "label": "Deployed in U.S. & Canada", "value": "28+", "unit": "GW", "order": 1 },
+    { "label": "Deployed Globally", "value": "400+", "unit": "GW", "order": 2 },
+    { "label": "Solar Module Efficiency", "value": "22.7", "unit": "%", "order": 3 },
+    { "label": "Bloomberg Tier 1", "value": "#1", "unit": "Manufacturer", "order": 4 },
+    { "label": "Jacksonville, FL Since", "value": "2018", "unit": "", "order": 5 },
+    { "label": "Countries Deployed", "value": "160", "unit": "+", "order": 6 }
+  ]
+}

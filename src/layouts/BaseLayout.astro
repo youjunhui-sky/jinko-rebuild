@@ -1,0 +1,128 @@
+---
+import { SITE } from '@/data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article' | 'product';
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  hreflang?: { lang: string; href: string }[];
+}
+
+const {
+  title = SITE.defaultTitle,
+  description = SITE.defaultDescription,
+  canonical = Astro.url.pathname,
+  ogImage = SITE.defaultOgImage,
+  ogType = 'website',
+  noindex = false,
+  schema,
+  hreflang = [],
+} = Astro.props;
+
+const canonicalUrl = new URL(canonical, SITE.domain).href;
+const ogImageUrl = new URL(ogImage, SITE.domain).href;
+
+// Organization Schema 默认注入每页 (原站完全没有)
+const defaultOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.organization.legalName,
+  url: SITE.domain,
+  logo: new URL('/logo.svg', SITE.domain).href,
+  foundingDate: SITE.organization.foundingDate,
+  sameAs: SITE.organization.sameAs,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: SITE.organization.contact.phone,
+    email: SITE.organization.contact.sales,
+    contactType: 'sales',
+    areaServed: ['US', 'CA'],
+    availableLanguage: ['English', 'Spanish', 'Chinese'],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.organization.hqAddress.street,
+    addressLocality: SITE.organization.hqAddress.city,
+    addressRegion: SITE.organization.hqAddress.region,
+    postalCode: SITE.organization.hqAddress.postal,
+    addressCountry: SITE.organization.hqAddress.country,
+  },
+};
+
+const schemas = [defaultOrg, ...(Array.isArray(schema) ? schema : schema ? [schema] : [])];
+---
+<!doctype html>
+<html lang="en-US" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0066B3" />
+    <meta name="format-detection" content="telephone=yes" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- ✅ Open Graph (原站完全缺失) -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ✅ Twitter Card (原站完全缺失) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={SITE.twitter} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- ✅ Hreflang (原站缺失) -->
+    <link rel="alternate" hreflang="en-US" href={canonicalUrl} />
+    {hreflang.map((h) => (
+      <link rel="alternate" hreflang={h.lang} href={h.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
+    <!-- ✅ Preconnect / DNS-prefetch (性能) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ✅ 字体 (字体加载非阻塞) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <!-- ✅ Favicon (原站只有 png 多尺寸, 这里加 SVG 自适应) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- ✅ JSON-LD 结构化数据 (原站完全没有, Rich Snippets 必备) -->
+    {schemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+
+    <slot name="head" />
+  </head>
+  <body class="bg-white text-jinko-ink font-sans antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-jinko focus:text-white focus:px-4 focus:py-2 focus:rounded">
+      Skip to content
+    </a>
+
+    <slot name="header" />
+    <main id="main">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

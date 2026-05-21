@@ -1,0 +1,40 @@
+---
+// 原站很弱的页面 — 强化 Made-in-USA / IRA 政策红利
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+---
+<BaseLayout
+  title="Made in USA Solar Panels — Jinko Jacksonville, FL Factory Since 2018"
+  description="Jinko's 400 MW solar panel factory in Jacksonville, Florida. American-made modules qualifying for IRA domestic content bonus credits. Local jobs, local supply."
+>
+  <Header slot="header" />
+
+  <section class="py-16 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">USA · FL · JAX</p>
+      <h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Manufacturing in Jacksonville, Florida Since 2018</h1>
+      <p class="mt-4 text-lg text-jinko-mute max-w-3xl leading-relaxed">
+        Jinko was one of the first major solar manufacturers to commit to U.S. soil. Our Jacksonville, FL facility produces EAGLE® modules that qualify for the <strong>IRA Domestic Content Bonus Credit</strong>, helping developers unlock up to 10% additional tax credits.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-4 gap-6">
+      {[
+        { v: '400 MW', l: 'Annual production capacity' },
+        { v: '2018', l: 'Florida operations since' },
+        { v: '500+', l: 'Local jobs created' },
+        { v: '10%', l: 'IRA bonus credit eligible' },
+      ].map((s) => (
+        <div class="rounded-2xl border border-jinko-line bg-white p-6 shadow-card">
+          <p class="text-3xl font-display font-extrabold text-jinko">{s.v}</p>
+          <p class="mt-1 text-jinko-mute text-sm">{s.l}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+import { NAV } from '@/data/nav';
+import { SITE } from '@/data/site';
+---
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-jinko-line">
+  <div class="max-w-content mx-auto px-4 lg:px-6 h-16 flex items-center justify-between gap-6">
+    <a href="/" class="flex items-center gap-2 shrink-0" aria-label={SITE.name + ' home'}>
+      <span class="font-display font-extrabold text-jinko text-xl tracking-tight">
+        Jinko<span class="text-jinko-accent">·</span>US
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:flex items-center gap-6 text-sm font-medium text-jinko-mute">
+      {NAV.map((n) => (
+        <a href={n.href} class="hover:text-jinko-ink transition-colors whitespace-nowrap">
+          {n.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="/contact"
+         class="hidden sm:inline-flex items-center px-4 py-2 rounded-md bg-jinko text-white text-sm font-semibold hover:bg-jinko-dark transition-colors">
+        Contact Sales
+      </a>
+      <button type="button" class="lg:hidden p-2" aria-label="Open menu" data-mobile-menu-toggle>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" hidden class="lg:hidden border-t border-jinko-line bg-white">
+    <nav aria-label="Mobile" class="px-4 py-3 flex flex-col gap-1">
+      {NAV.map((n) => (
+        <a href={n.href} class="py-2 text-jinko-ink hover:text-jinko">{n.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  // 极简 JS, 不需要 jQuery (原站 85KB)
+  const btn = document.querySelector('[data-mobile-menu-toggle]');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    if (menu) menu.hidden = !menu.hidden;
+  });
+</script>

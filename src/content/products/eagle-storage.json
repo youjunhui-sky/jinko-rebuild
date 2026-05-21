@@ -1,0 +1,14 @@
+{
+  "name": "EAGLE Storage®",
+  "family": "eagle-storage",
+  "tagline": "LFP battery storage from a company you trust",
+  "tech": "LFP Lithium-Iron-Phosphate",
+  "capacityRangeKWh": [5, 4000],
+  "cycleLife": 6000,
+  "warrantyYears": { "product": 10, "capacity": 10 },
+  "applications": ["Residential", "C&I", "Utility"],
+  "image": "/products/eagle-storage.webp",
+  "description": "EAGLE Storage® uses safe, long-life LFP chemistry — from 5 kWh home batteries to multi-MWh utility containers — paired seamlessly with EAGLE solar modules from one company.",
+  "keywords": ["EAGLE Storage", "LFP battery storage", "utility battery system"],
+  "order": 3
+}

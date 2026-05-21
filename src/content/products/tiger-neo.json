@@ -1,0 +1,15 @@
+{
+  "name": "Tiger Neo N-Type",
+  "family": "eagle-modules",
+  "tagline": "Best-in-class bifacial gain · Bloomberg Tier 1",
+  "tech": "N-Type Bifacial",
+  "powerRangeW": [555, 600],
+  "efficiencyPct": 22.5,
+  "cellCount": 132,
+  "warrantyYears": { "product": 12, "power": 30 },
+  "applications": ["Utility"],
+  "image": "/products/tiger-neo.webp",
+  "description": "Tiger Neo N-Type bifacial modules with up to 25% bifacial gain — engineered for utility-scale projects demanding the lowest LCOE.",
+  "keywords": ["Tiger Neo", "n-type bifacial", "utility solar bifacial"],
+  "order": 2
+}

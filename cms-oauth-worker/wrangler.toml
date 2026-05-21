@@ -1,0 +1,4 @@
+name = "cms-oauth"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+# secrets: OAUTH_GITHUB_CLIENT_ID, OAUTH_GITHUB_CLIENT_SECRET (用 `wrangler secret put` 设置)

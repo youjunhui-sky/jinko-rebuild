@@ -1,0 +1,160 @@
+# Decap CMS 配置
+# 文档: https://decapcms.org/docs/configuration-options/
+
+# ⚙️ 后端: 用 GitHub OAuth 直登 (无需第三方代理)
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/jinko-rebuild   # ⚠️ 部署后改成真实仓库
+  branch: main
+  base_url: https://decap-proxy.netlify.app   # 临时代理, 可换成自建 (步骤 4)
+  auth_endpoint: api/auth
+
+# 🌐 本地开发模式: 改成 git-gateway 或 proxy backend
+# local_backend: true
+
+# 📂 媒体管理
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+# 📝 站点 URL (用于内嵌预览)
+site_url: https://jinkosolar.us
+display_url: https://jinkosolar.us
+logo_url: /logo.svg
+
+# 🎨 编辑器界面
+locale: "en"
+publish_mode: editorial_workflow   # ✅ 启用审批流: 草稿 → 待审 → 发布
+
+# ════════════════════════════════════════════════════════════
+# 📚 内容集合 (A 产品 / B 新闻 / E KPI / G 安装商)
+# ════════════════════════════════════════════════════════════
+collections:
+
+  # ─────────────────────────────────────
+  # A. 📦 产品 (EAGLE 模块 / 储能)
+  # ─────────────────────────────────────
+  - name: "products"
+    label: "📦 Products"
+    label_singular: "Product"
+    folder: "src/content/products"
+    create: true
+    delete: true
+    format: "json"
+    extension: "json"
+    identifier_field: "name"
+    summary: "{{name}} — {{family}} · {{tech}}"
+    sortable_fields: ["order", "name"]
+    fields:
+      - { name: "name", label: "Product Name", widget: "string" }
+      - { name: "family", label: "Family", widget: "select",
+          options: ["eagle-modules", "eagle-storage"] }
+      - { name: "tagline", label: "Tagline (one line, shown on cards)", widget: "string" }
+      - { name: "tech", label: "Cell / Battery Tech", widget: "string",
+          hint: "e.g. N-Type TOPCon, LFP Lithium-Iron-Phosphate" }
+      - { name: "powerRangeW", label: "Power Range (W) — for modules only",
+          widget: "list", required: false, field: { name: "v", label: "Watt", widget: "number" } }
+      - { name: "capacityRangeKWh", label: "Capacity Range (kWh) — for storage only",
+          widget: "list", required: false, field: { name: "v", label: "kWh", widget: "number" } }
+      - { name: "efficiencyPct", label: "Module Efficiency (%)", widget: "number", required: false, value_type: "float" }
+      - { name: "cellCount", label: "Cell Count", widget: "number", required: false }
+      - { name: "cycleLife", label: "Cycle Life (storage)", widget: "number", required: false }
+      - name: "warrantyYears"
+        label: "Warranty Years"
+        widget: "object"
+        fields:
+          - { name: "product", label: "Product Warranty (yr)", widget: "number" }
+          - { name: "power", label: "Power Warranty (yr)", widget: "number", required: false }
+          - { name: "capacity", label: "Capacity Warranty (yr)", widget: "number", required: false }
+      - { name: "applications", label: "Applications",
+          widget: "select", multiple: true,
+          options: ["Utility", "C&I", "Residential"] }
+      - { name: "image", label: "Hero Image", widget: "image" }
+      - { name: "description", label: "Long Description", widget: "text" }
+      - { name: "keywords", label: "SEO Keywords (Google ranking targets)",
+          widget: "list", default: [], hint: "One keyword per item" }
+      - { name: "order", label: "Display Order", widget: "number", default: 0 }
+
+  # ─────────────────────────────────────
+  # B. 📰 新闻 / 博客
+  # ─────────────────────────────────────
+  - name: "news"
+    label: "📰 News & Insights"
+    label_singular: "News Article"
+    folder: "src/content/news"
+    create: true
+    delete: true
+    format: "frontmatter"
+    extension: "md"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: "title"
+    summary: "{{title}} ({{category}}, {{publishDate}})"
+    sortable_fields: ["publishDate", "title"]
+    view_filters:
+      - { label: "Drafts", field: "draft", pattern: true }
+      - { label: "Published", field: "draft", pattern: false }
+      - { label: "Featured", field: "featured", pattern: true }
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "description", label: "SEO Meta Description (150-160 chars)",
+          widget: "string", pattern: ['.{50,170}', 'Aim for 150–160 characters'] }
+      - { name: "publishDate", label: "Publish Date", widget: "datetime",
+          date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "author", label: "Author", widget: "string", default: "Jinko US" }
+      - { name: "cover", label: "Cover Image", widget: "image", required: false }
+      - { name: "category", label: "Category", widget: "select",
+          options: ["Press", "Product", "Industry", "Sustainability"] }
+      - { name: "featured", label: "Feature on Homepage?", widget: "boolean", default: false }
+      - { name: "draft", label: "Save as Draft (won't be published)",
+          widget: "boolean", default: false }
+      - { name: "body", label: "Article Body (Markdown supported)", widget: "markdown" }
+
+  # ─────────────────────────────────────
+  # E. 📊 首页 KPI 数据
+  # ─────────────────────────────────────
+  - name: "stats"
+    label: "📊 Homepage KPI Numbers"
+    files:
+      - name: "homepage"
+        label: "Homepage Statistics (28 GW / 400 GW / etc.)"
+        file: "src/content/stats/homepage.json"
+        format: "json"
+        fields:
+          - name: "items"
+            label: "KPI Items (drag to reorder)"
+            widget: "list"
+            summary: "{{fields.label}}: {{fields.value}} {{fields.unit}}"
+            fields:
+              - { name: "label", label: "Label (e.g. 'Deployed in U.S. & Canada')", widget: "string" }
+              - { name: "value", label: "Value (e.g. '28+', '400', '22.7')", widget: "string" }
+              - { name: "unit", label: "Unit (e.g. 'GW', '%', '+'). Leave blank if none.",
+                  widget: "string", required: false, default: "" }
+              - { name: "order", label: "Display Order", widget: "number", default: 0 }
+
+  # ─────────────────────────────────────
+  # G. 🤝 安装商目录
+  # ─────────────────────────────────────
+  - name: "installers"
+    label: "🤝 Authorized Installers"
+    label_singular: "Installer"
+    folder: "src/content/installers"
+    create: true
+    delete: true
+    format: "json"
+    extension: "json"
+    identifier_field: "name"
+    summary: "{{name}} ({{state}}) — {{type}}"
+    sortable_fields: ["state", "order", "name"]
+    view_groups:
+      - { label: "By State", field: "state" }
+      - { label: "By Type", field: "type" }
+    fields:
+      - { name: "name", label: "Company Name", widget: "string" }
+      - { name: "state", label: "State (2-letter, e.g. CA, TX)", widget: "string",
+          pattern: ['^[A-Z]{2}$', 'Must be 2 uppercase letters'] }
+      - { name: "type", label: "Installer Type", widget: "select",
+          options: ["Residential", "C&I", "Utility", "Residential + C&I"] }
+      - { name: "website", label: "Website URL", widget: "string",
+          pattern: ['^(https?://.+|)$', 'Must start with http:// or https:// (or leave blank)'] }
+      - { name: "phone", label: "Phone (optional)", widget: "string", required: false }
+      - { name: "featured", label: "Feature on Homepage?", widget: "boolean", default: false }
+      - { name: "order", label: "Display Order", widget: "number", default: 0 }

@@ -1,0 +1,38 @@
+---
+import { PRODUCTS } from '@/data/products';
+---
+<section aria-labelledby="lineup-title" class="py-20 lg:py-24">
+  <div class="max-w-content mx-auto px-4 lg:px-6">
+    <div class="max-w-2xl">
+      <h2 id="lineup-title" class="text-3xl lg:text-4xl font-display font-extrabold">
+        One Lineup. Solar + Storage. Made in America.
+      </h2>
+      <p class="mt-4 text-jinko-mute text-lg leading-relaxed">
+        From flagship TOPCon panels to LFP battery systems — every product engineered in-house, vetted by third-party labs, and backed by industry-leading warranties.
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-6 md:grid-cols-3">
+      {PRODUCTS.map((p) => (
+        <li class="group rounded-2xl border border-jinko-line bg-white shadow-card overflow-hidden hover:-translate-y-1 transition-transform">
+          <a href={`/products/${p.slug}`} class="block">
+            <div class="aspect-[4/3] bg-jinko-bg flex items-center justify-center text-jinko-mute text-sm">
+              <!-- Placeholder, 真实部署用 Astro <Image> 自动 WebP/AVIF -->
+              {p.image ? <span class="text-xs">[{p.name} image]</span> : null}
+            </div>
+            <div class="p-6">
+              <p class="text-xs uppercase tracking-wider text-jinko-accent font-bold">{p.tech}</p>
+              <h3 class="mt-2 text-xl font-display font-bold group-hover:text-jinko">{p.name}</h3>
+              <p class="mt-2 text-sm text-jinko-mute leading-relaxed">{p.tagline}</p>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                {p.applications.map((a) => (
+                  <span class="px-2 py-1 rounded-full bg-jinko-bg text-jinko-mute">{a}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+---
+// 安装商列表 (CMS 驱动, 按州分组)
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const installers = (await getCollection('installers'))
+  .map(i => i.data)
+  .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
+
+// 按州分组
+const byState = installers.reduce((acc, i) => {
+  (acc[i.state] ||= []).push(i);
+  return acc;
+}, {} as Record<string, typeof installers>);
+---
+<BaseLayout
+  title="Find a Jinko Solar Installer Near You — Authorized Partners | Jinko US"
+  description="Connect with Jinko-authorized solar installers across all 50 states. Residential, commercial, and utility-scale partners using EAGLE® modules."
+>
+  <Header slot="header" />
+
+  <section class="py-16 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <h1 class="text-4xl lg:text-5xl font-display font-extrabold">Find a Jinko-Authorized Installer</h1>
+      <p class="mt-3 text-lg text-jinko-mute max-w-2xl">
+        Trusted local installers ready to design, finance, and install EAGLE® solar + storage systems for your home or business.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <form class="flex flex-col sm:flex-row gap-3 max-w-xl">
+        <label class="sr-only" for="zip">ZIP Code</label>
+        <input id="zip" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5"
+               placeholder="Enter your ZIP code"
+               class="flex-1 px-4 py-3 rounded-md border border-jinko-line focus:border-jinko outline-none" />
+        <button class="px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">Search</button>
+      </form>
+
+      {Object.entries(byState).sort(([a],[b])=>a.localeCompare(b)).map(([state, list]) => (
+        <section class="mt-14">
+          <h2 class="text-2xl font-display font-extrabold">{state}</h2>
+          <ul class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {list.map((p) => (
+              <li class="rounded-xl border border-jinko-line bg-white p-5 shadow-card">
+                <p class="text-xs font-bold uppercase text-jinko-accent">{p.type}{p.featured ? ' ★' : ''}</p>
+                <h3 class="mt-1 font-display font-bold text-lg">{p.name}</h3>
+                {p.phone && <p class="text-sm text-jinko-mute mt-1">📞 {p.phone}</p>}
+                {p.website && <a href={p.website} class="mt-3 inline-block text-jinko hover:underline text-sm">Visit website →</a>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

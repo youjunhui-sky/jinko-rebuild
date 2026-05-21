@@ -1,0 +1,8 @@
+/* Decap CMS 预览面板样式 (可选) */
+body { font-family: 'Inter', system-ui, sans-serif; color: #0F172A; line-height: 1.6; }
+h1, h2, h3 { font-family: 'Manrope', sans-serif; font-weight: 800; color: #003E6F; }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.875rem; margin-top: 2rem; }
+img { max-width: 100%; border-radius: 8px; }
+a { color: #0066B3; }
+blockquote { border-left: 4px solid #FFB400; padding-left: 1rem; color: #475569; }
