@@ -1,7 +1,7 @@
 // 站点全局元数据 (替代原站散落的 WP 配置)
 export const SITE = {
   name: 'Jinko US',
-  domain: 'https://jinko-rebuild.example.com',
+  domain: 'https://jinko-rebuild.youjh120608.workers.dev',
   defaultTitle: 'Jinko US — Solar + Storage From One Company',
   defaultDescription:
     "Jinko (NYSE: JKS) is a leading global PV module manufacturer and energy storage system integrator. EAGLE® modules and EAGLE Storage® for U.S. utility, C&I, and residential projects. Made in Jacksonville, FL since 2018.",

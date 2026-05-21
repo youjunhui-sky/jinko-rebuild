@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://jinko-rebuild.example.com',
+  site: 'https://jinko-rebuild.youjh120608.workers.dev',
   integrations: [
     tailwind({ applyBaseStyles: true }),
     sitemap({
