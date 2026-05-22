@@ -28,8 +28,11 @@ const allNews = (await getCollection('news', n => !n.data.draft))
       {allNews.map((n) => (
         <article class="rounded-2xl bg-white border border-jinko-line shadow-card overflow-hidden">
           <a href={`/news/${n.slug}`} class="block">
-            <div class="aspect-[16/9] bg-jinko-bg flex items-center justify-center text-xs text-jinko-mute">
-              {n.data.cover ? '[cover image]' : '[no cover]'}
+            <div class="aspect-[16/9] bg-jinko-bg overflow-hidden flex items-center justify-center">
+              {n.data.cover
+                ? <img src={n.data.cover} alt={n.data.title} loading="lazy" decoding="async" width="640" height="360" class="w-full h-full object-cover" />
+                : <span class="text-xs text-jinko-mute">[no cover]</span>
+              }
             </div>
             <div class="p-6">
               <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{n.data.category}</p>

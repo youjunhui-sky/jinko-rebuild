@@ -60,7 +60,12 @@ const L = 'zh' as const;
         {products.map((p) => (
           <li class="group rounded-2xl border border-jinko-line bg-white shadow-card overflow-hidden hover:-translate-y-1 transition-transform">
             <a href={`/products/${slugify(p.name)}`} class="block">
-              <div class="aspect-[4/3] bg-jinko-bg flex items-center justify-center text-jinko-mute text-sm">[{p.name}]</div>
+              <div class="aspect-[4/3] bg-jinko-bg overflow-hidden flex items-center justify-center">
+                {p.image
+                  ? <img src={p.image} alt={p.name} loading="lazy" decoding="async" width="480" height="360" class="w-full h-full object-contain p-4" />
+                  : <span class="text-jinko-mute text-sm">[{p.name}]</span>
+                }
+              </div>
               <div class="p-6">
                 <p class="text-xs uppercase tracking-wider text-jinko-accent font-bold">{p.tech}</p>
                 <h3 class="mt-2 text-xl font-display font-bold group-hover:text-jinko">{p.name}</h3>
