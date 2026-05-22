@@ -3,7 +3,7 @@ title: "Why N-Type TOPCon is Winning the Utility Solar Market in 2026"
 description: "Inside the technology shift: N-type TOPCon cells now power over 70% of new U.S. utility solar contracts. Here's why developers are switching from p-type PERC."
 publishDate: 2026-04-22
 author: "Jinko US Engineering"
-cover: "/news/topcon-explainer.webp"
+cover: "/news/topcon-explainer.jpg"
 category: "Industry"
 featured: false
 draft: false
