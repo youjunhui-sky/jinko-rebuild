@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0066B3"/>
+  <path d="M16 20h32v24H16z" fill="#FFB400" opacity=".15"/>
+  <path d="M16 20h32M16 28h32M16 36h32M16 44h32M24 20v24M32 20v24M40 20v24" stroke="#FFB400" stroke-width="2"/>
+  <text x="32" y="58" font-family="Inter,sans-serif" font-size="9" font-weight="800" fill="#fff" text-anchor="middle">JINKO</text>
+</svg>

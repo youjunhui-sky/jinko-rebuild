@@ -105,12 +105,26 @@ const schemas = [defaultOrg, ...(Array.isArray(schema) ? schema : schema ? [sche
 
     <!-- ✅ Favicon (原站只有 png 多尺寸, 这里加 SVG 自适应) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
 
     <!-- ✅ JSON-LD 结构化数据 (原站完全没有, Rich Snippets 必备) -->
     {schemas.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
+
+    <!-- 📊 Cloudflare Web Analytics (零 cookie / 零 PII / 合规友好) -->
+    {SITE.analytics?.cloudflareToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={`{"token": "${SITE.analytics.cloudflareToken}"}`}
+      />
+    )}
+
+    <!-- 📊 Plausible (默认不启用, 设置 analytics.plausibleDomain 后启用) -->
+    {SITE.analytics?.plausibleDomain && (
+      <script defer data-domain={SITE.analytics.plausibleDomain} src="https://plausible.io/js/script.js" />
+    )}
 
     <slot name="head" />
   </head>
@@ -120,7 +134,7 @@ const schemas = [defaultOrg, ...(Array.isArray(schema) ? schema : schema ? [sche
     </a>
 
     <slot name="header" />
-    <main id="main">
+    <main id="main" data-pagefind-body>
       <slot />
     </main>
     <slot name="footer" />

@@ -1,0 +1,52 @@
+---
+// 全站搜索 (Pagefind 驱动, 静态索引, 零服务器)
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+---
+<BaseLayout
+  title="Search — Jinko US"
+  description="Search Jinko US products, news, and resources."
+  noindex
+>
+  <Header slot="header" />
+
+  <section class="py-16 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <h1 class="text-4xl font-display font-extrabold">Search</h1>
+      <p class="mt-2 text-jinko-mute">Find products, news, datasheets, and more.</p>
+    </div>
+  </section>
+
+  <section class="py-10">
+    <div class="max-w-2xl mx-auto px-4 lg:px-6">
+      <div id="search"></div>
+    </div>
+  </section>
+
+  <!-- Pagefind UI: 自动加载索引并提供搜索框 -->
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js" is:inline></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (typeof PagefindUI === 'undefined') {
+        document.getElementById('search').innerHTML =
+          '<p style="color:#475569">Search index not built yet — run <code>npm run build</code> to enable.</p>';
+        return;
+      }
+      new PagefindUI({
+        element: '#search',
+        showImages: false,
+        showSubResults: true,
+        autofocus: true,
+        translations: { placeholder: 'Search Jinko products & news…' },
+      });
+    });
+  </script>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style is:global>
+  .pagefind-ui { --pagefind-ui-primary: #0066B3; --pagefind-ui-text: #0F172A; --pagefind-ui-background: #fff; --pagefind-ui-border: #E2E8F0; --pagefind-ui-tag: #F8FAFC; --pagefind-ui-border-radius: 12px; --pagefind-ui-font: 'Inter', system-ui, sans-serif; }
+</style>

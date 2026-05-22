@@ -5,6 +5,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import { SITE } from '@/data/site';
+import { ogForNews } from '@/lib/og';
 
 export async function getStaticPaths() {
   const news = await getCollection('news', n => !n.data.draft);
@@ -13,6 +14,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const ogImage = entry.data.cover ?? ogForNews(entry.slug);
 
 const schema = {
   '@context': 'https://schema.org',
@@ -32,7 +35,7 @@ const schema = {
 <BaseLayout
   title={`${entry.data.title} | Jinko US`}
   description={entry.data.description}
-  ogImage={entry.data.cover}
+  ogImage={ogImage}
   ogType="article"
   schema={schema}
 >

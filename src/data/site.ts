@@ -5,7 +5,7 @@ export const SITE = {
   defaultTitle: 'Jinko US — Solar + Storage From One Company',
   defaultDescription:
     "Jinko (NYSE: JKS) is a leading global PV module manufacturer and energy storage system integrator. EAGLE® modules and EAGLE Storage® for U.S. utility, C&I, and residential projects. Made in Jacksonville, FL since 2018.",
-  defaultOgImage: '/og/default.png',
+  defaultOgImage: '/og/default.svg',
   twitter: '@JinkoSolar',
   organization: {
     legalName: 'Jinko Solar (U.S.) Inc.',
@@ -35,6 +35,11 @@ export const SITE = {
       'https://www.youtube.com/@JinkoSolar',
       'https://www.facebook.com/JinkoSolar',
     ],
+  },
+  // 📊 分析 (二选一启用即可)
+  analytics: {
+    cloudflareToken: '',         // 填入 CF Web Analytics 的 token 即启用
+    plausibleDomain: '',         // 或换 Plausible: 'jinko-rebuild.youjh120608.workers.dev'
   },
   // 三大主推关键词桶 (上一轮 SEO 诊断给出的"应该抢却没抢"清单)
   seoTargets: {

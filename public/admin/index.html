@@ -3,29 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jinko US — Content Editor</title>
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Jinko US — Content Manager</title>
+  <meta name="robots" content="noindex" />
   <link rel="icon" href="/favicon.svg" />
-  <style>
-    body { background:#0F172A; color:#fff; font-family:system-ui; }
-    .loading { display:flex; flex-direction:column; align-items:center; padding:120px 20px; }
-    .loading b { font-size:20px; color:#FFB400; }
-  </style>
 </head>
 <body>
-  <div class="loading">
-    <b>Loading Jinko CMS…</b>
-    <p>If this takes more than 5 seconds, ensure you're logged in via the popup.</p>
-  </div>
-
-  <!-- Decap CMS (formerly Netlify CMS) -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
-  <script>
-    // 自定义预览样式 (可选, 让 CMS 内预览贴近真实站点)
-    if (window.CMS) {
-      CMS.registerPreviewStyle('/admin/preview.css');
-    }
-  </script>
+  <!-- Decap CMS 主程序: 用 jsDelivr (国内/国外都更稳) -->
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.8.4/dist/decap-cms.js"></script>
 </body>
 </html>

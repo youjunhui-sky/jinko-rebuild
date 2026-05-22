@@ -5,6 +5,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import { SITE } from '@/data/site';
 import { slugify } from '@/lib/slugify';
+import { ogForProduct } from '@/lib/og';
 
 export async function getStaticPaths() {
   const products = await getCollection('products');
@@ -46,6 +47,7 @@ const breadcrumb = {
 <BaseLayout
   title={`${product.name} — ${product.tagline} | Jinko US`}
   description={product.description}
+  ogImage={ogForProduct(product.name)}
   schema={[productSchema, breadcrumb]}
 >
   <Header slot="header" />

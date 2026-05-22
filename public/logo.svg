@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60">
+  <rect x="2" y="14" width="32" height="32" rx="6" fill="#0066B3"/>
+  <path d="M10 22h16M10 30h16M10 38h16M14 22v16M22 22v16" stroke="#FFB400" stroke-width="1.5"/>
+  <text x="46" y="40" font-family="Manrope,Inter,sans-serif" font-size="26" font-weight="800" fill="#0F172A">Jinko<tspan fill="#FFB400">.</tspan>US</text>
+</svg>

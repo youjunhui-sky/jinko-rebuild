@@ -1,0 +1,78 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import ContactCTA from '@/components/ContactCTA.astro';
+import { SITE } from '@/data/site';
+import { slugify } from '@/lib/slugify';
+import { t } from '@/lib/i18n';
+
+const allProducts = await getCollection('products');
+const products = allProducts.map(p => p.data).sort((a, b) => a.order - b.order);
+const statsEntry = await getEntry('stats', 'homepage');
+const stats = statsEntry?.data.items.sort((a, b) => a.order - b.order) ?? [];
+
+const L = 'zh' as const;
+---
+<BaseLayout
+  title="晶科美国 — 美国本土光伏组件 + 磷酸铁锂储能 | EAGLE® 系列"
+  description="晶科能源 (NYSE: JKS) — 彭博 Tier 1 光伏制造商。EAGLE® TOPCon 组件与 EAGLE Storage® LFP 储能系统。2018 年起佛州杰克逊维尔本土生产。"
+  hreflang={[
+    { lang: 'en-US', href: 'https://jinko-rebuild.youjh120608.workers.dev/' },
+    { lang: 'es-MX', href: 'https://jinko-rebuild.youjh120608.workers.dev/es/' },
+  ]}
+>
+  <Header slot="header" />
+
+  <section class="relative overflow-hidden bg-gradient-to-br from-jinko-dark via-jinko to-sky-700 text-white">
+    <div class="absolute inset-0 opacity-20 pointer-events-none"
+         style="background-image:radial-gradient(circle at 20% 20%, rgba(255,180,0,.6), transparent 40%);"></div>
+    <div class="max-w-content mx-auto px-4 lg:px-6 py-20 lg:py-28 relative">
+      <p class="inline-block text-xs tracking-widest uppercase font-semibold text-jinko-accent bg-white/10 px-3 py-1 rounded-full">
+        {t('hero.eyebrow', L)}
+      </p>
+      <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-3xl">
+        {t('hero.title.l1', L)} <span class="text-jinko-accent">+</span> {t('hero.title.l2', L)}<br />
+        {t('hero.title.l3', L)}
+      </h1>
+      <p class="mt-5 text-lg lg:text-xl text-sky-100 max-w-2xl leading-relaxed">{t('hero.subtitle', L)}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/eagle-modules" class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-semibold">{t('cta.exploreModules', L)}</a>
+        <a href="/installer-finder" class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20">{t('cta.findInstaller', L)}</a>
+      </div>
+      <dl class="mt-14 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-4xl">
+        {stats.map((s) => (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-sky-200">{s.label}</dt>
+            <dd class="mt-1 text-2xl lg:text-3xl font-display font-extrabold text-white">{s.value}<span class="text-jinko-accent text-lg ml-1">{s.unit}</span></dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <h2 class="text-3xl lg:text-4xl font-display font-extrabold">{t('section.lineup.title', L)}</h2>
+      <p class="mt-4 text-jinko-mute text-lg leading-relaxed max-w-2xl">{t('section.lineup.subtitle', L)}</p>
+      <ul class="mt-12 grid gap-6 md:grid-cols-3">
+        {products.map((p) => (
+          <li class="group rounded-2xl border border-jinko-line bg-white shadow-card overflow-hidden hover:-translate-y-1 transition-transform">
+            <a href={`/products/${slugify(p.name)}`} class="block">
+              <div class="aspect-[4/3] bg-jinko-bg flex items-center justify-center text-jinko-mute text-sm">[{p.name}]</div>
+              <div class="p-6">
+                <p class="text-xs uppercase tracking-wider text-jinko-accent font-bold">{p.tech}</p>
+                <h3 class="mt-2 text-xl font-display font-bold group-hover:text-jinko">{p.name}</h3>
+                <p class="mt-2 text-sm text-jinko-mute leading-relaxed">{p.tagline}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <ContactCTA />
+  <Footer slot="footer" />
+</BaseLayout>
