@@ -1,0 +1,45 @@
+name: Deploy to Cloudflare Worker
+
+# 触发: main 分支有变更 (含 CMS publish 后的自动合并) 时自动部署
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # 也支持在 GitHub Actions 页面手动触发
+
+# 同一时间只跑一个部署
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: 🛎 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build Astro site
+        run: npm run build
+
+      - name: ☁️ Deploy to Cloudflare Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+
+      - name: 🎉 Done
+        run: echo "✅ Deployed to https://jinko-rebuild.youjh120608.workers.dev"
