@@ -1,0 +1,18 @@
+{
+  "title": "1.2 GW Utility-Scale Solar Project in West Texas",
+  "client": "ERCOT Grid Developer (Confidential)",
+  "location": "West Texas, USA",
+  "capacityMW": 1200,
+  "completedAt": "2026-05-01",
+  "application": "Utility",
+  "modules": "2,100,000 × EAGLE® G7 575W",
+  "coverImage": "/cases/texas-utility.jpg",
+  "gallery": [
+    "/cases/texas-utility.jpg",
+    "/factory/manufacturing.jpg",
+    "/hero/home-utility.jpg"
+  ],
+  "description": "Largest single-site deployment of Jinko's flagship EAGLE® G7 TOPCon modules to date. 100% Made-in-Florida, qualifying for IRA Domestic Content Bonus Credit. Commissioning Q3 2026, supplying 1.2 GW of clean power to ERCOT grid.",
+  "featured": true,
+  "order": 1
+}

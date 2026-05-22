@@ -158,3 +158,47 @@ collections:
       - { name: "phone", label: "Phone (optional)", widget: "string", required: false }
       - { name: "featured", label: "Feature on Homepage?", widget: "boolean", default: false }
       - { name: "order", label: "Display Order", widget: "number", default: 0 }
+
+  # ───────────────────────────────────
+  # F. 🏗️ 项目案例 (Case Studies) — 高高在上必备
+  # ───────────────────────────────────
+  - name: "cases"
+    label: "🏗️ Case Studies"
+    label_singular: "Case Study"
+    folder: "src/content/cases"
+    create: true
+    delete: true
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    summary: "{{title}} ({{location}})"
+    sortable_fields: ["completedAt", "order", "capacityMW"]
+    view_filters:
+      - { label: "Featured", field: "featured", pattern: true }
+      - { label: "Utility", field: "application", pattern: "Utility" }
+      - { label: "C&I", field: "application", pattern: "C&I" }
+      - { label: "Residential", field: "application", pattern: "Residential" }
+    fields:
+      - { name: "title", label: "Project Title", widget: "string" }
+      - { name: "client", label: "Client / Developer", widget: "string" }
+      - { name: "location", label: "Location (City, State)", widget: "string",
+          hint: "e.g. West Texas, USA" }
+      - { name: "capacityMW", label: "Solar Capacity (MW)", widget: "number", required: false,
+          value_type: "float", hint: "e.g. 1200 for 1.2 GW; 0.012 for 12 kW residential" }
+      - { name: "capacityMWh", label: "Storage Capacity (MWh)", widget: "number", required: false,
+          value_type: "float", hint: "Optional. e.g. 0.027 for 27 kWh home battery" }
+      - { name: "completedAt", label: "Completion Date", widget: "datetime",
+          date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "application", label: "Application", widget: "select",
+          options: ["Utility", "C&I", "Residential"] }
+      - { name: "modules", label: "Equipment Spec", widget: "string", required: false,
+          hint: "e.g. '2,100,000 × EAGLE® G7 575W' or '30 × EAGLE® G7 + 27 kWh battery'" }
+      - { name: "coverImage", label: "🖥️ Cover Image (used on homepage + listing)", widget: "image" }
+      - { name: "gallery", label: "🖼️ Project Gallery (multiple images)",
+          widget: "list", required: false, default: [],
+          field: { name: "image", label: "Image", widget: "image" },
+          hint: "Drag to reorder. First image becomes top of gallery." }
+      - { name: "description", label: "Project Description", widget: "text",
+          hint: "2-4 sentences describing scope, impact, technology used." }
+      - { name: "featured", label: "Feature on Homepage?", widget: "boolean", default: false }
+      - { name: "order", label: "Display Order (lower = first)", widget: "number", default: 0 }

@@ -6,6 +6,7 @@ export const NAV = [
   { label: 'Installer Finder', href: '/installer-finder' }, // ⬅ 原站缺失, SEO 机会
   { label: 'Made in USA', href: '/jacksonville' },
   { label: 'Warranty', href: '/warranty' },                // ⬅ 原站缺失, SEO 机会
-  { label: 'News', href: '/news' },                        // ⬅ CMS 内容枢纽
+  { label: 'Case Studies', href: '/case-studies' },           // ⬅ 项目案例 (CMS 驱动)
+  { label: 'News', href: '/news' },
   { label: 'About', href: '/about' },
 ] as const;

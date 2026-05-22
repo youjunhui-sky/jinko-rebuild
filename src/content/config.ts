@@ -68,4 +68,24 @@ const installers = defineCollection({
   }),
 });
 
-export const collections = { products, news, stats, installers };
+// 🏗️ F. 项目案例 (Case Studies)
+const cases = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    client: z.string(),
+    location: z.string(),
+    capacityMW: z.number().optional(),
+    capacityMWh: z.number().optional(),
+    completedAt: z.coerce.date(),
+    application: z.enum(['Utility', 'C&I', 'Residential']),
+    modules: z.string().optional(),         // e.g. "500,000 × EAGLE® G7"
+    coverImage: z.string(),
+    gallery: z.array(z.string()).default([]),
+    description: z.string(),
+    featured: z.boolean().default(false),
+    order: z.number().default(0),
+  }),
+});
+
+export const collections = { products, news, stats, installers, cases };
