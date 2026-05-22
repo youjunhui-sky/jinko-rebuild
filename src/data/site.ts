@@ -38,7 +38,7 @@ export const SITE = {
   },
   // 📊 分析 (二选一启用即可)
   analytics: {
-    cloudflareToken: '',         // 填入 CF Web Analytics 的 token 即启用
+    cloudflareToken: 'db83513384f843468330c384bd250fed',         // CF Web Analytics
     plausibleDomain: '',         // 或换 Plausible: 'jinko-rebuild.youjh120608.workers.dev'
   },
   // 三大主推关键词桶 (上一轮 SEO 诊断给出的"应该抢却没抢"清单)
