@@ -326,10 +326,19 @@ collections:
       - { name: "title", label: "Title", widget: "string" }
       - { name: "description", label: "Description", widget: "text" }
       - { name: "publishDate", label: "Publish Date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "updatedDate", label: "Updated Date", widget: "datetime", required: false, date_format: "YYYY-MM-DD", time_format: false }
       - { name: "author", label: "Author", widget: "string", default: "Callsun" }
       - { name: "cover", label: "Cover Image", widget: "image", required: false }
       - { name: "category", label: "Category", widget: "select", options: ["Press", "Product", "Industry", "Technical", "Sustainability"] }
       - { name: "tags", label: "Tags", widget: "list", default: [] }
+      - { name: "relatedPosts", label: "Related Post Slugs", widget: "list", default: [] }
+      - { name: "relatedProducts", label: "Related Product Slugs", widget: "list", default: [] }
+      - { name: "relatedSolutions", label: "Related Solution Slugs", widget: "list", default: [] }
+      - { name: "relatedCases", label: "Related Case Slugs", widget: "list", default: [] }
+      - { name: "ctaTitle", label: "CTA Title", widget: "string", required: false }
+      - { name: "ctaDescription", label: "CTA Description", widget: "text", required: false }
+      - { name: "ctaLabel", label: "CTA Label", widget: "string", required: false }
+      - { name: "ctaHref", label: "CTA URL", widget: "string", required: false }
       - { name: "featured", label: "Featured", widget: "boolean", default: false }
       - { name: "draft", label: "Draft", widget: "boolean", default: false }
       - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }

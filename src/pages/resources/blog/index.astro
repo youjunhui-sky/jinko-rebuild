@@ -3,6 +3,50 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-const posts=(await getCollection('news', n=>!n.data.draft)).sort((a,b)=>b.data.publishDate.getTime()-a.data.publishDate.getTime());
+import SectionHeader from '@/components/SectionHeader.astro';
+
+const posts = (await getCollection('news', n=>!n.data.draft)).sort((a,b)=>b.data.publishDate.getTime()-a.data.publishDate.getTime());
+const featured = posts.filter((p) => p.data.featured).slice(0, 3);
+const categories = Array.from(new Set(posts.map((p) => p.data.category))).sort();
+const tags = Array.from(new Set(posts.flatMap((p) => p.data.tags))).sort();
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Callsun Technical Blog',
+  description: 'Technical blog for B2B solar distributors, dealers and EPC installers.',
+};
 ---
-<BaseLayout title="Technical Blog | Callsun" description="Technical blog for B2B solar distributors, dealers and EPC installers."><Header slot="header" /><section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><h1 class="text-4xl lg:text-5xl font-display font-extrabold">Technical Blog</h1></div></section><section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6"><ul class="grid gap-6 md:grid-cols-3">{posts.map(p=><li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{p.data.category}</p><h2 class="mt-2 text-xl font-display font-bold"><a href={`/resources/blog/${p.slug}`}>{p.data.title}</a></h2><p class="mt-2 text-sm text-jinko-mute">{p.data.description}</p></li>)}</ul></div></section><Footer slot="footer" /></BaseLayout>
+<BaseLayout title="Technical Blog | Callsun" description="Technical blog for B2B solar distributors, dealers and EPC installers." canonical="/resources/blog" ogImage="/og/default.svg" keywords={["solar technical blog", "B2B solar distributor blog", "solar EPC resources"]} schema={schema}>
+  <Header slot="header" />
+
+  <section class="py-16 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-end">
+      <SectionHeader eyebrow="Resources" title="Technical Blog" description="Articles, checklists and sales enablement notes for distributors, dealers and EPC installers." />
+      <div class="rounded-2xl bg-white border border-jinko-line shadow-card p-5">
+        <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Browse by category</p>
+        <div class="mt-3 flex flex-wrap gap-2">{categories.map((category) => <a class="rounded-full bg-jinko-bg px-3 py-1.5 text-sm font-semibold text-jinko" href={`/resources/blog/category/${category.toLowerCase().replaceAll(' ', '-')}`}>{category}</a>)}</div>
+      </div>
+    </div>
+  </section>
+
+  {featured.length > 0 && <section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="flex items-end justify-between gap-4 flex-wrap"><div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Featured</p><h2 class="mt-2 text-3xl font-display font-extrabold">Recommended reading</h2></div><a href="/resources/downloads" class="text-jinko font-semibold">Download resources →</a></div><div class="mt-8 grid gap-6 lg:grid-cols-3">{featured.map((p) => <article class="rounded-3xl bg-white border border-jinko-line shadow-card overflow-hidden"><a href={`/resources/blog/${p.slug}`}>{p.data.cover && <img src={p.data.cover} alt={p.data.title} class="w-full h-44 object-cover" />}</a><div class="p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{p.data.category}</p><h3 class="mt-2 text-xl font-display font-bold"><a href={`/resources/blog/${p.slug}`}>{p.data.title}</a></h3><p class="mt-2 text-sm text-jinko-mute">{p.data.description}</p><p class="mt-4 text-xs text-jinko-mute">{p.data.publishDate.toLocaleDateString('en-US')} · {p.data.author}</p></div></article>)}</div></div></section>}
+
+  <section class="py-14 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1fr_300px] gap-8 items-start">
+      <div>
+        <div class="flex items-center justify-between gap-4 flex-wrap"><h2 class="text-3xl font-display font-extrabold">Latest articles</h2><p class="text-jinko-mute">{posts.length} articles</p></div>
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          {posts.map(p=><article class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold"><a href={`/resources/blog/category/${p.data.category.toLowerCase().replaceAll(' ', '-')}`}>{p.data.category}</a></p><h2 class="mt-2 text-xl font-display font-bold"><a href={`/resources/blog/${p.slug}`}>{p.data.title}</a></h2><p class="mt-2 text-sm text-jinko-mute">{p.data.description}</p><div class="mt-4 flex flex-wrap gap-2">{p.data.tags.map((tag) => <a href={`/resources/blog/tag/${tag.toLowerCase().replaceAll(' ', '-')}`} class="text-xs rounded-full bg-jinko-bg px-3 py-1 text-jinko-mute">#{tag}</a>)}</div><p class="mt-4 text-xs text-jinko-mute">{p.data.publishDate.toLocaleDateString('en-US')} · {p.data.author}</p></article>)}
+        </div>
+      </div>
+      <aside class="rounded-3xl bg-white border border-jinko-line shadow-card p-6 sticky top-24">
+        <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Blog sidebar</p>
+        <h3 class="mt-2 text-xl font-display font-bold">SEO topic clusters</h3>
+        <div class="mt-5"><p class="font-semibold">Tags</p><div class="mt-3 flex flex-wrap gap-2">{tags.map((tag) => <a href={`/resources/blog/tag/${tag.toLowerCase().replaceAll(' ', '-')}`} class="rounded-full bg-jinko-bg px-3 py-1 text-sm text-jinko-mute">#{tag}</a>)}</div></div>
+        <div class="mt-6 rounded-2xl bg-jinko text-white p-5"><p class="font-display font-bold text-xl">Need product documents?</p><p class="mt-2 text-sm text-sky-100">Download datasheets, certificates and installation guides.</p><a href="/resources/downloads" class="mt-4 inline-flex text-jinko-accent font-bold">Downloads →</a></div>
+      </aside>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

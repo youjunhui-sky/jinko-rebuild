@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+const toSlug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const allPosts = (await getCollection('news', n=>!n.data.draft)).sort((a,b)=>b.data.publishDate.getTime()-a.data.publishDate.getTime());
+const categories = Array.from(new Set(allPosts.map((p) => p.data.category)));
+export async function getStaticPaths() {
+  const toSlug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const posts = await getCollection('news', n=>!n.data.draft);
+  const cats = Array.from(new Set(posts.map((p) => p.data.category)));
+  return cats.map((category) => ({ params: { category: toSlug(category) }, props: { category } }));
+}
+const { category } = Astro.props;
+const posts = allPosts.filter((p) => p.data.category === category);
+---
+<BaseLayout title={`${category} Articles | Callsun Blog`} description={`Browse Callsun ${category} articles for B2B solar distributors, dealers and EPC installers.`} canonical={`/resources/blog/category/${toSlug(category)}`} ogImage="/og/default.svg" keywords={[`${category} solar articles`, 'Callsun blog']}>
+  <Header slot="header" />
+  <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><nav class="text-sm text-jinko-mute mb-5"><a href="/resources/blog">Blog</a> / <span>{category}</span></nav><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Category</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">{category} articles</h1><p class="mt-4 text-jinko-mute">{posts.length} articles in this topic cluster.</p><div class="mt-6 flex flex-wrap gap-2">{categories.map((cat) => <a href={`/resources/blog/category/${toSlug(cat)}`} class:list={["rounded-full px-3 py-1.5 text-sm font-semibold", cat === category ? "bg-jinko text-white" : "bg-white text-jinko-mute border border-jinko-line"]}>{cat}</a>)}</div></div></section>
+  <section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6 grid gap-6 md:grid-cols-3">{posts.map((p) => <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{p.data.category}</p><h2 class="mt-2 text-xl font-display font-bold"><a href={`/resources/blog/${p.slug}`}>{p.data.title}</a></h2><p class="mt-2 text-sm text-jinko-mute">{p.data.description}</p><div class="mt-4 flex flex-wrap gap-2">{p.data.tags.map((tag) => <a href={`/resources/blog/tag/${toSlug(tag)}`} class="rounded-full bg-jinko-bg px-3 py-1 text-xs text-jinko-mute">#{tag}</a>)}</div></article>)}</div></section>
+  <Footer slot="footer" />
+</BaseLayout>
