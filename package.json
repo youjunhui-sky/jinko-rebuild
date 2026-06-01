@@ -2,7 +2,7 @@
   "name": "jinko-rebuild",
   "type": "module",
   "version": "1.0.0",
-  "description": "Modern rebuild of jinkosolar.us with Astro + Tailwind, optimized for SEO and Core Web Vitals",
+  "description": "Callsun B2B solar modules, storage systems and SEO/SEM inquiry platform built with Astro + Tailwind.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
