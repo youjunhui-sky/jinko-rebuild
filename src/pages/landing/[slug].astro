@@ -93,12 +93,14 @@ const schema = {
       <input type="hidden" name="referrer" data-referrer />
       <input type="hidden" name="landing_page" data-landing-page />
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" />
+      {SITE.security.turnstileSiteKey && <div class="cf-turnstile" data-sitekey={SITE.security.turnstileSiteKey}></div>}
       <button type="submit" class="w-full px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">{page.data.ctaLabel}</button>
       <p class="text-xs text-jinko-mute" data-form-status>CRM endpoint works in mock mode. UTM, campaign and source fields are already present.</p>
     </form>
   </div></section>
 
   <Footer slot="footer" />
+  {SITE.security.turnstileSiteKey && <script slot="head" src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 </BaseLayout>
 <script define:vars={{ landingSlug: page.data.slug, campaign: page.data.campaign || '', thankYouMessage: page.data.thankYouMessage }}>
   const params = new URLSearchParams(location.search);

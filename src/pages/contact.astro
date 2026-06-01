@@ -38,6 +38,7 @@ import { SITE } from '@/data/site';
         <input type="hidden" name="referrer" data-referrer />
         <input type="hidden" name="landing_page" data-landing-page />
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" />
+        {SITE.security.turnstileSiteKey && <div class="cf-turnstile" data-sitekey={SITE.security.turnstileSiteKey}></div>}
         <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">Send Inquiry</button>
         <p class="text-xs text-jinko-mute" data-form-status>Current phase: /api/inquiry works in mock mode. Later this can connect to HubSpot, Feishu Bitable or Cloudflare D1.</p>
       </form>
@@ -49,6 +50,7 @@ import { SITE } from '@/data/site';
     </div>
   </section>
   <Footer slot="footer" />
+  {SITE.security.turnstileSiteKey && <script slot="head" src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 </BaseLayout>
 <script>
   const params = new URLSearchParams(location.search);

@@ -63,6 +63,23 @@ function normalizeInquiry(raw, request) {
   return { inquiry, tracking };
 }
 
+
+async function verifyTurnstile(token, request, env) {
+  if (!env.TURNSTILE_SECRET_KEY) return { ok: true, skipped: true };
+  if (!token) return { ok: false, code: 'missing_turnstile', message: 'Please complete the anti-spam verification.' };
+  const form = new FormData();
+  form.append('secret', env.TURNSTILE_SECRET_KEY);
+  form.append('response', token);
+  const ip = request.headers.get('CF-Connecting-IP');
+  if (ip) form.append('remoteip', ip);
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    body: form,
+  });
+  const result = await response.json().catch(() => ({}));
+  return result.success ? { ok: true } : { ok: false, code: 'turnstile_failed', message: 'Anti-spam verification failed.', details: result['error-codes'] || [] };
+}
+
 function validateInquiry(raw, inquiry) {
   if (clean(raw._gotcha)) return { ok: false, code: 'spam_detected', status: 400, message: 'Spam protection triggered.' };
   for (const field of REQUIRED_FIELDS) {
@@ -103,6 +120,9 @@ async function handleInquiry(request, env) {
   const { inquiry, tracking } = normalizeInquiry(raw, request);
   const validation = validateInquiry(raw, inquiry);
   if (!validation.ok) return jsonResponse(validation, { status: validation.status });
+
+  const turnstile = await verifyTurnstile(clean(raw['cf-turnstile-response'], 4000), request, env);
+  if (!turnstile.ok) return jsonResponse({ ok: false, code: turnstile.code, message: turnstile.message, details: turnstile.details || [] }, { status: 400 });
 
   const payload = {
     id: `inq_${Date.now()}_${crypto.randomUUID().slice(0, 8)}`,

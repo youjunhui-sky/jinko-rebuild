@@ -33,6 +33,11 @@ export const SITE = {
     },
     sameAs: [] as string[],
   },
+  security: {
+    // Set after the customer provides Cloudflare Turnstile keys.
+    // Frontend widget is shown only when this value is not empty.
+    turnstileSiteKey: '',
+  },
   analytics: {
     cloudflareToken: 'db83513384f843468330c384bd250fed',
     plausibleDomain: '',
