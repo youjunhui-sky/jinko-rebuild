@@ -216,6 +216,35 @@ const navigation = defineCollection({
   }),
 });
 
+const customPages = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    urlPath: z.string(),
+    pageType: z.enum(['SEO Page', 'Company Page', 'Support Page', 'Legal Page', 'Campaign Page']).default('SEO Page'),
+    category: z.string().optional(),
+    eyebrow: z.string().optional(),
+    summary: z.string(),
+    coverImage: z.string().optional(),
+    imageAlt: z.string().optional(),
+    ctaLabel: z.string().default('Request a Quote'),
+    ctaHref: z.string().default('/contact'),
+    secondaryCtaLabel: z.string().optional(),
+    secondaryCtaHref: z.string().optional(),
+    sections: z.array(z.object({
+      eyebrow: z.string().optional(),
+      heading: z.string(),
+      description: z.string().optional(),
+      items: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
+    })).default([]),
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    relatedLinks: z.array(z.object({ label: z.string(), href: z.string(), description: z.string().optional() })).default([]),
+    order: z.number().default(0),
+    draft: z.boolean().default(false),
+    ...seoFields,
+  }),
+});
+
 const landingPages = defineCollection({
   type: 'data',
   schema: z.object({
@@ -229,4 +258,4 @@ const landingPages = defineCollection({
   }),
 });
 
-export const collections = { homepage, products, solutions, applications, news, downloads, cases, supportPages, navigation, landingPages };
+export const collections = { homepage, products, solutions, applications, news, downloads, cases, supportPages, navigation, customPages, landingPages };

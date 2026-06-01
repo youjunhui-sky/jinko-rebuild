@@ -307,6 +307,68 @@ collections:
       - { name: "keywords", label: "Keywords", widget: "list", default: [] }
       - { name: "body", label: "Body", widget: "markdown" }
 
+  - name: "customPages"
+    label: "🧩 Custom Pages"
+    folder: "src/content/customPages"
+    create: true
+    delete: true
+    format: "frontmatter"
+    extension: "md"
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Page Title", widget: "string" }
+      - { name: "urlPath", label: "URL Slug / Path", widget: "string", hint: "Examples: pages/oem-solar-panels, about/certifications, support/shipping-policy" }
+      - { name: "pageType", label: "Page Type", widget: "select", options: ["SEO Page", "Company Page", "Support Page", "Legal Page", "Campaign Page"], default: "SEO Page" }
+      - { name: "category", label: "Category Name", widget: "string", required: false }
+      - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+      - { name: "summary", label: "Summary / Hero Description", widget: "text" }
+      - { name: "coverImage", label: "Cover Image", widget: "image", required: false }
+      - { name: "imageAlt", label: "Image Alt Text", widget: "string", required: false }
+      - { name: "ctaLabel", label: "Primary CTA Label", widget: "string", default: "Request a Quote" }
+      - { name: "ctaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+      - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+      - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "Page Sections / H2-H3 Blocks"
+        name: "sections"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "eyebrow", label: "Section Eyebrow", widget: "string", required: false }
+          - { name: "heading", label: "H2 Heading", widget: "string" }
+          - { name: "description", label: "Section Description", widget: "text", required: false }
+          - label: "H3 Cards"
+            name: "items"
+            widget: "list"
+            required: false
+            fields:
+              - { name: "title", label: "H3 / Card Title", widget: "string" }
+              - { name: "description", label: "Card Description", widget: "text" }
+      - label: "FAQ"
+        name: "faqs"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "question", label: "Question", widget: "string" }
+          - { name: "answer", label: "Answer", widget: "text" }
+      - label: "Related Links"
+        name: "relatedLinks"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "href", label: "URL", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+      - { name: "order", label: "Display Order", widget: "number", default: 0 }
+      - { name: "draft", label: "Draft", widget: "boolean", default: false }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - { name: "body", label: "Body Content", widget: "markdown" }
+
   - name: "supportPages"
     label: "🛠️ Support Pages"
     folder: "src/content/supportPages"

@@ -9,6 +9,7 @@ interface Props {
   ogImage?: string;
   ogType?: 'website' | 'article' | 'product';
   noindex?: boolean;
+  keywords?: string[];
   schema?: Record<string, unknown> | Record<string, unknown>[];
   hreflang?: { lang: string; href: string }[];
 }
@@ -20,6 +21,7 @@ const {
   ogImage = SITE.defaultOgImage,
   ogType = 'website',
   noindex = false,
+  keywords = [],
   schema,
   hreflang = [],
 } = Astro.props;
@@ -66,6 +68,7 @@ const schemas = [defaultOrg, ...(Array.isArray(schema) ? schema : schema ? [sche
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
 
