@@ -1,25 +1,60 @@
 {
+  "applications": [
+    "RV",
+    "Remote Power",
+    "Custom Projects"
+  ],
+  "model": "180W",
+  "keywords": [
+    "180w solar panel",
+    "custom solar module",
+    "small solar panel supplier"
+  ],
   "name": "180W Custom Solar Module",
   "slug": "180w-custom-solar-module",
-  "category": "custom-module",
-  "model": "180W",
-  "tagline": "Compact N-type module for custom and non-standard solar applications.",
-  "tech": "N-Type 16BB mono-crystalline silicon",
-  "certifications": ["UL certification pending"],
-  "image": "/placeholders/solar-panel.svg",
-  "description": "A compact 180W custom solar module for customers who need flexible module sizes and non-standard deployment scenarios.",
-  "specs": [
-    { "label": "Maximum Power (Pmax)", "value": "180W", "group": "Electrical" },
-    { "label": "Maximum Power Voltage (Vmp)", "value": "21.93V", "group": "Electrical" },
-    { "label": "Maximum Power Current (Imp)", "value": "8.21A", "group": "Electrical" },
-    { "label": "Cell Efficiency", "value": "25%", "group": "Performance" },
-    { "label": "Maximum System Voltage", "value": "1000V DC", "group": "System" },
-    { "label": "Output Commitment", "value": "84.5% output for 25 years", "group": "Warranty" }
-  ],
-  "applications": ["RV", "Remote Power", "Custom Projects"],
-  "order": 110,
   "featured": false,
-  "seoTitle": "180W Custom Solar Module | Callsun",
+  "tagline": "Compact N-type module for custom and non-standard solar applications.",
+  "order": 110,
+  "noindex": true,
+  "tech": "N-Type 16BB mono-crystalline silicon",
   "metaDescription": "Callsun 180W custom N-type solar module for compact, RV and non-standard solar applications.",
-  "keywords": ["180w solar panel", "custom solar module", "small solar panel supplier"]
+  "specs": [
+    {
+      "label": "Maximum Power (Pmax)",
+      "value": "180W",
+      "group": "Electrical"
+    },
+    {
+      "label": "Maximum Power Voltage (Vmp)",
+      "value": "21.93V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Maximum Power Current (Imp)",
+      "value": "8.21A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Cell Efficiency",
+      "value": "25%",
+      "group": "Performance"
+    },
+    {
+      "label": "Maximum System Voltage",
+      "value": "1000V DC",
+      "group": "System"
+    },
+    {
+      "label": "Output Commitment",
+      "value": "84.5% output for 25 years",
+      "group": "Warranty"
+    }
+  ],
+  "certifications": [
+    "UL certification pending"
+  ],
+  "image": "/uploads/image.png",
+  "seoTitle": "180W Custom Solar Module | Callsun",
+  "description": "A compact 180W custom solar module for customers who need flexible module sizes and non-standard deployment scenarios.",
+  "category": "custom-module"
 }
