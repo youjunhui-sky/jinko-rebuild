@@ -16,7 +16,7 @@ import { SITE } from '@/data/site';
 
   <section class="py-14">
     <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[2fr_1fr] gap-10">
-      <form action="#" method="POST" data-inquiry-form class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
+      <form action="/api/inquiry" method="POST" data-inquiry-form class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
         <div class="grid sm:grid-cols-2 gap-5">
           <label class="block"><span class="text-sm font-semibold text-jinko-ink">Full Name *</span><input type="text" name="name" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
           <label class="block"><span class="text-sm font-semibold text-jinko-ink">Company *</span><input type="text" name="company" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
@@ -32,11 +32,14 @@ import { SITE } from '@/data/site';
         <input type="hidden" name="utm_source" data-utm="utm_source" />
         <input type="hidden" name="utm_medium" data-utm="utm_medium" />
         <input type="hidden" name="utm_campaign" data-utm="utm_campaign" />
+        <input type="hidden" name="utm_term" data-utm="utm_term" />
+        <input type="hidden" name="utm_content" data-utm="utm_content" />
+        <input type="hidden" name="form_source" value="contact" />
         <input type="hidden" name="referrer" data-referrer />
         <input type="hidden" name="landing_page" data-landing-page />
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" />
         <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">Send Inquiry</button>
-        <p class="text-xs text-jinko-mute">Current phase: submit endpoint is reserved. Later this can connect to HubSpot, Feishu Bitable or Cloudflare D1.</p>
+        <p class="text-xs text-jinko-mute" data-form-status>Current phase: /api/inquiry works in mock mode. Later this can connect to HubSpot, Feishu Bitable or Cloudflare D1.</p>
       </form>
 
       <aside class="space-y-5">
@@ -52,9 +55,24 @@ import { SITE } from '@/data/site';
   document.querySelectorAll('[data-utm]').forEach((input) => { input.value = params.get(input.dataset.utm) || ''; });
   const ref = document.querySelector('[data-referrer]'); if (ref) ref.value = document.referrer || '';
   const landing = document.querySelector('[data-landing-page]'); if (landing) landing.value = location.href;
-  document.querySelector('[data-inquiry-form]')?.addEventListener('submit', (event) => {
+  document.querySelector('[data-inquiry-form]')?.addEventListener('submit', async (event) => {
     event.preventDefault();
-    window.callsunTrack?.('contact_form_submit', { form: 'contact', path: location.pathname });
-    alert('Inquiry endpoint is reserved for the next CRM phase.');
+    const form = event.currentTarget;
+    const status = form.querySelector('[data-form-status]');
+    const submit = form.querySelector('button[type="submit"]');
+    status.textContent = 'Submitting inquiry...';
+    submit.disabled = true;
+    try {
+      const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { accept: 'application/json' } });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.message || 'Inquiry submission failed.');
+      window.callsunTrack?.('contact_form_submit', { form: 'contact', path: location.pathname, inquiry_id: result.id });
+      status.textContent = `Inquiry received. Reference: ${result.id}. CRM integration is currently in mock mode.`;
+      form.reset();
+    } catch (error) {
+      status.textContent = error.message || 'Submission failed. Please email sales directly.';
+    } finally {
+      submit.disabled = false;
+    }
   });
 </script>

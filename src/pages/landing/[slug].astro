@@ -77,10 +77,11 @@ const schema = {
 
   <section id="landing-form" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
     <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">RFQ form</p><h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold">{page.data.formTitle}</h2>{page.data.formDescription && <p class="mt-4 text-jinko-mute text-lg">{page.data.formDescription}</p>}{page.data.downloads.length > 0 && <div class="mt-8 space-y-3">{page.data.downloads.map((d) => <a href={d.url} data-track-click="landing_download_click" data-landing-page={page.data.slug} class="block rounded-2xl bg-white border border-jinko-line p-5 font-semibold text-jinko hover:shadow-card">↓ {d.label}</a>)}</div>}</div>
-    <form action="#" method="POST" data-landing-form data-campaign={page.data.campaign} class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
+    <form action="/api/inquiry" method="POST" data-landing-form data-campaign={page.data.campaign} class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
       <div class="grid sm:grid-cols-2 gap-5"><label class="block"><span class="text-sm font-semibold">Full Name *</span><input type="text" name="name" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label><label class="block"><span class="text-sm font-semibold">Company *</span><input type="text" name="company" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label><label class="block"><span class="text-sm font-semibold">Email *</span><input type="email" name="email" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label><label class="block"><span class="text-sm font-semibold">Phone / WhatsApp</span><input type="text" name="phone" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label></div>
       <label class="block"><span class="text-sm font-semibold">What are you looking for? *</span><select name="inquiry_type" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko bg-white"><option value="">Select</option><option>Solar modules</option><option>Grid-tied storage system</option><option>Off-grid solar system</option><option>Distributor partnership</option><option>OEM / custom module request</option></select></label>
       <label class="block"><span class="text-sm font-semibold">Project / purchase details *</span><textarea name="message" required rows="5" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" placeholder="Target market, product range, monthly volume, project size..."></textarea></label>
+      <input type="hidden" name="form_source" value="landing" />
       <input type="hidden" name="landing_page_slug" value={page.data.slug} />
       <input type="hidden" name="campaign" value={page.data.campaign || ''} />
       <input type="hidden" name="ad_group" value={page.data.adGroup || ''} />
@@ -93,7 +94,7 @@ const schema = {
       <input type="hidden" name="landing_page" data-landing-page />
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" />
       <button type="submit" class="w-full px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">{page.data.ctaLabel}</button>
-      <p class="text-xs text-jinko-mute">CRM endpoint reserved. UTM, campaign and source fields are already present.</p>
+      <p class="text-xs text-jinko-mute" data-form-status>CRM endpoint works in mock mode. UTM, campaign and source fields are already present.</p>
     </form>
   </div></section>
 
@@ -105,9 +106,24 @@ const schema = {
   const ref = document.querySelector('[data-referrer]'); if (ref) ref.value = document.referrer || '';
   const landing = document.querySelector('[data-landing-page]'); if (landing) landing.value = location.href;
   window.callsunTrack?.('landing_page_view', { landing_page: landingSlug, campaign, path: location.pathname });
-  document.querySelector('[data-landing-form]')?.addEventListener('submit', (event) => {
+  document.querySelector('[data-landing-form]')?.addEventListener('submit', async (event) => {
     event.preventDefault();
-    window.callsunTrack?.('rfq_submit', { form: 'landing', landing_page: landingSlug, campaign, path: location.pathname });
-    alert(thankYouMessage);
+    const form = event.currentTarget;
+    const status = form.querySelector('[data-form-status]');
+    const submit = form.querySelector('button[type="submit"]');
+    status.textContent = 'Submitting RFQ...';
+    submit.disabled = true;
+    try {
+      const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { accept: 'application/json' } });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.message || 'RFQ submission failed.');
+      window.callsunTrack?.('rfq_submit', { form: 'landing', landing_page: landingSlug, campaign, path: location.pathname, inquiry_id: result.id });
+      status.textContent = `${thankYouMessage} Reference: ${result.id}.`;
+      form.reset();
+    } catch (error) {
+      status.textContent = error.message || 'Submission failed. Please email sales directly.';
+    } finally {
+      submit.disabled = false;
+    }
   });
 </script>
