@@ -9,6 +9,8 @@ import StatStrip from '@/components/StatStrip.astro';
 import CardGrid from '@/components/CardGrid.astro';
 import { SITE } from '@/data/site';
 
+const homepageEntries = await getCollection('homepage');
+const home = homepageEntries[0].data;
 const products = (await getCollection('products')).map(p => p.data).sort((a,b)=>a.order-b.order).slice(0, 6);
 const solutions = (await getCollection('solutions')).map(s => s.data).filter(s=>s.featured).sort((a,b)=>a.order-b.order);
 const cases = (await getCollection('cases')).map(c => c.data).filter(c=>c.featured).sort((a,b)=>a.order-b.order).slice(0, 4);
@@ -26,7 +28,7 @@ const homeSchema = {
   potentialAction: { '@type': 'SearchAction', target: `${SITE.domain}/search?q={search_term_string}`, 'query-input': 'required name=search_term_string' },
 };
 ---
-<BaseLayout title={SITE.defaultTitle} description={SITE.defaultDescription} schema={homeSchema}>
+<BaseLayout title={home.seoTitle || SITE.defaultTitle} description={home.metaDescription || SITE.defaultDescription} ogImage={home.ogImage || SITE.defaultOgImage} schema={homeSchema}>
   <Header slot="header" />
 
   <section class="relative overflow-hidden text-white">
@@ -34,82 +36,76 @@ const homeSchema = {
     <div class="absolute inset-0 opacity-25" style="background-image:linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);background-size:52px 52px;"></div>
     <div class="max-w-content mx-auto px-4 lg:px-6 py-24 lg:py-32 relative grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-center">
       <div>
-        <p class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-bold text-jinko-accent bg-white/10 px-3 py-1.5 rounded-full ring-1 ring-white/15">Callsun B2B Solar Platform</p>
-        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-4xl">
-          Sell solar modules, storage packages and C&I systems with less project friction.
-        </h1>
-        <p class="mt-6 text-lg lg:text-xl text-sky-100 max-w-2xl leading-relaxed">
-          Callsun provides a structured product and solution portfolio for distributors, dealers and EPC installers: module specs, repeatable system packages, sales-ready case references and inquiry-focused landing pages.
-        </p>
+        <p class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-bold text-jinko-accent bg-white/10 px-3 py-1.5 rounded-full ring-1 ring-white/15">{home.hero.eyebrow}</p>
+        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-4xl">{home.hero.title || home.h1}</h1>
+        <p class="mt-6 text-lg lg:text-xl text-sky-100 max-w-2xl leading-relaxed">{home.hero.description}</p>
         <div class="mt-9 flex flex-wrap gap-3">
-          <a href="/products" data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-bold hover:opacity-90">Explore Products →</a>
-          <a href="/solutions" class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20 hover:bg-white/15">View System Packages</a>
-          <a href="/contact" data-track-click="inquiry_cta" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-white text-jinko-ink font-semibold hover:bg-slate-100">Request Quote</a>
+          <a href={home.hero.primaryCtaHref} data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-bold hover:opacity-90">{home.hero.primaryCtaLabel}</a>
+          <a href={home.hero.secondaryCtaHref} class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20 hover:bg-white/15">{home.hero.secondaryCtaLabel}</a>
+          <a href={home.hero.tertiaryCtaHref} data-track-click="inquiry_cta" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-white text-jinko-ink font-semibold hover:bg-slate-100">{home.hero.tertiaryCtaLabel}</a>
         </div>
       </div>
       <div class="relative">
         <div class="rounded-[2rem] bg-white/10 ring-1 ring-white/20 p-4 backdrop-blur shadow-2xl">
-          <img src="/placeholders/battery-system.svg" alt="Callsun solar and storage package placeholder" width="900" height="680" class="rounded-[1.5rem] w-full object-cover" />
+          <img src={home.hero.image} alt={home.hero.imageAlt || home.hero.title} width="900" height="680" class="rounded-[1.5rem] w-full object-cover" />
         </div>
-        <div class="absolute -bottom-6 -left-6 bg-white text-jinko-ink rounded-2xl shadow-card p-5 max-w-xs hidden sm:block">
-          <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">For U.S. partners</p>
-          <p class="mt-2 font-display font-extrabold text-2xl">Distributors · Dealers · EPC</p>
-          <p class="mt-1 text-sm text-jinko-mute">Built around quality, supply flexibility and repeatable C&I references.</p>
-        </div>
+        {(home.hero.floatingTitle || home.hero.floatingDescription) && <div class="absolute -bottom-6 -left-6 bg-white text-jinko-ink rounded-2xl shadow-card p-5 max-w-xs hidden sm:block">
+          {home.hero.floatingEyebrow && <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{home.hero.floatingEyebrow}</p>}
+          {home.hero.floatingTitle && <p class="mt-2 font-display font-extrabold text-2xl">{home.hero.floatingTitle}</p>}
+          {home.hero.floatingDescription && <p class="mt-1 text-sm text-jinko-mute">{home.hero.floatingDescription}</p>}
+        </div>}
       </div>
     </div>
   </section>
 
-  <StatStrip />
+  <StatStrip stats={home.stats} />
 
-  <section class="py-20 lg:py-24">
+  {home.why.visible && <section class="py-20 lg:py-24">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <SectionHeader eyebrow="Why Callsun" title="Answer the three questions every B2B solar buyer asks." description="The site now directly addresses product reliability, delivery flexibility and repeatable experience — the key concerns of distributors, dealers and EPC installers." />
+      <SectionHeader eyebrow={home.why.eyebrow} title={home.why.title} description={home.why.description} />
       <div class="mt-12 grid gap-6 md:grid-cols-3">
-        <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-7"><p class="text-3xl">01</p><h3 class="mt-4 text-xl font-display font-bold">Will product quality reduce after-sales risk?</h3><p class="mt-3 text-jinko-mute">Product pages emphasize certifications, warranty placeholders, specs and image-alt SEO fields so buyers can evaluate reliability.</p></article>
-        <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-7"><p class="text-3xl">02</p><h3 class="mt-4 text-xl font-display font-bold">Can supply match project schedules?</h3><p class="mt-3 text-jinko-mute">The CMS supports module families, system packages and future MOQ/logistics policies for faster sales conversations.</p></article>
-        <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-7"><p class="text-3xl">03</p><h3 class="mt-4 text-xl font-display font-bold">Are there proven projects to copy?</h3><p class="mt-3 text-jinko-mute">Case pages convert commercial rooftop, auto dealership and solar-plus-storage references into sales narratives.</p></article>
+        {home.why.cards.map((card, index) => <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-7"><p class="text-3xl">{String(index + 1).padStart(2, '0')}</p><h3 class="mt-4 text-xl font-display font-bold">{card.title}</h3><p class="mt-3 text-jinko-mute">{card.description}</p></article>)}
       </div>
     </div>
-  </section>
+  </section>}
 
-  <section class="py-20 bg-jinko-bg">
+  {home.productsSection.visible && <section class="py-20 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <SectionHeader eyebrow="Products" title="Solar modules structured for SEO, datasheets and inquiry conversion." description="The product center is CMS-driven. Each product supports specs, certifications, downloads, image alt text and SEO metadata." />
+      <SectionHeader eyebrow={home.productsSection.eyebrow} title={home.productsSection.title} description={home.productsSection.description} />
       <div class="mt-12"><CardGrid items={productCards} /></div>
     </div>
-  </section>
+  </section>}
 
-  <section class="py-20 lg:py-24">
+  {home.solutionsSection.visible && <section class="py-20 lg:py-24">
     <div class="max-w-content mx-auto px-4 lg:px-6">
       <div class="flex items-end justify-between flex-wrap gap-4">
-        <SectionHeader eyebrow="Solutions" title="Repeatable packages for grid-tied and off-grid sales." description="System pages turn product components into package-level landing pages for Google Ads, SEO and distributor conversations." />
-        <a href="/solutions" class="text-jinko font-semibold">All solutions →</a>
+        <SectionHeader eyebrow={home.solutionsSection.eyebrow} title={home.solutionsSection.title} description={home.solutionsSection.description} />
+        {home.solutionsSection.linkHref && <a href={home.solutionsSection.linkHref} class="text-jinko font-semibold">{home.solutionsSection.linkLabel || 'Learn more →'}</a>}
       </div>
       <div class="mt-12"><CardGrid items={solutionCards} /></div>
     </div>
-  </section>
+  </section>}
 
-  <section class="py-20 bg-jinko-bg">
+  {home.casesSection.visible && <section class="py-20 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6">
       <div class="flex items-end justify-between flex-wrap gap-4">
-        <SectionHeader eyebrow="Cases" title="Sales-ready references for the U.S. distributor channel." description="Each case includes a sales angle, capacity, segment and application — not just a photo gallery." />
-        <a href="/cases" class="text-jinko font-semibold">All cases →</a>
+        <SectionHeader eyebrow={home.casesSection.eyebrow} title={home.casesSection.title} description={home.casesSection.description} />
+        {home.casesSection.linkHref && <a href={home.casesSection.linkHref} class="text-jinko font-semibold">{home.casesSection.linkLabel || 'Learn more →'}</a>}
       </div>
       <div class="mt-12"><CardGrid items={caseCards} columns="4" /></div>
     </div>
-  </section>
+  </section>}
 
-  <section class="py-20 lg:py-24">
+  {home.marketingSection.visible && <section class="py-20 lg:py-24">
     <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-start">
-      <SectionHeader eyebrow="SEO + SEM ready" title="The marketing stack is reserved before the first ad dollar is spent." description="GTM, GA4, Google Ads conversion IDs, Cookie Consent and dataLayer events are already structured. When the customer provides account IDs, tracking can be enabled without rebuilding the site architecture." />
+      <SectionHeader eyebrow={home.marketingSection.eyebrow} title={home.marketingSection.title} description={home.marketingSection.description} />
       <div class="grid gap-4 sm:grid-cols-2">
-        {['GTM Container placeholder', 'GA4 Measurement placeholder', 'Google Ads Conversion placeholder', 'Cookie Consent base layer', 'Contact / RFQ submit event', 'Email / WhatsApp / download events'].map((item) => <div class="rounded-2xl border border-jinko-line bg-white p-5 shadow-card"><p class="font-semibold text-jinko-ink">✓ {item}</p></div>)}
+        {home.marketingSection.checklist.map((item) => <div class="rounded-2xl border border-jinko-line bg-white p-5 shadow-card"><p class="font-semibold text-jinko-ink">✓ {item}</p></div>)}
       </div>
     </div>
-  </section>
+  </section>}
 
-  {news.length > 0 && <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="flex items-end justify-between"><SectionHeader eyebrow="Resources" title="Content hub for long-tail SEO." /><a href="/resources/blog" class="text-jinko font-semibold">Blog →</a></div><ul class="mt-10 grid gap-6 md:grid-cols-3">{news.map((n)=><li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{n.data.category}</p><h3 class="mt-2 text-lg font-display font-bold"><a href={`/resources/blog/${n.slug}`}>{n.data.title}</a></h3><p class="mt-2 text-sm text-jinko-mute">{n.data.description}</p></li>)}</ul></div></section>}
+  {home.resourcesSection.visible && news.length > 0 && <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="flex items-end justify-between"><SectionHeader eyebrow={home.resourcesSection.eyebrow} title={home.resourcesSection.title} />{home.resourcesSection.linkHref && <a href={home.resourcesSection.linkHref} class="text-jinko font-semibold">{home.resourcesSection.linkLabel || 'Learn more →'}</a>}</div><ul class="mt-10 grid gap-6 md:grid-cols-3">{news.map((n)=><li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{n.data.category}</p><h3 class="mt-2 text-lg font-display font-bold"><a href={`/resources/blog/${n.slug}`}>{n.data.title}</a></h3><p class="mt-2 text-sm text-jinko-mute">{n.data.description}</p></li>)}</ul></div></section>}
 
   <ContactCTA />
   <Footer slot="footer" />

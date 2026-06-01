@@ -15,6 +15,106 @@ locale: "en"
 publish_mode: editorial_workflow
 
 collections:
+  - name: "homepage"
+    label: "🏠 Homepage"
+    folder: "src/content/homepage"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string" }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "title", label: "Hero Title", widget: "string" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+          - { name: "image", label: "Hero Image", widget: "image", default: "/placeholders/battery-system.svg" }
+          - { name: "imageAlt", label: "Hero Image Alt", widget: "string", required: false }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Explore Products" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/products" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", default: "View System Packages" }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", default: "/solutions" }
+          - { name: "tertiaryCtaLabel", label: "Tertiary CTA Label", widget: "string", default: "Request Quote" }
+          - { name: "tertiaryCtaHref", label: "Tertiary CTA URL", widget: "string", default: "/contact" }
+          - { name: "floatingEyebrow", label: "Floating Card Eyebrow", widget: "string", required: false }
+          - { name: "floatingTitle", label: "Floating Card Title", widget: "string", required: false }
+          - { name: "floatingDescription", label: "Floating Card Description", widget: "text", required: false }
+      - label: "Stats"
+        name: "stats"
+        widget: "list"
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "value", label: "Value", widget: "string" }
+      - label: "Why Callsun Section"
+        name: "why"
+        widget: "object"
+        fields:
+          - { name: "visible", label: "Visible", widget: "boolean", default: true }
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - label: "Cards"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Card Title", widget: "string" }
+              - { name: "description", label: "Card Description", widget: "text" }
+      - label: "Products Section"
+        name: "productsSection"
+        widget: "object"
+        fields:
+          - { name: "visible", label: "Visible", widget: "boolean", default: true }
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+      - label: "Solutions Section"
+        name: "solutionsSection"
+        widget: "object"
+        fields:
+          - { name: "visible", label: "Visible", widget: "boolean", default: true }
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - { name: "linkLabel", label: "Link Label", widget: "string", required: false }
+          - { name: "linkHref", label: "Link URL", widget: "string", required: false }
+      - label: "Cases Section"
+        name: "casesSection"
+        widget: "object"
+        fields:
+          - { name: "visible", label: "Visible", widget: "boolean", default: true }
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - { name: "linkLabel", label: "Link Label", widget: "string", required: false }
+          - { name: "linkHref", label: "Link URL", widget: "string", required: false }
+      - label: "SEO / SEM Section"
+        name: "marketingSection"
+        widget: "object"
+        fields:
+          - { name: "visible", label: "Visible", widget: "boolean", default: true }
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - { name: "checklist", label: "Checklist", widget: "list", default: [] }
+      - label: "Resources Section"
+        name: "resourcesSection"
+        widget: "object"
+        fields:
+          - { name: "visible", label: "Visible", widget: "boolean", default: true }
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "linkLabel", label: "Link Label", widget: "string", required: false }
+          - { name: "linkHref", label: "Link URL", widget: "string", required: false }
+
   - name: "navigation"
     label: "🧭 Navigation"
     folder: "src/content/navigation"

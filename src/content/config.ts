@@ -16,6 +16,53 @@ const specItem = z.object({
   group: z.string().optional(),
 });
 
+const homepage = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    seoTitle: z.string().optional(),
+    metaDescription: z.string().optional(),
+    h1: z.string(),
+    keywords: z.array(z.string()).default([]),
+    ogImage: z.string().optional(),
+    hero: z.object({
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string(),
+      image: z.string().default('/placeholders/battery-system.svg'),
+      imageAlt: z.string().optional(),
+      primaryCtaLabel: z.string().default('Explore Products'),
+      primaryCtaHref: z.string().default('/products'),
+      secondaryCtaLabel: z.string().default('View System Packages'),
+      secondaryCtaHref: z.string().default('/solutions'),
+      tertiaryCtaLabel: z.string().default('Request Quote'),
+      tertiaryCtaHref: z.string().default('/contact'),
+      floatingEyebrow: z.string().optional(),
+      floatingTitle: z.string().optional(),
+      floatingDescription: z.string().optional(),
+    }),
+    stats: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
+    why: z.object({
+      visible: z.boolean().default(true),
+      eyebrow: z.string().default('Why Callsun'),
+      title: z.string(),
+      description: z.string().optional(),
+      cards: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
+    }),
+    productsSection: z.object({ visible: z.boolean().default(true), eyebrow: z.string(), title: z.string(), description: z.string().optional() }),
+    solutionsSection: z.object({ visible: z.boolean().default(true), eyebrow: z.string(), title: z.string(), description: z.string().optional(), linkLabel: z.string().optional(), linkHref: z.string().optional() }),
+    casesSection: z.object({ visible: z.boolean().default(true), eyebrow: z.string(), title: z.string(), description: z.string().optional(), linkLabel: z.string().optional(), linkHref: z.string().optional() }),
+    marketingSection: z.object({
+      visible: z.boolean().default(true),
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string().optional(),
+      checklist: z.array(z.string()).default([]),
+    }),
+    resourcesSection: z.object({ visible: z.boolean().default(true), eyebrow: z.string(), title: z.string(), linkLabel: z.string().optional(), linkHref: z.string().optional() }),
+  }),
+});
+
 const products = defineCollection({
   type: 'data',
   schema: z.object({
@@ -182,4 +229,4 @@ const landingPages = defineCollection({
   }),
 });
 
-export const collections = { products, solutions, applications, news, downloads, cases, supportPages, navigation, landingPages };
+export const collections = { homepage, products, solutions, applications, news, downloads, cases, supportPages, navigation, landingPages };
