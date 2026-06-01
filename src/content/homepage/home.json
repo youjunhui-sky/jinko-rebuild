@@ -1,56 +1,16 @@
 {
-  "title": "Callsun Homepage",
-  "seoTitle": "Callsun — Solar Modules & Energy Storage for B2B Installers",
-  "metaDescription": "Callsun supplies solar modules, off-grid and grid-tied solar storage systems for distributors, dealers and EPC installers. Built for B2B inquiry, SEO and Google Ads landing pages.",
-  "h1": "Sell solar modules, storage packages and C&I systems with less project friction.",
-  "keywords": ["solar panel distributor", "commercial solar panels for installers", "off grid solar system supplier", "solar storage system supplier"],
-  "ogImage": "/og/default.svg",
-  "hero": {
-    "eyebrow": "Callsun B2B Solar Platform",
-    "title": "Sell solar modules, storage packages and C&I systems with less project friction.",
-    "description": "Callsun provides a structured product and solution portfolio for distributors, dealers and EPC installers: module specs, repeatable system packages, sales-ready case references and inquiry-focused landing pages.",
-    "image": "/placeholders/battery-system.svg",
-    "imageAlt": "Callsun solar and storage package placeholder",
-    "primaryCtaLabel": "Explore Products →",
-    "primaryCtaHref": "/products",
-    "secondaryCtaLabel": "View System Packages",
-    "secondaryCtaHref": "/solutions",
-    "tertiaryCtaLabel": "Request Quote",
-    "tertiaryCtaHref": "/contact",
-    "floatingEyebrow": "For U.S. partners",
-    "floatingTitle": "Distributors · Dealers · EPC",
-    "floatingDescription": "Built around quality, supply flexibility and repeatable C&I references."
-  },
-  "stats": [
-    { "label": "Module Range", "value": "180W-620W" },
-    { "label": "System Packages", "value": "6.5kW-12kW" },
-    { "label": "Storage Range", "value": "10-28kWh" },
-    { "label": "Case References", "value": "100kW-13.75MW" }
-  ],
-  "why": {
+  "resourcesSection": {
     "visible": true,
-    "eyebrow": "Why Callsun",
-    "title": "Answer the three questions every B2B solar buyer asks.",
-    "description": "The site now directly addresses product reliability, delivery flexibility and repeatable experience — the key concerns of distributors, dealers and EPC installers.",
-    "cards": [
-      { "title": "Will product quality reduce after-sales risk?", "description": "Product pages emphasize certifications, warranty placeholders, specs and image-alt SEO fields so buyers can evaluate reliability." },
-      { "title": "Can supply match project schedules?", "description": "The CMS supports module families, system packages and future MOQ/logistics policies for faster sales conversations." },
-      { "title": "Are there proven projects to copy?", "description": "Case pages convert commercial rooftop, auto dealership and solar-plus-storage references into sales narratives." }
-    ]
+    "eyebrow": "Resources",
+    "title": "Content hub for long-tail SEO.",
+    "linkLabel": "Blog →",
+    "linkHref": "/resources/blog"
   },
   "productsSection": {
     "visible": true,
     "eyebrow": "Products",
     "title": "Solar modules structured for SEO, datasheets and inquiry conversion.",
     "description": "The product center is CMS-driven. Each product supports specs, certifications, downloads, image alt text and SEO metadata."
-  },
-  "solutionsSection": {
-    "visible": true,
-    "eyebrow": "Solutions",
-    "title": "Repeatable packages for grid-tied and off-grid sales.",
-    "description": "System pages turn product components into package-level landing pages for Google Ads, SEO and distributor conversations.",
-    "linkLabel": "All solutions →",
-    "linkHref": "/solutions"
   },
   "casesSection": {
     "visible": true,
@@ -60,18 +20,91 @@
     "linkLabel": "All cases →",
     "linkHref": "/cases"
   },
+  "ogImage": "/og/default.svg",
+  "why": {
+    "visible": true,
+    "eyebrow": "Why Callsun",
+    "title": "Answer the three questions every B2B solar buyer asks.",
+    "description": "The site now directly addresses product reliability, delivery flexibility and repeatable experience — the key concerns of distributors, dealers and EPC installers.",
+    "cards": [
+      {
+        "title": "Will product quality reduce after-sales risk?",
+        "description": "Product pages emphasize certifications, warranty placeholders, specs and image-alt SEO fields so buyers can evaluate reliability."
+      },
+      {
+        "title": "Can supply match project schedules?",
+        "description": "The CMS supports module families, system packages and future MOQ/logistics policies for faster sales conversations."
+      },
+      {
+        "title": "Are there proven projects to copy?",
+        "description": "Case pages convert commercial rooftop, auto dealership and solar-plus-storage references into sales narratives."
+      }
+    ]
+  },
+  "h1": "Sell solar modules, storage packages and C&I systems with less project friction.",
+  "keywords": [
+    "solar panel distributor",
+    "commercial solar panels for installers",
+    "off grid solar system supplier",
+    "solar storage system supplier"
+  ],
+  "solutionsSection": {
+    "visible": true,
+    "eyebrow": "Solutions",
+    "title": "Repeatable packages for grid-tied and off-grid sales.",
+    "description": "System pages turn product components into package-level landing pages for Google Ads, SEO and distributor conversations.",
+    "linkLabel": "All solutions →",
+    "linkHref": "/solutions"
+  },
+  "metaDescription": "Callsun supplies solar modules, off-grid and grid-tied solar storage systems for distributors, dealers and EPC installers. Built for B2B inquiry, SEO and Google Ads landing pages.",
+  "title": "Callsun Homepage",
+  "hero": {
+    "floatingEyebrow": "For U.S. partners",
+    "primaryCtaLabel": "Explore Products →",
+    "secondaryCtaHref": "/solutions",
+    "tertiaryCtaHref": "/contact",
+    "eyebrow": "Callsun B2B Solar Platform",
+    "imageAlt": "Callsun solar and storage package placeholder",
+    "floatingTitle": "Distributors · Dealers · EPC",
+    "floatingDescription": "Built around quality, supply flexibility and repeatable C&I references.",
+    "tertiaryCtaLabel": "Request Quote",
+    "secondaryCtaLabel": "View System Packages",
+    "title": "Sell solar modules, storage packages and C&I systems with less project friction.",
+    "primaryCtaHref": "/products",
+    "image": "/placeholders/battery-system.svg",
+    "description": "Callsun provides a structured product and solution portfolio for distributors, dealers and EPC installers: module specs, repeatable system packages, sales-ready case references and inquiry-focused landing pages."
+  },
+  "seoTitle": "Callsun — Solar Modules & Energy Storage for B2B Installers Test",
+  "stats": [
+    {
+      "label": "Module Range",
+      "value": "180W-620W"
+    },
+    {
+      "label": "System Packages",
+      "value": "6.5kW-12kW"
+    },
+    {
+      "label": "Storage Range",
+      "value": "10-28kWh"
+    },
+    {
+      "label": "Case References",
+      "value": "100kW-13.75MW"
+    }
+  ],
   "marketingSection": {
     "visible": true,
     "eyebrow": "SEO + SEM ready",
     "title": "The marketing stack is reserved before the first ad dollar is spent.",
     "description": "GTM, GA4, Google Ads conversion IDs, Cookie Consent and dataLayer events are already structured. When the customer provides account IDs, tracking can be enabled without rebuilding the site architecture.",
-    "checklist": ["GTM Container placeholder", "GA4 Measurement placeholder", "Google Ads Conversion placeholder", "Cookie Consent base layer", "Contact / RFQ submit event", "Email / WhatsApp / download events"]
-  },
-  "resourcesSection": {
-    "visible": true,
-    "eyebrow": "Resources",
-    "title": "Content hub for long-tail SEO.",
-    "linkLabel": "Blog →",
-    "linkHref": "/resources/blog"
+    "checklist": [
+      "GTM Container placeholder",
+      "GA4 Measurement placeholder",
+      "Google Ads Conversion placeholder",
+      "Cookie Consent base layer",
+      "Contact / RFQ submit event",
+      "Email / WhatsApp / download events"
+    ]
   }
 }
