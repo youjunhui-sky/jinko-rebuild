@@ -4,16 +4,136 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
-const downloads = (await getCollection('downloads')).map(d => d.data).sort((a,b)=>a.order-b.order);
+
+const [downloadEntries, productEntries, solutionEntries] = await Promise.all([
+  getCollection('downloads'),
+  getCollection('products'),
+  getCollection('solutions'),
+]);
+const products = new Map(productEntries.map((p) => [p.data.slug, p.data]));
+const solutions = new Map(solutionEntries.map((s) => [s.data.slug, s.data]));
+const downloads = downloadEntries.map((entry) => {
+  const d = entry.data;
+  const relatedProductSlugs = Array.from(new Set([d.relatedProduct, ...d.relatedProducts].filter(Boolean)));
+  return {
+    ...d,
+    relatedProductSlugs,
+    relatedProductNames: relatedProductSlugs.map((slug) => products.get(slug)?.name || slug),
+    relatedSolutionNames: d.relatedSolutions.map((slug) => solutions.get(slug)?.title || slug),
+  };
+}).sort((a,b)=>(Number(b.featured)-Number(a.featured)) || a.order-b.order);
+
+const categories = ['All', ...Array.from(new Set(downloads.map((d) => d.category))).sort()];
+const featured = downloads.filter((d) => d.featured).slice(0, 3);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Callsun Downloads Center',
+  description: 'Datasheets, manuals, certificates, guides and catalog downloads for Callsun solar modules and storage systems.',
+};
 ---
-<BaseLayout title="Downloads | Callsun Resources" description="Callsun download center for datasheets, manuals, certificates and installation guides. Placeholder files can be replaced after customer provides PDFs.">
+<BaseLayout title="Downloads Center | Callsun Resources" description="Download Callsun datasheets, manuals, certificates, catalogs and installation guides for solar modules and energy storage systems." canonical="/resources/downloads" ogImage="/og/default.svg" keywords={["solar datasheet download", "solar module certificate", "Callsun product catalog", "solar installation guide"]} schema={schema}>
   <Header slot="header" />
-  <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Resources" title="Downloads center" description="Datasheets, manuals and certificates are separated from product pages so they can rank in search and support Google Ads conversion events." /></div></section>
-  <section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6">
-    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-900"><strong>Current status:</strong> customer PDFs have not been provided yet. This page uses placeholder records and is ready for official datasheets, manuals and certificates.</div>
-    <ul class="mt-8 grid gap-6 md:grid-cols-3">
-      {downloads.map(d => <li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{d.category}</p><h2 class="mt-2 text-xl font-display font-bold">{d.title}</h2><p class="mt-3 text-sm text-jinko-mute">Related product: {d.relatedProduct || 'General'}</p><a href={d.fileUrl} data-track-click="datasheet_download" class="mt-5 inline-flex px-4 py-2 rounded-md bg-jinko text-white font-semibold">Download placeholder</a></li>)}
-    </ul>
-  </div></section>
+
+  <section class="py-16 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-end">
+      <SectionHeader eyebrow="Resources" title="Downloads center" description="Datasheets, manuals, certificates and guides are structured as CMS records so operations can replace placeholder PDFs when official files arrive." />
+      <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-900 text-sm">
+        <strong>Current status:</strong> official customer PDFs have not been provided yet. Records are placeholder-ready and can be replaced in CMS without template changes.
+      </div>
+    </div>
+  </section>
+
+  {featured.length > 0 && <section class="py-12">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Featured files</p><h2 class="mt-2 text-3xl font-display font-extrabold">Most requested B2B resources</h2></div>
+        <a href="/contact?intent=download-support" class="text-jinko font-semibold">Need official documents? Contact sales →</a>
+      </div>
+      <div class="mt-8 grid gap-6 lg:grid-cols-3">
+        {featured.map((d) => <article class="rounded-3xl bg-white border border-jinko-line shadow-card p-7 flex flex-col">
+          <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{d.category}</p>
+          <h3 class="mt-2 text-2xl font-display font-bold">{d.title}</h3>
+          {d.description && <p class="mt-3 text-sm text-jinko-mute">{d.description}</p>}
+          <div class="mt-5 flex flex-wrap gap-2 text-xs text-jinko-mute">{d.tags.map((tag) => <span class="rounded-full bg-jinko-bg px-3 py-1">#{tag}</span>)}</div>
+          <a href={d.requiresLeadCapture ? `/contact?download=${d.slug}` : d.fileUrl} data-track-click={d.category === 'Catalog' ? 'catalog_download' : d.category === 'Datasheet' ? 'datasheet_download' : 'resource_download'} data-download-slug={d.slug} data-download-category={d.category} class="mt-6 inline-flex justify-center px-5 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">{d.requiresLeadCapture ? 'Request file' : 'Download placeholder'}</a>
+        </article>)}
+      </div>
+    </div>
+  </section>}
+
+  <section class="py-14 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <div class="rounded-3xl bg-white border border-jinko-line shadow-card p-5 lg:p-7">
+        <div class="grid gap-4 lg:grid-cols-[1fr_auto] items-center">
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Search downloads</span><input data-download-search type="search" placeholder="Search by title, product, tag, category..." class="mt-2 w-full px-4 py-3 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label>
+          <div><p class="text-sm font-semibold text-jinko-ink mb-2">Category</p><div class="flex flex-wrap gap-2" data-download-filters>{categories.map((category) => <button type="button" data-category={category} class="px-4 py-2 rounded-full border border-jinko-line text-sm font-semibold data-[active=true]:bg-jinko data-[active=true]:text-white" data-active={category === 'All'}>{category}</button>)}</div></div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3" data-download-list>
+        {downloads.map((d) => <article class="download-card rounded-3xl bg-white border border-jinko-line shadow-card p-6 flex flex-col" data-category={d.category} data-search={[d.title, d.description, d.category, d.fileType, d.relatedProductNames.join(' '), d.relatedSolutionNames.join(' '), d.tags.join(' ')].join(' ').toLowerCase()}>
+          <div class="flex items-start justify-between gap-4">
+            <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{d.category}</p><h2 class="mt-2 text-xl font-display font-bold">{d.title}</h2></div>
+            <span class="shrink-0 rounded-full bg-jinko-bg px-3 py-1 text-xs font-bold text-jinko">{d.fileType}</span>
+          </div>
+          {d.description && <p class="mt-3 text-sm text-jinko-mute">{d.description}</p>}
+          <dl class="mt-5 grid gap-3 text-sm">
+            <div class="flex justify-between gap-4 border-t border-jinko-line pt-3"><dt class="text-jinko-mute">File size</dt><dd class="font-semibold text-right">{d.fileSize || 'Pending'}</dd></div>
+            <div class="flex justify-between gap-4 border-t border-jinko-line pt-3"><dt class="text-jinko-mute">Version</dt><dd class="font-semibold text-right">{d.version || 'Latest'}</dd></div>
+            {d.updatedAt && <div class="flex justify-between gap-4 border-t border-jinko-line pt-3"><dt class="text-jinko-mute">Updated</dt><dd class="font-semibold text-right">{d.updatedAt.toLocaleDateString('en-US')}</dd></div>}
+          </dl>
+          {d.relatedProductNames.length > 0 && <div class="mt-5"><p class="text-xs uppercase tracking-widest text-jinko-mute font-bold">Related products</p><p class="mt-1 text-sm text-jinko-ink">{d.relatedProductNames.join(', ')}</p></div>}
+          {d.relatedSolutionNames.length > 0 && <div class="mt-4"><p class="text-xs uppercase tracking-widest text-jinko-mute font-bold">Related solutions</p><p class="mt-1 text-sm text-jinko-ink">{d.relatedSolutionNames.join(', ')}</p></div>}
+          {d.tags.length > 0 && <div class="mt-5 flex flex-wrap gap-2 text-xs text-jinko-mute">{d.tags.map((tag) => <span class="rounded-full bg-jinko-bg px-3 py-1">#{tag}</span>)}</div>}
+          <a href={d.requiresLeadCapture ? `/contact?download=${d.slug}` : d.fileUrl} data-track-click={d.category === 'Catalog' ? 'catalog_download' : d.category === 'Datasheet' ? 'datasheet_download' : 'resource_download'} data-download-slug={d.slug} data-download-title={d.title} data-download-category={d.category} data-requires-lead={String(d.requiresLeadCapture)} class="mt-6 inline-flex justify-center px-5 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">{d.requiresLeadCapture ? 'Request file' : 'Download placeholder'}</a>
+        </article>)}
+      </div>
+      <p class="mt-8 hidden text-center text-jinko-mute" data-download-empty>No downloads match the current filter.</p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-3 gap-6">
+      <div class="rounded-3xl border border-jinko-line p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">For operations</p><h2 class="mt-2 text-2xl font-display font-bold">Replace files in CMS</h2><p class="mt-3 text-jinko-mute">When official PDFs arrive, update file URL, version, file size and related products without touching page code.</p></div>
+      <div class="rounded-3xl border border-jinko-line p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">For ads</p><h2 class="mt-2 text-2xl font-display font-bold">Track download intent</h2><p class="mt-3 text-jinko-mute">Datasheet, catalog and resource download events are ready for GTM, GA4 and Google Ads conversion mapping.</p></div>
+      <div class="rounded-3xl border border-jinko-line p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">For sales</p><h2 class="mt-2 text-2xl font-display font-bold">Gate high-value files</h2><p class="mt-3 text-jinko-mute">Catalogs and certificate packages can route to the inquiry form before release if sales wants lead capture.</p></div>
+    </div>
+  </section>
+
   <Footer slot="footer" />
 </BaseLayout>
+<script>
+  const search = document.querySelector('[data-download-search]');
+  const cards = Array.from(document.querySelectorAll('.download-card'));
+  const buttons = Array.from(document.querySelectorAll('[data-download-filters] [data-category]'));
+  const empty = document.querySelector('[data-download-empty]');
+  let activeCategory = 'All';
+  function applyFilters() {
+    const q = (search?.value || '').trim().toLowerCase();
+    let visible = 0;
+    cards.forEach((card) => {
+      const categoryMatch = activeCategory === 'All' || card.dataset.category === activeCategory;
+      const searchMatch = !q || (card.dataset.search || '').includes(q);
+      const show = categoryMatch && searchMatch;
+      card.classList.toggle('hidden', !show);
+      if (show) visible += 1;
+    });
+    empty?.classList.toggle('hidden', visible !== 0);
+  }
+  buttons.forEach((button) => button.addEventListener('click', () => {
+    activeCategory = button.dataset.category || 'All';
+    buttons.forEach((b) => b.dataset.active = String(b === button));
+    applyFilters();
+  }));
+  search?.addEventListener('input', applyFilters);
+  document.querySelectorAll('[data-download-slug]').forEach((link) => link.addEventListener('click', () => {
+    window.callsunTrack?.(link.dataset.trackClick || 'resource_download', {
+      slug: link.dataset.downloadSlug,
+      title: link.dataset.downloadTitle,
+      category: link.dataset.downloadCategory,
+      requires_lead: link.dataset.requiresLead === 'true',
+      path: location.pathname,
+    });
+  }));
+</script>

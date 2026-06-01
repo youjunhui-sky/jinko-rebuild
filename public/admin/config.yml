@@ -341,6 +341,39 @@ collections:
       - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
       - { name: "body", label: "Body", widget: "markdown" }
 
+  - name: "downloads"
+    label: "📄 Downloads"
+    folder: "src/content/downloads"
+    create: true
+    delete: true
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "slug", label: "Download Slug", widget: "string" }
+      - { name: "description", label: "Description", widget: "text", required: false }
+      - { name: "fileUrl", label: "File URL", widget: "string", hint: "Use uploaded PDF path or external URL. Placeholder can point to /resources/downloads." }
+      - { name: "fileType", label: "File Type", widget: "select", options: ["PDF", "ZIP", "DOC", "XLS", "Image", "External"], default: "PDF" }
+      - { name: "fileSize", label: "File Size", widget: "string", required: false }
+      - { name: "category", label: "Category", widget: "select", options: ["Datasheet", "Manual", "Certificate", "Guide", "Catalog", "Warranty", "Installation"] }
+      - { name: "relatedProduct", label: "Primary Related Product Slug", widget: "string", required: false }
+      - { name: "relatedProducts", label: "Related Product Slugs", widget: "list", default: [] }
+      - { name: "relatedSolutions", label: "Related Solution Slugs", widget: "list", default: [] }
+      - { name: "tags", label: "Tags", widget: "list", default: [] }
+      - { name: "version", label: "Version", widget: "string", required: false }
+      - { name: "updatedAt", label: "Updated At", widget: "datetime", required: false, format: "YYYY-MM-DD" }
+      - { name: "requiresLeadCapture", label: "Requires Lead Capture", widget: "boolean", default: false }
+      - { name: "featured", label: "Featured", widget: "boolean", default: false }
+      - { name: "order", label: "Display Order", widget: "number", default: 0 }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+
   - name: "landingPages"
     label: "🎯 Landing Pages"
     folder: "src/content/landingPages"
