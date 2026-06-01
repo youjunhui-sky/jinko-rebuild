@@ -15,6 +15,37 @@ locale: "en"
 publish_mode: editorial_workflow
 
 collections:
+  - name: "navigation"
+    label: "🧭 Navigation"
+    folder: "src/content/navigation"
+    create: true
+    delete: true
+    format: "json"
+    extension: "json"
+    identifier_field: "label"
+    summary: "{{order}} · {{label}}"
+    sortable_fields: ["order", "label"]
+    fields:
+      - { name: "label", label: "Navigation Label", widget: "string" }
+      - { name: "href", label: "URL", widget: "string", hint: "Use internal paths like /products or full URLs." }
+      - { name: "description", label: "Description", widget: "string", required: false }
+      - { name: "image", label: "Dropdown Image", widget: "image", required: false }
+      - { name: "order", label: "Display Order", widget: "number", default: 0 }
+      - { name: "visible", label: "Show in Header", widget: "boolean", default: true }
+      - { name: "footerVisible", label: "Show in Footer", widget: "boolean", default: true }
+      - label: "Dropdown Children"
+        name: "children"
+        widget: "list"
+        required: false
+        summary: "{{order}} · {{label}}"
+        fields:
+          - { name: "label", label: "Child Label", widget: "string" }
+          - { name: "href", label: "Child URL", widget: "string" }
+          - { name: "description", label: "Child Description", widget: "string", required: false }
+          - { name: "image", label: "Child Image", widget: "image", required: false }
+          - { name: "order", label: "Display Order", widget: "number", default: 0 }
+          - { name: "visible", label: "Show", widget: "boolean", default: true }
+
   - name: "products"
     label: "📦 Products"
     folder: "src/content/products"

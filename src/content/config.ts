@@ -140,6 +140,27 @@ const supportPages = defineCollection({
   }),
 });
 
+const navigation = defineCollection({
+  type: 'data',
+  schema: z.object({
+    label: z.string(),
+    href: z.string(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+    order: z.number().default(0),
+    visible: z.boolean().default(true),
+    footerVisible: z.boolean().default(true),
+    children: z.array(z.object({
+      label: z.string(),
+      href: z.string(),
+      description: z.string().optional(),
+      image: z.string().optional(),
+      order: z.number().default(0),
+      visible: z.boolean().default(true),
+    })).default([]),
+  }),
+});
+
 const landingPages = defineCollection({
   type: 'data',
   schema: z.object({
@@ -153,4 +174,4 @@ const landingPages = defineCollection({
   }),
 });
 
-export const collections = { products, solutions, applications, news, downloads, cases, supportPages, landingPages };
+export const collections = { products, solutions, applications, news, downloads, cases, supportPages, navigation, landingPages };

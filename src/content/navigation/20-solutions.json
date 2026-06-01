@@ -1,0 +1,13 @@
+{
+  "label": "Solutions",
+  "href": "/solutions",
+  "description": "Grid-tied and off-grid solar systems",
+  "image": "/placeholders/battery-system.svg",
+  "order": 20,
+  "visible": true,
+  "footerVisible": true,
+  "children": [
+    { "label": "Grid-Tied Systems", "href": "/solutions#grid-tied", "description": "12kW solar + storage package", "image": "/placeholders/battery-system.svg", "order": 10, "visible": true },
+    { "label": "Off-Grid Systems", "href": "/solutions#off-grid", "description": "6.5kW and 10kW off-grid packages", "image": "/placeholders/battery-system.svg", "order": 20, "visible": true }
+  ]
+}

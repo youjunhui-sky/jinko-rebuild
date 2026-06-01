@@ -1,7 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
 import { SITE } from '@/data/site';
-import { NAV } from '@/data/nav';
 const year = new Date().getFullYear();
+const navItems = (await getCollection('navigation'))
+  .map((entry) => entry.data)
+  .filter((item) => item.visible && item.footerVisible)
+  .sort((a, b) => a.order - b.order);
 ---
 <footer class="bg-jinko-ink text-slate-300 mt-24">
   <div class="max-w-content mx-auto px-4 lg:px-6 py-14 grid gap-10 lg:grid-cols-4">
@@ -16,7 +20,7 @@ const year = new Date().getFullYear();
     <nav aria-label="Footer" class="text-sm">
       <h2 class="text-white font-semibold mb-3">Site</h2>
       <ul class="space-y-2">
-        {NAV.map((n) => <li><a href={n.href} class="hover:text-white transition-colors">{n.label}</a></li>)}
+        {navItems.map((n) => <li><a href={n.href} class="hover:text-white transition-colors">{n.label}</a></li>)}
       </ul>
     </nav>
 
