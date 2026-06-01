@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Header from '@/components/Header.astro';
-import Footer from '@/components/Footer.astro';
 ---
-<BaseLayout title="Products moved | Callsun" description="Callsun solar products are now available under /products.">
-  <Header slot="header" />
-  <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><h1 class="text-4xl font-display font-extrabold">Products moved</h1><p class="mt-4 text-jinko-mute">The old product page has been replaced by Callsun's new product center.</p><a href="/products" class="mt-6 inline-flex px-5 py-3 rounded-md bg-jinko text-white font-semibold">Go to Products</a></div></section>
-  <Footer slot="footer" />
+<BaseLayout title="Products moved | Callsun" description="This page has moved." noindex={true}>
+  <meta http-equiv="refresh" content="0;url=/products" />
+  <script is:inline>window.location.replace("/products");</script>
+  <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><h1 class="text-4xl font-display font-extrabold">This page has moved</h1><p class="mt-4 text-jinko-mute">Redirecting to <a href="/products" class="text-jinko font-semibold">/products</a>...</p></div></section>
 </BaseLayout>

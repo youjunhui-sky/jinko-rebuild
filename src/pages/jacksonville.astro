@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Header from '@/components/Header.astro';
-import Footer from '@/components/Footer.astro';
 ---
-<BaseLayout title="Callsun site structure updated" description="This legacy page has been replaced by the Callsun B2B site structure." noindex={true}>
-  <Header slot="header" />
-  <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Updated Structure</p><h1 class="mt-2 text-4xl font-display font-extrabold">This page has moved</h1><p class="mt-4 text-jinko-mute max-w-2xl">Callsun has replaced the previous site structure. Please use the new Products, Solutions, Applications, Resources and Cases sections.</p><div class="mt-6 flex gap-3 flex-wrap"><a href="/products" class="px-5 py-3 rounded-md bg-jinko text-white font-semibold">Products</a><a href="/solutions" class="px-5 py-3 rounded-md ring-1 ring-jinko text-jinko font-semibold">Solutions</a><a href="/contact" class="px-5 py-3 rounded-md ring-1 ring-jinko text-jinko font-semibold">Contact</a></div></div></section>
-  <Footer slot="footer" />
+<BaseLayout title="Cases moved | Callsun" description="This page has moved." noindex={true}>
+  <meta http-equiv="refresh" content="0;url=/cases" />
+  <script is:inline>window.location.replace("/cases");</script>
+  <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><h1 class="text-4xl font-display font-extrabold">This page has moved</h1><p class="mt-4 text-jinko-mute">Redirecting to <a href="/cases" class="text-jinko font-semibold">/cases</a>...</p></div></section>
 </BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Header from '@/components/Header.astro';
-import Footer from '@/components/Footer.astro';
 ---
-<BaseLayout title="Callsun 中文内容待补充" description="Callsun 中文站内容将在翻译确认后补充。" noindex={true}><Header slot="header" /><section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><h1 class="text-4xl font-display font-extrabold">中文内容待补充</h1><p class="mt-4 text-jinko-mute">Callsun 中文版本保留为后续翻译阶段。</p><a href="/" class="mt-6 inline-flex px-5 py-3 rounded-md bg-jinko text-white font-semibold">返回英文站</a></div></section><Footer slot="footer" /></BaseLayout>
+<BaseLayout title="Callsun 中文内容待补充" description="Callsun 中文站内容将在翻译确认后补充。" noindex={true}>
+  <meta http-equiv="refresh" content="5;url=/" />
+  <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><h1 class="text-4xl font-display font-extrabold">中文内容待补充</h1><p class="mt-4 text-jinko-mute">Callsun 中文版本保留为后续翻译阶段。5 秒后返回英文站...</p><a href="/" class="mt-6 inline-flex px-5 py-3 rounded-md bg-jinko text-white font-semibold">返回英文站</a></div></section>
+</BaseLayout>
