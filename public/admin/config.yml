@@ -276,13 +276,32 @@ collections:
       - { name: "segment", label: "Segment", widget: "select", options: ["Small C&I", "Mid-Scale C&I", "Large C&I", "Solar + Storage"] }
       - { name: "application", label: "Application", widget: "select", options: ["Commercial & Industrial", "Residential", "Municipal", "Solar + Storage"] }
       - { name: "coverImage", label: "Cover Image", widget: "image", default: "/placeholders/case-rooftop.svg" }
+      - { name: "gallery", label: "Gallery Images", widget: "list", default: [], field: { name: "image", label: "Image", widget: "image" } }
       - { name: "description", label: "Description", widget: "text" }
+      - { name: "projectBackground", label: "Project Background", widget: "text", required: false }
+      - { name: "customerPainPoints", label: "Customer Pain Points", widget: "list", default: [] }
+      - { name: "solutionOverview", label: "Solution Overview", widget: "text", required: false }
+      - { name: "businessResults", label: "Business Results", widget: "list", default: [] }
+      - label: "Project Parameters"
+        name: "projectParameters"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "value", label: "Value", widget: "string" }
       - { name: "salesAngle", label: "Sales Angle", widget: "text", required: false }
+      - { name: "casePdf", label: "Case PDF / Download URL", widget: "string", required: false }
+      - { name: "relatedProducts", label: "Related Product Slugs", widget: "list", default: [] }
+      - { name: "relatedSolutions", label: "Related Solution Slugs", widget: "list", default: [] }
       - { name: "featured", label: "Featured", widget: "boolean", default: false }
       - { name: "order", label: "Display Order", widget: "number", default: 0 }
       - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
       - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
       - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
 
   - name: "news"
     label: "📰 Blog"

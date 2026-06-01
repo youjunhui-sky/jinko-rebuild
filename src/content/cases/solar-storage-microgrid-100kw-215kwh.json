@@ -1,1 +1,58 @@
-{"title":"100kW / 215kWh Smart C&I Solar + Storage Microgrid","slug":"100kw-215kwh-solar-storage-microgrid","client":"Jiangxi Aurison New Energy","location":"China","region":"Domestic","industry":"Solar + Storage","capacityKW":100,"capacityMWh":0.215,"segment":"Solar + Storage","application":"Solar + Storage","coverImage":"/placeholders/battery-system.svg","description":"A 100kW solar and 215kWh storage microgrid case that demonstrates solar-plus-storage integration experience for commercial applications.","salesAngle":"This case helps U.S. dealers move beyond pure module sales into higher-margin solar-plus-storage solutions, especially in California and Northeast markets.","featured":true,"order":40,"seoTitle":"100kW 215kWh Solar Storage Microgrid Case | Callsun","metaDescription":"Callsun 100kW / 215kWh commercial solar plus storage microgrid case for installers and dealers entering higher-margin storage projects.","keywords":["solar storage microgrid", "100kW solar 215kWh battery", "commercial solar storage case"]}
+{
+  "title": "100kW / 215kWh Smart C&I Solar + Storage Microgrid",
+  "slug": "100kw-215kwh-solar-storage-microgrid",
+  "client": "Jiangxi Aurison New Energy",
+  "location": "China",
+  "region": "Domestic",
+  "industry": "Solar + Storage",
+  "capacityKW": 100,
+  "capacityMWh": 0.215,
+  "segment": "Solar + Storage",
+  "application": "Solar + Storage",
+  "coverImage": "/placeholders/battery-system.svg",
+  "description": "A 100kW solar and 215kWh storage microgrid case that demonstrates solar-plus-storage integration experience for commercial applications.",
+  "salesAngle": "This case helps U.S. dealers move beyond pure module sales into higher-margin solar-plus-storage solutions, especially in California and Northeast markets.",
+  "featured": true,
+  "order": 40,
+  "seoTitle": "100kW 215kWh Solar Storage Microgrid Case | Callsun",
+  "metaDescription": "Callsun 100kW / 215kWh commercial solar plus storage microgrid case for installers and dealers entering higher-margin storage projects.",
+  "keywords": [
+    "solar storage microgrid",
+    "100kW solar 215kWh battery",
+    "commercial solar storage case"
+  ],
+  "projectBackground": "Commercial customers increasingly ask for solar-plus-storage instead of module-only procurement. This microgrid reference helps sales teams explain higher-margin storage opportunities.",
+  "customerPainPoints": [
+    "Customers need backup capability, peak shaving or energy resilience beyond pure solar generation.",
+    "Dealers need an integrated solar-plus-storage reference for early-stage sales conversations.",
+    "Storage projects require clear system packaging, battery capacity and use-case explanation."
+  ],
+  "solutionOverview": "A 100kW PV and 215kWh storage microgrid reference for commercial applications where resilience and storage value are part of the sales story.",
+  "businessResults": [
+    "Helps dealers move from module-only quotes to solar-plus-storage packages.",
+    "Provides a concrete storage capacity reference for C&I conversations.",
+    "Supports higher-margin solution selling in California, Northeast and resilience-driven markets."
+  ],
+  "projectParameters": [
+    {
+      "label": "PV Capacity",
+      "value": "100kW"
+    },
+    {
+      "label": "Storage Capacity",
+      "value": "215kWh"
+    },
+    {
+      "label": "Application",
+      "value": "Commercial solar + storage microgrid"
+    }
+  ],
+  "relatedProducts": [
+    "450w-double-glass-solar-module"
+  ],
+  "relatedSolutions": [
+    "12kw-grid-tied-solar-storage-system",
+    "10kw-off-grid-solar-system"
+  ],
+  "casePdf": "/resources/downloads"
+}
