@@ -37,7 +37,7 @@ const homeSchema = {
     <div class="max-w-content mx-auto px-4 lg:px-6 py-24 lg:py-32 relative grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-center">
       <div>
         <p class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-bold text-jinko-accent bg-white/10 px-3 py-1.5 rounded-full ring-1 ring-white/15">{home.hero.eyebrow}</p>
-        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-4xl">{home.hero.title || home.h1}</h1>
+        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-4xl">{home.h1 || home.hero.title}</h1>
         <p class="mt-6 text-lg lg:text-xl text-sky-100 max-w-2xl leading-relaxed">{home.hero.description}</p>
         <div class="mt-9 flex flex-wrap gap-3">
           <a href={home.hero.primaryCtaHref} data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-bold hover:opacity-90">{home.hero.primaryCtaLabel}</a>
