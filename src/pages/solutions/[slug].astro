@@ -4,13 +4,109 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import ContactCTA from '@/components/ContactCTA.astro';
-export async function getStaticPaths(){ const solutions=await getCollection('solutions'); return solutions.map(s=>({params:{slug:s.data.slug}, props:{solution:s.data}})); }
-const { solution } = Astro.props;
+import SectionHeader from '@/components/SectionHeader.astro';
+import CardGrid from '@/components/CardGrid.astro';
+import SystemTopology from '@/components/SystemTopology.astro';
+
+export async function getStaticPaths(){
+  const solutions = await getCollection('solutions');
+  const products = await getCollection('products');
+  const applications = await getCollection('applications');
+  const cases = await getCollection('cases');
+  return solutions.map(s=>({ params:{slug:s.data.slug}, props:{solution:s.data, allProducts: products.map(p=>p.data), allApplications: applications.map(a=>a.data), allCases: cases.map(c=>c.data)} }));
+}
+
+const { solution, allProducts, allApplications, allCases } = Astro.props;
+const fallbackTopology = solution.type === 'grid-tied'
+  ? [
+      { label: 'PV Array', description: `${solution.pvCapacity || 'PV'} solar module input` },
+      { label: 'Hybrid Inverter', description: 'Manages PV, battery and grid connection' },
+      { label: 'Battery Bank', description: `${solution.batteryCapacity || 'Battery'} energy storage` },
+      { label: 'Home / Grid', description: 'Supplies load and supports grid-tied operation' },
+    ]
+  : [
+      { label: 'PV Array', description: `${solution.pvCapacity || 'PV'} solar module input` },
+      { label: 'Off-Grid Inverter', description: 'Converts PV and battery power for load use' },
+      { label: 'Battery Bank', description: `${solution.batteryCapacity || 'Battery'} storage for night and backup` },
+      { label: 'Remote Load', description: 'Powers home, cabin, farm or commercial load' },
+    ];
+const topologySteps = solution.topologySteps.length ? solution.topologySteps : fallbackTopology;
+const benefits = solution.benefits.length ? solution.benefits : [
+  'Repeatable package structure helps dealers quote faster and reduce engineering friction.',
+  'Component list is visible on the page so EPC teams can evaluate the BOM before inquiry.',
+  'Built as an SEO and Google Ads landing page target for high-intent system keywords.',
+];
+const relatedProducts = allProducts.filter((p) => solution.relatedProducts.includes(p.slug) || p.category === 'standard-module').slice(0, 3);
+const relatedApplications = allApplications.filter((a) => a.recommendedSolutions.includes(solution.slug) || solution.useCases.some((u) => a.summary.toLowerCase().includes(u.toLowerCase().split(' ')[0]))).slice(0, 3);
+const relatedCases = allCases.filter((c) => solution.relatedCases.includes(c.slug) || c.relatedSolutions.includes(solution.slug) || c.featured).slice(0, 3);
+const productCards = relatedProducts.map(p => ({ title: p.name, description: p.tagline, href: `/products/${p.slug}`, eyebrow: p.model || p.category, image: p.image }));
+const applicationCards = relatedApplications.map(a => ({ title: a.title, description: a.summary, href: `/applications/${a.slug}`, eyebrow: 'Application', image: a.image }));
+const caseCards = relatedCases.map(c => ({ title: c.title, description: c.salesAngle || c.description, href: `/cases/${c.slug}`, eyebrow: c.segment, image: c.coverImage, metric: c.capacityKW ? (c.capacityKW >= 1000 ? `${c.capacityKW / 1000}MW` : `${c.capacityKW}kW`) : undefined }));
+const downloadItems = solution.downloads.length ? solution.downloads : [
+  { label: `${solution.title} BOM (placeholder)`, url: '/resources/downloads' },
+  { label: `${solution.title} Solution Brief (placeholder)`, url: '/resources/downloads' },
+];
+const solutionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: solution.title,
+  description: solution.summary,
+  category: solution.type,
+  image: solution.image,
+  brand: { '@type': 'Brand', name: 'Callsun' },
+};
 ---
-<BaseLayout title={solution.seoTitle || `${solution.title} | Callsun`} description={solution.metaDescription || solution.summary} ogImage={solution.image}>
-<Header slot="header" />
-<section class="py-14 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-10 items-center"><div><nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <a href="/solutions">Solutions</a> / <span>{solution.title}</span></nav><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{solution.type}</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">{solution.h1 || solution.title}</h1><p class="mt-3 text-2xl font-display font-extrabold text-jinko">{solution.capacityLabel}</p><p class="mt-5 text-lg text-jinko-mute">{solution.summary}</p><a href="/contact" data-track-click="product_inquiry_button" data-solution={solution.slug} class="mt-7 inline-flex px-5 py-3 rounded-md bg-jinko text-white font-semibold">Request Solution Quote</a></div><img src={solution.image} alt={solution.imageAlt || solution.title} class="rounded-2xl border border-jinko-line shadow-card bg-white" /></div></section>
-<section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1fr_2fr] gap-8"><div><h2 class="text-3xl font-display font-extrabold">System components</h2><p class="mt-3 text-jinko-mute">Designed as a repeatable package for dealers and installers.</p></div><div class="rounded-2xl border border-jinko-line overflow-hidden">{solution.components.map(c=><div class="grid md:grid-cols-[160px_1fr] gap-3 p-5 border-b border-jinko-line last:border-b-0"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{c.category}</p><div><p class="font-display font-bold">{c.name}</p>{c.quantity && <p class="text-sm text-jinko-mute">Quantity: {c.quantity}</p>}{c.note && <p class="text-sm text-jinko-mute">{c.note}</p>}</div></div>)}</div></div></section>
-<ContactCTA />
-<Footer slot="footer" />
+<BaseLayout title={solution.seoTitle || `${solution.title} | Callsun`} description={solution.metaDescription || solution.summary} ogImage={solution.image} schema={solutionSchema}>
+  <Header slot="header" />
+  <article>
+    <section class="py-14 lg:py-20 bg-jinko-bg">
+      <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1.05fr_.95fr] gap-10 items-center">
+        <div>
+          <nav class="text-sm text-jinko-mute mb-6"><a href="/">Home</a> / <a href="/solutions">Solutions</a> / <span>{solution.title}</span></nav>
+          <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{solution.type}</p>
+          <h1 class="mt-3 text-4xl lg:text-6xl font-display font-extrabold leading-tight">{solution.h1 || solution.title}</h1>
+          <p class="mt-3 text-2xl lg:text-3xl font-display font-extrabold text-jinko">{solution.capacityLabel}</p>
+          <p class="mt-5 text-lg text-jinko-mute leading-relaxed max-w-2xl">{solution.summary}</p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="/contact" data-track-click="product_inquiry_button" data-solution={solution.slug} class="px-6 py-3 rounded-md bg-jinko text-white font-semibold">Request Solution Quote</a>
+            <a href="#bom" class="px-6 py-3 rounded-md ring-1 ring-jinko text-jinko font-semibold">View BOM</a>
+            <a href="#topology" class="px-6 py-3 rounded-md bg-white border border-jinko-line text-jinko-ink font-semibold">System Diagram</a>
+          </div>
+        </div>
+        <img src={solution.image} alt={solution.imageAlt || solution.title} class="rounded-3xl border border-jinko-line shadow-card bg-white" width="700" height="525" />
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[.9fr_1.1fr] gap-10">
+        <SectionHeader eyebrow="Solution value" title="Built as a repeatable package, not a one-off quote." description="This page bridges SEO/SEM traffic and B2B inquiry by showing capacity, topology, BOM, applications and case references in one place." />
+        <div class="grid gap-4">{benefits.map((b, index) => <div class="rounded-2xl bg-white border border-jinko-line shadow-card p-5 flex gap-4"><span class="w-9 h-9 rounded-full bg-jinko text-white flex items-center justify-center font-display font-bold shrink-0">{index + 1}</span><p class="text-jinko-mute leading-relaxed">{b}</p></div>)}</div>
+      </div>
+    </section>
+
+    <section id="topology" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SystemTopology title={`${solution.title} topology`} steps={topologySteps} /></div></section>
+
+    <section id="bom" class="py-16">
+      <div class="max-w-content mx-auto px-4 lg:px-6">
+        <SectionHeader eyebrow="BOM" title="System components and package list" description="The component list is CMS-editable and can later be exported into a downloadable BOM PDF." />
+        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {solution.components.map((c) => <div class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{c.category}</p><h3 class="mt-2 text-xl font-display font-bold">{c.name}</h3>{c.quantity && <p class="mt-3 inline-flex px-3 py-1 rounded-full bg-jinko-bg text-sm font-semibold">Qty: {c.quantity}</p>}{c.note && <p class="mt-3 text-sm text-jinko-mute leading-relaxed">{c.note}</p>}</div>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-jinko-bg">
+      <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-3 gap-6">
+        <div class="rounded-3xl bg-white border border-jinko-line shadow-card p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Use cases</p><h2 class="mt-2 text-2xl font-display font-extrabold">Where it fits</h2><div class="mt-5 flex flex-wrap gap-2">{solution.useCases.map(u => <span class="px-3 py-1.5 rounded-full bg-jinko-bg text-sm font-semibold">{u}</span>)}</div></div>
+        <div class="rounded-3xl bg-white border border-jinko-line shadow-card p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">System scale</p><h2 class="mt-2 text-2xl font-display font-extrabold">{solution.capacityLabel}</h2><p class="mt-4 text-jinko-mute">PV capacity: {solution.pvCapacity || 'TBD'}<br/>Battery capacity: {solution.batteryCapacity || 'TBD'}</p></div>
+        <div class="rounded-3xl bg-jinko text-white shadow-card p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Downloads</p><h2 class="mt-2 text-2xl font-display font-extrabold">BOM & solution brief</h2><ul class="mt-5 space-y-2">{downloadItems.map(d => <li><a href={d.url} data-track-click="catalog_download" data-solution={solution.slug} class="underline underline-offset-4 hover:text-jinko-accent">{d.label}</a></li>)}</ul></div>
+      </div>
+    </section>
+
+    {productCards.length > 0 && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Related products" title="Products used in this solution." /><div class="mt-10"><CardGrid items={productCards} /></div></div></section>}
+    {applicationCards.length > 0 && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Applications" title="Recommended application scenarios." /><div class="mt-10"><CardGrid items={applicationCards} /></div></div></section>}
+    {caseCards.length > 0 && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Case references" title="Use cases to support distributor sales conversations." /><div class="mt-10"><CardGrid items={caseCards} /></div></div></section>}
+  </article>
+  <ContactCTA />
+  <Footer slot="footer" />
 </BaseLayout>

@@ -64,6 +64,10 @@ collections:
       - { name: "tagline", label: "Tagline", widget: "string" }
       - { name: "tech", label: "Technology", widget: "string" }
       - { name: "certifications", label: "Certifications", widget: "list", default: [] }
+      - { name: "benefits", label: "Benefits", widget: "list", default: [] }
+      - { name: "warranty", label: "Warranty Text", widget: "text", required: false }
+      - { name: "relatedSolutions", label: "Related Solution Slugs", widget: "list", default: [] }
+      - { name: "relatedCases", label: "Related Case Slugs", widget: "list", default: [] }
       - { name: "image", label: "Product Image", widget: "image", default: "/placeholders/solar-panel.svg" }
       - { name: "imageAlt", label: "Image Alt", widget: "string", required: false }
       - { name: "description", label: "Description", widget: "text" }
@@ -109,6 +113,22 @@ collections:
           - { name: "name", label: "Name", widget: "string" }
           - { name: "quantity", label: "Quantity", widget: "string", required: false }
           - { name: "note", label: "Note", widget: "text", required: false }
+      - label: "Topology Steps"
+        name: "topologySteps"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "label", label: "Step Label", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+      - { name: "benefits", label: "Benefits", widget: "list", default: [] }
+      - label: "Downloads"
+        name: "downloads"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "url", label: "URL", widget: "string" }
+      - { name: "relatedCases", label: "Related Case Slugs", widget: "list", default: [] }
       - { name: "useCases", label: "Use Cases", widget: "list", default: [] }
       - { name: "relatedProducts", label: "Related Product Slugs", widget: "list", default: [] }
       - { name: "order", label: "Display Order", widget: "number", default: 0 }

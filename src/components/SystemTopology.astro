@@ -1,0 +1,45 @@
+---
+interface Step {
+  label: string;
+  description?: string;
+}
+interface Props {
+  title?: string;
+  steps: Step[];
+}
+const { title = 'System topology', steps } = Astro.props;
+const displaySteps = steps.length > 0 ? steps : [
+  { label: 'Solar Array', description: 'PV modules capture solar energy' },
+  { label: 'Inverter', description: 'Converts and manages power' },
+  { label: 'Battery', description: 'Stores energy for backup or off-grid use' },
+  { label: 'Load / Grid', description: 'Supplies home, business or grid connection' },
+];
+---
+<div class="rounded-3xl border border-jinko-line bg-white shadow-card p-6 lg:p-8">
+  <div class="flex items-center justify-between gap-4 flex-wrap">
+    <h2 class="text-2xl lg:text-3xl font-display font-extrabold">{title}</h2>
+    <span class="text-xs uppercase tracking-widest text-jinko-accent font-bold">PV → Inverter → Battery → Load</span>
+  </div>
+  <div class="mt-8 grid gap-4 md:grid-cols-4">
+    {displaySteps.map((step, index) => (
+      <div class="relative rounded-2xl bg-jinko-bg p-5 min-h-40 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-full bg-jinko text-white flex items-center justify-center font-display font-extrabold">{index + 1}</div>
+          <h3 class="mt-4 font-display font-bold text-lg">{step.label}</h3>
+          {step.description && <p class="mt-2 text-sm text-jinko-mute leading-relaxed">{step.description}</p>}
+        </div>
+        {index < displaySteps.length - 1 && <div class="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-jinko-line text-jinko text-center leading-8 shadow">→</div>}
+      </div>
+    ))}
+  </div>
+  <svg class="mt-8 w-full h-auto" viewBox="0 0 960 150" role="img" aria-label="Solar system topology diagram">
+    <defs>
+      <linearGradient id="topologyLine" x1="0" x2="1"><stop stop-color="#0f766e"/><stop offset="1" stop-color="#fbbf24"/></linearGradient>
+    </defs>
+    <line x1="90" y1="75" x2="870" y2="75" stroke="url(#topologyLine)" stroke-width="8" stroke-linecap="round"/>
+    {displaySteps.map((step, index) => {
+      const x = 90 + index * (780 / Math.max(displaySteps.length - 1, 1));
+      return <g><circle cx={x} cy="75" r="34" fill="#fff" stroke="#0f766e" stroke-width="6"/><text x={x} y="84" text-anchor="middle" font-size="26" font-weight="800" fill="#0f766e">{index + 1}</text><text x={x} y="135" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">{step.label}</text></g>;
+    })}
+  </svg>
+</div>
