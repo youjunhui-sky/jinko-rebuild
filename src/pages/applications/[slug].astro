@@ -7,7 +7,7 @@ import ContactCTA from '@/components/ContactCTA.astro';
 export async function getStaticPaths(){ const apps=await getCollection('applications'); return apps.map(a=>({params:{slug:a.data.slug}, props:{app:a.data}})); }
 const { app } = Astro.props;
 ---
-<BaseLayout title={app.seoTitle || `${app.title} | Callsun`} description={app.metaDescription || app.summary} ogImage={app.image}>
+<BaseLayout title={app.seoTitle || `${app.title} | Callsun`} description={app.metaDescription || app.summary} canonical={app.canonical || `/applications/${app.slug}`} ogImage={app.ogImage || app.image} keywords={app.keywords} noindex={app.noindex}>
 <Header slot="header" />
 <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-10 items-center"><div><nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <a href="/applications">Applications</a> / <span>{app.title}</span></nav><h1 class="text-4xl lg:text-5xl font-display font-extrabold">{app.h1 || app.title}</h1><p class="mt-4 text-lg text-jinko-mute">{app.summary}</p><a href="/contact" class="mt-7 inline-flex px-5 py-3 rounded-md bg-jinko text-white font-semibold">Discuss This Application</a></div><img src={app.image} alt={app.title} class="rounded-2xl border border-jinko-line shadow-card" /></div></section>
 <ContactCTA />

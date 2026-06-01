@@ -42,7 +42,7 @@ const downloadItems = product.downloads.length ? product.downloads : [
   { label: 'Certification Package (placeholder)', url: '/resources/downloads' },
 ];
 ---
-<BaseLayout title={product.seoTitle || `${product.name} | Callsun`} description={product.metaDescription || product.description} ogImage={product.ogImage || product.image} schema={productSchema} noindex={product.noindex}>
+<BaseLayout title={product.seoTitle || `${product.name} | Callsun`} description={product.metaDescription || product.description} canonical={product.canonical || `/products/${product.slug}`} ogImage={product.ogImage || product.image} keywords={product.keywords} schema={productSchema} noindex={product.noindex}>
   <Header slot="header" />
   <article>
     <section class="py-14 lg:py-20 bg-jinko-bg">

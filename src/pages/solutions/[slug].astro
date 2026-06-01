@@ -56,7 +56,7 @@ const solutionSchema = {
   brand: { '@type': 'Brand', name: 'Callsun' },
 };
 ---
-<BaseLayout title={solution.seoTitle || `${solution.title} | Callsun`} description={solution.metaDescription || solution.summary} ogImage={solution.image} schema={solutionSchema}>
+<BaseLayout title={solution.seoTitle || `${solution.title} | Callsun`} description={solution.metaDescription || solution.summary} canonical={solution.canonical || `/solutions/${solution.slug}`} ogImage={solution.ogImage || solution.image} keywords={solution.keywords} noindex={solution.noindex} schema={solutionSchema}>
   <Header slot="header" />
   <article>
     <section class="py-14 lg:py-20 bg-jinko-bg">

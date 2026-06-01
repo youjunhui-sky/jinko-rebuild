@@ -28,7 +28,7 @@ const homeSchema = {
   potentialAction: { '@type': 'SearchAction', target: `${SITE.domain}/search?q={search_term_string}`, 'query-input': 'required name=search_term_string' },
 };
 ---
-<BaseLayout title={home.seoTitle || SITE.defaultTitle} description={home.metaDescription || SITE.defaultDescription} ogImage={home.ogImage || SITE.defaultOgImage} schema={homeSchema}>
+<BaseLayout title={home.seoTitle || SITE.defaultTitle} description={home.metaDescription || SITE.defaultDescription} canonical={home.canonical || '/'} ogImage={home.ogImage || SITE.defaultOgImage} noindex={home.noindex} keywords={home.keywords} schema={homeSchema}>
   <Header slot="header" />
 
   <section class="relative overflow-hidden text-white">

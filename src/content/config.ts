@@ -24,7 +24,9 @@ const homepage = defineCollection({
     metaDescription: z.string().optional(),
     h1: z.string(),
     keywords: z.array(z.string()).default([]),
+    canonical: z.string().optional(),
     ogImage: z.string().optional(),
+    noindex: z.boolean().default(false),
     hero: z.object({
       eyebrow: z.string(),
       title: z.string(),
