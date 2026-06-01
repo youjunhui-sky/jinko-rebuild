@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+const downloads = (await getCollection('downloads')).map(d => d.data).sort((a,b)=>a.order-b.order);
+---
+<BaseLayout title="Downloads | Callsun Resources" description="Callsun download center for datasheets, manuals, certificates and installation guides. Placeholder files can be replaced after customer provides PDFs.">
+  <Header slot="header" />
+  <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Resources" title="Downloads center" description="Datasheets, manuals and certificates are separated from product pages so they can rank in search and support Google Ads conversion events." /></div></section>
+  <section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6">
+    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-900"><strong>Current status:</strong> customer PDFs have not been provided yet. This page uses placeholder records and is ready for official datasheets, manuals and certificates.</div>
+    <ul class="mt-8 grid gap-6 md:grid-cols-3">
+      {downloads.map(d => <li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{d.category}</p><h2 class="mt-2 text-xl font-display font-bold">{d.title}</h2><p class="mt-3 text-sm text-jinko-mute">Related product: {d.relatedProduct || 'General'}</p><a href={d.fileUrl} data-track-click="datasheet_download" class="mt-5 inline-flex px-4 py-2 rounded-md bg-jinko text-white font-semibold">Download placeholder</a></li>)}
+    </ul>
+  </div></section>
+  <Footer slot="footer" />
+</BaseLayout>

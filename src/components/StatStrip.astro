@@ -1,0 +1,20 @@
+---
+const stats = [
+  { label: 'Module Range', value: '180W-620W' },
+  { label: 'System Packages', value: '6.5kW-12kW' },
+  { label: 'Storage Range', value: '10-28kWh' },
+  { label: 'Case References', value: '100kW-13.75MW' },
+];
+---
+<section class="relative -mt-10 z-10">
+  <div class="max-w-content mx-auto px-4 lg:px-6">
+    <dl class="grid grid-cols-2 lg:grid-cols-4 gap-3 rounded-3xl bg-white shadow-card border border-jinko-line p-4 lg:p-6">
+      {stats.map((s) => (
+        <div class="p-4 rounded-2xl bg-gradient-to-br from-jinko-bg to-white">
+          <dt class="text-xs uppercase tracking-widest text-jinko-mute font-semibold">{s.label}</dt>
+          <dd class="mt-1 text-2xl lg:text-3xl font-display font-extrabold text-jinko">{s.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

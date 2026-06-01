@@ -1,20 +1,14 @@
 ---
 import { NAV } from '@/data/nav';
 import { SITE } from '@/data/site';
-import LangSwitcher from './LangSwitcher.astro';
-import { getLocaleFromPath, t } from '@/lib/i18n';
-
-const locale = getLocaleFromPath(Astro.url.pathname);
 ---
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-jinko-line">
+<header class="sticky top-0 z-40 bg-white/92 backdrop-blur-md border-b border-jinko-line">
   <div class="max-w-content mx-auto px-4 lg:px-6 h-16 flex items-center justify-between gap-6">
     <a href="/" class="flex items-center gap-2 shrink-0" aria-label={SITE.name + ' home'}>
-      <span class="font-display font-extrabold text-jinko text-xl tracking-tight">
-        Jinko<span class="text-jinko-accent">·</span>US
-      </span>
+      <img src="/logo.svg" alt="Callsun" width="150" height="40" class="h-9 w-auto" />
     </a>
 
-    <nav aria-label="Primary" class="hidden lg:flex items-center gap-6 text-sm font-medium text-jinko-mute">
+    <nav aria-label="Primary" class="hidden lg:flex items-center gap-5 text-sm font-medium text-jinko-mute">
       {NAV.map((n) => (
         <a href={n.href} class="hover:text-jinko-ink transition-colors whitespace-nowrap">
           {n.label}
@@ -23,13 +17,12 @@ const locale = getLocaleFromPath(Astro.url.pathname);
     </nav>
 
     <div class="flex items-center gap-3">
-      <LangSwitcher current={locale} />
       <button type="button" class="hidden sm:inline-flex items-center px-3 py-2 text-jinko-mute hover:text-jinko-ink" aria-label="Search" onclick="location.href='/search'">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
-      <a href="/contact"
+      <a href="/contact" data-track-click="inquiry_cta" data-track-location="header"
          class="hidden sm:inline-flex items-center px-4 py-2 rounded-md bg-jinko text-white text-sm font-semibold hover:bg-jinko-dark transition-colors">
-        {t('cta.contact', locale)}
+        Request Quote
       </a>
       <button type="button" class="lg:hidden p-2" aria-label="Open menu" data-mobile-menu-toggle>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -44,15 +37,24 @@ const locale = getLocaleFromPath(Astro.url.pathname);
       {NAV.map((n) => (
         <a href={n.href} class="py-2 text-jinko-ink hover:text-jinko">{n.label}</a>
       ))}
+      <a href="/contact" class="mt-2 px-4 py-3 rounded-md bg-jinko text-white text-center font-semibold">Request Quote</a>
     </nav>
   </div>
 </header>
 
 <script>
-  // 极简 JS, 不需要 jQuery (原站 85KB)
   const btn = document.querySelector('[data-mobile-menu-toggle]');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => {
     if (menu) menu.hidden = !menu.hidden;
+  });
+
+  document.querySelectorAll('[data-track-click]').forEach((el) => {
+    el.addEventListener('click', () => {
+      window.callsunTrack?.(el.getAttribute('data-track-click') || 'click', {
+        location: el.getAttribute('data-track-location') || 'unknown',
+        href: el.getAttribute('href') || '',
+      });
+    });
   });
 </script>

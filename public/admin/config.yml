@@ -1,7 +1,3 @@
-# Decap CMS 配置
-# 文档: https://decapcms.org/docs/configuration-options/
-
-# ⚙️ 后端: 用 GitHub OAuth 直登 (无需第三方代理)
 backend:
   name: github
   repo: youjunhui-sky/jinko-rebuild
@@ -9,196 +5,170 @@ backend:
   base_url: https://jinko-cms-oauth.youjh120608.workers.dev
   auth_endpoint: oauth/auth
 
-# 🌐 本地开发模式: 改成 git-gateway 或 proxy backend
-# local_backend: true
-
-# 📂 媒体管理
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-# 📝 站点 URL (用于内嵌预览)
 site_url: https://jinko-rebuild.youjh120608.workers.dev
 display_url: https://jinko-rebuild.youjh120608.workers.dev
 logo_url: /logo.svg
-
-# 🎨 编辑器界面
 locale: "en"
-publish_mode: editorial_workflow   # ✅ 启用审批流: 草稿 → 待审 → 发布
+publish_mode: editorial_workflow
 
-# ════════════════════════════════════════════════════════════
-# 📚 内容集合 (A 产品 / B 新闻 / E KPI / G 安装商)
-# ════════════════════════════════════════════════════════════
 collections:
-
-  # ─────────────────────────────────────
-  # A. 📦 产品 (EAGLE 模块 / 储能)
-  # ─────────────────────────────────────
   - name: "products"
     label: "📦 Products"
-    label_singular: "Product"
     folder: "src/content/products"
     create: true
     delete: true
     format: "json"
     extension: "json"
     identifier_field: "name"
-    summary: "{{name}} — {{family}} · {{tech}}"
+    summary: "{{name}} — {{category}}"
     sortable_fields: ["order", "name"]
     fields:
       - { name: "name", label: "Product Name", widget: "string" }
-      - { name: "family", label: "Family", widget: "select",
-          options: ["eagle-modules", "eagle-storage"] }
-      - { name: "tagline", label: "Tagline (one line, shown on cards)", widget: "string" }
-      - { name: "tech", label: "Cell / Battery Tech", widget: "string",
-          hint: "e.g. N-Type TOPCon, LFP Lithium-Iron-Phosphate" }
-      - { name: "powerRangeW", label: "Power Range (W) — for modules only",
-          widget: "list", required: false, field: { name: "v", label: "Watt", widget: "number" } }
-      - { name: "capacityRangeKWh", label: "Capacity Range (kWh) — for storage only",
-          widget: "list", required: false, field: { name: "v", label: "kWh", widget: "number" } }
-      - { name: "efficiencyPct", label: "Module Efficiency (%)", widget: "number", required: false, value_type: "float" }
-      - { name: "cellCount", label: "Cell Count", widget: "number", required: false }
-      - { name: "cycleLife", label: "Cycle Life (storage)", widget: "number", required: false }
-      - name: "warrantyYears"
-        label: "Warranty Years"
-        widget: "object"
+      - { name: "slug", label: "URL Slug", widget: "string" }
+      - { name: "category", label: "Category", widget: "select", options: ["standard-module", "custom-module"] }
+      - { name: "model", label: "Model", widget: "string", required: false }
+      - { name: "tagline", label: "Tagline", widget: "string" }
+      - { name: "tech", label: "Technology", widget: "string" }
+      - { name: "certifications", label: "Certifications", widget: "list", default: [] }
+      - { name: "image", label: "Product Image", widget: "image", default: "/placeholders/solar-panel.svg" }
+      - { name: "imageAlt", label: "Image Alt", widget: "string", required: false }
+      - { name: "description", label: "Description", widget: "text" }
+      - label: "Specifications"
+        name: "specs"
+        widget: "list"
         fields:
-          - { name: "product", label: "Product Warranty (yr)", widget: "number" }
-          - { name: "power", label: "Power Warranty (yr)", widget: "number", required: false }
-          - { name: "capacity", label: "Capacity Warranty (yr)", widget: "number", required: false }
-      - { name: "applications", label: "Applications",
-          widget: "select", multiple: true,
-          options: ["Utility", "C&I", "Residential"] }
-      - { name: "image", label: "Hero Image", widget: "image" }
-      - { name: "description", label: "Long Description", widget: "text" }
-      - { name: "keywords", label: "SEO Keywords (Google ranking targets)",
-          widget: "list", default: [], hint: "One keyword per item" }
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "value", label: "Value", widget: "string" }
+          - { name: "group", label: "Group", widget: "string", required: false }
+      - { name: "applications", label: "Applications", widget: "list", default: [] }
       - { name: "order", label: "Display Order", widget: "number", default: 0 }
+      - { name: "featured", label: "Featured", widget: "boolean", default: false }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
 
-  # ─────────────────────────────────────
-  # B. 📰 新闻 / 博客
-  # ─────────────────────────────────────
-  - name: "news"
-    label: "📰 News & Insights"
-    label_singular: "News Article"
-    folder: "src/content/news"
-    create: true
-    delete: true
-    format: "frontmatter"
-    extension: "md"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    identifier_field: "title"
-    summary: "{{title}} ({{category}}, {{publishDate}})"
-    sortable_fields: ["publishDate", "title"]
-    view_filters:
-      - { label: "Drafts", field: "draft", pattern: true }
-      - { label: "Published", field: "draft", pattern: false }
-      - { label: "Featured", field: "featured", pattern: true }
-    fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "description", label: "SEO Meta Description (150-160 chars)",
-          widget: "string", pattern: ['.{50,170}', 'Aim for 150–160 characters'] }
-      - { name: "publishDate", label: "Publish Date", widget: "datetime",
-          date_format: "YYYY-MM-DD", time_format: false }
-      - { name: "author", label: "Author", widget: "string", default: "Jinko US" }
-      - { name: "cover", label: "Cover Image", widget: "image", required: false }
-      - { name: "category", label: "Category", widget: "select",
-          options: ["Press", "Product", "Industry", "Sustainability"] }
-      - { name: "featured", label: "Feature on Homepage?", widget: "boolean", default: false }
-      - { name: "draft", label: "Save as Draft (won't be published)",
-          widget: "boolean", default: false }
-      - { name: "body", label: "Article Body (Markdown supported)", widget: "markdown" }
-
-  # ─────────────────────────────────────
-  # E. 📊 首页 KPI 数据
-  # ─────────────────────────────────────
-  - name: "stats"
-    label: "📊 Homepage KPI Numbers"
-    files:
-      - name: "homepage"
-        label: "Homepage Statistics (28 GW / 400 GW / etc.)"
-        file: "src/content/stats/homepage.json"
-        format: "json"
-        fields:
-          - name: "items"
-            label: "KPI Items (drag to reorder)"
-            widget: "list"
-            summary: "{{fields.label}}: {{fields.value}} {{fields.unit}}"
-            fields:
-              - { name: "label", label: "Label (e.g. 'Deployed in U.S. & Canada')", widget: "string" }
-              - { name: "value", label: "Value (e.g. '28+', '400', '22.7')", widget: "string" }
-              - { name: "unit", label: "Unit (e.g. 'GW', '%', '+'). Leave blank if none.",
-                  widget: "string", required: false, default: "" }
-              - { name: "order", label: "Display Order", widget: "number", default: 0 }
-
-  # ─────────────────────────────────────
-  # G. 🤝 安装商目录
-  # ─────────────────────────────────────
-  - name: "installers"
-    label: "🤝 Authorized Installers"
-    label_singular: "Installer"
-    folder: "src/content/installers"
+  - name: "solutions"
+    label: "🔋 Solutions"
+    folder: "src/content/solutions"
     create: true
     delete: true
     format: "json"
     extension: "json"
-    identifier_field: "name"
-    summary: "{{name}} ({{state}}) — {{type}}"
-    sortable_fields: ["state", "order", "name"]
-    view_groups:
-      - { label: "By State", field: "state" }
-      - { label: "By Type", field: "type" }
+    identifier_field: "title"
     fields:
-      - { name: "name", label: "Company Name", widget: "string" }
-      - { name: "state", label: "State (2-letter, e.g. CA, TX)", widget: "string",
-          pattern: ['^[A-Z]{2}$', 'Must be 2 uppercase letters'] }
-      - { name: "type", label: "Installer Type", widget: "select",
-          options: ["Residential", "C&I", "Utility", "Residential + C&I"] }
-      - { name: "website", label: "Website URL", widget: "string",
-          pattern: ['^(https?://.+|)$', 'Must start with http:// or https:// (or leave blank)'] }
-      - { name: "phone", label: "Phone (optional)", widget: "string", required: false }
-      - { name: "featured", label: "Feature on Homepage?", widget: "boolean", default: false }
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "slug", label: "URL Slug", widget: "string" }
+      - { name: "type", label: "Type", widget: "select", options: ["grid-tied", "off-grid"] }
+      - { name: "capacityLabel", label: "Capacity Label", widget: "string" }
+      - { name: "pvCapacity", label: "PV Capacity", widget: "string", required: false }
+      - { name: "batteryCapacity", label: "Battery Capacity", widget: "string", required: false }
+      - { name: "image", label: "Image", widget: "image", default: "/placeholders/battery-system.svg" }
+      - { name: "summary", label: "Summary", widget: "text" }
+      - label: "Components"
+        name: "components"
+        widget: "list"
+        fields:
+          - { name: "category", label: "Category", widget: "string" }
+          - { name: "name", label: "Name", widget: "string" }
+          - { name: "quantity", label: "Quantity", widget: "string", required: false }
+          - { name: "note", label: "Note", widget: "text", required: false }
+      - { name: "useCases", label: "Use Cases", widget: "list", default: [] }
+      - { name: "relatedProducts", label: "Related Product Slugs", widget: "list", default: [] }
       - { name: "order", label: "Display Order", widget: "number", default: 0 }
+      - { name: "featured", label: "Featured", widget: "boolean", default: false }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
 
-  # ───────────────────────────────────
-  # F. 🏗️ 项目案例 (Case Studies) — 高高在上必备
-  # ───────────────────────────────────
+  - name: "applications"
+    label: "🏠 Applications"
+    folder: "src/content/applications"
+    create: true
+    delete: true
+    format: "json"
+    extension: "json"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "slug", label: "URL Slug", widget: "string" }
+      - { name: "summary", label: "Summary", widget: "text" }
+      - { name: "image", label: "Image", widget: "image", default: "/placeholders/case-rooftop.svg" }
+      - { name: "recommendedSolutions", label: "Recommended Solution Slugs", widget: "list", default: [] }
+      - { name: "relatedProducts", label: "Related Product Slugs", widget: "list", default: [] }
+      - { name: "order", label: "Display Order", widget: "number", default: 0 }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+
   - name: "cases"
-    label: "🏗️ Case Studies"
-    label_singular: "Case Study"
+    label: "🏗️ Cases"
     folder: "src/content/cases"
     create: true
     delete: true
     format: "json"
     extension: "json"
     identifier_field: "title"
-    summary: "{{title}} ({{location}})"
-    sortable_fields: ["completedAt", "order", "capacityMW"]
-    view_filters:
-      - { label: "Featured", field: "featured", pattern: true }
-      - { label: "Utility", field: "application", pattern: "Utility" }
-      - { label: "C&I", field: "application", pattern: "C&I" }
-      - { label: "Residential", field: "application", pattern: "Residential" }
     fields:
-      - { name: "title", label: "Project Title", widget: "string" }
-      - { name: "client", label: "Client / Developer", widget: "string" }
-      - { name: "location", label: "Location (City, State)", widget: "string",
-          hint: "e.g. West Texas, USA" }
-      - { name: "capacityMW", label: "Solar Capacity (MW)", widget: "number", required: false,
-          value_type: "float", hint: "e.g. 1200 for 1.2 GW; 0.012 for 12 kW residential" }
-      - { name: "capacityMWh", label: "Storage Capacity (MWh)", widget: "number", required: false,
-          value_type: "float", hint: "Optional. e.g. 0.027 for 27 kWh home battery" }
-      - { name: "completedAt", label: "Completion Date", widget: "datetime",
-          date_format: "YYYY-MM-DD", time_format: false }
-      - { name: "application", label: "Application", widget: "select",
-          options: ["Utility", "C&I", "Residential"] }
-      - { name: "modules", label: "Equipment Spec", widget: "string", required: false,
-          hint: "e.g. '2,100,000 × EAGLE® G7 575W' or '30 × EAGLE® G7 + 27 kWh battery'" }
-      - { name: "coverImage", label: "🖥️ Cover Image (used on homepage + listing)", widget: "image" }
-      - { name: "gallery", label: "🖼️ Project Gallery (multiple images)",
-          widget: "list", required: false, default: [],
-          field: { name: "image", label: "Image", widget: "image" },
-          hint: "Drag to reorder. First image becomes top of gallery." }
-      - { name: "description", label: "Project Description", widget: "text",
-          hint: "2-4 sentences describing scope, impact, technology used." }
-      - { name: "featured", label: "Feature on Homepage?", widget: "boolean", default: false }
-      - { name: "order", label: "Display Order (lower = first)", widget: "number", default: 0 }
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "slug", label: "URL Slug", widget: "string" }
+      - { name: "client", label: "Client", widget: "string", required: false }
+      - { name: "location", label: "Location", widget: "string" }
+      - { name: "region", label: "Region", widget: "select", options: ["Domestic", "Overseas"] }
+      - { name: "industry", label: "Industry", widget: "string", required: false }
+      - { name: "capacityKW", label: "Capacity kW", widget: "number", required: false, value_type: "float" }
+      - { name: "capacityMWh", label: "Capacity MWh", widget: "number", required: false, value_type: "float" }
+      - { name: "segment", label: "Segment", widget: "select", options: ["Small C&I", "Mid-Scale C&I", "Large C&I", "Solar + Storage"] }
+      - { name: "application", label: "Application", widget: "select", options: ["Commercial & Industrial", "Residential", "Municipal", "Solar + Storage"] }
+      - { name: "coverImage", label: "Cover Image", widget: "image", default: "/placeholders/case-rooftop.svg" }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "salesAngle", label: "Sales Angle", widget: "text", required: false }
+      - { name: "featured", label: "Featured", widget: "boolean", default: false }
+      - { name: "order", label: "Display Order", widget: "number", default: 0 }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+
+  - name: "news"
+    label: "📰 Blog"
+    folder: "src/content/news"
+    create: true
+    delete: true
+    format: "frontmatter"
+    extension: "md"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "publishDate", label: "Publish Date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "author", label: "Author", widget: "string", default: "Callsun" }
+      - { name: "cover", label: "Cover Image", widget: "image", required: false }
+      - { name: "category", label: "Category", widget: "select", options: ["Press", "Product", "Industry", "Technical", "Sustainability"] }
+      - { name: "tags", label: "Tags", widget: "list", default: [] }
+      - { name: "featured", label: "Featured", widget: "boolean", default: false }
+      - { name: "draft", label: "Draft", widget: "boolean", default: false }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "supportPages"
+    label: "🛠️ Support Pages"
+    folder: "src/content/supportPages"
+    create: true
+    delete: true
+    format: "json"
+    extension: "json"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "slug", label: "URL Slug", widget: "string" }
+      - { name: "summary", label: "Summary", widget: "text" }
+      - { name: "body", label: "Body", widget: "text" }
+      - { name: "order", label: "Display Order", widget: "number", default: 0 }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }

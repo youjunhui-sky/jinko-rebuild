@@ -33,7 +33,7 @@ const schema = {
 };
 ---
 <BaseLayout
-  title={`${entry.data.title} | Jinko US`}
+  title={entry.data.seoTitle || `${entry.data.title} | Callsun`}
   description={entry.data.description}
   ogImage={ogImage}
   ogType="article"
@@ -44,7 +44,7 @@ const schema = {
   <article class="max-w-3xl mx-auto px-4 lg:px-6 py-14">
     <nav class="text-sm text-jinko-mute mb-4">
       <a href="/" class="hover:text-jinko">Home</a> /
-      <a href="/news" class="hover:text-jinko">News</a> /
+      <a href="/resources/blog" class="hover:text-jinko">Resources Blog</a> /
       <span class="text-jinko-ink">{entry.data.category}</span>
     </nav>
     <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{entry.data.category}</p>

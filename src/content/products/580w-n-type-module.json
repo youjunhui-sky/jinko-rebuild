@@ -1,0 +1,31 @@
+{
+  "name": "580W N-Type Solar Module",
+  "slug": "580w-n-type-solar-module",
+  "category": "standard-module",
+  "model": "CN580W",
+  "tagline": "Large-format 580W N-type module for commercial and industrial rooftop projects.",
+  "tech": "N-type mono-crystalline silicon",
+  "certifications": ["IEC 61215", "IEC 61730", "ISO 9001", "ISO 14001", "ISO 45001"],
+  "image": "/placeholders/solar-panel.svg",
+  "description": "Callsun CN580W is a high-power N-type solar module built for installers and EPC teams that need scalable module supply for commercial and distributed generation projects.",
+  "specs": [
+    { "label": "Maximum Power (Pmax)", "value": "580W", "group": "Electrical" },
+    { "label": "Maximum Power Voltage (Vmp)", "value": "42.60V", "group": "Electrical" },
+    { "label": "Maximum Power Current (Imp)", "value": "13.62A", "group": "Electrical" },
+    { "label": "Open-circuit Voltage (Voc)", "value": "51.47V", "group": "Electrical" },
+    { "label": "Short-circuit Current (Isc)", "value": "14.37A", "group": "Electrical" },
+    { "label": "Cell Type", "value": "N-type Mono-crystalline silicon, 182×183.75mm", "group": "Mechanical" },
+    { "label": "Number of Cells", "value": "144 pcs (6×12×2)", "group": "Mechanical" },
+    { "label": "Dimensions", "value": "2278×1134×30 mm", "group": "Mechanical" },
+    { "label": "Weight", "value": "30kg", "group": "Mechanical" },
+    { "label": "Warranty", "value": "25-Year Product Warranty; 30-Year Linear Power Warranty", "group": "Warranty" }
+  ],
+  "applications": ["Commercial Rooftop", "Industrial Rooftop", "Distributed Generation"],
+  "downloads": [],
+  "order": 20,
+  "featured": true,
+  "seoTitle": "580W N-Type Solar Module | Callsun",
+  "metaDescription": "Callsun CN580W N-type solar module for commercial rooftop and distributed generation projects. IEC certified and designed for B2B installers.",
+  "h1": "580W N-Type Solar Module",
+  "keywords": ["580w solar module", "n type solar panel", "commercial solar module supplier"]
+}

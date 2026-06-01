@@ -1,52 +1,10 @@
 ---
-// 新闻列表页 (由 CMS 内容自动生成)
-import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-
-const allNews = (await getCollection('news', n => !n.data.draft))
-  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 ---
-<BaseLayout
-  title="News & Insights — Jinko US"
-  description="Latest press releases, industry analysis, and product updates from Jinko Solar's U.S. team."
->
+<BaseLayout title="News moved to Resources Blog | Callsun" description="Callsun news and technical content are now available under Resources Blog.">
   <Header slot="header" />
-
-  <section class="py-16 bg-jinko-bg">
-    <div class="max-w-content mx-auto px-4 lg:px-6">
-      <h1 class="text-4xl lg:text-5xl font-display font-extrabold">News & Insights</h1>
-      <p class="mt-3 text-jinko-mute text-lg max-w-2xl">
-        Press releases, technical deep dives, and updates from the Jinko U.S. team.
-      </p>
-    </div>
-  </section>
-
-  <section class="py-14">
-    <div class="max-w-content mx-auto px-4 lg:px-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {allNews.map((n) => (
-        <article class="rounded-2xl bg-white border border-jinko-line shadow-card overflow-hidden">
-          <a href={`/news/${n.slug}`} class="block">
-            <div class="aspect-[16/9] bg-jinko-bg overflow-hidden flex items-center justify-center">
-              {n.data.cover
-                ? <img src={n.data.cover} alt={n.data.title} loading="lazy" decoding="async" width="640" height="360" class="w-full h-full object-cover" />
-                : <span class="text-xs text-jinko-mute">[no cover]</span>
-              }
-            </div>
-            <div class="p-6">
-              <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{n.data.category}</p>
-              <h2 class="mt-2 font-display font-bold text-lg leading-snug">{n.data.title}</h2>
-              <p class="mt-2 text-sm text-jinko-mute line-clamp-2">{n.data.description}</p>
-              <p class="mt-3 text-xs text-jinko-mute">
-                {n.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} · by {n.data.author}
-              </p>
-            </div>
-          </a>
-        </article>
-      ))}
-    </div>
-  </section>
-
+  <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><h1 class="text-4xl font-display font-extrabold">News & blog moved</h1><p class="mt-4 text-jinko-mute">Callsun content is now organized under Resources for the new SEO structure.</p><a href="/resources/blog" class="mt-6 inline-flex px-5 py-3 rounded-md bg-jinko text-white font-semibold">Go to Blog</a></div></section>
   <Footer slot="footer" />
 </BaseLayout>

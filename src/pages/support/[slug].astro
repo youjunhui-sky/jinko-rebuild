@@ -1,0 +1,9 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+export async function getStaticPaths(){ const pages=await getCollection('supportPages'); return pages.map(p=>({params:{slug:p.data.slug}, props:{page:p.data}})); }
+const { page } = Astro.props;
+---
+<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.summary}><Header slot="header" /><article class="max-w-3xl mx-auto px-4 lg:px-6 py-14"><nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <a href="/support">Support</a></nav><h1 class="text-4xl lg:text-5xl font-display font-extrabold">{page.h1 || page.title}</h1><p class="mt-4 text-lg text-jinko-mute">{page.summary}</p><div class="mt-8 rounded-2xl bg-white border border-jinko-line shadow-card p-7 leading-relaxed whitespace-pre-line">{page.body}</div></article><Footer slot="footer" /></BaseLayout>

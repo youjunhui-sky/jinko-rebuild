@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+const cases=(await getCollection('cases')).map(c=>c.data).sort((a,b)=>a.order-b.order);
+---
+<BaseLayout title="Project Cases | Callsun" description="Callsun project cases for C&I rooftops, auto dealerships and solar-plus-storage microgrids.">
+<Header slot="header" />
+<section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">News & Cases</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Project case library</h1><p class="mt-4 text-lg text-jinko-mute max-w-3xl">Cases are organized for U.S. distributors, dealers and EPC installers: small C&I, mid-scale C&I, large C&I and solar-plus-storage references.</p></div></section>
+<section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6"><ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{cases.map(c=><li class="rounded-2xl bg-white border border-jinko-line shadow-card overflow-hidden"><a href={`/cases/${c.slug}`}><img src={c.coverImage} alt={c.title} class="aspect-[16/10] object-cover"/><div class="p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{c.segment} · {c.location}</p><h2 class="mt-2 text-xl font-display font-bold">{c.title}</h2><p class="mt-2 text-jinko font-bold">{c.capacityKW ? (c.capacityKW>=1000 ? `${c.capacityKW/1000}MW` : `${c.capacityKW}kW`) : ''}</p><p class="mt-3 text-sm text-jinko-mute">{c.description}</p></div></a></li>)}</ul></div></section>
+<Footer slot="footer" />
+</BaseLayout>

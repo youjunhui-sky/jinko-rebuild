@@ -1,244 +1,115 @@
 ---
-// 改造后的首页 — 数据从 Content Collections 来 (Decap CMS 编辑)
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import ContactCTA from '@/components/ContactCTA.astro';
-import TrustPillars from '@/components/TrustPillars.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import StatStrip from '@/components/StatStrip.astro';
+import CardGrid from '@/components/CardGrid.astro';
 import { SITE } from '@/data/site';
-import { slugify } from '@/lib/slugify';
 
-// 📦 产品 (按 order 排序)
-const allProducts = await getCollection('products');
-const products = allProducts.map(p => p.data).sort((a, b) => a.order - b.order);
+const products = (await getCollection('products')).map(p => p.data).sort((a,b)=>a.order-b.order).slice(0, 6);
+const solutions = (await getCollection('solutions')).map(s => s.data).filter(s=>s.featured).sort((a,b)=>a.order-b.order);
+const cases = (await getCollection('cases')).map(c => c.data).filter(c=>c.featured).sort((a,b)=>a.order-b.order).slice(0, 4);
+const news = (await getCollection('news', n => !n.data.draft)).sort((a,b)=>b.data.publishDate.getTime()-a.data.publishDate.getTime()).slice(0, 3);
 
-// 📊 KPI
-const statsEntry = await getEntry('stats', 'homepage');
-const stats = statsEntry?.data.items.sort((a, b) => a.order - b.order) ?? [];
-
-// 📰 精选新闻 (最多 3 条)
-const allNews = await getCollection('news', n => !n.data.draft);
-const featuredNews = allNews
-  .filter(n => n.data.featured)
-  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
-  .slice(0, 3);
-
-// 🏗️ 项目案例 (最多 3 个)
-const allCases = await getCollection('cases');
-const featuredCases = allCases
-  .filter(c => c.data.featured)
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
+const productCards = products.map(p => ({ title: p.name, description: p.tagline, href: `/products/${p.slug}`, eyebrow: p.model || p.category, image: p.image }));
+const solutionCards = solutions.map(s => ({ title: s.title, description: s.summary, href: `/solutions/${s.slug}`, eyebrow: s.type, image: s.image, metric: s.capacityLabel }));
+const caseCards = cases.map(c => ({ title: c.title, description: c.salesAngle || c.description, href: `/cases/${c.slug}`, eyebrow: `${c.segment} · ${c.location}`, image: c.coverImage, metric: c.capacityKW ? (c.capacityKW >= 1000 ? `${c.capacityKW / 1000}MW` : `${c.capacityKW}kW`) : undefined }));
 
 const homeSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: SITE.name,
   url: SITE.domain,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${SITE.domain}/search?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
+  potentialAction: { '@type': 'SearchAction', target: `${SITE.domain}/search?q={search_term_string}`, 'query-input': 'required name=search_term_string' },
 };
 ---
-<BaseLayout
-  title="Jinko US — U.S. Solar Panels + LFP Battery Storage | EAGLE® Modules"
-  description="Jinko (NYSE: JKS) — Bloomberg Tier 1 solar panel manufacturer. EAGLE® TOPCon modules and EAGLE Storage® LFP batteries. Made in Jacksonville, FL since 2018."
-  hreflang={[
-    { lang: 'es-MX', href: 'https://jinko-rebuild.youjh120608.workers.dev/es/' },
-    { lang: 'zh-CN', href: 'https://jinko-rebuild.youjh120608.workers.dev/zh/' },
-  ]}
-  schema={homeSchema}
->
+<BaseLayout title={SITE.defaultTitle} description={SITE.defaultDescription} schema={homeSchema}>
   <Header slot="header" />
 
-  <!-- HERO + 动态 KPI + 背景实拍 -->
   <section class="relative overflow-hidden text-white">
-    <!-- 背景大图 (热载, 高清) -->
-    <img
-      src="/hero/home-utility.jpg"
-      alt="Jinko solar panels deployed at utility scale"
-      class="absolute inset-0 w-full h-full object-cover"
-      width="1920"
-      height="1080"
-      fetchpriority="high"
-      decoding="async"
-    />
-    <!-- 叠加渐变蒙版 (保证文字可读) -->
-    <div class="absolute inset-0 bg-gradient-to-br from-jinko-dark/95 via-jinko/85 to-sky-700/70"></div>
-    <div class="absolute inset-0 opacity-30 pointer-events-none"
-         style="background-image:radial-gradient(circle at 20% 20%, rgba(255,180,0,.6), transparent 40%), radial-gradient(circle at 80% 30%, rgba(255,255,255,.2), transparent 50%);"></div>
-    <div class="max-w-content mx-auto px-4 lg:px-6 py-20 lg:py-28 relative">
-      <p class="inline-block text-xs tracking-widest uppercase font-semibold text-jinko-accent bg-white/10 px-3 py-1 rounded-full">
-        NYSE: JKS · Bloomberg Tier 1 · Made in Jacksonville, FL
-      </p>
-      <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-3xl">
-        U.S. Solar Panels <span class="text-jinko-accent">+</span> Battery Storage,<br />
-        From One Trusted Manufacturer
-      </h1>
-      <p class="mt-5 text-lg lg:text-xl text-sky-100 max-w-2xl leading-relaxed">
-        EAGLE® TOPCon modules and EAGLE Storage® LFP batteries — engineered for U.S. utility, commercial, and residential projects.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/eagle-modules" class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-semibold hover:opacity-90">Explore EAGLE® →</a>
-        <a href="/installer-finder" class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20">Find an Installer</a>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(251,191,36,.28),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(14,165,233,.22),transparent_34%),linear-gradient(135deg,#0f172a,#0f766e_48%,#134e4a)]"></div>
+    <div class="absolute inset-0 opacity-25" style="background-image:linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);background-size:52px 52px;"></div>
+    <div class="max-w-content mx-auto px-4 lg:px-6 py-24 lg:py-32 relative grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-center">
+      <div>
+        <p class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-bold text-jinko-accent bg-white/10 px-3 py-1.5 rounded-full ring-1 ring-white/15">Callsun B2B Solar Platform</p>
+        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-4xl">
+          Sell solar modules, storage packages and C&I systems with less project friction.
+        </h1>
+        <p class="mt-6 text-lg lg:text-xl text-sky-100 max-w-2xl leading-relaxed">
+          Callsun provides a structured product and solution portfolio for distributors, dealers and EPC installers: module specs, repeatable system packages, sales-ready case references and inquiry-focused landing pages.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="/products" data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-bold hover:opacity-90">Explore Products →</a>
+          <a href="/solutions" class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20 hover:bg-white/15">View System Packages</a>
+          <a href="/contact" data-track-click="inquiry_cta" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-white text-jinko-ink font-semibold hover:bg-slate-100">Request Quote</a>
+        </div>
       </div>
-
-      <dl class="mt-14 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-4xl">
-        {stats.map((s) => (
-          <div>
-            <dt class="text-xs uppercase tracking-wider text-sky-200">{s.label}</dt>
-            <dd class="mt-1 text-2xl lg:text-3xl font-display font-extrabold text-white">
-              {s.value}<span class="text-jinko-accent text-lg ml-1">{s.unit}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
+      <div class="relative">
+        <div class="rounded-[2rem] bg-white/10 ring-1 ring-white/20 p-4 backdrop-blur shadow-2xl">
+          <img src="/placeholders/battery-system.svg" alt="Callsun solar and storage package placeholder" width="900" height="680" class="rounded-[1.5rem] w-full object-cover" />
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-white text-jinko-ink rounded-2xl shadow-card p-5 max-w-xs hidden sm:block">
+          <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">For U.S. partners</p>
+          <p class="mt-2 font-display font-extrabold text-2xl">Distributors · Dealers · EPC</p>
+          <p class="mt-1 text-sm text-jinko-mute">Built around quality, supply flexibility and repeatable C&I references.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- PRODUCTS (来自 CMS) -->
+  <StatStrip />
+
   <section class="py-20 lg:py-24">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <h2 class="text-3xl lg:text-4xl font-display font-extrabold max-w-2xl">
-        One Lineup. Solar + Storage. Made in America.
-      </h2>
-      <ul class="mt-12 grid gap-6 md:grid-cols-3">
-        {products.map((p) => (
-          <li class="group rounded-2xl border border-jinko-line bg-white shadow-card overflow-hidden hover:-translate-y-1 transition-transform">
-            <a href={`/products/${slugify(p.name)}`} class="block">
-              <div class="aspect-[4/3] bg-jinko-bg overflow-hidden flex items-center justify-center">
-                {p.image
-                  ? <img src={p.image} alt={p.name} loading="lazy" decoding="async" width="480" height="360" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                  : <span class="text-jinko-mute text-sm">[{p.name}]</span>
-                }
-              </div>
-              <div class="p-6">
-                <p class="text-xs uppercase tracking-wider text-jinko-accent font-bold">{p.tech}</p>
-                <h3 class="mt-2 text-xl font-display font-bold group-hover:text-jinko">{p.name}</h3>
-                <p class="mt-2 text-sm text-jinko-mute leading-relaxed">{p.tagline}</p>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <SectionHeader eyebrow="Why Callsun" title="Answer the three questions every B2B solar buyer asks." description="The site now directly addresses product reliability, delivery flexibility and repeatable experience — the key concerns of distributors, dealers and EPC installers." />
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-7"><p class="text-3xl">01</p><h3 class="mt-4 text-xl font-display font-bold">Will product quality reduce after-sales risk?</h3><p class="mt-3 text-jinko-mute">Product pages emphasize certifications, warranty placeholders, specs and image-alt SEO fields so buyers can evaluate reliability.</p></article>
+        <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-7"><p class="text-3xl">02</p><h3 class="mt-4 text-xl font-display font-bold">Can supply match project schedules?</h3><p class="mt-3 text-jinko-mute">The CMS supports module families, system packages and future MOQ/logistics policies for faster sales conversations.</p></article>
+        <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-7"><p class="text-3xl">03</p><h3 class="mt-4 text-xl font-display font-bold">Are there proven projects to copy?</h3><p class="mt-3 text-jinko-mute">Case pages convert commercial rooftop, auto dealership and solar-plus-storage references into sales narratives.</p></article>
+      </div>
     </div>
   </section>
 
-  <TrustPillars />
-
-  <!-- 🏭 FACTORY SHOWCASE (街道仅 · 全幅背景图 + 数据叠加) -->
-  <section aria-labelledby="factory-title" class="relative isolate overflow-hidden text-white">
-    <img
-      src="/factory/jacksonville.jpg"
-      alt="Jinko Jacksonville, Florida manufacturing facility"
-      class="absolute inset-0 w-full h-full object-cover"
-      width="1920"
-      height="800"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-jinko-dark/95 via-jinko-dark/80 to-jinko-dark/40"></div>
-
-    <div class="max-w-content mx-auto px-4 lg:px-6 py-24 lg:py-32 relative grid lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">USA · FL · JAX</p>
-        <h2 id="factory-title" class="mt-3 text-4xl lg:text-5xl font-display font-extrabold leading-tight">
-          A look inside our<br />Jacksonville, FL factory.
-        </h2>
-        <p class="mt-5 text-lg text-sky-100 leading-relaxed max-w-lg">
-          400 MW of annual U.S. solar module production. Qualifying for IRA Domestic Content Bonus Credit — helping developers unlock up to 10% additional tax credits.
-        </p>
-        <a href="/jacksonville" class="mt-6 inline-flex items-center px-5 py-3 rounded-md bg-jinko-accent text-jinko-ink font-semibold hover:opacity-90">
-          Tour the factory →
-        </a>
-      </div>
-      <dl class="grid grid-cols-2 gap-6">
-        {[
-          { v: '400 MW', l: 'Annual production' },
-          { v: '2018', l: 'In operation since' },
-          { v: '500+', l: 'Local jobs created' },
-          { v: '10%', l: 'IRA bonus credit eligible' },
-        ].map((s) => (
-          <div class="backdrop-blur bg-white/10 ring-1 ring-white/20 rounded-2xl p-5">
-            <p class="text-3xl font-display font-extrabold text-jinko-accent">{s.v}</p>
-            <p class="mt-1 text-sm text-sky-100">{s.l}</p>
-          </div>
-        ))}
-      </dl>
+  <section class="py-20 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <SectionHeader eyebrow="Products" title="Solar modules structured for SEO, datasheets and inquiry conversion." description="The product center is CMS-driven. Each product supports specs, certifications, downloads, image alt text and SEO metadata." />
+      <div class="mt-12"><CardGrid items={productCards} /></div>
     </div>
   </section>
 
-  <!-- 🏗️ CASE STUDIES (来自 CMS) -->
-  {featuredCases.length > 0 && (
-    <section aria-labelledby="cases-title" class="py-20 lg:py-24">
-      <div class="max-w-content mx-auto px-4 lg:px-6">
-        <div class="flex items-end justify-between flex-wrap gap-4">
-          <div>
-            <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Project Spotlight</p>
-            <h2 id="cases-title" class="mt-2 text-3xl lg:text-4xl font-display font-extrabold">Powering Real Projects</h2>
-          </div>
-          <a href="/case-studies" class="text-jinko font-semibold">All case studies →</a>
-        </div>
-        <ul class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {featuredCases.map((c) => (
-            <li class="group rounded-2xl overflow-hidden bg-white border border-jinko-line shadow-card hover:-translate-y-1 transition-transform">
-              <a href={`/case-studies/${c.id.replace(/\.json$/, '')}`} class="block">
-                <div class="aspect-[16/10] overflow-hidden bg-jinko-bg">
-                  <img src={c.data.coverImage} alt={c.data.title} loading="lazy" decoding="async" width="640" height="400" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                </div>
-                <div class="p-6">
-                  <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{c.data.application} · {c.data.location}</p>
-                  <h3 class="mt-2 text-lg font-display font-bold leading-snug group-hover:text-jinko">{c.data.title}</h3>
-                  {c.data.capacityMW && (
-                    <p class="mt-3 text-2xl font-display font-extrabold text-jinko">
-                      {c.data.capacityMW >= 1 ? `${c.data.capacityMW} MW` : `${(c.data.capacityMW * 1000).toFixed(0)} kW`}
-                    </p>
-                  )}
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
+  <section class="py-20 lg:py-24">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <div class="flex items-end justify-between flex-wrap gap-4">
+        <SectionHeader eyebrow="Solutions" title="Repeatable packages for grid-tied and off-grid sales." description="System pages turn product components into package-level landing pages for Google Ads, SEO and distributor conversations." />
+        <a href="/solutions" class="text-jinko font-semibold">All solutions →</a>
       </div>
-    </section>
-  )}
+      <div class="mt-12"><CardGrid items={solutionCards} /></div>
+    </div>
+  </section>
 
-  <!-- LATEST NEWS (来自 CMS) -->
-  {featuredNews.length > 0 && (
-    <section class="py-20 bg-jinko-bg">
-      <div class="max-w-content mx-auto px-4 lg:px-6">
-        <div class="flex items-end justify-between flex-wrap gap-4">
-          <h2 class="text-3xl lg:text-4xl font-display font-extrabold">Latest News & Insights</h2>
-          <a href="/news" class="text-jinko font-semibold">All news →</a>
-        </div>
-        <ul class="mt-10 grid gap-6 md:grid-cols-3">
-          {featuredNews.map((n) => (
-            <li class="rounded-2xl bg-white border border-jinko-line shadow-card overflow-hidden">
-              <a href={`/news/${n.slug}`} class="block">
-                <div class="aspect-[16/9] overflow-hidden bg-jinko-bg">
-                  {n.data.cover
-                    ? <img src={n.data.cover} alt={n.data.title} loading="lazy" decoding="async" width="640" height="360" class="w-full h-full object-cover" />
-                    : <div class="w-full h-full flex items-center justify-center text-xs text-jinko-mute">[no cover]</div>
-                  }
-                </div>
-                <div class="p-6">
-                  <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{n.data.category}</p>
-                  <h3 class="mt-2 font-display font-bold text-lg leading-snug line-clamp-2">{n.data.title}</h3>
-                  <p class="mt-2 text-sm text-jinko-mute line-clamp-2">{n.data.description}</p>
-                  <p class="mt-3 text-xs text-jinko-mute">
-                    {n.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </p>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
+  <section class="py-20 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <div class="flex items-end justify-between flex-wrap gap-4">
+        <SectionHeader eyebrow="Cases" title="Sales-ready references for the U.S. distributor channel." description="Each case includes a sales angle, capacity, segment and application — not just a photo gallery." />
+        <a href="/cases" class="text-jinko font-semibold">All cases →</a>
       </div>
-    </section>
-  )}
+      <div class="mt-12"><CardGrid items={caseCards} columns="4" /></div>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-start">
+      <SectionHeader eyebrow="SEO + SEM ready" title="The marketing stack is reserved before the first ad dollar is spent." description="GTM, GA4, Google Ads conversion IDs, Cookie Consent and dataLayer events are already structured. When the customer provides account IDs, tracking can be enabled without rebuilding the site architecture." />
+      <div class="grid gap-4 sm:grid-cols-2">
+        {['GTM Container placeholder', 'GA4 Measurement placeholder', 'Google Ads Conversion placeholder', 'Cookie Consent base layer', 'Contact / RFQ submit event', 'Email / WhatsApp / download events'].map((item) => <div class="rounded-2xl border border-jinko-line bg-white p-5 shadow-card"><p class="font-semibold text-jinko-ink">✓ {item}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  {news.length > 0 && <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="flex items-end justify-between"><SectionHeader eyebrow="Resources" title="Content hub for long-tail SEO." /><a href="/resources/blog" class="text-jinko font-semibold">Blog →</a></div><ul class="mt-10 grid gap-6 md:grid-cols-3">{news.map((n)=><li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{n.data.category}</p><h3 class="mt-2 text-lg font-display font-bold"><a href={`/resources/blog/${n.slug}`}>{n.data.title}</a></h3><p class="mt-2 text-sm text-jinko-mute">{n.data.description}</p></li>)}</ul></div></section>}
 
   <ContactCTA />
   <Footer slot="footer" />

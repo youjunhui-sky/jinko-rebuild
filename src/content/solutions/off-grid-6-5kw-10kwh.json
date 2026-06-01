@@ -1,0 +1,23 @@
+{
+  "title": "6.5kW Off-Grid Solar System",
+  "slug": "6-5kw-off-grid-solar-system",
+  "type": "off-grid",
+  "capacityLabel": "6.5kW / 10kWh / 5.4kW-PV",
+  "pvCapacity": "5.4kW-PV",
+  "batteryCapacity": "10kWh",
+  "image": "/placeholders/battery-system.svg",
+  "summary": "A compact off-grid solar storage system for remote homes, cabins, small commercial sites and installer-ready package sales.",
+  "components": [
+    { "category": "Solar Module", "name": "450W Double Glass Solar Module", "quantity": "12 pcs", "note": "5.4kW PV array" },
+    { "category": "Inverter", "name": "SPI-6.5K-UP", "quantity": "1 set", "note": "6500W inverter, IEC62109 and UL1741" },
+    { "category": "Battery", "name": "GSL-051200A-B-GBP2", "quantity": "1 set", "note": "10.24kWh LiFePO4 battery" },
+    { "category": "Accessories", "name": "MC4 tools, cables, brackets, PV DC breaker, combiner box" }
+  ],
+  "useCases": ["Off-grid home", "Remote site", "Small commercial backup", "Dealer package"],
+  "relatedProducts": ["450w-double-glass-solar-module"],
+  "order": 20,
+  "featured": true,
+  "seoTitle": "6.5kW Off-Grid Solar System with 10kWh Battery | Callsun",
+  "metaDescription": "Callsun 6.5kW off-grid solar system with 10kWh LiFePO4 battery and 5.4kW PV for remote and small commercial applications.",
+  "keywords": ["6.5kw off grid solar system", "10kwh solar battery system", "off grid solar package supplier"]
+}

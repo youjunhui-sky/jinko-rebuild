@@ -1,0 +1,650 @@
+########## 产品及系统 (Z5bYkY) range=A1:U244 ##########
+																				
+1、标准组件																				
+类别	品名	认证	产品图片	参数																
+450w	450W双玻板	 IEC 61215, IEC 61730, ISO 9001, ISO 14001, ISO 45001	[{"id":1,"type":"embed-image"}]	Model: CN450W\nMaximum Power (Pmax): 450W\nMaximum Power Voltage (Vmp): 30.93V\nMaximum Power Current (Imp): 14.55A\nOpen-circuit Voltage (Voc): 35.01V\nShort-circuit Current (Isc): 15.47A\nModule Efficiency (STC): 23.04%\nOperating Temperature: -40 ~ +85°C\nMaximum System Voltage: 1500V DC\nMaximum Series Fuse Rating: 30A\nPower Tolerance: 0~±5W\nTemperature Coefficient of Pmax: -0.290%/°C\nTemperature Coefficient of Voc: -0.250%/°C\nTemperature Coefficient of Isc: +0.045%/°C\nNominal Operating Cell Temperature (NOCT): 42°C±2°C\nProtection Class: II\nBifaciality: 80% ± 5%\nCell Type: Mono-crystalline silicon, 182×105mm\nNumber of Cells: 96 pcs (6×8×2)\nDimensions: 1762×1134×30 mm\nWeight: 24.5kg\nGlass: 2.0+2.0mm Tempered Glass\nFrame: Silver Anodized Aluminium Alloy\nJunction Box: IP68\nCable Length: 300mm\nWarranty: 25-Year Product Warranty; 30-Year Linear Power Warranty																
+580w		IEC 61215, IEC 61730, ISO 9001, ISO 14001, ISO 45001		Model: CN580W\nMaximum Power (Pmax): 580W\nMaximum Power Voltage (Vmp): 42.60V\nMaximum Power Current (Imp): 13.62A\nOpen-circuit Voltage (Voc): 51.47V\nShort-circuit Current (Isc): 14.37A\nModule Efficiency (STC): /\nOperating Temperature: -40 ~ +85°C\nMaximum System Voltage: 1500V DC\nMaximum Series Fuse Rating: 25A\nPower Tolerance: 0~+5W\nTemperature Coefficient of Pmax: -0.35%/°C\nTemperature Coefficient of Voc: -0.275%/°C\nTemperature Coefficient of Isc: +0.045%/°C\nNominal Operating Cell Temperature (NOCT): 42°C±2°C\nCell Type: N-type Mono-crystalline silicon, 182×183.75mm\nNumber of Cells: 144 pcs (6×12×2)\nDimensions: 2278×1134×30 mm\nWeight: 30kg\nGlass: 2.0×2mm Tempered Glass\nFrame: Anodized Aluminium Alloy\nJunction Box: IP68, 3 Bypass Diodes\nCable Length: 300mm\nWarranty: 25-Year Product Warranty; 30-Year Linear Power Warranty																
+620w		IEC 61215, IEC 61730, ISO 9001, ISO 14001, ISO 45001		Model: CN620W\nMaximum Power (Pmax): 620W\nMaximum Power Voltage (Vmp): 40.82V\nMaximum Power Current (Imp): 15.19A\nOpen-circuit Voltage (Voc): 48.10V\nShort-circuit Current (Isc): 16.06A\nModule Efficiency (STC): 23%\nOperating Temperature: -40 ~ +85°C\nMaximum System Voltage: 1500V DC\nMaximum Series Fuse Rating: 30A\nPower Tolerance: 0~+3%\nTemperature Coefficient of Pmax: -0.28%/°C\nTemperature Coefficient of Voc: -0.24%/°C\nTemperature Coefficient of Isc: +0.046%/°C\nNominal Operating Cell Temperature (NOCT): 45°C±2°C\nCell Type: N-type Mono-crystalline silicon, 182×105mm\nNumber of Cells: 132 pcs (6×11×2)\nDimensions: 2382×1134×30 mm\nWeight: 32.5kg\nGlass: 2.0×2mm Tempered Glass\nFrame: Anodized Aluminium Alloy\nJunction Box: IP68, 3 Bypass Diodes\nCable Length: 300mm\nWarranty: 25-Year Product Warranty; 30-Year Linear Power Warranty																
+																				
+2、非标组件																				
+类别	品名	认证	产品图片	参数																
+180w	180W单玻板	待取证（UL）	[{"id":2,"type":"embed-image"}]	Maximum Power at STC (Pmax): 180W\nMaximum Power Voltage (Vmp): 21.93V\nMaximum Power Current (Imp): 8.21A\nOpen-circuit Voltage (Voc): 25.56V\nShort-circuit Current (Isc): 8.62A\nCell Type: N-Type, 16BB, 182mm, Monocrystalline Silicon\nCell Efficiency: 25%\nPower Tolerance: 0~+5%\nMaximum System Voltage: 1000V DC\nMaximum Series Fuse Rating: 25A\nFirst Year Degradation Rate: 1%\nLinear Degradation Rate: 0.4%/year\nCommitment to Maintain 84.5% Output: 25 years																
+200w	200W单玻板	待取证（UL）	[{"id":3,"type":"embed-image"}]	Maximum Power (Pmax)        200W\nMaximum Power Voltage (Vmp)        23.74V\nMaximum Power Current (Imp)        8.43A\nOpen-circuit Voltage (Voc)        27.31V\nShort-circuit Current (Isc)        8.91A\nCell Type        N-Type, 16BB, 182mm, Monocrystalline Silicon\nCell Efficiency        25%\nPower Tolerance        0~5%\nMaximum System Voltage        1000V DC\nMaximum Series Fuse Rating        25A\nFirst Year Degradation Rate        1%\nLinear Degradation Rate        0.4%\nCommitment to maintain 84.5% output        25 years																
+215w	215W单玻板	待取证（UL）	[{"id":4,"type":"embed-image"}]	Maximum Power at STC (Pmax): 215W\nMaximum Power Voltage (Vmp): 17.37V\nMaximum Power Current (Imp): 12.38A\nOpen-circuit Voltage (Voc): 20.41V\nShort-circuit Current (Isc): 13.12A\nCell Type: N-Type, 16BB, 182mm, Monocrystalline Silicon\nCell Efficiency: 25%\nPower Tolerance: 0~5%\nMaximum System Voltage: 1000V DC\nMaximum Series Fuse Rating: 25A\nFirst Year Degradation Rate: 1%\nLinear Degradation Rate: 0.4%\nCommitment to maintain 84.5% output: 25 years																
+																				
+3、并网系统-----12kW  28度电  10.8kW-PV																				
+类别	品名	认证	产品图片	参数																
+太阳能板	450W双玻板		[{"id":1,"type":"embed-image"}]	Pmax: 450W\nVmp: 30.08V\nImp: 14.97A\nVoc: 35.03V\nIsc: 16.05A																
+逆变器	HS-LV12KNA	安规：UL1741&IEEE1547.1-2020, CEC, RULE 21, HECO；\nEMC：FCC 15 class B\nRoHS：Yes	[{"id":5,"type":"embed-image"}]	逆变器输出\n 额定输出功率：@240V 12000 W；@208V 10400 W\n 最大峰值功率：额定功率的 1.5 倍\n 额定输出电压：120/240 Vac（分相）/208 V（三相）\n 带载电机能力 ：6HP  \n 额定交流频率：50/60 Hz\n 波形：纯正弦波\n 并联容量：1 至 6 台（2 台及以上可组成三相输出）\n电池\n 电池类型：锂离子 / 铅酸 / 用户自定义\n 额定电池电压：48 Vdc\n 电池电压范围：48 - 60 Vdc\n 最大光伏充电电流：200 A\n 最大发电机充电电流：90 A\n 最大混合充电电流：240 A\n光伏输入\n 最大功率点跟踪（MPPT）数量：2 个\n 最大光伏阵列功率：9000 W / 9000 W\n 最大输入电流：32 A / 32 A\n 短路电流 Isc：40 A / 40 A\n 最大开路电压：550 Vdc / 550 Vdc\n 光伏工作电压范围：125 - 450 Vdc / 125 - 450 Vdc\n市电 / 发电机输入\n 输入电压范围：90 - 140 Vdc\n 输入频率：50/60 Hz\n 最大持续旁路电流：200 A\n效率\n MPPT 跟踪效率：99.9%\n 最大效率：97.5%\n GBC 效率：96.9%\n通信\n 内置接口：RS485 / CAN / USB / 干接点\n 外部模块（可选）：Wi-Fi / GPRS \n通用参数\n 尺寸：840×440×260 mm\n 重量：86 kg\n 防护等级：IP65\n 工作温度范围：-25 - 60℃；40℃（降额）\n 噪音：<60 dB\n 自身功耗：<100 W\n 冷却方式：散热片 + 智能风扇冷却																
+电池1	GSL-051280A-B-GBP2\n（14度电 壁挂式）	认证：UL1973、UL9540A、UL9540、CE-IECE62619、CE-EMC、UN38.3、MSDS		标称参数\n 电池化学类型：磷酸铁锂（LiFePO4）\n 电压：51.2V\n 工作电压：46~56.5V\n 容量：280Ah\n 能量：14.34kWh\n 扩展性：最多 16 组并联（299kWh）\n 建议放电能量（95% 放电深度）：13.63kWh\n充放电参数\n 建议充放电电流：100A\n 最大充放电电流：150A\n 峰值充放电电流（2 分钟，25℃）：200A\n基础参数\n 建议放电深度：95%\n 尺寸（宽 / 高 / 深）：945×675×230 毫米 / 37.2×26.6×9.0 英寸\n 约重：131.7 千克 / 290 磅\n 主 LED 指示灯：4 个 LED（电量 25%-100%）；2 个 LED（工作、报警、保护）\n 外壳防护等级：IP20\n 工作温度：充电 0℃~55℃；放电 - 20℃~55℃\n 存储温度：0℃~35℃\n 湿度：5%~95%\n 海拔：≤2000 米\n 循环寿命（25±2℃，0.5C 充放，80% 剩余容量）：≥8500 次\n 安装方式：壁挂式\n 通信端口：CAN2.0、RS485\n 质保期：10 年\n 质保期内生命周期总功率 ：64.80兆瓦时@80%寿命终止																
+电池2（可选）	GSL051280A-B-GBP2F\n（14度电 落地式）	认证：UL1973、UL9540A、UL9540、CE-IECE62619、CE-EMC、UN38.3、MSDS	[{"id":6,"type":"embed-image"}]	标称参数\n 电池化学类型：磷酸铁锂（LiFePO4）\n 电压：51.2V\n 工作电压：46~56V\n 容量：280Ah\n 能量：14.34kWh\n 扩展性：最多 16 组并联（229kWh）\n 建议放电能量（95% 放电深度）：13.623kWh\n 最大持续放电功率：7.68kW\n充放电参数\n 建议充放电电流：100A\n 最大充放电电流：150A\n 峰值充放电电流（2 分钟，25℃）：200A\n基础参数\n 建议放电深度：95%\n 尺寸（宽 / 高 / 深）：700×1050×200 毫米 / 27.6×41.3×7.9 英寸\n 约重：134.5 千克 / 296 磅\n 主 LED 指示灯：4 个 LED（剩余电量 25%-100%）；2 个 LED（工作、报警、保护）\n 外壳防护等级：IP65\n 工作温度：充电 0℃~55℃；放电 - 20℃~55℃\n 存储温度：0℃~35℃\n 湿度：5%~95%\n 海拔：≤2000 米\n 循环寿命（25±2℃，0.5C 充放，80% 剩余容量）：≥8500 次\n 安装方式：落地 / 户外\n 通信端口：CAN2.0、RS485、WiFi\n 质保期：10 年																
+配件	MC4工具包		[{"id":7,"type":"embed-image"}]	压线工具套装(10pcs)																
+	6mm²线材（正负极两根线）\n（太阳板-逆控一体机）			共20米																
+	Z型支架（1套）																			
+	PV 直流断路器			直流断路器DC1000V 1p 32A																
+	2进2出光伏直流汇流箱（选配）		[{"id":8,"type":"embed-image"}]	DC500V  2进2出光伏直流汇流箱：1.箱体塑壳：IP65防护等级。   2.直流熔断器选配DC1000V  32A。  3.直流浪涌保护器选配DC600V  20-40kA/2P.   3.输出直流断路器选配DC500V   32A/2P。  4.进出线方式有MC4/PG可选。																
+	三角形支架（1套）（选配）																			
+																				
+																				
+4、离网系统1-----6.5kW  10度电  5.4kW-PV 、离网系统2-----10kW  14度电  7.2kW-PV 																				
+																				
+类别	品名	认证	产品图片	参数																
+太阳能板	450W双玻板		[{"id":9,"type":"embed-image"}]	Pmax: 450W\nVmp: 30.08V\nImp: 14.97A\nVoc: 35.03V\nIsc: 16.05A																
+逆变器	SPI-6.5K-UP	认证\n安规：IEC62109-1, IEC62109-2, UL1741\nEMC：EN61000-6-1, EN61000-6-3, FCC 15 class B\nRoHS：是	[{"id":10,"type":"embed-image"}]	逆变输出\n额定输出功率：6500W\n峰值功率：13,000 VA\n额定输出电压：120Vac（单相）/ 240Vac（裂相）/ 三相（需并机）\n输出频率：50/60Hz\n输出波形：纯正弦波\n转换时间：10 ms（典型值）\n可并机数量：1～6台\n电池\n电池类型：锂离子 / 铅酸 / 用户自定义\n额定电池电压：48Vdc\n电池电压范围：40Vdc～60Vdc\n最大混合充电电流：140A\n光伏输入\nMPPT路数：2\n每路最大输入功率：5000W+5000W\n最大输入电流：18A+18A\n最大开路电压：550Vdc+550Vdc\nMPPT电压范围：150～450Vdc\n市电/发电机输入\n输入电压范围：65～140Vac\n输入频率：50/60Hz\n旁路过载电流：40A\n效率\nMPPT追踪效率：99.9%\n电池逆变最大效率：93%\n通用参数\n尺寸：584.6 × 410 × 133 mm\n重量：18.9 kg\n防护等级：IP20（仅室内）\n工作温度范围：-10℃～55℃（>45℃ 降额）\n噪音：<60 dB\n冷却方式：内置风扇\n质保时间：24个月\n通信与接口\n内置接口：RS485 / CAN / USB / 干接点\n外接模块（选配）：Wi-Fi / GPRS																
+电池	GSL-051200A-B-GBP2	认证：UL1973, CE-EMC, UN38.3, MSDS	[{"id":11,"type":"embed-image"}]	额定参数\n标称电压：51.2V\n工作电压范围：46–56V\n标称容量：200Ah\n标称能量：10.24 kWh\n可用能量：9.22 kWh\n可扩展性：最多16台并联（总能量 162 kWh）\n充放电电流\n推荐充电/放电电流：100A\n最大电流：150A\n峰值电流（2分钟，25℃）：200A\n基础参数\n推荐放电深度（DoD）：90%\n尺寸（宽/高/深）：780 × 550 × 200 mm（30.7 × 21.6 × 7.8 英寸）\n重量：约 102.5 kg（225 lbs）\nLED 指示灯：4颗（电量 25%~100%）；2颗（工作、告警、保护状态）\n外壳防护等级：IP20\n工作温度：充电 0℃~55℃；放电 -20℃~55℃\n存储温度：0℃~35℃\n湿度：5%~95%\n海拔：≤2000m\n循环寿命（25±2℃，0.5C充放，80% 寿命终止）：≥6500次\n安装方式：壁挂式\n通讯接口：CAN 2.0、RS485\n保修期：10年\n保修期内总循环电量（80% 寿命终止）：44.84 MWh\n认证：UL1973、CE-EMC、UN38.3、MSDS																
+配件	MC4工具包			压线工具套装(10pcs)																
+	6mm²线材（正负极两根线）\n（太阳板-逆控一体机）			共20米																
+	Z型支架（1套）																			
+	PV 直流断路器			直流断路器DC1000V 1p 32A																
+	2进2出光伏直流汇流箱（选配）		[{"id":12,"type":"embed-image"}]	DC500V  2进2出光伏直流汇流箱：1.箱体塑壳：IP65防护等级。   2.直流熔断器选配DC1000V  32A。  3.直流浪涌保护器选配DC600V  20-40kA/2P.   3.输出直流断路器选配DC500V   32A/2P。  4.进出线方式有MC4/PG可选。																
+	三角形支架（1套）（选配）																			
+																				
+																				
+类别	品名	认证	产品图片	参数																
+太阳能板	450W单玻板		[{"id":13,"type":"embed-image"}]	Pmax: 450W\nVmp: 30.08V\nImp: 14.97A\nVoc: 35.03V\nIsc: 16.05A																
+逆变器	SPI-10K-UP	安规：IEC62109-1, IEC62109-2,UL1741\nEMC：EN61000-6-1, EN61000-6-3, FCC 15 class B\nRoHS：Yes	[{"id":14,"type":"embed-image"}]	逆变输出 \n额定输出功率 ： 10,000W \n最大峰值功率 ： 20,000W \n额定输出电压 ：120/240Vac（裂相/单相） \n带载电机能力 ：6HP  \n额定频率 ：50/60Hz \n输出波形 ：纯正弦波 \n切换时间 ：10ms（典型值） \n可并机数量 ：6 \n过载保护 ：触发过载保护后，逆变器将在3分钟后恢复输出，连续5次过载将关 \n闭 输出，直到逆变器重新启动。 \n电池 \n电池类型 ：锂离子电池 /铅酸电池/ 用户自定义 \n额定电池电压 ：48Vdc \n电压范围 ：40-60Vdc \n最大光伏充电电流 ：200A  \n最大市电/发电机充电电流 ：120A  \n最大混合充电电流 ：200A \n光伏输入 \nMPPT路数 ：2 \n最大输入功率 ：11,000W \n最大输入电流 ：22/22A \n最大开路电压 ：500Vdc \nMPPT工作电压范围 ：125-425Vdc \n市电/发电机输入 \n输入电压范围 ：90-140Vac \n输入频率范围 ：50/60Hz \n旁路过载电流 ：63A \n效率 \nMPPT追踪效率 ：99.9% \n电池逆变最大效率 ：92% \n通用 \n尺寸 ：620*445*130mm \n重量 ：27kg\n防护等级 ：IP20，仅限室内使用 \n环境温度 ：-10~55℃,>45℃降额 \n噪音 ：<60dB \n冷却方式 ：内置风扇 \n通讯 \n内置接口 ：RS485 / CAN / USB / 干接点 \n外接模块（选配） ：Wi-Fi / GPRS 																
+电池	GSL-051280A-B-GBP2\n（14度电 壁挂式）	认证：UL1973、UL9540A、UL9540、CE-IECE62619、CE-EMC、UN38.3、MSDS	[{"id":15,"type":"embed-image"}]	标称参数\n 电池化学类型：磷酸铁锂（LiFePO4）\n 电压：51.2V\n 工作电压：46~56.5V\n 容量：280Ah\n 能量：14.34kWh\n 扩展性：最多 16 组并联（299kWh）\n 建议放电能量（95% 放电深度）：13.63kWh\n充放电参数\n 建议充放电电流：100A\n 最大充放电电流：150A\n 峰值充放电电流（2 分钟，25℃）：200A\n基础参数\n 建议放电深度：95%\n 尺寸（宽 / 高 / 深）：945×675×230 毫米 / 37.2×26.6×9.0 英寸\n 约重：131.7 千克 / 290 磅\n 主 LED 指示灯：4 个 LED（电量 25%-100%）；2 个 LED（工作、报警、保护）\n 外壳防护等级：IP20\n 工作温度：充电 0℃~55℃；放电 - 20℃~55℃\n 存储温度：0℃~35℃\n 湿度：5%~95%\n 海拔：≤2000 米\n 循环寿命（25±2℃，0.5C 充放，80% 剩余容量）：≥8500 次\n 安装方式：壁挂式\n 通信端口：CAN2.0、RS485\n 质保期：10 年\n 质保期内生命周期总功率 ：64.80兆瓦时@80%寿命终止																
+配件	MC4工具包			压线工具套装(10pcs)																
+	6mm²线材（正负极两根线）\n（太阳板-逆控一体机）			共20米																
+	Z型支架（1套）																			
+	PV 直流断路器			直流断路器DC1000V 1p 32A																
+	2进2出光伏直流汇流箱（选配）		[{"id":16,"type":"embed-image"}]	DC500V  2进2出光伏直流汇流箱：1.箱体塑壳：IP65防护等级。   2.直流熔断器选配DC1000V  32A。  3.直流浪涌保护器选配DC600V  20-40kA/2P.   3.输出直流断路器选配DC500V   32A/2P。  4.进出线方式有MC4/PG可选。																
+	三角形支架（1套）（选配）																			
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+########## 首页 (d4f615) range=A1:T200 ##########
+[{"id":1,"type":"embed-image"}]																			
+																			
+[{"id":2,"type":"embed-image"}]																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+########## 安装案例 (rt0hpY) range=A1:T203 ##########
+一、 微小型 B端   （容量 < 0.5MW ）-9个																			
+这类项目多集中在轻工业、食品加工、学校教育装备等小型屋顶，容量通常在 100kW-300kW 之间。 																			
+区域	项目名称	原始标注容量	换算/备注	图片															
+国内	江苏龙英管道新材料有限公司分布式光伏发电项目	300KW	0.3MW																
+国内	江西禾百家食品有限公司分布式光伏发电项目	0.3MW	0.3MW																
+国内	江西墩宏实业有限公司分布式光伏发电项目	0.2MW	0.2MW																
+国内	江西广亿教育装备有限公司分布式光伏发电项目	0.2MW	0.2MW																
+国内	江西启晨教育装备集团有限公司分布式光伏发电项目	0.2MW	0.2MW																
+国内	江西聚鑫教育设备有限公司分布式光伏发电项目	0.2MW	0.2MW																
+国内	江西智慧星实业有限公司分布式光伏发电项目	0.2MW	0.2MW																
+国内	南城百顺实业有限公司分布式光伏发电项目	0.2MW	0.2MW																
+国内	江西奥瑞森新能源科技股份有限公司分布式光伏发电项目	100kw/215kwh	0.1MW（含微型储能）																
+																			
+																			
+二、 中型工商业   （容量 0.5MW-5MW）-15个																			
+目前的主力军，主要涵盖纺织、新材料、玩具、包装等传统及现代制造厂房，也是海外项目的集中地																			
+区域	项目名称	原始标注容量	换算/备注	图片															
+国内	江西深泓新材料有限公司分布式光伏发电项目	4910KW	4.91MW																
+国内	江西省泰荣纺织科技有限公司分布式光伏发电项目	4.5MW	4.5MW																
+国内	抚州市臻品纺织有限公司分布式光伏发电项目	2.27MW	2.27MW																
+国内	南城泰亚科技有限公司分布式光伏发电项目	1.6MW	1.6MW																
+国内	江西陈氏科技集团股份有限公司分布式光伏发电项目	1.2MW	1.2MW																
+国内	浙江乔士智能工业股份有限公司分布式光伏发电项目	928KW	0.93MW																
+国内	宣城市宝骏汽车销售有限公司分布式光伏发电项目	0.8MW	0.8MW（4S店屋顶）																
+海外	CHENG DA III COMPANY LIMITED	3.5MW	3.5MW																
+海外	Delta Cropcare Joint Stock Company	3.4MW	3.4MW																
+海外	EURO FILM CORPORATION	3.3MW	3.3MW																
+海外	YIDA TOYS COMPANY LIMITED	2.5MW	2.5MW																
+海外	IBE	2.3MW	2.3MW																
+海外	Gen Bright Lighting Co., Ltd	2.3MW	2.3MW																
+海外	THIEN Y PACKAGING	2.27MW	2.27MW																
+海外	Chengda	1.2MW	1.2MW																
+																			
+																			
+三、 大型工商业（容量 5MW） -3个																			
+属于标杆性、压舱石级别的大型分布式案例，屋顶面积要求非常高。																			
+区域	项目名称	原始标注容量	换算/备注	图片															
+国内	舟山宇培仓储有限公司分布式光伏发电项目	13.75MW	超大型分布式标杆项目																
+国内	江西新亿科技有限公司分布式光伏发电项目	5.3MW	大型工商业																
+国内	东台润田精密科技有限公司分布式光伏发电项目	5092.88KWp	约 5.09MW（大型精密制造）																
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+切入晶科在美国的二、三级代理商（Distributors / Dealers / EPC Installers）通常是各州的区域分销商、中小型EPC、或者是地方居家/工商业屋顶安装商																			
+他们最核心的痛点是三个：产品质量稳不稳定（会不会被业主频繁售后投诉）？供货够不够灵活及时（会不会卡他们的工期）？以及你在中小型 C&I（工商业）和分布式（DG）上有没有现成的、拿来就能抄作业的标准化经验？																			
+																			
+一、 核心展示：中型工商业（Mid-Scale C&I）案例\n美国二三级代理商承接得最多的优质企业单子，就是厂房和高能耗企业的屋顶。用这三个案例直接证明你们产品的高性价比和耐用性																			
+1. CHENG DA III COMPANY LIMITED 3.5MW     3.5MW Industrial Manufacturing Rooftop Portfolio 																			
+“我们非常熟悉 3MW-5MW级别的工厂屋顶。这个规模在美国是标准的工商业大单，我们能提供极具竞争力的批量组件供货与长效质保担保，帮你们降低大项目的沉没风险。” 																			
+2. EURO FILM CORPORATION（3.3MW）  3.3MW Foreign-Invested Packaging & Materials Plant 																			
+薄膜/包装厂对防火和组件的热斑（Hot Spot）控制要求极高。“我们的产品通过了国际一流材料厂的严苛环境与安全评估，能完美适配美国各州对工商业高标防火（Fire Class A/B）的要求。”																			
+3. 抚州市臻品纺织有限公司 / THIEN Y PACKAGING（两笔均为 2.27MW)      2.27MW High-Load Textile & Manufacturing Facilities 																			
+“海内外标准化可复制案例”。“不管是哪个国家、什么屋顶，在这个容量级别，我们有一整套完全标准化的组件配搭和系统物料（BOM）清单，能帮工程团队提高施工效率，至少缩短 15% 的安装工期。”																			
+																			
+																			
+二、 破局利器：小型商用与公共建筑（Small C&I / Municipal）案例\n美国的二级和三级分销商，手里的客户很多是社区、学校、小型零售商超。这三个案例能直接帮他们就近拓展业务																			
+4. 南城泰亚科技有限公司（1.6MW）    1.6MW Enterprise Tech & Light Industrial Hub 																			
+非常标准的一般企业屋顶。“我们的组件具有超高的功率密度（Power Density），在有限的屋顶面积内能帮业主压榨出最大的发电量，从而优化你们在美国当地申请中小型工商业免税额度（ITC）的综合投资收益（ROI）。”																			
+5. 江西陈氏科技 / Chengda（均为 1.2MW）    1.2MW Commercial Office & Storage Complex 																			
+针对美国地方三级安装商（比如帮当地某些小超市、冷链仓储做项目的公司）。“1 MW 左右的项目是常规项目。我们的组件在低光照（Low-light Performance）和早晚弱光下的表现极佳，能帮业主大幅削减白天的峰值电费（Demand Charges）。” 																			
+6. 江西广亿/启晨/聚鑫/智慧星/南城百顺（5个整齐划一的 0.2MW-200kW 项目）      200 kW  Standard Educational Equipment & Community Buildings 																			
+美国大量的学校（Schools）、社区中心（Community Centers）、独立诊所屋顶都是 100kW-300kW的规模。 																			
+“我们有批量交付 200kW 社区/校园级项目的经验。对于三级安装商而言，这种小项目的资金周转要求高。我们可以提供更灵活的起订量（MOQ）和更敏捷的区域备货支持，全面减轻你们的压货资金压力。” 																			
+																			
+																			
+三、 跨界与高端场景：切入高溢价市场（Niche / High-Margin Markets）\n二三级代理商很喜欢做汽车4S店和具有储能溢价的项目，因为利润率远高于普通工厂。																			
+7. 宣城市宝骏汽车销售有限公司（0.8MW / 800kW）     800kW Premium Automotive 4S & Retail Center 																			
+在美国，车行（Auto Dealerships）常年灯火通明、空调大开，是非常优质的B端客群。“我们有给知名汽车连锁品牌交付的经验。针对这种对建筑美观度要求极高的商业综合体，我们的组件不仅效率高，而且外观设计和抗眩光能力优秀，能帮你们顺利拿下美国当地的高端商业车行客户。”																			
+8. 江西奥瑞森新能源（100kW / 215 kWh）     100kW / 215 kWh Smart C&I Solar + Storage Microgrid 																			
+“我们不仅卖组件，还具备 215 kWh 级别的商用储能集成经验。如果你们想在加州或东北部推广光储一体化项目，我们可以提供一站式的技术兼容与指导，帮你们从纯组件销售升级为‘高利润的光储方案商’。” 																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			
+																			

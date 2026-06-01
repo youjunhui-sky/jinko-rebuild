@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+const products = (await getCollection('products')).map(p=>p.data).sort((a,b)=>a.order-b.order);
+const groups = [
+  { id: 'standard-modules', label: 'Standard Modules', items: products.filter(p=>p.category==='standard-module') },
+  { id: 'custom-modules', label: 'Custom Modules', items: products.filter(p=>p.category==='custom-module') },
+];
+---
+<BaseLayout title="Solar Products | Callsun" description="Browse Callsun standard and custom solar modules for B2B distributors, dealers and EPC installers.">
+<Header slot="header" />
+<section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Products</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Solar module products</h1><p class="mt-4 text-lg text-jinko-mute max-w-3xl">Standard modules and custom modules structured for SEO, datasheets, certifications and B2B inquiry conversion.</p></div></section>
+{groups.map(group => <section id={group.id} class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6"><h2 class="text-3xl font-display font-extrabold">{group.label}</h2><ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{group.items.map(p=><li class="rounded-2xl bg-white border border-jinko-line shadow-card overflow-hidden"><a href={`/products/${p.slug}`}><img src={p.image} alt={p.imageAlt || p.name} class="aspect-[4/3] w-full object-cover" loading="lazy"/><div class="p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{p.model}</p><h3 class="mt-2 text-xl font-display font-bold">{p.name}</h3><p class="mt-2 text-sm text-jinko-mute">{p.tagline}</p><p class="mt-4 text-jinko font-semibold">View specs →</p></div></a></li>)}</ul></div></section>)}
+<Footer slot="footer" />
+</BaseLayout>

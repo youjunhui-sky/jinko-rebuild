@@ -4,100 +4,57 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import { SITE } from '@/data/site';
 ---
-<BaseLayout
-  title="Contact Sales — Get a Custom Quote | Jinko US"
-  description="Get a custom quote for Jinko EAGLE® modules and EAGLE Storage® batteries. Local U.S. team responds within 1 business day. Sales, technical support, and partnership inquiries welcome."
->
+<BaseLayout title="Contact Callsun — Request a Solar Product Quote" description="Request a quote for Callsun solar modules, off-grid systems and solar-plus-storage packages. Form includes UTM and source tracking placeholders for future CRM integration.">
   <Header slot="header" />
-
   <section class="py-16 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">We respond within 1 business day</p>
-      <h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Talk to a Jinko Engineer</h1>
-      <p class="mt-3 text-jinko-mute text-lg max-w-2xl">
-        Local U.S. team. Custom system design. Quote within 1 business day.
-      </p>
+      <p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">B2B Inquiry</p>
+      <h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Request a Callsun quote</h1>
+      <p class="mt-3 text-jinko-mute text-lg max-w-2xl">Tell us your market, project size and target application. CRM integration is reserved for Phase 2; this form is ready for source tracking and conversion events.</p>
     </div>
   </section>
 
   <section class="py-14">
     <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[2fr_1fr] gap-10">
-      <!-- 表单 (静态 form — 待接 Web3Forms/Formspree) -->
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
+      <form action="#" method="POST" data-inquiry-form class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
         <div class="grid sm:grid-cols-2 gap-5">
-          <label class="block">
-            <span class="text-sm font-semibold text-jinko-ink">Full Name *</span>
-            <input type="text" name="name" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" />
-          </label>
-          <label class="block">
-            <span class="text-sm font-semibold text-jinko-ink">Company</span>
-            <input type="text" name="company" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" />
-          </label>
-          <label class="block">
-            <span class="text-sm font-semibold text-jinko-ink">Email *</span>
-            <input type="email" name="email" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" />
-          </label>
-          <label class="block">
-            <span class="text-sm font-semibold text-jinko-ink">Phone</span>
-            <input type="tel" name="phone" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" />
-          </label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Full Name *</span><input type="text" name="name" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Company *</span><input type="text" name="company" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Email *</span><input type="email" name="email" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Phone / WhatsApp</span><input type="text" name="phone" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
         </div>
-        <label class="block">
-          <span class="text-sm font-semibold text-jinko-ink">Project Type *</span>
-          <select name="project_type" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none bg-white">
-            <option value="">— Select —</option>
-            <option>Utility-Scale Solar (&gt; 5 MW)</option>
-            <option>Commercial &amp; Industrial</option>
-            <option>Residential</option>
-            <option>Battery Storage Only</option>
-            <option>Distribution / Installer Partnership</option>
-            <option>Other</option>
-          </select>
-        </label>
-        <label class="block">
-          <span class="text-sm font-semibold text-jinko-ink">Project Size (kW or MW)</span>
-          <input type="text" name="size" placeholder="e.g. 100 MW, 8 kW" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" />
-        </label>
-        <label class="block">
-          <span class="text-sm font-semibold text-jinko-ink">Message *</span>
-          <textarea name="message" required rows="5" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none"></textarea>
-        </label>
-        <!-- Honeypot 反垃圾 -->
+        <div class="grid sm:grid-cols-2 gap-5">
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Inquiry Type *</span><select name="inquiry_type" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none bg-white"><option value="">Select</option><option>Solar Modules</option><option>Grid-Tied System</option><option>Off-Grid System</option><option>Solar + Storage</option><option>Distributor / Dealer Partnership</option></select></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Target Market</span><input type="text" name="market" placeholder="e.g. California, Texas, Mexico" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+        </div>
+        <label class="block"><span class="text-sm font-semibold text-jinko-ink">Project Size / Product Quantity</span><input type="text" name="size" placeholder="e.g. 500kW rooftop, 1 container of 580W modules" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+        <label class="block"><span class="text-sm font-semibold text-jinko-ink">Message *</span><textarea name="message" required rows="5" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none"></textarea></label>
+        <input type="hidden" name="utm_source" data-utm="utm_source" />
+        <input type="hidden" name="utm_medium" data-utm="utm_medium" />
+        <input type="hidden" name="utm_campaign" data-utm="utm_campaign" />
+        <input type="hidden" name="referrer" data-referrer />
+        <input type="hidden" name="landing_page" data-landing-page />
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" />
-        <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">
-          Send Inquiry
-        </button>
-        <p class="text-xs text-jinko-mute">
-          ⚠️ 表单后端尚未配置 (action=YOUR_FORM_ID). 接 Formspree/Web3Forms 后即可收邮件.
-        </p>
+        <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">Send Inquiry</button>
+        <p class="text-xs text-jinko-mute">Current phase: submit endpoint is reserved. Later this can connect to HubSpot, Feishu Bitable or Cloudflare D1.</p>
       </form>
 
-      <!-- 联系信息 -->
       <aside class="space-y-5">
-        <div class="rounded-2xl bg-jinko text-white p-7 shadow-card">
-          <p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">Direct Contact</p>
-          <p class="mt-3 text-sm">📧 <a href={`mailto:${SITE.organization.contact.sales}`} class="hover:underline">{SITE.organization.contact.sales}</a></p>
-          <p class="mt-1 text-sm">📞 <a href={`tel:${SITE.organization.contact.phone}`} class="hover:underline">{SITE.organization.contact.phone}</a></p>
-          <p class="mt-3 text-sky-100 text-sm">
-            {SITE.organization.hqAddress.street}<br />
-            {SITE.organization.hqAddress.city}, {SITE.organization.hqAddress.region} {SITE.organization.hqAddress.postal}
-          </p>
-        </div>
-
-        <div class="rounded-2xl bg-white border border-jinko-line p-7 shadow-card">
-          <p class="text-xs uppercase tracking-widest font-bold text-jinko-mute">Looking for a homeowner installer?</p>
-          <p class="mt-3 text-jinko-ink">For residential systems, your fastest path is to connect with a local installer.</p>
-          <a href="/installer-finder" class="mt-4 inline-flex items-center text-jinko font-semibold hover:underline">Find an installer near you →</a>
-        </div>
-
-        <div class="rounded-2xl bg-white border border-jinko-line p-7 shadow-card">
-          <p class="text-xs uppercase tracking-widest font-bold text-jinko-mute">Warranty Support</p>
-          <p class="mt-3 text-jinko-ink">For existing customers needing warranty support.</p>
-          <a href="/warranty" class="mt-4 inline-flex items-center text-jinko font-semibold hover:underline">Warranty center →</a>
-        </div>
+        <div class="rounded-2xl bg-jinko text-white p-7 shadow-card"><p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">Direct Contact</p><p class="mt-3 text-sm">📧 <a href={`mailto:${SITE.organization.contact.sales}`} data-track-click="email_click" class="hover:underline">{SITE.organization.contact.sales}</a></p><p class="mt-3 text-sky-100 text-sm">Official phone, WhatsApp, LinkedIn and TikTok will be added after the customer provides final contact information.</p></div>
+        <div class="rounded-2xl bg-white border border-jinko-line p-7 shadow-card"><p class="text-xs uppercase tracking-widest font-bold text-jinko-mute">Conversion events reserved</p><ul class="mt-3 text-sm text-jinko-mute space-y-2"><li>Contact Form Submit</li><li>RFQ Submit</li><li>Email Click</li><li>WhatsApp Click</li><li>Product Inquiry Button</li></ul></div>
       </aside>
     </div>
   </section>
-
   <Footer slot="footer" />
 </BaseLayout>
+<script>
+  const params = new URLSearchParams(location.search);
+  document.querySelectorAll('[data-utm]').forEach((input) => { input.value = params.get(input.dataset.utm) || ''; });
+  const ref = document.querySelector('[data-referrer]'); if (ref) ref.value = document.referrer || '';
+  const landing = document.querySelector('[data-landing-page]'); if (landing) landing.value = location.href;
+  document.querySelector('[data-inquiry-form]')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    window.callsunTrack?.('contact_form_submit', { form: 'contact', path: location.pathname });
+    alert('Inquiry endpoint is reserved for the next CRM phase.');
+  });
+</script>

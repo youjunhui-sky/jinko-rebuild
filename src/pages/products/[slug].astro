@@ -3,120 +3,20 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import ContactCTA from '@/components/ContactCTA.astro';
 import { SITE } from '@/data/site';
-import { slugify } from '@/lib/slugify';
-import { ogForProduct } from '@/lib/og';
-
-export async function getStaticPaths() {
-  const products = await getCollection('products');
-  return products.map((p) => ({
-    params: { slug: slugify(p.data.name) },
-    props: { product: p.data },
-  }));
-}
-
+export async function getStaticPaths() { const products = await getCollection('products'); return products.map(p=>({ params:{slug:p.data.slug}, props:{product:p.data} })); }
 const { product } = Astro.props;
-
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: product.name,
-  description: product.description,
-  brand: { '@type': 'Brand', name: 'Jinko' },
-  manufacturer: { '@type': 'Organization', name: SITE.organization.legalName },
-  category: product.family === 'eagle-storage' ? 'Battery Storage' : 'Solar Panel',
-  image: new URL(product.image, SITE.domain).href,
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'USD',
-    availability: 'https://schema.org/InStock',
-    seller: { '@type': 'Organization', name: SITE.organization.legalName },
-  },
-};
-
-const breadcrumb = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.domain },
-    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE.domain}/eagle-modules` },
-    { '@type': 'ListItem', position: 3, name: product.name },
-  ],
-};
+const productSchema = { '@context':'https://schema.org', '@type':'Product', name: product.name, description: product.description, brand:{'@type':'Brand', name:'Callsun'}, manufacturer:{'@type':'Organization', name:SITE.organization.legalName}, category: product.category, image: new URL(product.image, SITE.domain).href };
+const groups = product.specs.reduce((acc, spec) => { const g = spec.group || 'General'; (acc[g] ||= []).push(spec); return acc; }, {});
 ---
-<BaseLayout
-  title={`${product.name} — ${product.tagline} | Jinko US`}
-  description={product.description}
-  ogImage={ogForProduct(product.name)}
-  schema={[productSchema, breadcrumb]}
->
-  <Header slot="header" />
-
-  <article class="max-w-content mx-auto px-4 lg:px-6 py-14">
-    <nav class="text-sm text-jinko-mute mb-6">
-      <a href="/" class="hover:text-jinko">Home</a> /
-      <a href="/eagle-modules" class="hover:text-jinko">Products</a> /
-      <span class="text-jinko-ink">{product.name}</span>
-    </nav>
-
-    <div class="grid lg:grid-cols-2 gap-12 items-start">
-      <div class="aspect-square rounded-2xl bg-jinko-bg overflow-hidden flex items-center justify-center">
-        {product.image
-          ? <img src={product.image} alt={`${product.name} — ${product.tagline}`} loading="eager" decoding="async" width="600" height="600" class="w-full h-full object-contain p-4" />
-          : <span class="text-jinko-mute text-sm">[{product.name} image]</span>
-        }
-      </div>
-
-      <div>
-        <p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">{product.tech}</p>
-        <h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">{product.name}</h1>
-        <p class="mt-3 text-xl text-jinko-mute">{product.tagline}</p>
-        <p class="mt-6 leading-relaxed text-jinko-ink">{product.description}</p>
-
-        <dl class="mt-8 grid grid-cols-2 gap-5">
-          {product.powerRangeW && (
-            <div>
-              <dt class="text-xs uppercase text-jinko-mute">Power Range</dt>
-              <dd class="text-2xl font-display font-bold">{product.powerRangeW[0]}–{product.powerRangeW[1]} W</dd>
-            </div>
-          )}
-          {product.efficiencyPct && (
-            <div>
-              <dt class="text-xs uppercase text-jinko-mute">Module Efficiency</dt>
-              <dd class="text-2xl font-display font-bold">{product.efficiencyPct}%</dd>
-            </div>
-          )}
-          {product.capacityRangeKWh && (
-            <div>
-              <dt class="text-xs uppercase text-jinko-mute">Capacity</dt>
-              <dd class="text-2xl font-display font-bold">{product.capacityRangeKWh[0]}–{product.capacityRangeKWh[1]} kWh</dd>
-            </div>
-          )}
-          {product.cycleLife && (
-            <div>
-              <dt class="text-xs uppercase text-jinko-mute">Cycle Life</dt>
-              <dd class="text-2xl font-display font-bold">{product.cycleLife.toLocaleString()}+</dd>
-            </div>
-          )}
-          <div class="col-span-2">
-            <dt class="text-xs uppercase text-jinko-mute">Warranty</dt>
-            <dd class="font-display font-bold">
-              {Object.entries(product.warrantyYears).map(([k, v]) => `${v}-Year ${k}`).join(' · ')}
-            </dd>
-          </div>
-        </dl>
-
-        <div class="mt-8 flex gap-3">
-          <a href="/contact" class="px-5 py-3 rounded-md bg-jinko text-white font-semibold">Request Datasheet</a>
-          <a href="/installer-finder" class="px-5 py-3 rounded-md ring-1 ring-jinko text-jinko font-semibold">Find Installer</a>
-        </div>
-
-        <p class="mt-6 text-xs text-jinko-mute">
-          Keywords: {product.keywords.join(' · ')}
-        </p>
-      </div>
-    </div>
-  </article>
-
-  <Footer slot="footer" />
+<BaseLayout title={product.seoTitle || `${product.name} | Callsun`} description={product.metaDescription || product.description} ogImage={product.ogImage || product.image} schema={productSchema} noindex={product.noindex}>
+<Header slot="header" />
+<article>
+<section class="py-14 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <a href="/products">Products</a> / <span>{product.name}</span></nav><div class="grid lg:grid-cols-2 gap-10 items-center"><div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{product.model} · {product.category.replace('-', ' ')}</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">{product.h1 || product.name}</h1><p class="mt-4 text-lg text-jinko-mute">{product.description}</p><div class="mt-6 flex gap-3"><a href="/contact" data-track-click="product_inquiry_button" data-product={product.slug} class="px-5 py-3 rounded-md bg-jinko text-white font-semibold">Request Quote</a><a href="#specs" class="px-5 py-3 rounded-md ring-1 ring-jinko text-jinko font-semibold">View Specs</a></div></div><img src={product.image} alt={product.imageAlt || product.name} class="rounded-2xl border border-jinko-line shadow-card bg-white w-full" width="600" height="450" /></div></div></section>
+<section id="specs" class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6 grid gap-8 lg:grid-cols-[1fr_2fr]"><div><h2 class="text-3xl font-display font-extrabold">Specifications</h2><p class="mt-3 text-jinko-mute">Editable in CMS. Datasheets and certificates can be added later.</p></div><div class="space-y-6">{Object.entries(groups).map(([group, specs]) => <div class="rounded-2xl border border-jinko-line overflow-hidden"><h3 class="bg-jinko-bg px-5 py-3 font-display font-bold">{group}</h3><dl>{specs.map(s=><div class="grid sm:grid-cols-2 gap-2 px-5 py-3 border-t border-jinko-line"><dt class="text-sm text-jinko-mute">{s.label}</dt><dd class="font-semibold">{s.value}</dd></div>)}</dl></div>)}</div></div></section>
+<section class="py-10 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><h2 class="text-2xl font-display font-extrabold">SEO keywords</h2><p class="mt-2 text-sm text-jinko-mute">{product.keywords.join(' · ')}</p></div></section>
+</article>
+<ContactCTA />
+<Footer slot="footer" />
 </BaseLayout>

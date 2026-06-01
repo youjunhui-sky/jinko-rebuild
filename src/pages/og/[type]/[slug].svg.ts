@@ -46,7 +46,7 @@ function renderSvg(title: string, eyebrow: string, themeKey: keyof typeof THEMES
   ${lines.map((line, i) =>
     `<text x="80" y="${230 + i * 78}" font-family="Manrope,sans-serif" font-size="64" font-weight="800" fill="#fff">${esc(line)}</text>`
   ).join('\n  ')}
-  <text x="80" y="560" font-family="Inter,sans-serif" font-size="26" font-weight="600" fill="#A5C8E8">jinko-rebuild.youjh120608.workers.dev</text>
+  <text x="80" y="560" font-family="Inter,sans-serif" font-size="26" font-weight="600" fill="#A5C8E8">Callsun</text>
 </svg>`;
 }
 
@@ -74,7 +74,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // 默认 OG
   paths.push({
     params: { type: 'default', slug: 'home' },
-    props: { title: 'U.S. Solar Panels + Battery Storage', eyebrow: 'NYSE: JKS · Bloomberg Tier 1', theme: 'default' },
+    props: { title: 'Solar Modules + Storage Packages', eyebrow: 'Callsun B2B Solar', theme: 'default' },
   });
 
   return paths;

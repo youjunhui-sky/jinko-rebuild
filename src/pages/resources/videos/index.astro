@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+---
+<BaseLayout title="Videos | Callsun Resources" description="Callsun video center reserved for installation guides, project cases and product walkthroughs.">
+  <Header slot="header" />
+  <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Resources" title="Video center" description="Reserved for future installation walkthroughs, project case videos and product demonstrations. Video watch events are already part of the analytics plan." /></div></section>
+  <section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6 grid gap-6 md:grid-cols-3">{['Installation guides', 'Project case videos', 'Product walkthroughs'].map((t) => <div class="rounded-2xl border border-dashed border-jinko-line bg-white p-8 text-center"><div class="mx-auto w-16 h-16 rounded-full bg-jinko-bg flex items-center justify-center text-2xl">▶</div><h2 class="mt-5 text-xl font-display font-bold">{t}</h2><p class="mt-2 text-sm text-jinko-mute">Placeholder section. Add videos after customer provides assets.</p></div>)}</div></section>
+  <Footer slot="footer" />
+</BaseLayout>

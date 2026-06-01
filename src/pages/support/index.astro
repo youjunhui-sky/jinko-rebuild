@@ -1,0 +1,8 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+const pages=(await getCollection('supportPages')).map(p=>p.data).sort((a,b)=>a.order-b.order);
+---
+<BaseLayout title="Support & Service | Callsun" description="Callsun support pages for warranty, payment, logistics, technical support and after-sales service."><Header slot="header" /><section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Support</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Support & service</h1><p class="mt-4 text-lg text-jinko-mute max-w-3xl">Support pages are CMS-editable and ready for warranty, logistics, after-sales and channel policies.</p></div></section><section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6 grid gap-6 md:grid-cols-3">{pages.map(p=><a href={`/support/${p.slug}`} class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><h2 class="text-xl font-display font-bold">{p.title}</h2><p class="mt-2 text-sm text-jinko-mute">{p.summary}</p><p class="mt-5 text-jinko font-semibold">Read more →</p></a>)}</div></section><Footer slot="footer" /></BaseLayout>

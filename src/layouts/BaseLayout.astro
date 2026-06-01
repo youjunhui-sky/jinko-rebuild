@@ -1,5 +1,6 @@
 ---
 import { SITE } from '@/data/site';
+import CookieConsent from '@/components/CookieConsent.astro';
 
 interface Props {
   title?: string;
@@ -56,7 +57,7 @@ const defaultOrg = {
 const schemas = [defaultOrg, ...(Array.isArray(schema) ? schema : schema ? [schema] : [])];
 ---
 <!doctype html>
-<html lang="en-US" class="scroll-smooth">
+<html lang="en-US" class="scroll-smooth" data-gtm-id={SITE.analytics.gtmId}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -129,6 +130,13 @@ const schemas = [defaultOrg, ...(Array.isArray(schema) ? schema : schema ? [sche
     <slot name="head" />
   </head>
   <body class="bg-white text-jinko-ink font-sans antialiased">
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.callsunTrack = function(event, payload) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event, ...(payload || {}) });
+      };
+    </script>
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-jinko focus:text-white focus:px-4 focus:py-2 focus:rounded">
       Skip to content
     </a>
@@ -138,5 +146,24 @@ const schemas = [defaultOrg, ...(Array.isArray(schema) ? schema : schema ? [sche
       <slot />
     </main>
     <slot name="footer" />
+    <CookieConsent />
+    <script is:inline>
+      (function () {
+        const gtmId = document.documentElement.dataset.gtmId;
+        if (!gtmId) return;
+        const load = function () {
+          if (window.__callsunGtmLoaded) return;
+          window.__callsunGtmLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          const s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(gtmId);
+          document.head.appendChild(s);
+        };
+        if (localStorage.getItem('callsun_cookie_consent') === 'accepted') load();
+        window.addEventListener('callsun:analytics-consent', load);
+      })();
+    </script>
   </body>
 </html>

@@ -6,47 +6,33 @@ const year = new Date().getFullYear();
 <footer class="bg-jinko-ink text-slate-300 mt-24">
   <div class="max-w-content mx-auto px-4 lg:px-6 py-14 grid gap-10 lg:grid-cols-4">
     <div>
-      <div class="font-display font-extrabold text-white text-2xl">Jinko<span class="text-jinko-accent">·</span>US</div>
-      <p class="mt-3 text-sm text-slate-400 leading-relaxed">
-        {SITE.organization.legalName}<br />
-        NYSE: {SITE.organization.nyseTicker} · Founded {SITE.organization.foundingDate}
+      <img src="/logo.svg" alt="Callsun" width="170" height="46" class="h-10 w-auto bg-white rounded-md px-2 py-1" />
+      <p class="mt-4 text-sm text-slate-400 leading-relaxed">
+        Solar modules, off-grid systems and solar-plus-storage packages for B2B distributors, dealers and EPC installers.
       </p>
-      <p class="mt-3 text-sm text-slate-400">
-        🏭 Manufacturing in {SITE.organization.factory.city}, {SITE.organization.factory.region} since {SITE.organization.factory.since}
-      </p>
+      <p class="mt-3 text-sm text-slate-400">Built for SEO, Google Ads landing pages and B2B inquiry conversion.</p>
     </div>
 
     <nav aria-label="Footer" class="text-sm">
-      <h2 class="text-white font-semibold mb-3">Products & Resources</h2>
+      <h2 class="text-white font-semibold mb-3">Site</h2>
       <ul class="space-y-2">
-        {NAV.map((n) => (
-          <li><a href={n.href} class="hover:text-white transition-colors">{n.label}</a></li>
-        ))}
+        {NAV.map((n) => <li><a href={n.href} class="hover:text-white transition-colors">{n.label}</a></li>)}
       </ul>
     </nav>
 
     <div class="text-sm">
       <h2 class="text-white font-semibold mb-3">Contact Sales</h2>
       <ul class="space-y-2">
-        <li>📧 <a href={`mailto:${SITE.organization.contact.sales}`} class="hover:text-white">{SITE.organization.contact.sales}</a></li>
-        <li>📞 <a href={`tel:${SITE.organization.contact.phone}`} class="hover:text-white">{SITE.organization.contact.phone}</a></li>
-        <li class="text-slate-400">{SITE.organization.hqAddress.street}<br />
-          {SITE.organization.hqAddress.city}, {SITE.organization.hqAddress.region} {SITE.organization.hqAddress.postal}
-        </li>
+        <li>📧 <a href={`mailto:${SITE.organization.contact.sales}`} data-track-click="email_click" class="hover:text-white">{SITE.organization.contact.sales}</a></li>
+        {SITE.organization.contact.phone && <li>📞 <a href={`tel:${SITE.organization.contact.phone}`} data-track-click="phone_click" class="hover:text-white">{SITE.organization.contact.phone}</a></li>}
+        {SITE.organization.contact.whatsapp && <li>💬 <a href={SITE.organization.contact.whatsapp} data-track-click="whatsapp_click" class="hover:text-white">WhatsApp</a></li>}
       </ul>
     </div>
 
     <div class="text-sm">
-      <h2 class="text-white font-semibold mb-3">Stay Updated</h2>
-      <p class="text-slate-400 mb-3">Quarterly industry insights. No spam.</p>
-      <form action="/api/subscribe" method="post" class="flex gap-2">
-        <label class="sr-only" for="email">Email</label>
-        <input id="email" type="email" name="email" required placeholder="you@company.com"
-               class="flex-1 px-3 py-2 rounded-md bg-slate-800 text-white text-sm border border-slate-700 focus:border-jinko-accent outline-none" />
-        <button class="px-4 py-2 rounded-md bg-jinko-accent text-jinko-ink font-semibold text-sm hover:opacity-90">
-          Subscribe
-        </button>
-      </form>
+      <h2 class="text-white font-semibold mb-3">Inquiry Ready</h2>
+      <p class="text-slate-400 mb-3">Tell us your market, system size and target application. We will help match modules, storage and standard packages.</p>
+      <a href="/contact" data-track-click="inquiry_cta" data-track-location="footer" class="inline-flex px-5 py-3 rounded-md bg-jinko-accent text-jinko-ink font-semibold text-sm hover:opacity-90">Request a Quote</a>
     </div>
   </div>
 

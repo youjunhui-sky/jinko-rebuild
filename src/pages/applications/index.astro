@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+const apps=(await getCollection('applications')).map(a=>a.data).sort((a,b)=>a.order-b.order);
+---
+<BaseLayout title="Applications | Callsun" description="Callsun solar applications for commercial rooftops, home energy storage and off-grid remote power.">
+<Header slot="header" />
+<section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Applications</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Application scenarios</h1><p class="mt-4 text-lg text-jinko-mute max-w-3xl">Scenario pages connect SEO traffic to recommended products, solutions, case references and inquiry CTAs.</p></div></section>
+<section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6"><ul class="grid gap-6 md:grid-cols-3">{apps.map(a=><li class="rounded-2xl bg-white border border-jinko-line shadow-card overflow-hidden"><a href={`/applications/${a.slug}`}><img src={a.image} alt={a.title} class="aspect-[16/10] object-cover"/><div class="p-6"><h2 class="text-xl font-display font-bold">{a.title}</h2><p class="mt-2 text-sm text-jinko-mute">{a.summary}</p><p class="mt-4 text-jinko font-semibold">View application →</p></div></a></li>)}</ul></div></section>
+<Footer slot="footer" />
+</BaseLayout>

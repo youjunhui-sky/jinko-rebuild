@@ -1,91 +1,156 @@
-// Astro Content Collections 配置
-// 让 Decap CMS 能够直接编辑这些文件，类型安全
 import { defineCollection, z } from 'astro:content';
 
-// 📦 A. 产品 (3 款 EAGLE 模块/储能)
+const seoFields = {
+  seoTitle: z.string().optional(),
+  metaDescription: z.string().optional(),
+  h1: z.string().optional(),
+  keywords: z.array(z.string()).default([]),
+  canonical: z.string().optional(),
+  ogImage: z.string().optional(),
+  noindex: z.boolean().default(false),
+};
+
+const specItem = z.object({
+  label: z.string(),
+  value: z.string(),
+  group: z.string().optional(),
+});
+
 const products = defineCollection({
   type: 'data',
   schema: z.object({
     name: z.string(),
-    family: z.enum(['eagle-modules', 'eagle-storage']),
+    slug: z.string(),
+    category: z.enum(['standard-module', 'custom-module']),
+    model: z.string().optional(),
     tagline: z.string(),
     tech: z.string(),
-    powerRangeW: z.array(z.number()).length(2).optional(),
-    capacityRangeKWh: z.array(z.number()).length(2).optional(),
-    efficiencyPct: z.number().optional(),
-    cellCount: z.number().optional(),
-    cycleLife: z.number().optional(),
-    warrantyYears: z.record(z.string(), z.number()),
-    applications: z.array(z.string()),
-    image: z.string(),
+    certifications: z.array(z.string()).default([]),
+    image: z.string().default('/placeholders/solar-panel.svg'),
+    imageAlt: z.string().optional(),
     description: z.string(),
-    keywords: z.array(z.string()),
+    specs: z.array(specItem).default([]),
+    applications: z.array(z.string()).default([]),
+    downloads: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
     order: z.number().default(0),
+    featured: z.boolean().default(false),
+    ...seoFields,
   }),
 });
 
-// 📰 B. 新闻 / 博客
+const solutions = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    type: z.enum(['grid-tied', 'off-grid']),
+    capacityLabel: z.string(),
+    pvCapacity: z.string().optional(),
+    batteryCapacity: z.string().optional(),
+    image: z.string().default('/placeholders/battery-system.svg'),
+    imageAlt: z.string().optional(),
+    summary: z.string(),
+    components: z.array(z.object({ category: z.string(), name: z.string(), quantity: z.string().optional(), note: z.string().optional() })).default([]),
+    useCases: z.array(z.string()).default([]),
+    relatedProducts: z.array(z.string()).default([]),
+    order: z.number().default(0),
+    featured: z.boolean().default(false),
+    ...seoFields,
+  }),
+});
+
+const applications = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    summary: z.string(),
+    image: z.string().default('/placeholders/case-rooftop.svg'),
+    recommendedSolutions: z.array(z.string()).default([]),
+    relatedProducts: z.array(z.string()).default([]),
+    order: z.number().default(0),
+    ...seoFields,
+  }),
+});
+
 const news = defineCollection({
-  type: 'content', // Markdown / MDX
+  type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string(),
     publishDate: z.coerce.date(),
-    author: z.string().default('Jinko US'),
+    author: z.string().default('Callsun'),
     cover: z.string().optional(),
-    category: z.enum(['Press', 'Product', 'Industry', 'Sustainability']),
+    category: z.enum(['Press', 'Product', 'Industry', 'Technical', 'Sustainability']),
+    tags: z.array(z.string()).default([]),
+    relatedPosts: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
+    ...seoFields,
   }),
 });
 
-// 📊 E. 首页 KPI 数据
-const stats = defineCollection({
+const downloads = defineCollection({
   type: 'data',
   schema: z.object({
-    items: z.array(
-      z.object({
-        label: z.string(),
-        value: z.string(),
-        unit: z.string().default(''),
-        order: z.number().default(0),
-      })
-    ),
-  }),
-});
-
-// 🤝 G. 安装商目录
-const installers = defineCollection({
-  type: 'data',
-  schema: z.object({
-    name: z.string(),
-    state: z.string().length(2),
-    type: z.enum(['Residential', 'C&I', 'Utility', 'Residential + C&I']),
-    website: z.string().url().or(z.literal('')),
-    phone: z.string().optional(),
-    featured: z.boolean().default(false),
+    title: z.string(),
+    fileUrl: z.string(),
+    category: z.enum(['Datasheet', 'Manual', 'Certificate', 'Guide']),
+    relatedProduct: z.string().optional(),
     order: z.number().default(0),
+    ...seoFields,
   }),
 });
 
-// 🏗️ F. 项目案例 (Case Studies)
 const cases = defineCollection({
   type: 'data',
   schema: z.object({
     title: z.string(),
-    client: z.string(),
+    slug: z.string(),
+    client: z.string().optional(),
     location: z.string(),
-    capacityMW: z.number().optional(),
+    region: z.enum(['Domestic', 'Overseas']).default('Domestic'),
+    industry: z.string().optional(),
+    capacityKW: z.number().optional(),
     capacityMWh: z.number().optional(),
-    completedAt: z.coerce.date(),
-    application: z.enum(['Utility', 'C&I', 'Residential']),
-    modules: z.string().optional(),         // e.g. "500,000 × EAGLE® G7"
-    coverImage: z.string(),
+    segment: z.enum(['Small C&I', 'Mid-Scale C&I', 'Large C&I', 'Solar + Storage']).default('Mid-Scale C&I'),
+    completedAt: z.coerce.date().optional(),
+    application: z.enum(['Commercial & Industrial', 'Residential', 'Municipal', 'Solar + Storage']),
+    coverImage: z.string().default('/placeholders/case-rooftop.svg'),
     gallery: z.array(z.string()).default([]),
     description: z.string(),
+    salesAngle: z.string().optional(),
+    relatedProducts: z.array(z.string()).default([]),
+    relatedSolutions: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     order: z.number().default(0),
+    ...seoFields,
   }),
 });
 
-export const collections = { products, news, stats, installers, cases };
+const supportPages = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    summary: z.string(),
+    body: z.string(),
+    order: z.number().default(0),
+    ...seoFields,
+  }),
+});
+
+const landingPages = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    audience: z.string(),
+    campaign: z.string().optional(),
+    ctaLabel: z.string().default('Request a Quote'),
+    draft: z.boolean().default(true),
+    ...seoFields,
+  }),
+});
+
+export const collections = { products, solutions, applications, news, downloads, cases, supportPages, landingPages };
