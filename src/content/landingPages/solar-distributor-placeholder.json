@@ -1,11 +1,54 @@
 {
-  "title": "Solar Distributor Landing Page Placeholder",
+  "title": "Solar Distributor Landing Page",
   "slug": "solar-distributor",
   "audience": "Solar distributors, dealers and EPC installers",
-  "campaign": "reserved",
-  "ctaLabel": "Request a Quote",
-  "draft": true,
+  "campaign": "Google Search - Solar Distributor",
+  "adGroup": "B2B Solar Modules",
+  "targetKeywords": ["solar distributor", "solar panel supplier for installers", "B2B solar modules", "commercial solar panel supplier"],
+  "hero": {
+    "eyebrow": "Google Ads Landing Page",
+    "title": "Solar modules and storage packages for distributor channels.",
+    "description": "A focused landing page for high-intent Google Ads traffic. It connects product ranges, system packages, proof points and RFQ tracking into one conversion path.",
+    "image": "/placeholders/battery-system.svg",
+    "imageAlt": "Solar modules and storage system package for distributors",
+    "primaryCtaLabel": "Request Distributor Pricing",
+    "primaryCtaHref": "#landing-form",
+    "secondaryCtaLabel": "View Product Range",
+    "secondaryCtaHref": "/products"
+  },
+  "trustBadges": ["180W-620W module range", "Grid-tied and off-grid packages", "Datasheet-ready product pages", "UTM source tracking reserved"],
+  "painPoints": [
+    { "title": "Hard to compare product families", "description": "The page highlights product ranges, specs and downloads so buyers can quickly qualify fit." },
+    { "title": "Project conversations lack standard packages", "description": "Recommended solutions give sales teams a repeatable BOM reference for ads and follow-up." },
+    { "title": "Ad leads need source tracking", "description": "The form reserves UTM, referrer and landing page fields for CRM integration." }
+  ],
+  "valueProps": [
+    { "title": "Product + system path", "description": "Move visitors from modules to full system packages without sending them through a generic homepage." },
+    { "title": "Campaign-specific messaging", "description": "Each ad group can have its own landing page, headline, CTA and noindex/canonical setting." },
+    { "title": "Conversion event ready", "description": "Landing form submit, CTA click and download events are prepared for GTM/GA4/Google Ads." }
+  ],
+  "offerCards": [
+    { "title": "Standard solar modules", "description": "450W, 580W and 620W module families for commercial and distributor conversations.", "linkLabel": "Explore products", "linkHref": "/products" },
+    { "title": "Off-grid packages", "description": "6.5kW and 10kW references for remote power, home storage and small commercial needs.", "linkLabel": "View off-grid systems", "linkHref": "/solutions" },
+    { "title": "Grid-tied storage", "description": "12kW / 28kWh reference package for sales discussion and BOM qualification.", "linkLabel": "View grid-tied system", "linkHref": "/solutions/12kw-grid-tied-solar-storage-system" }
+  ],
+  "recommendedProducts": ["450w-double-glass-solar-module", "580w-n-type-solar-module", "620w-n-type-solar-module"],
+  "recommendedSolutions": ["12kw-grid-tied-solar-storage-system", "10kw-off-grid-solar-system"],
+  "relatedCases": ["800kw-premium-automotive-retail-center", "100kw-215kwh-solar-storage-microgrid"],
+  "downloads": [
+    { "label": "Product catalog placeholder", "url": "/resources/downloads" },
+    { "label": "Distributor datasheet package placeholder", "url": "/resources/downloads" }
+  ],
+  "formTitle": "Request distributor pricing",
+  "formDescription": "Tell us your target market, product range and project type. The endpoint is reserved; later it can connect to HubSpot, Feishu Bitable or Cloudflare D1.",
+  "thankYouMessage": "Landing page inquiry endpoint is reserved for the next CRM phase.",
+  "ctaLabel": "Request Distributor Pricing",
+  "draft": false,
   "seoTitle": "Solar Distributor Landing Page | Callsun",
-  "metaDescription": "Placeholder SEM landing page for future Google Ads campaigns.",
-  "keywords": ["solar distributor", "B2B solar modules"]
+  "metaDescription": "Google Ads landing page for solar distributors, dealers and EPC installers looking for B2B solar modules and storage packages.",
+  "h1": "Solar modules and storage packages for distributor channels.",
+  "keywords": ["solar distributor", "B2B solar modules", "solar panel supplier for installers"],
+  "canonical": "/landing/solar-distributor",
+  "ogImage": "/placeholders/battery-system.svg",
+  "noindex": true
 }

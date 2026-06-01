@@ -1,0 +1,113 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import CardGrid from '@/components/CardGrid.astro';
+import { SITE } from '@/data/site';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('landingPages', page => !page.data.draft);
+  return pages.map((page) => ({ params: { slug: page.data.slug }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const [products, solutions, cases] = await Promise.all([
+  getCollection('products'),
+  getCollection('solutions'),
+  getCollection('cases'),
+]);
+const productCards = products
+  .filter((item) => page.data.recommendedProducts.includes(item.data.slug))
+  .map((item) => ({ title: item.data.name, description: item.data.tagline, href: `/products/${item.data.slug}`, eyebrow: item.data.model || item.data.category, image: item.data.image }));
+const solutionCards = solutions
+  .filter((item) => page.data.recommendedSolutions.includes(item.data.slug))
+  .map((item) => ({ title: item.data.title, description: item.data.summary, href: `/solutions/${item.data.slug}`, eyebrow: item.data.type, image: item.data.image, metric: item.data.capacityLabel }));
+const caseCards = cases
+  .filter((item) => page.data.relatedCases.includes(item.data.slug))
+  .map((item) => ({ title: item.data.title, description: item.data.salesAngle || item.data.description, href: `/cases/${item.data.slug}`, eyebrow: item.data.segment, image: item.data.coverImage, metric: item.data.capacityKW ? `${item.data.capacityKW >= 1000 ? item.data.capacityKW / 1000 + 'MW' : item.data.capacityKW + 'kW'}` : undefined }));
+
+const title = page.data.seoTitle || `${page.data.title} | Callsun`;
+const description = page.data.metaDescription || page.data.hero.description;
+const h1 = page.data.h1 || page.data.hero.title;
+const canonical = page.data.canonical || `/landing/${page.data.slug}`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: h1,
+  description,
+  url: new URL(canonical, SITE.domain).href,
+  audience: page.data.audience,
+  isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.domain },
+};
+---
+<BaseLayout title={title} description={description} canonical={canonical} ogImage={page.data.ogImage || page.data.hero.image || undefined} noindex={page.data.noindex} keywords={page.data.keywords.length ? page.data.keywords : page.data.targetKeywords} schema={schema}>
+  <Header slot="header" />
+
+  <section class="relative overflow-hidden bg-gradient-to-br from-jinko-dark via-jinko to-emerald-700 text-white">
+    <div class="absolute inset-0 opacity-20" style="background-image:linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px);background-size:52px 52px;"></div>
+    <div class="relative max-w-content mx-auto px-4 lg:px-6 py-18 lg:py-24 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+      <div>
+        <p class="inline-flex text-xs uppercase tracking-widest font-bold text-jinko-accent bg-white/10 px-3 py-1.5 rounded-full ring-1 ring-white/15">{page.data.hero.eyebrow || page.data.campaign || 'Landing Page'}</p>
+        <h1 class="mt-6 text-4xl lg:text-6xl font-display font-extrabold leading-tight">{h1}</h1>
+        <p class="mt-6 text-lg text-sky-100 max-w-3xl leading-relaxed">{page.data.hero.description}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={page.data.hero.primaryCtaHref} data-track-click="landing_cta_click" data-campaign={page.data.campaign} data-landing-page={page.data.slug} class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-bold hover:opacity-90">{page.data.hero.primaryCtaLabel}</a>
+          {page.data.hero.secondaryCtaHref && <a href={page.data.hero.secondaryCtaHref} class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20 hover:bg-white/15">{page.data.hero.secondaryCtaLabel}</a>}
+        </div>
+        {page.data.trustBadges.length > 0 && <div class="mt-8 flex flex-wrap gap-2">{page.data.trustBadges.map((badge) => <span class="rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1.5 text-sm text-sky-100">✓ {badge}</span>)}</div>}
+      </div>
+      <div class="rounded-[2rem] bg-white/10 ring-1 ring-white/20 p-4 shadow-2xl">
+        {page.data.hero.image ? <img src={page.data.hero.image} alt={page.data.hero.imageAlt || h1} class="rounded-[1.5rem] w-full object-cover" /> : <div class="rounded-[1.5rem] bg-white/10 min-h-[320px]"></div>}
+      </div>
+    </div>
+  </section>
+
+  {page.data.painPoints.length > 0 && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Campaign pain points</p><h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold">Make the ad click feel specific.</h2><div class="mt-8 grid gap-5 md:grid-cols-3">{page.data.painPoints.map((item) => <article class="rounded-2xl bg-white border border-jinko-line p-6 shadow-card"><h3 class="text-xl font-display font-bold">{item.title}</h3><p class="mt-3 text-jinko-mute">{item.description}</p></article>)}</div></div></section>}
+
+  {page.data.valueProps.length > 0 && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Why this offer</p><h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold">One page, one audience, one conversion path.</h2><div class="mt-8 grid gap-5 md:grid-cols-3">{page.data.valueProps.map((item) => <article class="rounded-2xl border border-jinko-line p-6"><h3 class="text-xl font-display font-bold">{item.title}</h3><p class="mt-3 text-jinko-mute">{item.description}</p></article>)}</div></div></section>}
+
+  {page.data.offerCards.length > 0 && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Offer match</p><h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold">Route paid traffic to the right product conversation.</h2><div class="mt-8 grid gap-5 md:grid-cols-3">{page.data.offerCards.map((item) => <article class="rounded-2xl bg-white border border-jinko-line p-6 shadow-card"><h3 class="text-xl font-display font-bold">{item.title}</h3><p class="mt-3 text-jinko-mute">{item.description}</p>{item.linkHref && <a href={item.linkHref} class="mt-4 inline-flex text-jinko font-semibold">{item.linkLabel || 'Learn more'} →</a>}</article>)}</div></div></section>}
+
+  {(productCards.length > 0 || solutionCards.length > 0 || caseCards.length > 0) && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6 space-y-12">
+    {productCards.length > 0 && <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Recommended products</p><h2 class="mt-2 text-3xl font-display font-extrabold">Products matched to this campaign</h2><div class="mt-8"><CardGrid items={productCards} columns="3" /></div></div>}
+    {solutionCards.length > 0 && <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Recommended solutions</p><h2 class="mt-2 text-3xl font-display font-extrabold">System packages for follow-up</h2><div class="mt-8"><CardGrid items={solutionCards} columns="3" /></div></div>}
+    {caseCards.length > 0 && <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Proof points</p><h2 class="mt-2 text-3xl font-display font-extrabold">Relevant references</h2><div class="mt-8"><CardGrid items={caseCards} columns="3" /></div></div>}
+  </div></section>}
+
+  <section id="landing-form" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1fr_1.1fr] gap-10 items-start">
+    <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">RFQ form</p><h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold">{page.data.formTitle}</h2>{page.data.formDescription && <p class="mt-4 text-jinko-mute text-lg">{page.data.formDescription}</p>}{page.data.downloads.length > 0 && <div class="mt-8 space-y-3">{page.data.downloads.map((d) => <a href={d.url} data-track-click="landing_download_click" data-landing-page={page.data.slug} class="block rounded-2xl bg-white border border-jinko-line p-5 font-semibold text-jinko hover:shadow-card">↓ {d.label}</a>)}</div>}</div>
+    <form action="#" method="POST" data-landing-form data-campaign={page.data.campaign} class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
+      <div class="grid sm:grid-cols-2 gap-5"><label class="block"><span class="text-sm font-semibold">Full Name *</span><input type="text" name="name" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label><label class="block"><span class="text-sm font-semibold">Company *</span><input type="text" name="company" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label><label class="block"><span class="text-sm font-semibold">Email *</span><input type="email" name="email" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label><label class="block"><span class="text-sm font-semibold">Phone / WhatsApp</span><input type="text" name="phone" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" /></label></div>
+      <label class="block"><span class="text-sm font-semibold">What are you looking for? *</span><select name="inquiry_type" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko bg-white"><option value="">Select</option><option>Solar modules</option><option>Grid-tied storage system</option><option>Off-grid solar system</option><option>Distributor partnership</option><option>OEM / custom module request</option></select></label>
+      <label class="block"><span class="text-sm font-semibold">Project / purchase details *</span><textarea name="message" required rows="5" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line outline-none focus:border-jinko" placeholder="Target market, product range, monthly volume, project size..."></textarea></label>
+      <input type="hidden" name="landing_page_slug" value={page.data.slug} />
+      <input type="hidden" name="campaign" value={page.data.campaign || ''} />
+      <input type="hidden" name="ad_group" value={page.data.adGroup || ''} />
+      <input type="hidden" name="utm_source" data-utm="utm_source" />
+      <input type="hidden" name="utm_medium" data-utm="utm_medium" />
+      <input type="hidden" name="utm_campaign" data-utm="utm_campaign" />
+      <input type="hidden" name="utm_term" data-utm="utm_term" />
+      <input type="hidden" name="utm_content" data-utm="utm_content" />
+      <input type="hidden" name="referrer" data-referrer />
+      <input type="hidden" name="landing_page" data-landing-page />
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" />
+      <button type="submit" class="w-full px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">{page.data.ctaLabel}</button>
+      <p class="text-xs text-jinko-mute">CRM endpoint reserved. UTM, campaign and source fields are already present.</p>
+    </form>
+  </div></section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+<script define:vars={{ landingSlug: page.data.slug, campaign: page.data.campaign || '', thankYouMessage: page.data.thankYouMessage }}>
+  const params = new URLSearchParams(location.search);
+  document.querySelectorAll('[data-utm]').forEach((input) => { input.value = params.get(input.dataset.utm) || ''; });
+  const ref = document.querySelector('[data-referrer]'); if (ref) ref.value = document.referrer || '';
+  const landing = document.querySelector('[data-landing-page]'); if (landing) landing.value = location.href;
+  window.callsunTrack?.('landing_page_view', { landing_page: landingSlug, campaign, path: location.pathname });
+  document.querySelector('[data-landing-form]')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    window.callsunTrack?.('rfq_submit', { form: 'landing', landing_page: landingSlug, campaign, path: location.pathname });
+    alert(thankYouMessage);
+  });
+</script>
