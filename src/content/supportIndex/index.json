@@ -1,0 +1,90 @@
+{
+  "title": "Support & Service",
+  "seoTitle": "Support & Service | Warranty, Logistics & Technical Support | Callsun",
+  "metaDescription": "Callsun support and service resources for B2B solar distributors, dealers and EPC installers, including warranty, payment, logistics, technical support, after-sales and channel policy.",
+  "h1": "Support built to reduce B2B solar procurement risk.",
+  "keywords": [
+    "Callsun support",
+    "solar module warranty",
+    "solar logistics support",
+    "solar technical support",
+    "solar distributor policy"
+  ],
+  "canonical": "/support",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "Support & Service",
+    "description": "Before a distributor, dealer or EPC installer sends a purchase order, they need clarity on warranty, documents, logistics, technical support and after-sales workflow. This page organizes those risk-reduction topics in one place.",
+    "primaryCtaLabel": "Request Support",
+    "primaryCtaHref": "/contact",
+    "secondaryCtaLabel": "Download Documents",
+    "secondaryCtaHref": "/resources/downloads"
+  },
+  "stats": [
+    { "label": "Support topics", "value": "5" },
+    { "label": "Document center", "value": "CMS" },
+    { "label": "Inquiry tracking", "value": "Ready" },
+    { "label": "Policies", "value": "Editable" }
+  ],
+  "intro": {
+    "eyebrow": "Buyer confidence",
+    "title": "Turn support content into a sales asset.",
+    "description": "Support pages should not sit at the end of the website. For B2B solar buyers, warranty terms, logistics clarity, technical documents and channel policy are part of supplier evaluation. Callsun can use these pages to answer procurement concerns before the first sales call."
+  },
+  "process": {
+    "eyebrow": "Support workflow",
+    "title": "A simple path from question to resolution.",
+    "description": "The final customer process can be updated later, but the website already structures support requests around intake, document matching and sales or technical follow-up.",
+    "steps": [
+      {
+        "label": "Define the request",
+        "description": "Buyer selects warranty, logistics, technical, after-sales or channel policy as the main topic."
+      },
+      {
+        "label": "Attach project context",
+        "description": "Inquiry captures market, product, application, timeline, document needs and source tracking."
+      },
+      {
+        "label": "Route to next step",
+        "description": "Sales or technical support can respond with documents, product suggestions, package references or policy details."
+      }
+    ]
+  },
+  "trustBlocks": [
+    {
+      "title": "Warranty clarity",
+      "description": "Use warranty and after-sales pages to explain what buyers can expect before they compare suppliers."
+    },
+    {
+      "title": "Logistics readiness",
+      "description": "Payment, MOQ, packaging and delivery information help distributors estimate landed cost and ordering risk."
+    },
+    {
+      "title": "Technical confidence",
+      "description": "Technical support pages connect product specs, system packages, installation guides and inquiry forms."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Why is Support a first-level navigation item?",
+      "answer": "For B2B solar procurement, support content affects supplier trust. Buyers often check warranty, logistics, technical documents and channel policy before they request pricing."
+    },
+    {
+      "question": "Can the commercial team update support policies later?",
+      "answer": "Yes. Both the Support index and individual support pages are CMS-editable, so policy updates do not require developer changes."
+    },
+    {
+      "question": "How does Support connect to inquiries?",
+      "answer": "Support pages guide visitors to Contact and Download Center paths. The inquiry form already captures application, buyer role, timeline, document needs, UTM and referrer."
+    }
+  ],
+  "finalCta": {
+    "title": "Need warranty, logistics or technical support before quoting?",
+    "description": "Send the product, market, application and document requirements. Callsun can prepare the right support materials for your sales or procurement process.",
+    "primaryLabel": "Send Support Inquiry",
+    "primaryHref": "/contact",
+    "secondaryLabel": "View Downloads",
+    "secondaryHref": "/resources/downloads"
+  }
+}
