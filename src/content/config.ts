@@ -337,6 +337,68 @@ const news = defineCollection({
   }),
 });
 
+const faqPage = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    hero: z.object({
+      eyebrow: z.string().default('Resources'),
+      description: z.string(),
+      primaryCtaLabel: z.string().default('Request Support'),
+      primaryCtaHref: z.string().default('/contact'),
+      secondaryCtaLabel: z.string().optional(),
+      secondaryCtaHref: z.string().optional(),
+    }),
+    categories: z.array(z.object({
+      title: z.string(),
+      items: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    })).default([]),
+    finalCta: z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      primaryLabel: z.string().default('Ask a Question'),
+      primaryHref: z.string().default('/contact'),
+      secondaryLabel: z.string().optional(),
+      secondaryHref: z.string().optional(),
+    }).optional(),
+    ...seoFields,
+  }),
+});
+
+const videoPage = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    hero: z.object({
+      eyebrow: z.string().default('Resources'),
+      description: z.string(),
+      primaryCtaLabel: z.string().default('Request Video Materials'),
+      primaryCtaHref: z.string().default('/contact'),
+      secondaryCtaLabel: z.string().optional(),
+      secondaryCtaHref: z.string().optional(),
+    }),
+    categories: z.array(z.object({ title: z.string(), description: z.string(), status: z.string().optional() })).default([]),
+    videoSlots: z.array(z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      thumbnail: z.string().default('/placeholders/battery-system.svg'),
+      thumbnailAlt: z.string().optional(),
+      videoUrl: z.string().optional(),
+      duration: z.string().optional(),
+      category: z.string().optional(),
+    })).default([]),
+    finalCta: z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      primaryLabel: z.string().default('Request Video Support'),
+      primaryHref: z.string().default('/contact'),
+      secondaryLabel: z.string().optional(),
+      secondaryHref: z.string().optional(),
+    }).optional(),
+    ...seoFields,
+  }),
+});
+
 const resourceIndex = defineCollection({
   type: 'data',
   schema: z.object({
@@ -598,4 +660,4 @@ const landingPages = defineCollection({
   }),
 });
 
-export const collections = { homepage, about, contact, applicationIndex, productIndex, solutionIndex, products, solutions, applications, news, resourceIndex, downloads, caseIndex, cases, supportIndex, supportPages, navigation, customPages, landingPages };
+export const collections = { homepage, about, contact, applicationIndex, productIndex, solutionIndex, products, solutions, applications, news, faqPage, videoPage, resourceIndex, downloads, caseIndex, cases, supportIndex, supportPages, navigation, customPages, landingPages };

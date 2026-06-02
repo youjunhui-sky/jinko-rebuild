@@ -1,0 +1,72 @@
+{
+  "title": "Video Center",
+  "seoTitle": "Video Center | Solar Installation, Product & Project Videos | Callsun",
+  "metaDescription": "Callsun video center for future solar installation guides, product walkthroughs, system package demos and project case videos.",
+  "h1": "Solar video center for installation, product and project proof content.",
+  "keywords": ["solar installation video", "solar product video", "solar project video", "Callsun videos", "solar system demo"],
+  "canonical": "/resources/videos",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "Resources",
+    "description": "The video center is prepared for installation walkthroughs, product demonstrations, project case videos and future campaign assets once customer video materials are available.",
+    "primaryCtaLabel": "Request Video Materials",
+    "primaryCtaHref": "/contact",
+    "secondaryCtaLabel": "Browse Downloads",
+    "secondaryCtaHref": "/resources/downloads"
+  },
+  "categories": [
+    {
+      "title": "Installation Guides",
+      "description": "Step-by-step installation walkthroughs for off-grid packages, mounting, wiring and commissioning.",
+      "status": "Awaiting customer assets"
+    },
+    {
+      "title": "Project Case Videos",
+      "description": "Short videos that show commercial rooftop, industrial and solar-plus-storage project references.",
+      "status": "Awaiting customer assets"
+    },
+    {
+      "title": "Product Walkthroughs",
+      "description": "Module, battery and system package introductions for distributors, dealers and EPC installers.",
+      "status": "Awaiting customer assets"
+    }
+  ],
+  "videoSlots": [
+    {
+      "title": "Off-grid package installation walkthrough",
+      "description": "Placeholder slot for a future 6.5kW or 10kW off-grid system installation video.",
+      "thumbnail": "/placeholders/battery-system.svg",
+      "thumbnailAlt": "Placeholder thumbnail for off-grid solar system installation video",
+      "videoUrl": "",
+      "duration": "TBD",
+      "category": "Installation Guides"
+    },
+    {
+      "title": "Commercial rooftop project overview",
+      "description": "Placeholder slot for a future C&I rooftop project case video.",
+      "thumbnail": "/placeholders/case-rooftop.svg",
+      "thumbnailAlt": "Placeholder thumbnail for commercial rooftop solar project video",
+      "videoUrl": "",
+      "duration": "TBD",
+      "category": "Project Case Videos"
+    },
+    {
+      "title": "High-power solar module walkthrough",
+      "description": "Placeholder slot for a future 580W or 620W module product video.",
+      "thumbnail": "/placeholders/product-module.svg",
+      "thumbnailAlt": "Placeholder thumbnail for high-power solar module product video",
+      "videoUrl": "",
+      "duration": "TBD",
+      "category": "Product Walkthroughs"
+    }
+  ],
+  "finalCta": {
+    "title": "Need installation or product videos for your sales team?",
+    "description": "Tell us the product or system package you are promoting. Callsun can prepare available videos or prioritize future assets.",
+    "primaryLabel": "Request Video Support",
+    "primaryHref": "/contact",
+    "secondaryLabel": "Read FAQ",
+    "secondaryHref": "/resources/faq"
+  }
+}

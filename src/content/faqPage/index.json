@@ -1,0 +1,75 @@
+{
+  "title": "Frequently Asked Questions",
+  "seoTitle": "FAQ | Solar Products, SEO Tracking & Inquiry System | Callsun",
+  "metaDescription": "Frequently asked questions about Callsun solar modules, system packages, B2B website content, downloads, Google Ads tracking and inquiry system integration.",
+  "h1": "Frequently asked questions for B2B solar buyers and website operators.",
+  "keywords": ["Callsun FAQ", "solar module FAQ", "solar supplier FAQ", "solar inquiry system", "solar website tracking"],
+  "canonical": "/resources/faq",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "Resources",
+    "description": "Use this FAQ page to answer common buyer questions, explain operational readiness and reduce sales friction before visitors request documents or quotes.",
+    "primaryCtaLabel": "Request Support",
+    "primaryCtaHref": "/contact",
+    "secondaryCtaLabel": "Browse Downloads",
+    "secondaryCtaHref": "/resources/downloads"
+  },
+  "categories": [
+    {
+      "title": "Products & Solutions",
+      "items": [
+        {
+          "question": "Who is Callsun built for?",
+          "answer": "Callsun.com is positioned for B2B distributors, dealers and EPC installers who need solar modules, storage packages and repeatable project references."
+        },
+        {
+          "question": "Which product lines are currently structured on the website?",
+          "answer": "The current structure includes standard 450W, 580W and 620W modules, compact custom modules, grid-tied storage packages and off-grid system packages."
+        },
+        {
+          "question": "Can product images and datasheets be replaced later?",
+          "answer": "Yes. Product, solution, case and resource images are CMS-editable. Datasheets and certificates can be uploaded to the downloads collection once official customer files are provided."
+        }
+      ]
+    },
+    {
+      "title": "SEO, Content & Tracking",
+      "items": [
+        {
+          "question": "Can the website support SEO content operations?",
+          "answer": "Yes. Products, solutions, applications, blog posts, cases and support pages are CMS-driven and include editable SEO title, meta description, H1, keywords, OG image and image alt fields."
+        },
+        {
+          "question": "Can we connect Google Ads and GA4 later?",
+          "answer": "Yes. GTM, GA4, Google Ads conversion IDs and dataLayer events are reserved. Scripts load only after Cookie Consent and after account IDs are provided."
+        },
+        {
+          "question": "Does the site support independent landing pages?",
+          "answer": "Yes. Landing pages are CMS-managed and can be used for future SEM campaigns with campaign, ad group, UTM and RFQ tracking fields."
+        }
+      ]
+    },
+    {
+      "title": "Inquiry & CRM",
+      "items": [
+        {
+          "question": "Is the inquiry system final?",
+          "answer": "Not yet. The current phase includes inquiry UI, UTM fields, mock backend and event tracking. The backend can later connect to HubSpot, Feishu Bitable, Cloudflare D1 or another CRM."
+        },
+        {
+          "question": "What inquiry fields are already captured?",
+          "answer": "The contact form can capture name, company, email, phone, inquiry type, application, buyer role, timeline, market, project size, document needs, message, UTM, referrer and landing page."
+        }
+      ]
+    }
+  ],
+  "finalCta": {
+    "title": "Still have a project-specific question?",
+    "description": "Send the product, application, market and document requirement. Callsun can route the inquiry to sales or technical support.",
+    "primaryLabel": "Ask a Question",
+    "primaryHref": "/contact",
+    "secondaryLabel": "View Support",
+    "secondaryHref": "/support"
+  }
+}

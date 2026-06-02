@@ -815,6 +815,114 @@ collections:
       - { name: "body", label: "Body", widget: "markdown" }
 
 
+
+  - name: "faqPage"
+    label: "❓ FAQ Page"
+    folder: "src/content/faqPage"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", default: "Resources" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Request Support" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "FAQ Categories"
+        name: "categories"
+        widget: "list"
+        fields:
+          - { name: "title", label: "Category Title", widget: "string" }
+          - label: "Questions"
+            name: "items"
+            widget: "list"
+            fields:
+              - { name: "question", label: "Question", widget: "string" }
+              - { name: "answer", label: "Answer", widget: "text" }
+      - label: "Final CTA"
+        name: "finalCta"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "title", label: "CTA Title", widget: "string" }
+          - { name: "description", label: "CTA Description", widget: "text", required: false }
+          - { name: "primaryLabel", label: "Primary Label", widget: "string", default: "Ask a Question" }
+          - { name: "primaryHref", label: "Primary URL", widget: "string", default: "/contact" }
+          - { name: "secondaryLabel", label: "Secondary Label", widget: "string", required: false }
+          - { name: "secondaryHref", label: "Secondary URL", widget: "string", required: false }
+
+  - name: "videoPage"
+    label: "🎬 Videos Page"
+    folder: "src/content/videoPage"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", default: "Resources" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Request Video Materials" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "Video Categories"
+        name: "categories"
+        widget: "list"
+        fields:
+          - { name: "title", label: "Category Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text" }
+          - { name: "status", label: "Status", widget: "string", required: false }
+      - label: "Video Slots"
+        name: "videoSlots"
+        widget: "list"
+        fields:
+          - { name: "title", label: "Video Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - { name: "thumbnail", label: "Thumbnail", widget: "image", default: "/placeholders/battery-system.svg" }
+          - { name: "thumbnailAlt", label: "Thumbnail Alt", widget: "string", required: false }
+          - { name: "videoUrl", label: "Video URL", widget: "string", required: false }
+          - { name: "duration", label: "Duration", widget: "string", required: false }
+          - { name: "category", label: "Category", widget: "string", required: false }
+      - label: "Final CTA"
+        name: "finalCta"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "title", label: "CTA Title", widget: "string" }
+          - { name: "description", label: "CTA Description", widget: "text", required: false }
+          - { name: "primaryLabel", label: "Primary Label", widget: "string", default: "Request Video Support" }
+          - { name: "primaryHref", label: "Primary URL", widget: "string", default: "/contact" }
+          - { name: "secondaryLabel", label: "Secondary Label", widget: "string", required: false }
+          - { name: "secondaryHref", label: "Secondary URL", widget: "string", required: false }
+
   - name: "resourceIndex"
     label: "📚 Resources Index"
     folder: "src/content/resourceIndex"
