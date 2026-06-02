@@ -65,6 +65,60 @@ const homepage = defineCollection({
   }),
 });
 
+const about = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    hero: z.object({
+      eyebrow: z.string().default('About Callsun'),
+      description: z.string(),
+      image: z.string().default('/placeholders/battery-system.svg'),
+      imageAlt: z.string().optional(),
+      primaryCtaLabel: z.string().default('Talk to Sales'),
+      primaryCtaHref: z.string().default('/contact'),
+      secondaryCtaLabel: z.string().optional(),
+      secondaryCtaHref: z.string().optional(),
+    }),
+    stats: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
+    intro: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string(),
+      cards: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
+    }),
+    strengths: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string().optional(),
+      items: z.array(z.object({ title: z.string(), description: z.string(), metric: z.string().optional() })).default([]),
+    }),
+    certifications: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string().optional(),
+      items: z.array(z.string()).default([]),
+      ctaLabel: z.string().optional(),
+      ctaHref: z.string().optional(),
+    }),
+    partners: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string().optional(),
+      items: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
+    }),
+    timeline: z.array(z.object({ label: z.string(), description: z.string() })).default([]),
+    finalCta: z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      primaryLabel: z.string().default('Request a Quote'),
+      primaryHref: z.string().default('/contact'),
+      secondaryLabel: z.string().optional(),
+      secondaryHref: z.string().optional(),
+    }).optional(),
+    ...seoFields,
+  }),
+});
+
 const products = defineCollection({
   type: 'data',
   schema: z.object({
@@ -123,8 +177,24 @@ const applications = defineCollection({
     slug: z.string(),
     summary: z.string(),
     image: z.string().default('/placeholders/case-rooftop.svg'),
+    imageAlt: z.string().optional(),
+    hero: z.object({
+      eyebrow: z.string().optional(),
+      primaryCtaLabel: z.string().default('Discuss This Application'),
+      primaryCtaHref: z.string().default('/contact'),
+      secondaryCtaLabel: z.string().optional(),
+      secondaryCtaHref: z.string().optional(),
+    }).optional(),
+    painPoints: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
+    solutionApproach: z.string().optional(),
+    buyerChecklist: z.array(z.string()).default([]),
     recommendedSolutions: z.array(z.string()).default([]),
     relatedProducts: z.array(z.string()).default([]),
+    relatedCases: z.array(z.string()).default([]),
+    recommendedDownloads: z.array(z.string()).default([]),
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    ctaTitle: z.string().optional(),
+    ctaDescription: z.string().optional(),
     order: z.number().default(0),
     ...seoFields,
   }),
@@ -309,4 +379,4 @@ const landingPages = defineCollection({
   }),
 });
 
-export const collections = { homepage, products, solutions, applications, news, downloads, cases, supportPages, navigation, customPages, landingPages };
+export const collections = { homepage, about, products, solutions, applications, news, downloads, cases, supportPages, navigation, customPages, landingPages };

@@ -117,6 +117,111 @@ collections:
           - { name: "linkLabel", label: "Link Label", widget: "string", required: false }
           - { name: "linkHref", label: "Link URL", widget: "string", required: false }
 
+
+  - name: "about"
+    label: "🏢 About Callsun"
+    folder: "src/content/about"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", default: "About Callsun" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+          - { name: "image", label: "Hero Image", widget: "image", default: "/placeholders/battery-system.svg" }
+          - { name: "imageAlt", label: "Hero Image Alt", widget: "string", required: false }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Talk to Sales" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "Stats"
+        name: "stats"
+        widget: "list"
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "value", label: "Value", widget: "string" }
+      - label: "Company Profile"
+        name: "intro"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text" }
+          - label: "Cards"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Card Title", widget: "string" }
+              - { name: "description", label: "Card Description", widget: "text" }
+      - label: "Factory & Supply Capability"
+        name: "strengths"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - label: "Capability Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Item Title", widget: "string" }
+              - { name: "description", label: "Item Description", widget: "text" }
+              - { name: "metric", label: "Metric", widget: "string", required: false }
+      - label: "Certification & Quality"
+        name: "certifications"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - { name: "items", label: "Checklist", widget: "list", default: [] }
+          - { name: "ctaLabel", label: "CTA Label", widget: "string", required: false }
+          - { name: "ctaHref", label: "CTA URL", widget: "string", required: false }
+      - label: "Partner Support"
+        name: "partners"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - label: "Partner Cards"
+            name: "items"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Card Title", widget: "string" }
+              - { name: "description", label: "Card Description", widget: "text" }
+      - label: "Growth Roadmap"
+        name: "timeline"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "label", label: "Step Label", widget: "string" }
+          - { name: "description", label: "Step Description", widget: "text" }
+      - label: "Final CTA"
+        name: "finalCta"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "title", label: "CTA Title", widget: "string" }
+          - { name: "description", label: "CTA Description", widget: "text", required: false }
+          - { name: "primaryLabel", label: "Primary Label", widget: "string", default: "Request a Quote" }
+          - { name: "primaryHref", label: "Primary URL", widget: "string", default: "/contact" }
+          - { name: "secondaryLabel", label: "Secondary Label", widget: "string", required: false }
+          - { name: "secondaryHref", label: "Secondary URL", widget: "string", required: false }
+
   - name: "navigation"
     label: "🧭 Navigation"
     folder: "src/content/navigation"
@@ -251,13 +356,45 @@ collections:
     delete: true
     format: "json"
     extension: "json"
+    identifier_field: "title"
     fields:
       - { name: "title", label: "Title", widget: "string" }
       - { name: "slug", label: "URL Slug", widget: "string" }
       - { name: "summary", label: "Summary", widget: "text" }
       - { name: "image", label: "Image", widget: "image", default: "/placeholders/case-rooftop.svg" }
+      - { name: "imageAlt", label: "Image Alt", widget: "string", required: false }
+      - label: "Hero CTA"
+        name: "hero"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Discuss This Application" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "Pain Points"
+        name: "painPoints"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "title", label: "Pain Point Title", widget: "string" }
+          - { name: "description", label: "Pain Point Description", widget: "text" }
+      - { name: "solutionApproach", label: "Solution Approach", widget: "text", required: false }
+      - { name: "buyerChecklist", label: "Buyer Checklist", widget: "list", default: [] }
       - { name: "recommendedSolutions", label: "Recommended Solution Slugs", widget: "list", default: [] }
       - { name: "relatedProducts", label: "Related Product Slugs", widget: "list", default: [] }
+      - { name: "relatedCases", label: "Related Case Slugs", widget: "list", default: [] }
+      - { name: "recommendedDownloads", label: "Recommended Download Slugs", widget: "list", default: [] }
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "question", label: "Question", widget: "string" }
+          - { name: "answer", label: "Answer", widget: "text" }
+      - { name: "ctaTitle", label: "CTA Title", widget: "string", required: false }
+      - { name: "ctaDescription", label: "CTA Description", widget: "text", required: false }
       - { name: "order", label: "Display Order", widget: "number", default: 0 }
       - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
       - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }

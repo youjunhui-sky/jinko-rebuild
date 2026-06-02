@@ -1,1 +1,30 @@
-{"title":"Commercial & Industrial Rooftop","slug":"commercial-industrial-rooftop","summary":"Power-dense solar modules and standard system packages for factories, warehouses, packaging plants, dealerships and high-load commercial buildings.","image":"/placeholders/case-rooftop.svg","recommendedSolutions":["12kw-grid-tied-solar-storage-system"],"relatedProducts":["580w-n-type-solar-module","620w-n-type-solar-module"],"order":10,"seoTitle":"Commercial Rooftop Solar Solutions | Callsun","metaDescription":"Callsun commercial and industrial rooftop solar modules and storage packages for EPC installers, dealers and distributors.","keywords":["commercial rooftop solar","C&I solar panels","solar panels for EPC installers"]}
+{
+  "title": "Commercial & Industrial Rooftop",
+  "slug": "commercial-industrial-rooftop",
+  "summary": "Power-dense solar modules and standard system packages for factories, warehouses, packaging plants, dealerships and high-load commercial buildings.",
+  "image": "/placeholders/case-rooftop.svg",
+  "imageAlt": "Commercial rooftop solar application illustration",
+  "hero": { "eyebrow": "Application scenario", "primaryCtaLabel": "Discuss a C&I Project", "primaryCtaHref": "/contact", "secondaryCtaLabel": "View Case References", "secondaryCtaHref": "/cases" },
+  "painPoints": [
+    { "title": "High daytime electricity demand", "description": "Factories, warehouses and retail buildings need solar packages that match large roof areas and daytime load curves." },
+    { "title": "Fast proposal turnaround", "description": "EPC teams need module specs, case proof and BOM direction before they can submit a credible commercial proposal." },
+    { "title": "Document-heavy procurement", "description": "Commercial buyers often require datasheets, certificates, warranty policy and logistics details before shortlisting suppliers." }
+  ],
+  "solutionApproach": "Use high-power N-type modules with grid-tied or solar-plus-storage packages to create a repeatable rooftop offer for commercial buildings. Connect the application page to product specs, case references and RFQ forms so buyers can move from scenario research to quote requests quickly.",
+  "buyerChecklist": ["Roof area and usable mounting zone", "Target system capacity and load profile", "Grid connection / self-consumption requirements", "Storage backup expectation if any", "Required certificates and warranty documents"],
+  "recommendedSolutions": ["12kw-grid-tied-solar-storage-system"],
+  "relatedProducts": ["580w-n-type-solar-module", "620w-n-type-solar-module"],
+  "relatedCases": ["800kw-premium-automotive-retail-center", "cheng-da-iii-3-5mw-industrial-rooftop", "euro-film-3-3mw-packaging-materials-plant"],
+  "recommendedDownloads": ["580w-n-type-module-datasheet", "solar-module-certificates", "callsun-product-catalog"],
+  "faqs": [
+    { "question": "Which modules fit commercial rooftop projects?", "answer": "High-power 580W and 620W modules are typically positioned for commercial rooftop projects where roof utilization and system output matter." },
+    { "question": "Can storage be included?", "answer": "Yes. Storage can be discussed as part of a solar-plus-storage package when the buyer needs backup power, load shifting or higher self-consumption." }
+  ],
+  "ctaTitle": "Need a commercial rooftop solar package?",
+  "ctaDescription": "Send roof size, target capacity, market and project timeline. Callsun can respond with module options, package direction and document links.",
+  "order": 10,
+  "seoTitle": "Commercial Rooftop Solar Solutions | Callsun",
+  "metaDescription": "Callsun commercial and industrial rooftop solar modules and storage packages for EPC installers, dealers and distributors.",
+  "h1": "Commercial rooftop solar applications for EPC installers and distributors.",
+  "keywords": ["commercial rooftop solar", "C&I solar panels", "solar panels for EPC installers"]
+}

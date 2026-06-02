@@ -1,0 +1,131 @@
+{
+  "title": "About Callsun",
+  "seoTitle": "About Callsun | B2B Solar Modules & Storage System Supplier",
+  "metaDescription": "Learn how Callsun supports distributors, dealers and EPC installers with solar modules, grid-tied and off-grid system packages, certification documents and project references.",
+  "h1": "A solar supply partner built for distributors, dealers and EPC installers.",
+  "keywords": [
+    "about Callsun",
+    "B2B solar module supplier",
+    "solar storage system supplier",
+    "solar panel distributor support"
+  ],
+  "canonical": "/about",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "About Callsun",
+    "description": "Callsun focuses on solar modules, standard system packages and project references that help B2B partners quote faster, explain system value and convert more qualified inquiries.",
+    "image": "/placeholders/battery-system.svg",
+    "imageAlt": "Callsun solar module and storage package illustration",
+    "primaryCtaLabel": "Talk to Sales",
+    "primaryCtaHref": "/contact",
+    "secondaryCtaLabel": "View Products",
+    "secondaryCtaHref": "/products"
+  },
+  "stats": [
+    { "label": "Module range", "value": "180W-620W" },
+    { "label": "System packages", "value": "6.5kW-12kW" },
+    { "label": "Storage range", "value": "10-28kWh" },
+    { "label": "Case references", "value": "100kW-13.75MW" }
+  ],
+  "intro": {
+    "eyebrow": "Company profile",
+    "title": "From product supply to sales enablement.",
+    "description": "Callsun is positioned as a practical B2B solar partner, not just a catalog website. The site structure, downloadable resources and inquiry flows are designed around how distributors, dealers and EPC installers evaluate suppliers.",
+    "cards": [
+      {
+        "title": "Product-ready supply",
+        "description": "Standard and custom solar modules are organized with specifications, certifications, applications and downloads so sales teams can respond with fewer back-and-forth questions."
+      },
+      {
+        "title": "System package thinking",
+        "description": "Grid-tied and off-grid packages connect modules, batteries, inverters and accessories into repeatable solutions that are easier for partners to explain and quote."
+      },
+      {
+        "title": "Inquiry-first operation",
+        "description": "SEO pages, SEM landing pages, RFQ forms and tracking fields are prepared to support lead generation, campaign attribution and later CRM integration."
+      }
+    ]
+  },
+  "strengths": {
+    "eyebrow": "Factory & supply capability",
+    "title": "The proof points buyers expect before they ask for pricing.",
+    "description": "Use this section to keep company strength, quality controls and channel support editable as the customer provides official factory photos, certificates and partner materials.",
+    "items": [
+      {
+        "title": "Module portfolio",
+        "description": "Standard 450W, 580W and 620W modules plus compact custom modules for non-standard scenarios such as RV, balcony, off-grid and project-specific requirements.",
+        "metric": "180W-620W"
+      },
+      {
+        "title": "Packaged solutions",
+        "description": "Pre-structured grid-tied and off-grid solar-plus-storage packages help partners move from single component comparison to complete system discussions.",
+        "metric": "3 system lines"
+      },
+      {
+        "title": "Document support",
+        "description": "Datasheets, certificates, product catalogs, installation guides and warranty materials are managed through the CMS download center.",
+        "metric": "CMS managed"
+      },
+      {
+        "title": "Project references",
+        "description": "Commercial rooftop, retail, industrial and solar-plus-storage cases can be used as sales proof for distributors and EPC installers.",
+        "metric": "Sales proof"
+      }
+    ]
+  },
+  "certifications": {
+    "eyebrow": "Certification & quality",
+    "title": "Make compliance evidence easy to find.",
+    "description": "Certification files are currently placeholder records. Replace them with official UL, IEC, warranty and test documents when the customer provides final PDFs.",
+    "items": [
+      "Module datasheets and electrical parameters",
+      "Certification package download links",
+      "Warranty and after-sales policy references",
+      "Installation and handling guidance"
+    ],
+    "ctaLabel": "Visit Download Center",
+    "ctaHref": "/resources/downloads"
+  },
+  "partners": {
+    "eyebrow": "Partner support",
+    "title": "Built around distributor and installer workflows.",
+    "description": "Callsun's website should help partners validate product fit, compare packages, collect documents and send project requirements before a sales call.",
+    "items": [
+      {
+        "title": "For distributors",
+        "description": "Clear product categories, datasheets, certification references and inquiry forms for faster wholesale conversations."
+      },
+      {
+        "title": "For dealers",
+        "description": "Application pages, FAQ and sales-oriented case details support end-customer explanation."
+      },
+      {
+        "title": "For EPC installers",
+        "description": "System topology, BOM cards, project parameters and technical support pages reduce pre-sales friction."
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "label": "Product foundation",
+      "description": "Solar module portfolio, datasheets and certification materials become the base layer for B2B search traffic."
+    },
+    {
+      "label": "System package layer",
+      "description": "Grid-tied and off-grid packages connect components into repeatable offers for project quoting."
+    },
+    {
+      "label": "SEO / SEM growth layer",
+      "description": "Custom pages, landing pages, blog content and tracking fields support ongoing acquisition campaigns."
+    }
+  ],
+  "finalCta": {
+    "title": "Want to evaluate Callsun as a supply partner?",
+    "description": "Send your target module type, system capacity, market and timeline. The Callsun team can respond with product options, package references and next-step documents.",
+    "primaryLabel": "Request a Quote",
+    "primaryHref": "/contact",
+    "secondaryLabel": "Explore Solutions",
+    "secondaryHref": "/solutions"
+  }
+}

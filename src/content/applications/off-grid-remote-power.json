@@ -1,1 +1,30 @@
-{"title":"Off-Grid & Remote Power","slug":"off-grid-remote-power","summary":"Repeatable off-grid system packages for remote homes, farms, cabins, telecom, backup power and rural commercial projects.","image":"/placeholders/battery-system.svg","recommendedSolutions":["6-5kw-off-grid-solar-system","10kw-off-grid-solar-system"],"relatedProducts":["450w-double-glass-solar-module","200w-custom-solar-module"],"order":30,"seoTitle":"Off-Grid Solar Power Systems | Callsun","metaDescription":"Callsun off-grid solar power systems with battery storage for remote homes, cabins and small commercial applications.","keywords":["off grid solar power system","remote solar power", "solar battery package supplier"]}
+{
+  "title": "Off-Grid & Remote Power",
+  "slug": "off-grid-remote-power",
+  "summary": "Repeatable off-grid system packages for remote homes, farms, cabins, telecom, backup power and rural commercial projects.",
+  "image": "/placeholders/battery-system.svg",
+  "imageAlt": "Off-grid solar remote power application illustration",
+  "hero": { "eyebrow": "Application scenario", "primaryCtaLabel": "Plan an Off-Grid Package", "primaryCtaHref": "/contact", "secondaryCtaLabel": "Compare Off-Grid Solutions", "secondaryCtaHref": "/solutions#off-grid" },
+  "painPoints": [
+    { "title": "Unstable or unavailable grid access", "description": "Remote homes, farms, cabins and rural commercial sites need solar packages that can operate without dependable grid power." },
+    { "title": "Load sizing uncertainty", "description": "Buyers often know their appliances but not the PV, inverter and battery capacity required to support daily use." },
+    { "title": "Installation simplicity", "description": "Dealers and installers need package logic, wiring guidance and component lists to reduce on-site configuration risk." }
+  ],
+  "solutionApproach": "Start from daily load and backup-hour requirements, then match the buyer to 6.5kW or 10kW off-grid packages. Connect compact module options, installation guides and RFQ forms to capture enough project data for a useful first response.",
+  "buyerChecklist": ["Daily kWh consumption estimate", "Peak load and critical appliances", "Backup hour expectation", "Installation location and climate", "Battery expansion requirement"],
+  "recommendedSolutions": ["6-5kw-off-grid-solar-system", "10kw-off-grid-solar-system"],
+  "relatedProducts": ["450w-double-glass-solar-module", "200w-custom-solar-module"],
+  "relatedCases": ["100kw-215kwh-solar-storage-microgrid"],
+  "recommendedDownloads": ["off-grid-system-installation-guide", "callsun-datasheet-placeholder", "callsun-product-catalog"],
+  "faqs": [
+    { "question": "How should buyers choose between 6.5kW and 10kW packages?", "answer": "The first filter is daily consumption and peak load. The RFQ should capture appliances, backup hours and expansion requirements before final sizing." },
+    { "question": "Can compact modules be used?", "answer": "Yes. Compact custom modules can support RV, cabin or space-limited scenarios where standard large modules are not practical." }
+  ],
+  "ctaTitle": "Need help sizing an off-grid system?",
+  "ctaDescription": "Send load list, backup-hour target and installation location. Callsun can suggest a starting package and document set.",
+  "order": 30,
+  "seoTitle": "Off-Grid Solar Power Systems | Callsun",
+  "metaDescription": "Callsun off-grid solar power systems with battery storage for remote homes, cabins and small commercial applications.",
+  "h1": "Off-grid solar power applications for remote homes, cabins and small commercial loads.",
+  "keywords": ["off grid solar power system", "remote solar power", "solar battery package supplier"]
+}
