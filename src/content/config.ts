@@ -119,6 +119,44 @@ const about = defineCollection({
   }),
 });
 
+const indexPageFields = {
+  title: z.string(),
+  hero: z.object({
+    eyebrow: z.string(),
+    description: z.string(),
+    primaryCtaLabel: z.string().default('Request Quote'),
+    primaryCtaHref: z.string().default('/contact'),
+    secondaryCtaLabel: z.string().optional(),
+    secondaryCtaHref: z.string().optional(),
+  }),
+  stats: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
+  intro: z.object({
+    eyebrow: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+  }),
+  categoryNotes: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
+  finalCta: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    primaryLabel: z.string().default('Request Quote'),
+    primaryHref: z.string().default('/contact'),
+    secondaryLabel: z.string().optional(),
+    secondaryHref: z.string().optional(),
+  }).optional(),
+  ...seoFields,
+};
+
+const productIndex = defineCollection({
+  type: 'data',
+  schema: z.object(indexPageFields),
+});
+
+const solutionIndex = defineCollection({
+  type: 'data',
+  schema: z.object(indexPageFields),
+});
+
 const products = defineCollection({
   type: 'data',
   schema: z.object({
@@ -490,4 +528,4 @@ const landingPages = defineCollection({
   }),
 });
 
-export const collections = { homepage, about, contact, applicationIndex, products, solutions, applications, news, downloads, cases, supportIndex, supportPages, navigation, customPages, landingPages };
+export const collections = { homepage, about, contact, applicationIndex, productIndex, solutionIndex, products, solutions, applications, news, downloads, cases, supportIndex, supportPages, navigation, customPages, landingPages };

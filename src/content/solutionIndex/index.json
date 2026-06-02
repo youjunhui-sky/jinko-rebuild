@@ -1,0 +1,42 @@
+{
+  "title": "Solutions",
+  "seoTitle": "Solar System Packages | Grid-Tied & Off-Grid Solutions | Callsun",
+  "metaDescription": "Browse Callsun grid-tied and off-grid solar-plus-storage system packages for B2B installers, dealers and distributors.",
+  "h1": "Installer-ready solar system packages for repeatable project quoting.",
+  "keywords": ["solar system packages", "grid tied solar storage", "off grid solar system", "solar battery package", "installer solar solution"],
+  "canonical": "/solutions",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "Solutions",
+    "description": "Repeatable grid-tied and off-grid packages combine modules, batteries, inverters and accessories so partners can move from component search to system-level RFQ faster.",
+    "primaryCtaLabel": "Discuss a System Package",
+    "primaryCtaHref": "/contact",
+    "secondaryCtaLabel": "View Applications",
+    "secondaryCtaHref": "/applications"
+  },
+  "stats": [
+    { "label": "Package types", "value": "2" },
+    { "label": "Capacity range", "value": "6.5kW-12kW" },
+    { "label": "Storage range", "value": "10-28kWh" },
+    { "label": "BOM structure", "value": "Ready" }
+  ],
+  "intro": {
+    "eyebrow": "System architecture",
+    "title": "Sell the package, not just the parts.",
+    "description": "Solution pages connect product selection, system topology, BOM cards, application scenarios, case references and RFQ forms into one sales path for installers and dealers."
+  },
+  "categoryNotes": [
+    { "title": "Grid-Tied Systems", "description": "Best for homes and commercial buildings that want solar generation, storage and grid-connected self-consumption." },
+    { "title": "Off-Grid Systems", "description": "Best for remote homes, cabins, farms and small commercial sites where grid access is limited or unstable." },
+    { "title": "Next step", "description": "Use solution pages to collect load, backup-hour, application and timeline context before quoting." }
+  ],
+  "finalCta": {
+    "title": "Need help matching a system package?",
+    "description": "Send application, target capacity, backup-hour expectation and market. Callsun can suggest a starting package and supporting documents.",
+    "primaryLabel": "Request System Advice",
+    "primaryHref": "/contact",
+    "secondaryLabel": "Compare Applications",
+    "secondaryHref": "/applications"
+  }
+}

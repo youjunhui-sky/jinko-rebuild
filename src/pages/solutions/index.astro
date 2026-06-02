@@ -1,14 +1,29 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import ContactCTA from '@/components/ContactCTA.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import StatStrip from '@/components/StatStrip.astro';
+import CardGrid from '@/components/CardGrid.astro';
+
+const indexEntry = await getEntry('solutionIndex', 'index');
+if (!indexEntry) throw new Error('Missing solution index content entry: src/content/solutionIndex/index.json');
+const page = indexEntry.data;
 const solutions = (await getCollection('solutions')).map(s=>s.data).sort((a,b)=>a.order-b.order);
-const groups = [{id:'grid-tied',label:'Grid-Tied Systems',items:solutions.filter(s=>s.type==='grid-tied')},{id:'off-grid',label:'Off-Grid Systems',items:solutions.filter(s=>s.type==='off-grid')}];
+const groups = [
+  { id:'grid-tied', label:'Grid-Tied Systems', description:'Packages for solar generation, battery storage and grid-connected self-consumption.', items:solutions.filter(s=>s.type==='grid-tied') },
+  { id:'off-grid', label:'Off-Grid Systems', description:'Packages for remote power, backup loads and sites with unstable or unavailable grid access.', items:solutions.filter(s=>s.type==='off-grid') },
+];
 ---
-<BaseLayout title="Solar Solutions | Callsun" description="Callsun grid-tied and off-grid solar storage system packages for B2B installers and dealers.">
-<Header slot="header" />
-<section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Solutions</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Installer-ready solar system packages</h1><p class="mt-4 text-lg text-jinko-mute max-w-3xl">Repeatable grid-tied and off-grid packages with modules, inverters, batteries and accessories structured for future BOM downloads and inquiry conversion.</p></div></section>
-{groups.map(group => <section id={group.id} class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6"><h2 class="text-3xl font-display font-extrabold">{group.label}</h2><ul class="mt-8 grid gap-6 md:grid-cols-3">{group.items.map(s=><li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{s.type}</p><h3 class="mt-2 text-xl font-display font-bold"><a href={`/solutions/${s.slug}`}>{s.title}</a></h3><p class="mt-2 text-2xl font-display font-extrabold text-jinko">{s.capacityLabel}</p><p class="mt-3 text-sm text-jinko-mute">{s.summary}</p><a href={`/solutions/${s.slug}`} class="mt-5 inline-block text-jinko font-semibold">View solution →</a></li>)}</ul></div></section>)}
-<Footer slot="footer" />
+<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/solutions'} ogImage={page.ogImage || '/og/default.svg'} keywords={page.keywords} noindex={page.noindex}>
+  <Header slot="header" />
+  <section class="py-16 lg:py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <span>{page.title}</span></nav><p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">{page.hero.eyebrow}</p><h1 class="mt-3 text-4xl lg:text-6xl font-display font-extrabold leading-tight max-w-5xl">{page.h1 || page.title}</h1><p class="mt-5 text-lg text-jinko-mute max-w-3xl leading-relaxed">{page.hero.description}</p><div class="mt-8 flex flex-wrap gap-3"><a href={page.hero.primaryCtaHref} class="inline-flex px-5 py-3 rounded-md bg-jinko text-white font-semibold shadow-card">{page.hero.primaryCtaLabel}</a>{page.hero.secondaryCtaLabel && page.hero.secondaryCtaHref && <a href={page.hero.secondaryCtaHref} class="inline-flex px-5 py-3 rounded-md bg-white text-jinko font-semibold border border-jinko-line">{page.hero.secondaryCtaLabel}</a>}</div></div></section>
+  <StatStrip stats={page.stats} />
+  <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow={page.intro.eyebrow} title={page.intro.title} description={page.intro.description} />{page.categoryNotes.length > 0 && <div class="mt-10"><CardGrid items={page.categoryNotes} /></div>}</div></section>
+  {groups.map(group => <section id={group.id} class="py-16 odd:bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Solution category" title={group.label} description={group.description} /><ul class="mt-8 grid gap-6 md:grid-cols-3">{group.items.map(s=><li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{s.type}</p><h3 class="mt-2 text-xl font-display font-bold"><a href={`/solutions/${s.slug}`}>{s.title}</a></h3><p class="mt-2 text-2xl font-display font-extrabold text-jinko">{s.capacityLabel}</p><p class="mt-3 text-sm text-jinko-mute">{s.summary}</p><div class="mt-5 flex flex-wrap gap-2">{s.pvCapacity && <span class="px-3 py-1 rounded-full bg-jinko-bg text-xs font-semibold text-jinko-ink">PV {s.pvCapacity}</span>}{s.batteryCapacity && <span class="px-3 py-1 rounded-full bg-jinko-bg text-xs font-semibold text-jinko-ink">Storage {s.batteryCapacity}</span>}</div><a href={`/solutions/${s.slug}`} class="mt-5 inline-block text-jinko font-semibold">View solution →</a></li>)}</ul></div></section>)}
+  {page.finalCta && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="rounded-3xl bg-jinko text-white p-8 lg:p-10 flex flex-col lg:flex-row gap-6 lg:items-center lg:justify-between"><div><h2 class="text-3xl font-display font-extrabold">{page.finalCta.title}</h2>{page.finalCta.description && <p class="mt-3 text-white/80 max-w-2xl">{page.finalCta.description}</p>}</div><div class="flex flex-wrap gap-3 shrink-0"><a href={page.finalCta.primaryHref} class="inline-flex px-5 py-3 rounded-md bg-white text-jinko font-semibold">{page.finalCta.primaryLabel}</a>{page.finalCta.secondaryLabel && page.finalCta.secondaryHref && <a href={page.finalCta.secondaryHref} class="inline-flex px-5 py-3 rounded-md bg-jinko-dark text-white font-semibold border border-white/20">{page.finalCta.secondaryLabel}</a>}</div></div></div></section>}
+  <ContactCTA />
+  <Footer slot="footer" />
 </BaseLayout>

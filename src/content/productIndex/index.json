@@ -1,0 +1,42 @@
+{
+  "title": "Products",
+  "seoTitle": "Solar Module Products | Standard & Custom Panels | Callsun",
+  "metaDescription": "Browse Callsun standard and custom solar modules for B2B distributors, dealers and EPC installers, including 450W, 580W, 620W and compact custom modules.",
+  "h1": "Solar module products for B2B distribution and project supply.",
+  "keywords": ["solar module products", "450w solar panel", "580w solar module", "620w solar panel", "custom solar module"],
+  "canonical": "/products",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "Products",
+    "description": "Standard high-power modules and compact custom modules structured for SEO, datasheets, certifications, applications and B2B inquiry conversion.",
+    "primaryCtaLabel": "Request Product Quote",
+    "primaryCtaHref": "/contact",
+    "secondaryCtaLabel": "Download Catalog",
+    "secondaryCtaHref": "/resources/downloads"
+  },
+  "stats": [
+    { "label": "Module range", "value": "180W-620W" },
+    { "label": "Standard modules", "value": "3" },
+    { "label": "Custom modules", "value": "3" },
+    { "label": "Datasheets", "value": "CMS" }
+  ],
+  "intro": {
+    "eyebrow": "Product architecture",
+    "title": "Organized for product comparison and quote requests.",
+    "description": "The product index separates standard high-power modules from compact custom modules so B2B buyers can quickly choose between mainstream project supply and non-standard application needs."
+  },
+  "categoryNotes": [
+    { "title": "Standard Modules", "description": "Best for commercial rooftop, residential storage and mainstream project supply where efficiency, certifications and container pricing matter." },
+    { "title": "Custom Modules", "description": "Best for RV, mobile, balcony, off-grid or space-limited applications where size and format flexibility matter." },
+    { "title": "Next step", "description": "Use product pages for specs, then connect buyers to related solutions, applications, downloads and inquiry forms." }
+  ],
+  "finalCta": {
+    "title": "Need module specs, pricing or certificates?",
+    "description": "Send target wattage, quantity, market and certification requirements. Callsun can respond with matching module options and document links.",
+    "primaryLabel": "Request Product Quote",
+    "primaryHref": "/contact",
+    "secondaryLabel": "View Applications",
+    "secondaryHref": "/applications"
+  }
+}

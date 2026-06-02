@@ -253,6 +253,125 @@ collections:
           - { name: "order", label: "Display Order", widget: "number", default: 0 }
           - { name: "visible", label: "Show", widget: "boolean", default: true }
 
+
+  - name: "productIndex"
+    label: "📦 Products Index"
+    folder: "src/content/productIndex"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Request Product Quote" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "Stats"
+        name: "stats"
+        widget: "list"
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "value", label: "Value", widget: "string" }
+      - label: "Intro"
+        name: "intro"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text" }
+      - label: "Category Notes"
+        name: "categoryNotes"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "title", label: "Note Title", widget: "string" }
+          - { name: "description", label: "Note Description", widget: "text" }
+      - label: "Final CTA"
+        name: "finalCta"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "title", label: "CTA Title", widget: "string" }
+          - { name: "description", label: "CTA Description", widget: "text", required: false }
+          - { name: "primaryLabel", label: "Primary Label", widget: "string", default: "Request Quote" }
+          - { name: "primaryHref", label: "Primary URL", widget: "string", default: "/contact" }
+          - { name: "secondaryLabel", label: "Secondary Label", widget: "string", required: false }
+          - { name: "secondaryHref", label: "Secondary URL", widget: "string", required: false }
+
+  - name: "solutionIndex"
+    label: "🔋 Solutions Index"
+    folder: "src/content/solutionIndex"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Discuss a System Package" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "Stats"
+        name: "stats"
+        widget: "list"
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "value", label: "Value", widget: "string" }
+      - label: "Intro"
+        name: "intro"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text" }
+      - label: "Category Notes"
+        name: "categoryNotes"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "title", label: "Note Title", widget: "string" }
+          - { name: "description", label: "Note Description", widget: "text" }
+      - label: "Final CTA"
+        name: "finalCta"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "title", label: "CTA Title", widget: "string" }
+          - { name: "description", label: "CTA Description", widget: "text", required: false }
+          - { name: "primaryLabel", label: "Primary Label", widget: "string", default: "Request Quote" }
+          - { name: "primaryHref", label: "Primary URL", widget: "string", default: "/contact" }
+          - { name: "secondaryLabel", label: "Secondary Label", widget: "string", required: false }
+          - { name: "secondaryHref", label: "Secondary URL", widget: "string", required: false }
+
   - name: "products"
     label: "📦 Products"
     folder: "src/content/products"
