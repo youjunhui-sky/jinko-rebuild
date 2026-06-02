@@ -4,6 +4,7 @@ description: "A practical checklist for comparing wattage, module technology, wa
 publishDate: 2026-06-02
 updatedDate: 2026-06-02
 author: "Callsun"
+coverAlt: "Solar module datasheet comparison guide cover illustration"
 cover: "/placeholders/solar-panel.svg"
 category: "Product"
 tags: ["Datasheet", "Solar Modules", "Distributor"]

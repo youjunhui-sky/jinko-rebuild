@@ -749,6 +749,7 @@ collections:
       - { name: "segment", label: "Segment", widget: "select", options: ["Small C&I", "Mid-Scale C&I", "Large C&I", "Solar + Storage"] }
       - { name: "application", label: "Application", widget: "select", options: ["Commercial & Industrial", "Residential", "Municipal", "Solar + Storage"] }
       - { name: "coverImage", label: "Cover Image", widget: "image", default: "/placeholders/case-rooftop.svg" }
+      - { name: "coverImageAlt", label: "Cover Image Alt", widget: "string", required: false }
       - { name: "gallery", label: "Gallery Images", widget: "list", default: [], field: { name: "image", label: "Image", widget: "image" } }
       - { name: "description", label: "Description", widget: "text" }
       - { name: "projectBackground", label: "Project Background", widget: "text", required: false }
@@ -791,6 +792,7 @@ collections:
       - { name: "updatedDate", label: "Updated Date", widget: "datetime", required: false, date_format: "YYYY-MM-DD", time_format: false }
       - { name: "author", label: "Author", widget: "string", default: "Callsun" }
       - { name: "cover", label: "Cover Image", widget: "image", required: false }
+      - { name: "coverAlt", label: "Cover Image Alt", widget: "string", required: false }
       - { name: "category", label: "Category", widget: "select", options: ["Press", "Product", "Industry", "Technical", "Sustainability"] }
       - { name: "tags", label: "Tags", widget: "list", default: [] }
       - { name: "relatedPosts", label: "Related Post Slugs", widget: "list", default: [] }

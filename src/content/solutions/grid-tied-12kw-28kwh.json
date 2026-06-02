@@ -8,16 +8,46 @@
   "image": "/placeholders/battery-system.svg",
   "summary": "A grid-tied solar and storage system package for residential and small commercial installers who need repeatable BOMs and reliable component matching.",
   "components": [
-    { "category": "Solar Module", "name": "450W Double Glass Solar Module", "quantity": "24 pcs", "note": "10.8kW PV array" },
-    { "category": "Inverter", "name": "HS-LV12KNA", "quantity": "1 set", "note": "12kW split-phase inverter, UL1741 & IEEE1547.1-2020" },
-    { "category": "Battery", "name": "GSL-051280A-B-GBP2", "quantity": "2 sets", "note": "14.34kWh wall-mounted LiFePO4 battery" },
-    { "category": "Accessories", "name": "MC4 tools, cables, brackets, PV DC breaker, combiner box", "note": "Optional triangle bracket and 2-in/2-out combiner box" }
+    {
+      "category": "Solar Module",
+      "name": "450W Double Glass Solar Module",
+      "quantity": "24 pcs",
+      "note": "10.8kW PV array"
+    },
+    {
+      "category": "Inverter",
+      "name": "HS-LV12KNA",
+      "quantity": "1 set",
+      "note": "12kW split-phase inverter, UL1741 & IEEE1547.1-2020"
+    },
+    {
+      "category": "Battery",
+      "name": "GSL-051280A-B-GBP2",
+      "quantity": "2 sets",
+      "note": "14.34kWh wall-mounted LiFePO4 battery"
+    },
+    {
+      "category": "Accessories",
+      "name": "MC4 tools, cables, brackets, PV DC breaker, combiner box",
+      "note": "Optional triangle bracket and 2-in/2-out combiner box"
+    }
   ],
-  "useCases": ["Residential storage", "Small commercial backup", "Dealer standard package"],
-  "relatedProducts": ["450w-double-glass-solar-module"],
+  "useCases": [
+    "Residential storage",
+    "Small commercial backup",
+    "Dealer standard package"
+  ],
+  "relatedProducts": [
+    "450w-double-glass-solar-module"
+  ],
   "order": 10,
   "featured": true,
   "seoTitle": "12kW Grid-Tied Solar Storage System | Callsun",
   "metaDescription": "Callsun 12kW grid-tied solar and 28kWh storage system package with 10.8kW PV for B2B dealers and EPC installers.",
-  "keywords": ["12kw grid tied solar system", "solar storage system supplier", "28kwh battery storage"]
+  "keywords": [
+    "12kw grid tied solar system",
+    "solar storage system supplier",
+    "28kwh battery storage"
+  ],
+  "imageAlt": "Callsun 12kW grid-tied solar storage system package illustration"
 }

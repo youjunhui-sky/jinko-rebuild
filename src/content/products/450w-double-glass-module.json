@@ -5,33 +5,107 @@
   "model": "CN450W",
   "tagline": "High-efficiency 450W module for residential, commercial and distributed solar projects.",
   "tech": "Mono-crystalline silicon · Double glass",
-  "certifications": ["IEC 61215", "IEC 61730", "ISO 9001", "ISO 14001", "ISO 45001"],
+  "certifications": [
+    "IEC 61215",
+    "IEC 61730",
+    "ISO 9001",
+    "ISO 14001",
+    "ISO 45001"
+  ],
   "image": "/placeholders/solar-panel.svg",
-  "imageAlt": "Callsun 450W double glass solar module product placeholder",
+  "imageAlt": "Callsun 450W double-glass solar module for distributed and commercial rooftop projects",
   "description": "Callsun CN450W is a 450W double glass solar module designed for B2B distributors, dealers and EPC installers who need reliable modules for repeatable rooftop and distributed generation projects.",
   "specs": [
-    { "label": "Maximum Power (Pmax)", "value": "450W", "group": "Electrical" },
-    { "label": "Maximum Power Voltage (Vmp)", "value": "30.93V", "group": "Electrical" },
-    { "label": "Maximum Power Current (Imp)", "value": "14.55A", "group": "Electrical" },
-    { "label": "Open-circuit Voltage (Voc)", "value": "35.01V", "group": "Electrical" },
-    { "label": "Short-circuit Current (Isc)", "value": "15.47A", "group": "Electrical" },
-    { "label": "Module Efficiency", "value": "23.04%", "group": "Performance" },
-    { "label": "Operating Temperature", "value": "-40 ~ +85°C", "group": "Performance" },
-    { "label": "Maximum System Voltage", "value": "1500V DC", "group": "System" },
-    { "label": "Cell Type", "value": "Mono-crystalline silicon, 182×105mm", "group": "Mechanical" },
-    { "label": "Number of Cells", "value": "96 pcs (6×8×2)", "group": "Mechanical" },
-    { "label": "Dimensions", "value": "1762×1134×30 mm", "group": "Mechanical" },
-    { "label": "Weight", "value": "24.5kg", "group": "Mechanical" },
-    { "label": "Glass", "value": "2.0+2.0mm Tempered Glass", "group": "Mechanical" },
-    { "label": "Junction Box", "value": "IP68", "group": "Mechanical" },
-    { "label": "Warranty", "value": "25-Year Product Warranty; 30-Year Linear Power Warranty", "group": "Warranty" }
+    {
+      "label": "Maximum Power (Pmax)",
+      "value": "450W",
+      "group": "Electrical"
+    },
+    {
+      "label": "Maximum Power Voltage (Vmp)",
+      "value": "30.93V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Maximum Power Current (Imp)",
+      "value": "14.55A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Open-circuit Voltage (Voc)",
+      "value": "35.01V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Short-circuit Current (Isc)",
+      "value": "15.47A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Module Efficiency",
+      "value": "23.04%",
+      "group": "Performance"
+    },
+    {
+      "label": "Operating Temperature",
+      "value": "-40 ~ +85°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Maximum System Voltage",
+      "value": "1500V DC",
+      "group": "System"
+    },
+    {
+      "label": "Cell Type",
+      "value": "Mono-crystalline silicon, 182×105mm",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Number of Cells",
+      "value": "96 pcs (6×8×2)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Dimensions",
+      "value": "1762×1134×30 mm",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Weight",
+      "value": "24.5kg",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Glass",
+      "value": "2.0+2.0mm Tempered Glass",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Junction Box",
+      "value": "IP68",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Warranty",
+      "value": "25-Year Product Warranty; 30-Year Linear Power Warranty",
+      "group": "Warranty"
+    }
   ],
-  "applications": ["Commercial Rooftop", "Residential", "Distributed Generation"],
+  "applications": [
+    "Commercial Rooftop",
+    "Residential",
+    "Distributed Generation"
+  ],
   "downloads": [],
   "order": 10,
   "featured": true,
   "seoTitle": "450W Double Glass Solar Module | Callsun",
   "metaDescription": "Callsun CN450W double glass solar module with 23.04% efficiency, IEC certifications and 25-year product warranty for B2B solar distributors and EPC installers.",
   "h1": "450W Double Glass Solar Module",
-  "keywords": ["450w solar panel", "double glass solar module", "commercial solar panel supplier"]
+  "keywords": [
+    "450w solar panel",
+    "double glass solar module",
+    "commercial solar panel supplier"
+  ]
 }

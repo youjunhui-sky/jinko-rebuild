@@ -54,5 +54,6 @@
     "12kw-grid-tied-solar-storage-system",
     "10kw-off-grid-solar-system"
   ],
-  "casePdf": "/resources/downloads"
+  "casePdf": "/resources/downloads",
+  "coverImageAlt": "100kW 215kWh solar storage microgrid project case illustration"
 }

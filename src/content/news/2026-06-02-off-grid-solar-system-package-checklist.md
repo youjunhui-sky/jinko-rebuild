@@ -4,6 +4,7 @@ description: "A dealer-focused checklist for explaining off-grid solar packages,
 publishDate: 2026-06-02
 updatedDate: 2026-06-02
 author: "Callsun"
+coverAlt: "Off-grid solar system package checklist cover illustration"
 cover: "/placeholders/battery-system.svg"
 category: "Technical"
 tags: ["Off-Grid", "Battery Storage", "Dealer"]

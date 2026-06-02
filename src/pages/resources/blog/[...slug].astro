@@ -45,7 +45,7 @@ const articleSchema = {
     <section class="py-14 bg-jinko-bg">
       <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1fr_320px] gap-10 items-end">
         <div><nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <a href="/resources/blog">Blog</a> / <a href={`/resources/blog/category/${post.data.category.toLowerCase().replaceAll(' ', '-')}`}>{post.data.category}</a></nav><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{post.data.category}</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">{post.data.h1 || post.data.title}</h1><p class="mt-4 text-lg text-jinko-mute max-w-3xl">{post.data.description}</p><p class="mt-4 text-sm text-jinko-mute">Published {post.data.publishDate.toLocaleDateString('en-US')} · Updated {(post.data.updatedDate || post.data.publishDate).toLocaleDateString('en-US')} · {post.data.author}</p><div class="mt-5 flex flex-wrap gap-2">{post.data.tags.map((tag) => <a href={`/resources/blog/tag/${tag.toLowerCase().replaceAll(' ', '-')}`} class="rounded-full bg-white border border-jinko-line px-3 py-1 text-sm text-jinko-mute">#{tag}</a>)}</div></div>
-        {post.data.cover && <img src={post.data.cover} alt={post.data.title} class="rounded-3xl border border-jinko-line shadow-card" />}
+        {post.data.cover && <img src={post.data.cover} alt={post.data.coverAlt || post.data.title} class="rounded-3xl border border-jinko-line shadow-card" />}
       </div>
     </section>
 

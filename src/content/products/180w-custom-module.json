@@ -56,5 +56,6 @@
   "image": "/uploads/image.png",
   "seoTitle": "180W Custom Solar Module | Callsun",
   "description": "A compact 180W custom solar module for customers who need flexible module sizes and non-standard deployment scenarios.",
-  "category": "custom-module"
+  "category": "custom-module",
+  "imageAlt": "Callsun 180W compact custom solar module for mobile and off-grid applications"
 }

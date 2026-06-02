@@ -5,28 +5,87 @@
   "model": "CN620W",
   "tagline": "620W high-output N-type module for power-dense commercial solar projects.",
   "tech": "N-type mono-crystalline silicon",
-  "certifications": ["IEC 61215", "IEC 61730", "ISO 9001", "ISO 14001", "ISO 45001"],
+  "certifications": [
+    "IEC 61215",
+    "IEC 61730",
+    "ISO 9001",
+    "ISO 14001",
+    "ISO 45001"
+  ],
   "image": "/placeholders/solar-panel.svg",
   "description": "Callsun CN620W helps EPC teams increase project power density with a high-output module platform designed for commercial and industrial solar deployment.",
   "specs": [
-    { "label": "Maximum Power (Pmax)", "value": "620W", "group": "Electrical" },
-    { "label": "Maximum Power Voltage (Vmp)", "value": "40.82V", "group": "Electrical" },
-    { "label": "Maximum Power Current (Imp)", "value": "15.19A", "group": "Electrical" },
-    { "label": "Open-circuit Voltage (Voc)", "value": "48.10V", "group": "Electrical" },
-    { "label": "Short-circuit Current (Isc)", "value": "16.06A", "group": "Electrical" },
-    { "label": "Module Efficiency", "value": "23%", "group": "Performance" },
-    { "label": "Cell Type", "value": "N-type Mono-crystalline silicon, 182×105mm", "group": "Mechanical" },
-    { "label": "Number of Cells", "value": "132 pcs (6×11×2)", "group": "Mechanical" },
-    { "label": "Dimensions", "value": "2382×1134×30 mm", "group": "Mechanical" },
-    { "label": "Weight", "value": "32.5kg", "group": "Mechanical" },
-    { "label": "Warranty", "value": "25-Year Product Warranty; 30-Year Linear Power Warranty", "group": "Warranty" }
+    {
+      "label": "Maximum Power (Pmax)",
+      "value": "620W",
+      "group": "Electrical"
+    },
+    {
+      "label": "Maximum Power Voltage (Vmp)",
+      "value": "40.82V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Maximum Power Current (Imp)",
+      "value": "15.19A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Open-circuit Voltage (Voc)",
+      "value": "48.10V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Short-circuit Current (Isc)",
+      "value": "16.06A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Module Efficiency",
+      "value": "23%",
+      "group": "Performance"
+    },
+    {
+      "label": "Cell Type",
+      "value": "N-type Mono-crystalline silicon, 182×105mm",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Number of Cells",
+      "value": "132 pcs (6×11×2)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Dimensions",
+      "value": "2382×1134×30 mm",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Weight",
+      "value": "32.5kg",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Warranty",
+      "value": "25-Year Product Warranty; 30-Year Linear Power Warranty",
+      "group": "Warranty"
+    }
   ],
-  "applications": ["Commercial Rooftop", "Industrial Rooftop", "Large C&I"],
+  "applications": [
+    "Commercial Rooftop",
+    "Industrial Rooftop",
+    "Large C&I"
+  ],
   "downloads": [],
   "order": 30,
   "featured": true,
   "seoTitle": "620W N-Type Solar Module | Callsun",
   "metaDescription": "Callsun CN620W N-type solar module delivers 620W power and 23% efficiency for commercial and industrial solar projects.",
   "h1": "620W N-Type Solar Module",
-  "keywords": ["620w solar panel", "n type solar module", "high power solar panel supplier"]
+  "keywords": [
+    "620w solar panel",
+    "n type solar module",
+    "high power solar panel supplier"
+  ],
+  "imageAlt": "Callsun 620W N-type high-power solar module for large commercial projects"
 }

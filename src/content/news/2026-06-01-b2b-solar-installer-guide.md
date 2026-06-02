@@ -4,6 +4,7 @@ description: "A practical guide for distributors, dealers and EPC installers who
 publishDate: 2026-06-01
 updatedDate: 2026-06-02
 author: "Callsun"
+coverAlt: "Commercial rooftop solar installer guide cover illustration"
 cover: "/placeholders/case-rooftop.svg"
 category: "Technical"
 tags: ["C&I", "EPC", "Rooftop Solar"]

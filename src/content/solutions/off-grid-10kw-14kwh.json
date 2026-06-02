@@ -8,16 +8,46 @@
   "image": "/placeholders/battery-system.svg",
   "summary": "A higher-capacity off-grid system package for installers targeting larger residential, rural commercial and solar-plus-storage opportunities.",
   "components": [
-    { "category": "Solar Module", "name": "450W Solar Module", "quantity": "16 pcs", "note": "7.2kW PV array" },
-    { "category": "Inverter", "name": "SPI-10K-UP", "quantity": "1 set", "note": "10kW inverter, split-phase/single-phase output" },
-    { "category": "Battery", "name": "GSL-051280A-B-GBP2", "quantity": "1 set", "note": "14.34kWh wall-mounted LiFePO4 battery" },
-    { "category": "Accessories", "name": "MC4 tools, cables, brackets, PV DC breaker, combiner box" }
+    {
+      "category": "Solar Module",
+      "name": "450W Solar Module",
+      "quantity": "16 pcs",
+      "note": "7.2kW PV array"
+    },
+    {
+      "category": "Inverter",
+      "name": "SPI-10K-UP",
+      "quantity": "1 set",
+      "note": "10kW inverter, split-phase/single-phase output"
+    },
+    {
+      "category": "Battery",
+      "name": "GSL-051280A-B-GBP2",
+      "quantity": "1 set",
+      "note": "14.34kWh wall-mounted LiFePO4 battery"
+    },
+    {
+      "category": "Accessories",
+      "name": "MC4 tools, cables, brackets, PV DC breaker, combiner box"
+    }
   ],
-  "useCases": ["Large off-grid home", "Commercial backup", "Rural power", "Solar + storage package"],
-  "relatedProducts": ["450w-double-glass-solar-module"],
+  "useCases": [
+    "Large off-grid home",
+    "Commercial backup",
+    "Rural power",
+    "Solar + storage package"
+  ],
+  "relatedProducts": [
+    "450w-double-glass-solar-module"
+  ],
   "order": 30,
   "featured": true,
   "seoTitle": "10kW Off-Grid Solar System with 14kWh Battery | Callsun",
   "metaDescription": "Callsun 10kW off-grid solar system with 14kWh battery and 7.2kW PV for B2B installers and dealers.",
-  "keywords": ["10kw off grid solar system", "14kwh solar battery system", "solar plus storage supplier"]
+  "keywords": [
+    "10kw off grid solar system",
+    "14kwh solar battery system",
+    "solar plus storage supplier"
+  ],
+  "imageAlt": "Callsun 10kW off-grid solar system with 14kWh battery package illustration"
 }
