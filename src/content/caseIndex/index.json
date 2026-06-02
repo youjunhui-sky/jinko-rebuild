@@ -1,0 +1,47 @@
+{
+  "title": "Project Cases",
+  "seoTitle": "Solar Project Cases | C&I Rooftop & Solar Storage References | Callsun",
+  "metaDescription": "Browse Callsun solar project cases for C&I rooftops, auto dealerships, industrial buildings and solar-plus-storage microgrids. Use project proof for B2B sales and EPC evaluation.",
+  "h1": "Solar project case library for B2B sales proof.",
+  "keywords": ["solar project cases", "commercial rooftop solar case", "solar storage microgrid case", "C&I solar reference", "solar EPC case study"],
+  "canonical": "/cases",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "News & Cases",
+    "description": "Use project cases to reduce buyer hesitation. Each case connects capacity, location, application, business results, related products and related solutions into one sales proof page.",
+    "primaryCtaLabel": "Discuss a Similar Project",
+    "primaryCtaHref": "/contact",
+    "secondaryCtaLabel": "Read Technical Blog",
+    "secondaryCtaHref": "/resources/blog"
+  },
+  "stats": [
+    { "label": "Case references", "value": "4" },
+    { "label": "Capacity range", "value": "100kW-3.5MW" },
+    { "label": "Segments", "value": "4" },
+    { "label": "Sales proof", "value": "Ready" }
+  ],
+  "intro": {
+    "eyebrow": "Sales proof",
+    "title": "Turn project references into buyer confidence.",
+    "description": "For distributors, dealers and EPC installers, project cases help answer whether a supplier has practical references, application fit and enough context for a credible proposal."
+  },
+  "filtersIntro": {
+    "eyebrow": "Case library",
+    "title": "Browse by segment and application.",
+    "description": "Cases are structured for C&I rooftops, large industrial projects, premium commercial sites and solar-plus-storage references."
+  },
+  "proofPoints": [
+    { "title": "Project parameters", "description": "Capacity, location, segment, application and completion data make each case easier to compare." },
+    { "title": "Buyer concerns", "description": "Pain points and business results help sales teams explain why a similar solution fits a new buyer." },
+    { "title": "Connected content", "description": "Each case can link to related products, solutions, downloads and inquiry CTAs for conversion." }
+  ],
+  "finalCta": {
+    "title": "Need a case reference for your target application?",
+    "description": "Send the market, capacity, application and buyer concerns. Callsun can recommend relevant cases, products and system package references.",
+    "primaryLabel": "Request Case Support",
+    "primaryHref": "/contact",
+    "secondaryLabel": "View Applications",
+    "secondaryHref": "/applications"
+  }
+}

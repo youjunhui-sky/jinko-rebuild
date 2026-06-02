@@ -662,6 +662,73 @@ collections:
       - { name: "ogImage", label: "OG Image", widget: "image", required: false }
       - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
 
+
+  - name: "caseIndex"
+    label: "🏗️ Cases Index"
+    folder: "src/content/caseIndex"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", default: "News & Cases" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Discuss a Similar Project" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "Stats"
+        name: "stats"
+        widget: "list"
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "value", label: "Value", widget: "string" }
+      - label: "Intro"
+        name: "intro"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text" }
+      - label: "Filters Intro"
+        name: "filtersIntro"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+      - label: "Proof Points"
+        name: "proofPoints"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "title", label: "Point Title", widget: "string" }
+          - { name: "description", label: "Point Description", widget: "text" }
+      - label: "Final CTA"
+        name: "finalCta"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "title", label: "CTA Title", widget: "string" }
+          - { name: "description", label: "CTA Description", widget: "text", required: false }
+          - { name: "primaryLabel", label: "Primary Label", widget: "string", default: "Request Case Support" }
+          - { name: "primaryHref", label: "Primary URL", widget: "string", default: "/contact" }
+          - { name: "secondaryLabel", label: "Secondary Label", widget: "string", required: false }
+          - { name: "secondaryHref", label: "Secondary URL", widget: "string", required: false }
+
   - name: "cases"
     label: "🏗️ Cases"
     folder: "src/content/cases"
