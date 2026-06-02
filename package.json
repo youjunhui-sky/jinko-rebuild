@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "qa:launch": "node scripts/qa-launch.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
