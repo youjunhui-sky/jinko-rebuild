@@ -170,6 +170,79 @@ const solutions = defineCollection({
   }),
 });
 
+const contact = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    hero: z.object({
+      eyebrow: z.string().default('B2B Inquiry'),
+      description: z.string(),
+    }),
+    form: z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      submitLabel: z.string().default('Send Inquiry'),
+      successMessage: z.string().optional(),
+      mockModeNote: z.string().optional(),
+      inquiryTypes: z.array(z.string()).default([]),
+      applicationOptions: z.array(z.string()).default([]),
+      roleOptions: z.array(z.string()).default([]),
+      timelineOptions: z.array(z.string()).default([]),
+    }),
+    sidebar: z.object({
+      contactTitle: z.string().default('Direct contact'),
+      contactDescription: z.string().optional(),
+      eventsTitle: z.string().default('Conversion events reserved'),
+      events: z.array(z.string()).default([]),
+    }),
+    trustCards: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
+    ...seoFields,
+  }),
+});
+
+const applicationIndex = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    hero: z.object({
+      eyebrow: z.string().default('Applications'),
+      description: z.string(),
+      primaryCtaLabel: z.string().default('Discuss Your Application'),
+      primaryCtaHref: z.string().default('/contact'),
+      secondaryCtaLabel: z.string().optional(),
+      secondaryCtaHref: z.string().optional(),
+    }),
+    stats: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
+    intro: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string(),
+    }),
+    selectionGuide: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string().optional(),
+      items: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
+    }),
+    workflow: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string().optional(),
+      steps: z.array(z.object({ label: z.string(), description: z.string() })).default([]),
+    }),
+    faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    finalCta: z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      primaryLabel: z.string().default('Request Application Advice'),
+      primaryHref: z.string().default('/contact'),
+      secondaryLabel: z.string().optional(),
+      secondaryHref: z.string().optional(),
+    }).optional(),
+    ...seoFields,
+  }),
+});
+
 const applications = defineCollection({
   type: 'data',
   schema: z.object({
@@ -379,4 +452,4 @@ const landingPages = defineCollection({
   }),
 });
 
-export const collections = { homepage, about, products, solutions, applications, news, downloads, cases, supportPages, navigation, customPages, landingPages };
+export const collections = { homepage, about, contact, applicationIndex, products, solutions, applications, news, downloads, cases, supportPages, navigation, customPages, landingPages };

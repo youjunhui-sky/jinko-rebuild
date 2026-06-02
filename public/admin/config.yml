@@ -349,6 +349,145 @@ collections:
       - { name: "ogImage", label: "OG Image", widget: "image", required: false }
       - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
 
+
+
+  - name: "contact"
+    label: "📩 Contact Page"
+    folder: "src/content/contact"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", default: "B2B Inquiry" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+      - label: "Form"
+        name: "form"
+        widget: "object"
+        fields:
+          - { name: "title", label: "Form Title", widget: "string" }
+          - { name: "description", label: "Form Description", widget: "text", required: false }
+          - { name: "submitLabel", label: "Submit Button Label", widget: "string", default: "Send Inquiry" }
+          - { name: "successMessage", label: "Success Message", widget: "text", required: false }
+          - { name: "mockModeNote", label: "Mock Mode Note", widget: "text", required: false }
+          - { name: "inquiryTypes", label: "Inquiry Type Options", widget: "list", default: [] }
+          - { name: "applicationOptions", label: "Application Options", widget: "list", default: [] }
+          - { name: "roleOptions", label: "Buyer Role Options", widget: "list", default: [] }
+          - { name: "timelineOptions", label: "Timeline Options", widget: "list", default: [] }
+      - label: "Sidebar"
+        name: "sidebar"
+        widget: "object"
+        fields:
+          - { name: "contactTitle", label: "Contact Title", widget: "string", default: "Direct contact" }
+          - { name: "contactDescription", label: "Contact Description", widget: "text", required: false }
+          - { name: "eventsTitle", label: "Events Title", widget: "string", default: "Conversion events reserved" }
+          - { name: "events", label: "Events", widget: "list", default: [] }
+      - label: "Trust Cards"
+        name: "trustCards"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "title", label: "Card Title", widget: "string" }
+          - { name: "description", label: "Card Description", widget: "text" }
+
+  - name: "applicationIndex"
+    label: "🏠 Applications Index"
+    folder: "src/content/applicationIndex"
+    create: false
+    delete: false
+    format: "json"
+    extension: "json"
+    identifier_field: "title"
+    fields:
+      - { name: "title", label: "Internal Title", widget: "string" }
+      - { name: "seoTitle", label: "SEO Title", widget: "string", required: false }
+      - { name: "metaDescription", label: "Meta Description", widget: "text", required: false }
+      - { name: "h1", label: "H1", widget: "string", required: false }
+      - { name: "keywords", label: "Keywords", widget: "list", default: [] }
+      - { name: "canonical", label: "Canonical URL", widget: "string", required: false }
+      - { name: "ogImage", label: "OG Image", widget: "image", required: false }
+      - { name: "noindex", label: "Noindex", widget: "boolean", default: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", default: "Applications" }
+          - { name: "description", label: "Hero Description", widget: "text" }
+          - { name: "primaryCtaLabel", label: "Primary CTA Label", widget: "string", default: "Discuss Your Application" }
+          - { name: "primaryCtaHref", label: "Primary CTA URL", widget: "string", default: "/contact" }
+          - { name: "secondaryCtaLabel", label: "Secondary CTA Label", widget: "string", required: false }
+          - { name: "secondaryCtaHref", label: "Secondary CTA URL", widget: "string", required: false }
+      - label: "Stats"
+        name: "stats"
+        widget: "list"
+        fields:
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "value", label: "Value", widget: "string" }
+      - label: "Intro"
+        name: "intro"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text" }
+      - label: "Selection Guide"
+        name: "selectionGuide"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Item Title", widget: "string" }
+              - { name: "description", label: "Item Description", widget: "text" }
+      - label: "Inquiry Workflow"
+        name: "workflow"
+        widget: "object"
+        fields:
+          - { name: "eyebrow", label: "Eyebrow", widget: "string", required: false }
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "description", label: "Description", widget: "text", required: false }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            fields:
+              - { name: "label", label: "Step Label", widget: "string" }
+              - { name: "description", label: "Step Description", widget: "text" }
+      - label: "FAQ"
+        name: "faq"
+        widget: "list"
+        required: false
+        fields:
+          - { name: "question", label: "Question", widget: "string" }
+          - { name: "answer", label: "Answer", widget: "text" }
+      - label: "Final CTA"
+        name: "finalCta"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "title", label: "CTA Title", widget: "string" }
+          - { name: "description", label: "CTA Description", widget: "text", required: false }
+          - { name: "primaryLabel", label: "Primary Label", widget: "string", default: "Request Application Advice" }
+          - { name: "primaryHref", label: "Primary URL", widget: "string", default: "/contact" }
+          - { name: "secondaryLabel", label: "Secondary Label", widget: "string", required: false }
+          - { name: "secondaryHref", label: "Secondary URL", widget: "string", required: false }
+
   - name: "applications"
     label: "🏠 Applications"
     folder: "src/content/applications"

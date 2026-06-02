@@ -51,6 +51,10 @@ function normalizeInquiry(raw, request) {
     inquiry_type: clean(raw.inquiry_type, 160),
     market: clean(raw.market, 160),
     size: clean(raw.size, 200),
+    application: clean(raw.application, 160),
+    buyer_role: clean(raw.buyer_role, 160),
+    timeline: clean(raw.timeline, 160),
+    document_needs: clean(raw.document_needs, 300),
     message: clean(raw.message, 4000),
   };
 

@@ -1,0 +1,95 @@
+{
+  "title": "Applications",
+  "seoTitle": "Solar Application Scenarios | Commercial Rooftop, Home Storage & Off-Grid | Callsun",
+  "metaDescription": "Explore Callsun solar application scenarios for commercial rooftops, home energy storage and off-grid remote power. Connect use cases to products, system packages, cases and RFQ.",
+  "h1": "Solar application scenarios for B2B distributors, dealers and EPC installers.",
+  "keywords": [
+    "solar applications",
+    "commercial rooftop solar",
+    "home energy storage",
+    "off grid solar power",
+    "solar system applications"
+  ],
+  "canonical": "/applications",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "Applications",
+    "description": "Use application pages to move buyers from a real project scenario to the right products, system packages, proof cases and inquiry path.",
+    "primaryCtaLabel": "Discuss Your Application",
+    "primaryCtaHref": "/contact",
+    "secondaryCtaLabel": "View System Packages",
+    "secondaryCtaHref": "/solutions"
+  },
+  "stats": [
+    { "label": "Application categories", "value": "3" },
+    { "label": "Linked products", "value": "6" },
+    { "label": "System packages", "value": "3" },
+    { "label": "Case references", "value": "4" }
+  ],
+  "intro": {
+    "eyebrow": "Scenario-led navigation",
+    "title": "Help buyers start from their project instead of a part number.",
+    "description": "Many B2B solar buyers search by application first: rooftop, home storage, off-grid, backup power or remote energy. This page organizes those paths and routes each visitor to relevant products, solutions, cases and downloads."
+  },
+  "selectionGuide": {
+    "eyebrow": "How to choose",
+    "title": "Match the scenario to the right Callsun path.",
+    "description": "Use these signals to decide whether the buyer should start from a product page, a complete system package or a case reference.",
+    "items": [
+      {
+        "title": "Start with Commercial Rooftop",
+        "description": "Best for factories, warehouses, dealerships and C&I buildings where roof area, daytime load and project proof matter most."
+      },
+      {
+        "title": "Start with Home Energy Storage",
+        "description": "Best for dealers and installers building residential solar-plus-storage offers for backup power and self-consumption."
+      },
+      {
+        "title": "Start with Off-Grid & Remote Power",
+        "description": "Best for cabins, farms, remote homes and small commercial sites where grid access is limited or unstable."
+      }
+    ]
+  },
+  "workflow": {
+    "eyebrow": "Inquiry workflow",
+    "title": "From application page to qualified RFQ.",
+    "description": "Application pages should collect enough context before sales follows up. This keeps the first reply practical and reduces low-quality inquiries.",
+    "steps": [
+      {
+        "label": "Identify scenario",
+        "description": "Buyer chooses a use case such as C&I rooftop, home storage or off-grid power."
+      },
+      {
+        "label": "Review package logic",
+        "description": "The detail page explains pain points, recommended products, solutions, cases and documents."
+      },
+      {
+        "label": "Submit project context",
+        "description": "RFQ captures application, capacity, timeline, market, UTM and referrer for later CRM integration."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "Why separate application pages from product pages?",
+      "answer": "Product pages answer specifications. Application pages answer project context, buyer concerns and recommended paths, which makes them useful for SEO and B2B conversion."
+    },
+    {
+      "question": "Can new application scenarios be added later?",
+      "answer": "Yes. The Applications collection is CMS-managed, so future scenarios such as RV solar, balcony solar, telecom backup or farm power can be added without changing the page structure."
+    },
+    {
+      "question": "Where should application traffic convert?",
+      "answer": "Each application page should guide visitors to related solutions, products, case references, downloads and finally a Contact or RFQ form with source tracking."
+    }
+  ],
+  "finalCta": {
+    "title": "Not sure which application fits your project?",
+    "description": "Send the load type, target capacity, installation market and timeline. Callsun can recommend a product or package path for the first quote discussion.",
+    "primaryLabel": "Request Application Advice",
+    "primaryHref": "/contact",
+    "secondaryLabel": "Browse Products",
+    "secondaryHref": "/products"
+  }
+}

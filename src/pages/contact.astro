@@ -1,22 +1,35 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import CardGrid from '@/components/CardGrid.astro';
 import { SITE } from '@/data/site';
+
+const contactEntry = await getEntry('contact', 'contact');
+if (!contactEntry) throw new Error('Missing contact content entry: src/content/contact/contact.json');
+const page = contactEntry.data;
 ---
-<BaseLayout title="Contact Callsun — Request a Solar Product Quote" description="Request a quote for Callsun solar modules, off-grid systems and solar-plus-storage packages. Form includes UTM and source tracking placeholders for future CRM integration.">
+<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/contact'} ogImage={page.ogImage || '/og/default.svg'} keywords={page.keywords} noindex={page.noindex}>
   <Header slot="header" />
   <section class="py-16 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">B2B Inquiry</p>
-      <h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Request a Callsun quote</h1>
-      <p class="mt-3 text-jinko-mute text-lg max-w-2xl">Tell us your market, project size and target application. CRM integration is reserved for Phase 2; this form is ready for source tracking and conversion events.</p>
+      <nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <span>{page.title}</span></nav>
+      <p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">{page.hero.eyebrow}</p>
+      <h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">{page.h1 || page.title}</h1>
+      <p class="mt-3 text-jinko-mute text-lg max-w-2xl">{page.hero.description}</p>
     </div>
   </section>
 
-  <section class="py-14">
+  {page.trustCards.length > 0 && <section class="py-12"><div class="max-w-content mx-auto px-4 lg:px-6"><CardGrid items={page.trustCards} /></div></section>}
+
+  <section class="py-14 bg-jinko-bg/40">
     <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[2fr_1fr] gap-10">
-      <form action="/api/inquiry" method="POST" data-inquiry-form class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
+      <form action="/api/inquiry" method="POST" data-inquiry-form data-success-message={page.form.successMessage} class="rounded-2xl border border-jinko-line bg-white shadow-card p-7 space-y-5">
+        <div>
+          <h2 class="text-2xl font-display font-bold">{page.form.title}</h2>
+          {page.form.description && <p class="mt-2 text-sm text-jinko-mute">{page.form.description}</p>}
+        </div>
         <div class="grid sm:grid-cols-2 gap-5">
           <label class="block"><span class="text-sm font-semibold text-jinko-ink">Full Name *</span><input type="text" name="name" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
           <label class="block"><span class="text-sm font-semibold text-jinko-ink">Company *</span><input type="text" name="company" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
@@ -24,10 +37,16 @@ import { SITE } from '@/data/site';
           <label class="block"><span class="text-sm font-semibold text-jinko-ink">Phone / WhatsApp</span><input type="text" name="phone" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
         </div>
         <div class="grid sm:grid-cols-2 gap-5">
-          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Inquiry Type *</span><select name="inquiry_type" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none bg-white"><option value="">Select</option><option>Solar Modules</option><option>Grid-Tied System</option><option>Off-Grid System</option><option>Solar + Storage</option><option>Distributor / Dealer Partnership</option></select></label>
-          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Target Market</span><input type="text" name="market" placeholder="e.g. California, Texas, Mexico" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Inquiry Type *</span><select name="inquiry_type" required class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none bg-white"><option value="">Select</option>{page.form.inquiryTypes.map(option => <option value={option}>{option}</option>)}</select></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Application</span><select name="application" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none bg-white"><option value="">Select</option>{page.form.applicationOptions.map(option => <option value={option}>{option}</option>)}</select></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Buyer Role</span><select name="buyer_role" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none bg-white"><option value="">Select</option>{page.form.roleOptions.map(option => <option value={option}>{option}</option>)}</select></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Purchase Timeline</span><select name="timeline" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none bg-white"><option value="">Select</option>{page.form.timelineOptions.map(option => <option value={option}>{option}</option>)}</select></label>
         </div>
-        <label class="block"><span class="text-sm font-semibold text-jinko-ink">Project Size / Product Quantity</span><input type="text" name="size" placeholder="e.g. 500kW rooftop, 1 container of 580W modules" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Target Market</span><input type="text" name="market" placeholder="e.g. California, Texas, Mexico" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+          <label class="block"><span class="text-sm font-semibold text-jinko-ink">Project Size / Product Quantity</span><input type="text" name="size" placeholder="e.g. 500kW rooftop, 1 container of 580W modules" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
+        </div>
+        <label class="block"><span class="text-sm font-semibold text-jinko-ink">Certification / Document Needs</span><input type="text" name="document_needs" placeholder="e.g. datasheet, UL/IEC certificate, warranty, installation guide" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none" /></label>
         <label class="block"><span class="text-sm font-semibold text-jinko-ink">Message *</span><textarea name="message" required rows="5" class="mt-1 w-full px-3 py-2 rounded-md border border-jinko-line focus:border-jinko outline-none"></textarea></label>
         <input type="hidden" name="utm_source" data-utm="utm_source" />
         <input type="hidden" name="utm_medium" data-utm="utm_medium" />
@@ -39,13 +58,13 @@ import { SITE } from '@/data/site';
         <input type="hidden" name="landing_page" data-landing-page />
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" />
         {SITE.security.turnstileSiteKey && <div class="cf-turnstile" data-sitekey={SITE.security.turnstileSiteKey}></div>}
-        <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">Send Inquiry</button>
-        <p class="text-xs text-jinko-mute" data-form-status>Current phase: /api/inquiry works in mock mode. Later this can connect to HubSpot, Feishu Bitable or Cloudflare D1.</p>
+        <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko-dark">{page.form.submitLabel}</button>
+        <p class="text-xs text-jinko-mute" data-form-status>{page.form.mockModeNote}</p>
       </form>
 
       <aside class="space-y-5">
-        <div class="rounded-2xl bg-jinko text-white p-7 shadow-card"><p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">Direct Contact</p><p class="mt-3 text-sm">📧 <a href={`mailto:${SITE.organization.contact.sales}`} data-track-click="email_click" class="hover:underline">{SITE.organization.contact.sales}</a></p><p class="mt-3 text-sky-100 text-sm">Official phone, WhatsApp, LinkedIn and TikTok will be added after the customer provides final contact information.</p></div>
-        <div class="rounded-2xl bg-white border border-jinko-line p-7 shadow-card"><p class="text-xs uppercase tracking-widest font-bold text-jinko-mute">Conversion events reserved</p><ul class="mt-3 text-sm text-jinko-mute space-y-2"><li>Contact Form Submit</li><li>RFQ Submit</li><li>Email Click</li><li>WhatsApp Click</li><li>Product Inquiry Button</li></ul></div>
+        <div class="rounded-2xl bg-jinko text-white p-7 shadow-card"><p class="text-xs uppercase tracking-widest font-bold text-jinko-accent">{page.sidebar.contactTitle}</p><p class="mt-3 text-sm">📧 <a href={`mailto:${SITE.organization.contact.sales}`} data-track-click="email_click" class="hover:underline">{SITE.organization.contact.sales}</a></p>{page.sidebar.contactDescription && <p class="mt-3 text-sky-100 text-sm">{page.sidebar.contactDescription}</p>}</div>
+        <div class="rounded-2xl bg-white border border-jinko-line p-7 shadow-card"><p class="text-xs uppercase tracking-widest font-bold text-jinko-mute">{page.sidebar.eventsTitle}</p><ul class="mt-3 text-sm text-jinko-mute space-y-2">{page.sidebar.events.map(event => <li>{event}</li>)}</ul></div>
       </aside>
     </div>
   </section>
@@ -69,7 +88,7 @@ import { SITE } from '@/data/site';
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.ok) throw new Error(result.message || 'Inquiry submission failed.');
       window.callsunTrack?.('contact_form_submit', { form: 'contact', path: location.pathname, inquiry_id: result.id });
-      status.textContent = `Inquiry received. Reference: ${result.id}. CRM integration is currently in mock mode.`;
+      status.textContent = `${form.dataset.successMessage || 'Inquiry received.'} Reference: ${result.id}`;
       form.reset();
     } catch (error) {
       status.textContent = error.message || 'Submission failed. Please email sales directly.';

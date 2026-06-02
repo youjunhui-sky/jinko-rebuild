@@ -1,0 +1,36 @@
+{
+  "title": "Contact Callsun",
+  "seoTitle": "Contact Callsun | Request Solar Module & Storage System Quote",
+  "metaDescription": "Request a Callsun quote for solar modules, grid-tied systems, off-grid systems, home storage or distributor partnership. Inquiry form includes UTM and source tracking.",
+  "h1": "Request a Callsun solar product or system quote.",
+  "keywords": ["Callsun quote", "solar module quote", "solar storage inquiry", "B2B solar supplier contact"],
+  "canonical": "/contact",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "B2B Inquiry",
+    "description": "Tell us your market, application, project size and target timeline. The inquiry endpoint already captures source tracking and can connect to CRM in the next phase."
+  },
+  "form": {
+    "title": "Send project requirements",
+    "description": "Required fields are kept short for conversion. Optional fields help the sales team prepare a more useful first reply.",
+    "submitLabel": "Send Inquiry",
+    "successMessage": "Inquiry received. A Callsun sales contact can follow up with product options, package references and document links.",
+    "mockModeNote": "Current phase: /api/inquiry works in mock mode. Later this can connect to HubSpot, Feishu Bitable or Cloudflare D1.",
+    "inquiryTypes": ["Solar Modules", "Grid-Tied System", "Off-Grid System", "Solar + Storage", "Home Energy Storage", "Distributor / Dealer Partnership", "OEM / Custom Module Request"],
+    "applicationOptions": ["Commercial Rooftop", "Home Energy Storage", "Off-Grid Remote Power", "RV / Mobile Solar", "Dealer Stock", "Other"],
+    "roleOptions": ["Distributor", "Dealer", "EPC Installer", "Developer", "Homeowner", "Other"],
+    "timelineOptions": ["Immediately", "Within 1 month", "1-3 months", "3-6 months", "Planning stage"]
+  },
+  "sidebar": {
+    "contactTitle": "Direct contact",
+    "contactDescription": "Official phone, WhatsApp, LinkedIn and TikTok will be added after the customer provides final contact information.",
+    "eventsTitle": "Conversion events reserved",
+    "events": ["Contact Form Submit", "RFQ Submit", "Email Click", "WhatsApp Click", "Product Inquiry Button", "Catalog / Datasheet Download"]
+  },
+  "trustCards": [
+    { "title": "What to include", "description": "Target product, application, market, estimated capacity or quantity, timeline and certification requirements." },
+    { "title": "What happens next", "description": "The sales team can match the inquiry to products, system packages, case references and downloadable documents." },
+    { "title": "Tracking ready", "description": "UTM, referrer, landing page, form source and campaign fields are already reserved for later CRM attribution." }
+  ]
+}
