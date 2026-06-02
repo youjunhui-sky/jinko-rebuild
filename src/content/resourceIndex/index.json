@@ -1,0 +1,104 @@
+{
+  "title": "Resources",
+  "seoTitle": "Solar Resources | Datasheets, Blog, FAQ & Videos | Callsun",
+  "metaDescription": "Explore Callsun solar resources for B2B distributors, dealers and EPC installers, including technical blogs, product downloads, FAQ, installation guides and videos.",
+  "h1": "Solar resources for product selection, project quoting and B2B sales enablement.",
+  "keywords": [
+    "solar resources",
+    "solar module datasheet",
+    "solar installation guide",
+    "solar FAQ",
+    "solar technical blog"
+  ],
+  "canonical": "/resources",
+  "ogImage": "/og/default.svg",
+  "noindex": false,
+  "hero": {
+    "eyebrow": "Resources",
+    "description": "Use the resource center to move buyers from research to action: compare technical articles, download datasheets and certificates, answer FAQ, and request project-specific support.",
+    "primaryCtaLabel": "Download Documents",
+    "primaryCtaHref": "/resources/downloads",
+    "secondaryCtaLabel": "Read Technical Blog",
+    "secondaryCtaHref": "/resources/blog"
+  },
+  "stats": [
+    { "label": "Resource paths", "value": "4" },
+    { "label": "Downloads", "value": "5" },
+    { "label": "Blog articles", "value": "3" },
+    { "label": "Lead capture", "value": "Ready" }
+  ],
+  "intro": {
+    "eyebrow": "Content hub",
+    "title": "A resource center for SEO traffic and high-intent conversion.",
+    "description": "Resources should do two jobs: attract long-tail search traffic through useful content, and convert high-intent visitors through datasheets, catalogs, guides and support paths."
+  },
+  "resourceCards": [
+    {
+      "title": "Technical Blog",
+      "description": "SEO articles, installer guides and buyer education content for long-tail traffic and internal linking.",
+      "href": "/resources/blog",
+      "eyebrow": "SEO content"
+    },
+    {
+      "title": "Downloads",
+      "description": "Datasheets, catalogs, certificates, warranty files and installation guides with optional lead capture.",
+      "href": "/resources/downloads",
+      "eyebrow": "High-intent action"
+    },
+    {
+      "title": "FAQ",
+      "description": "Common product, warranty, logistics and support questions that reduce pre-sales friction.",
+      "href": "/resources/faq",
+      "eyebrow": "Buyer education"
+    },
+    {
+      "title": "Videos",
+      "description": "Future installation, product demo and project proof videos for richer sales enablement.",
+      "href": "/resources/videos",
+      "eyebrow": "Future content"
+    }
+  ],
+  "conversionPath": {
+    "eyebrow": "Resource conversion path",
+    "title": "From content visit to qualified inquiry.",
+    "description": "Resources should connect SEO readers to downloads and RFQ forms without forcing a sales conversation too early.",
+    "steps": [
+      {
+        "label": "Answer the search intent",
+        "description": "Blog, FAQ and guide pages explain product selection, application scenarios and package logic."
+      },
+      {
+        "label": "Offer the next document",
+        "description": "Downloads give buyers datasheets, catalogs, certificates and installation references when interest becomes concrete."
+      },
+      {
+        "label": "Capture project context",
+        "description": "Lead capture and inquiry forms collect market, role, application, timeline, document needs and source tracking."
+      }
+    ]
+  },
+  "featuredDownloadsTitle": "Featured documents buyers may request first",
+  "featuredBlogTitle": "Latest technical content",
+  "faq": [
+    {
+      "question": "Why should Resources be a first-level navigation item?",
+      "answer": "Resources support both SEO and conversion. They attract long-tail traffic and help B2B buyers collect the documents they need before requesting a quote."
+    },
+    {
+      "question": "Can downloads require lead capture?",
+      "answer": "Yes. The downloads collection already supports a lead capture flag, and the inquiry endpoint is prepared for source tracking and later CRM integration."
+    },
+    {
+      "question": "What content should be added next?",
+      "answer": "Prioritize real datasheets, certification PDFs, installation guides, comparison articles and application-specific buying guides."
+    }
+  ],
+  "finalCta": {
+    "title": "Need a specific datasheet, certificate or guide?",
+    "description": "Send the product model, market and document requirement. Callsun can prepare the right file set for your project or sales team.",
+    "primaryLabel": "Request Documents",
+    "primaryHref": "/contact",
+    "secondaryLabel": "Browse Downloads",
+    "secondaryHref": "/resources/downloads"
+  }
+}

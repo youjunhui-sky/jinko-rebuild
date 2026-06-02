@@ -1,11 +1,49 @@
 ---
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import ContactCTA from '@/components/ContactCTA.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import StatStrip from '@/components/StatStrip.astro';
+import CardGrid from '@/components/CardGrid.astro';
+
+const indexEntry = await getEntry('resourceIndex', 'index');
+if (!indexEntry) throw new Error('Missing resource index content entry: src/content/resourceIndex/index.json');
+const page = indexEntry.data;
+const downloads = (await getCollection('downloads')).map(d=>d.data).sort((a,b)=>(a.order||0)-(b.order||0));
+const posts = (await getCollection('news')).filter(p=>!p.data.draft).sort((a,b)=>+b.data.publishDate-+a.data.publishDate);
+const featuredDownloads = downloads.filter(d=>d.featured).slice(0,3).map(d=>({ title: d.title, description: d.description || d.category, href: d.fileUrl, eyebrow: d.category, metric: d.fileType }));
+const latestPosts = posts.slice(0,3).map(p=>({ title: p.data.title, description: p.data.description, href: `/resources/blog/${p.slug}`, eyebrow: p.data.category }));
+const faqSchema = page.faq.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faq.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) } : undefined;
 ---
-<BaseLayout title="Resources | Callsun" description="Callsun resources center for blog articles, downloads, FAQs, installation guides and videos.">
-<Header slot="header" />
-<section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Resources</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">Resource center</h1><p class="mt-4 text-lg text-jinko-mute max-w-3xl">Technical blog, product downloads, FAQs, installation guides and future video content.</p></div></section>
-<section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6 grid gap-6 md:grid-cols-4">{[{t:'Technical Blog',u:'/resources/blog',d:'SEO articles and installer guides'},{t:'Downloads',u:'/resources/downloads',d:'Datasheets, manuals and certificates'},{t:'FAQ',u:'/resources/faq',d:'Common product and policy questions'},{t:'Videos',u:'/resources/videos',d:'Future installation and case videos'}].map(x=><a href={x.u} class="rounded-2xl bg-white border border-jinko-line shadow-card p-6 hover:-translate-y-1 transition-transform"><h2 class="text-xl font-display font-bold">{x.t}</h2><p class="mt-2 text-sm text-jinko-mute">{x.d}</p><p class="mt-5 text-jinko font-semibold">Open →</p></a>)}</div></section>
-<Footer slot="footer" />
+<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/resources'} ogImage={page.ogImage || '/og/default.svg'} keywords={page.keywords} noindex={page.noindex} schema={faqSchema}>
+  <Header slot="header" />
+
+  <section class="py-16 lg:py-20 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <span>{page.title}</span></nav>
+      <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">{page.hero.eyebrow}</p>
+      <h1 class="mt-3 text-4xl lg:text-6xl font-display font-extrabold leading-tight max-w-5xl">{page.h1 || page.title}</h1>
+      <p class="mt-5 text-lg text-jinko-mute max-w-3xl leading-relaxed">{page.hero.description}</p>
+      <div class="mt-8 flex flex-wrap gap-3"><a href={page.hero.primaryCtaHref} class="inline-flex px-5 py-3 rounded-md bg-jinko text-white font-semibold shadow-card">{page.hero.primaryCtaLabel}</a>{page.hero.secondaryCtaLabel && page.hero.secondaryCtaHref && <a href={page.hero.secondaryCtaHref} class="inline-flex px-5 py-3 rounded-md bg-white text-jinko font-semibold border border-jinko-line">{page.hero.secondaryCtaLabel}</a>}</div>
+    </div>
+  </section>
+
+  <StatStrip stats={page.stats} />
+
+  <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow={page.intro.eyebrow} title={page.intro.title} description={page.intro.description} /><div class="mt-10"><CardGrid items={page.resourceCards} columns="4" /></div></div></section>
+
+  <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start"><SectionHeader eyebrow={page.conversionPath.eyebrow} title={page.conversionPath.title} description={page.conversionPath.description} /><ol class="grid gap-4">{page.conversionPath.steps.map((step,index)=><li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6 flex gap-5"><span class="inline-flex h-10 w-10 rounded-full bg-jinko text-white items-center justify-center font-display font-extrabold shrink-0">{index+1}</span><div><h2 class="text-xl font-display font-bold">{step.label}</h2><p class="mt-2 text-jinko-mute leading-relaxed">{step.description}</p></div></li>)}</ol></div></section>
+
+  {featuredDownloads.length > 0 && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Downloads" title={page.featuredDownloadsTitle || 'Featured documents'} description="These documents represent high-intent resource actions and can be connected to lead capture when needed." /><div class="mt-10"><CardGrid items={featuredDownloads} /></div></div></section>}
+
+  {latestPosts.length > 0 && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Blog" title={page.featuredBlogTitle || 'Latest technical content'} description="Use blog content to support SEO, internal linking and buyer education before the quote stage." /><div class="mt-10"><CardGrid items={latestPosts} /></div></div></section>}
+
+  {page.faq.length > 0 && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Resource FAQ" title="How buyers use the resource center" /><div class="mt-8 grid gap-4">{page.faq.map(f => <details class="rounded-2xl border border-jinko-line bg-white shadow-card p-6"><summary class="font-display font-bold cursor-pointer">{f.question}</summary><p class="mt-3 text-jinko-mute leading-relaxed">{f.answer}</p></details>)}</div></div></section>}
+
+  {page.finalCta && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="rounded-3xl bg-jinko text-white p-8 lg:p-10 flex flex-col lg:flex-row gap-6 lg:items-center lg:justify-between"><div><h2 class="text-3xl font-display font-extrabold">{page.finalCta.title}</h2>{page.finalCta.description && <p class="mt-3 text-white/80 max-w-2xl">{page.finalCta.description}</p>}</div><div class="flex flex-wrap gap-3 shrink-0"><a href={page.finalCta.primaryHref} class="inline-flex px-5 py-3 rounded-md bg-white text-jinko font-semibold">{page.finalCta.primaryLabel}</a>{page.finalCta.secondaryLabel && page.finalCta.secondaryHref && <a href={page.finalCta.secondaryHref} class="inline-flex px-5 py-3 rounded-md bg-jinko-dark text-white font-semibold border border-white/20">{page.finalCta.secondaryLabel}</a>}</div></div></div></section>}
+
+  <ContactCTA />
+  <Footer slot="footer" />
 </BaseLayout>

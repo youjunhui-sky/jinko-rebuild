@@ -336,6 +336,46 @@ const news = defineCollection({
   }),
 });
 
+const resourceIndex = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    hero: z.object({
+      eyebrow: z.string().default('Resources'),
+      description: z.string(),
+      primaryCtaLabel: z.string().default('Download Documents'),
+      primaryCtaHref: z.string().default('/resources/downloads'),
+      secondaryCtaLabel: z.string().optional(),
+      secondaryCtaHref: z.string().optional(),
+    }),
+    stats: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
+    intro: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string(),
+    }),
+    resourceCards: z.array(z.object({ title: z.string(), description: z.string(), href: z.string(), eyebrow: z.string().optional() })).default([]),
+    conversionPath: z.object({
+      eyebrow: z.string().optional(),
+      title: z.string(),
+      description: z.string().optional(),
+      steps: z.array(z.object({ label: z.string(), description: z.string() })).default([]),
+    }),
+    featuredDownloadsTitle: z.string().optional(),
+    featuredBlogTitle: z.string().optional(),
+    faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    finalCta: z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      primaryLabel: z.string().default('Request Documents'),
+      primaryHref: z.string().default('/contact'),
+      secondaryLabel: z.string().optional(),
+      secondaryHref: z.string().optional(),
+    }).optional(),
+    ...seoFields,
+  }),
+});
+
 const downloads = defineCollection({
   type: 'data',
   schema: z.object({
@@ -528,4 +568,4 @@ const landingPages = defineCollection({
   }),
 });
 
-export const collections = { homepage, about, contact, applicationIndex, productIndex, solutionIndex, products, solutions, applications, news, downloads, cases, supportIndex, supportPages, navigation, customPages, landingPages };
+export const collections = { homepage, about, contact, applicationIndex, productIndex, solutionIndex, products, solutions, applications, news, resourceIndex, downloads, cases, supportIndex, supportPages, navigation, customPages, landingPages };
