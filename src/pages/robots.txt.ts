@@ -14,10 +14,12 @@ Disallow: /homeowners/
 Disallow: /installer-finder/
 Disallow: /jacksonville/
 Disallow: /tiger-neo/
+Disallow: /warranty/
 Disallow: /case-studies/
 Disallow: /news/
 Disallow: /es/
 Disallow: /zh/
+Disallow: /admin/
 
 Sitemap: ${SITE.domain}/sitemap-index.xml
 `;

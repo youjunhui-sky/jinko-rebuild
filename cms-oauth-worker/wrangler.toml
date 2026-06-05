@@ -1,6 +1,6 @@
 name = "jinko-cms-oauth"
 main = "worker.js"
-compatibility_date = "2026-01-01"
+compatibility_date = "2026-06-05"
 
 # Secrets (用 `wrangler secret put` 设置，不要写在这里):
 #   OAUTH_GITHUB_CLIENT_ID

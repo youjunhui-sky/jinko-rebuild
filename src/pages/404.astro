@@ -1,0 +1,35 @@
+---
+import { SITE } from '@/data/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<BaseLayout
+  title={`404 — Page Not Found · ${SITE.name}`}
+  description="The page you requested could not be found."
+  noindex
+>
+  <Header slot="header" />
+
+  <section class="min-h-[60vh] flex items-center">
+    <div class="max-w-content mx-auto px-4 lg:px-6 py-24 text-center">
+      <p class="text-sm font-bold tracking-widest uppercase text-jinko">Error 404</p>
+      <h1 class="mt-4 text-5xl sm:text-6xl font-display font-extrabold">Page not found</h1>
+      <p class="mt-6 text-lg text-jinko-mute max-w-xl mx-auto">
+        The page you’re looking for doesn’t exist or has been moved.
+        Try the navigation above, or jump back to the homepage.
+      </p>
+      <div class="mt-9 flex flex-wrap justify-center gap-3">
+        <a href="/" class="inline-flex items-center px-6 py-3 rounded-md bg-jinko text-white font-bold hover:bg-jinko-dark">
+          Back to homepage
+        </a>
+        <a href="/contact" class="inline-flex items-center px-6 py-3 rounded-md bg-white text-jinko-ink font-semibold ring-1 ring-jinko-line hover:bg-jinko-bg">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

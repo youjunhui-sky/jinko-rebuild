@@ -1,6 +1,6 @@
 name = "jinko-rebuild"
 main = "src/worker.js"
-compatibility_date = "2026-05-21"
+compatibility_date = "2026-06-05"
 compatibility_flags = ["global_fetch_strictly_public", "nodejs_compat"]
 
 # 静态资源模式: 把 Astro 构建产物 dist/ 当作静态站
