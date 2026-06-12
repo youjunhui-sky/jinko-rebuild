@@ -8,7 +8,9 @@
     { "title": "N-Type Technology", "description": "N-type cells offer our advanced in-house cell technology with better performance and improved reliability, delivering an exceptional module efficiency of up to 23.04%." },
     { "title": "Bifacial Power Gain", "description": "N-Type architecture increases bifaciality up to 80% ± 5% for a higher backside bonus and better lifetime yield, optimized by multi-busbar technology." },
     { "title": "Low Temperature Coefficient", "description": "Features a highly competitive temperature coefficient (Pmax) of -0.290%/°C for the highest lifetime energy yield in all climates." },
-    { "title": "Industrial Grade Construction", "description": "Optimized dual-glass construction (2.0+2.0mm Tempered Glass) with a silver anodized aluminum alloy frame for the highest mechanical load resistance." }
+    { "title": "Industrial Grade Construction", "description": "Optimized dual-glass construction (2.0+2.0mm Tempered Glass) with a silver anodized aluminum alloy frame for the highest mechanical load resistance." },
+    { "title": "Protected Against All Environments", "description": "Certified to withstand humidity, heat, rain, marine environments, wind, hailstorms, and packed snow for reliable global deployment." },
+    { "title": "Warranty", "description": "25-year product warranty and 30-year linear power warranty for maximum long-term investment protection." }
   ],
   "tech": "Mono-crystalline silicon · Double glass",
   "certifications": [
