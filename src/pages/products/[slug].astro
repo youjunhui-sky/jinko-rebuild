@@ -57,8 +57,8 @@ const downloadItems = product.downloads.length ? product.downloads : [
   <Header slot="header" />
   <article>
 
-    {/* ── 1. Hero Carousel with Text Overlay (仿 Jinko G7B) ── */}
-    <section class="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+    {/* ── 1. Hero Carousel — 纯图片，突出视觉冲击 ── */}
+    <section class="relative w-full h-[520px] md:h-[640px] lg:h-[760px] overflow-hidden">
       {product.heroBanners && product.heroBanners.length > 0 ? (
         product.heroBanners.map((banner, i) => (
           <img
@@ -74,50 +74,38 @@ const downloadItems = product.downloads.length ? product.downloads : [
           <img src={product.image} alt={product.imageAlt || product.name} class="max-h-[80%] object-contain" />
         </div>
       )}
-      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60"></div>
-      <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 z-10">
-        <nav class="text-sm text-white/70 mb-4"><a href="/" class="hover:text-white">Home</a> / <a href="/products" class="hover:text-white">Products</a> / <span>{product.name}</span></nav>
-        <p class="text-xs md:text-sm uppercase tracking-widest text-jinko-accent font-bold">{product.model} · {product.category.replace('-', ' ')}</p>
-        <h1 class="mt-3 text-4xl md:text-6xl lg:text-7xl font-display font-extrabold leading-tight drop-shadow-lg">{product.h1 || product.name}</h1>
-        <p class="mt-4 text-base md:text-lg text-white/90 leading-relaxed max-w-2xl">{product.tagline || product.description}</p>
-        <div class="mt-7 flex flex-wrap justify-center gap-3">
-          <a href="/contact" data-track-click="product_inquiry_button" data-product={product.slug} class="px-6 py-3 rounded-md bg-jinko text-white font-semibold hover:bg-jinko/90 transition">Request Quote</a>
-          <a href="#key-features" class="px-6 py-3 rounded-md ring-1 ring-white text-white font-semibold hover:bg-white/10 transition">View Advantages</a>
-          <a href="#downloads" data-track-click="datasheet_download" data-product={product.slug} class="px-6 py-3 rounded-md bg-white/10 backdrop-blur-sm border border-white/30 text-white font-semibold hover:bg-white/20 transition">Download Datasheet</a>
-        </div>
-      </div>
       {product.heroBanners && product.heroBanners.length > 1 && (
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
           {product.heroBanners.map(() => (
-            <span class="w-2.5 h-2.5 rounded-full bg-white/50"></span>
+            <span class="w-2 h-2 rounded-full bg-white/50"></span>
           ))}
         </div>
       )}
     </section>
 
-    {/* ── 2. Dark Tagline Bar (仿 Jinko 深色标语条) ── */}
-    <section class="bg-jinko text-white py-6 lg:py-8">
-      <div class="max-w-content mx-auto px-4 lg:px-6 text-center">
-        <p class="text-base lg:text-lg font-medium tracking-wide">{product.tagline || product.description}</p>
-      </div>
-    </section>
-
-    {/* ── 3. Quick Info Cards ── */}
-    <section class="bg-white py-10 lg:py-14">
-      <div class="max-w-content mx-auto px-4 lg:px-6">
-        <dl class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {/* ── 2. Product Info Strip — 标题 + 参数一行，紧凑不抢图 ── */}
+    <section class="bg-jinko text-white">
+      <div class="max-w-content mx-auto px-4 lg:px-6 pt-5 pb-4 lg:pt-6 lg:pb-5">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <nav class="text-xs text-white/40 w-full lg:w-auto"><a href="/" class="hover:text-white/70">Home</a> / <a href="/products" class="hover:text-white/70">Products</a> / <span>{product.name}</span></nav>
+          <div class="flex-1 min-w-0">
+            <h1 class="text-lg lg:text-xl font-display font-bold leading-snug truncate">{product.h1 || product.name}</h1>
+          </div>
+          <div class="flex gap-2 shrink-0">
+            <a href="/contact" data-track-click="product_inquiry_button" data-product={product.slug} class="px-4 py-1.5 rounded bg-jinko-accent text-jinko-ink font-semibold text-xs hover:brightness-110 transition">Request Quote</a>
+            <a href="#downloads" data-track-click="datasheet_download" data-product={product.slug} class="px-4 py-1.5 rounded ring-1 ring-white/30 text-white font-semibold text-xs hover:bg-white/10 transition">Datasheet</a>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/10 flex flex-wrap gap-x-5 gap-y-1 text-xs text-white/55">
           {[
             { label: 'Model', value: product.model },
-            { label: 'Technology', value: product.tech },
+            { label: 'Tech', value: product.tech },
             { label: 'Efficiency', value: product.specs.find(s => /Efficiency/i.test(s.label))?.value || '—' },
             { label: 'Warranty', value: warranty },
           ].map(item => (
-            <div class="rounded-2xl bg-jinko-bg border border-jinko-line p-4 text-center">
-              <dt class="text-xs uppercase tracking-widest text-jinko-mute font-semibold">{item.label}</dt>
-              <dd class="mt-1 font-display font-bold text-jinko-ink text-sm md:text-base">{item.value}</dd>
-            </div>
+            <span><span class="text-white/35">{item.label}</span> <span class="text-white/80 font-medium">{item.value}</span></span>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
 

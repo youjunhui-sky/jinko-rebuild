@@ -28,29 +28,39 @@
   "slug": "180w-custom-solar-module",
   "heroBanners": [
     {
-      "src": "/uploads/callsun/hero/01-family-rooftop.jpg",
+      "src": "/uploads/callsun/products/180w/hero-01.jpg",
       "alt": "Callsun CN180W solar module installed on family rooftop, white house with dark tile roof against blue sky",
       "caption": "Residential Rooftop"
     },
     {
-      "src": "/uploads/callsun/hero/02-product-front-back.jpg",
+      "src": "/uploads/callsun/products/180w/hero-02.jpg",
       "alt": "Callsun CN180W N-type TOPCon module front and back view on white background",
       "caption": "180W Dual-Cell Parallel Design"
     },
     {
-      "src": "/uploads/callsun/hero/03-desert-rv-heat.jpg",
+      "src": "/uploads/callsun/products/180w/hero-03.jpg",
       "alt": "Callsun CN180W powering RV in desert with +2% gain at 167°F high-temperature performance curve",
       "caption": "Desert / High-Temperature"
     },
     {
-      "src": "/uploads/callsun/hero/04-marine-yacht.jpg",
+      "src": "/uploads/callsun/products/180w/hero-04.jpg",
       "alt": "Callsun CN180W bifacial modules installed on white boat deck with deep blue sea in background",
       "caption": "Marine / Boat Deck"
     },
     {
-      "src": "/uploads/callsun/hero/05-product-variant.jpg",
+      "src": "/uploads/callsun/products/180w/hero-05.jpg",
       "alt": "Callsun CN180W product variation showing front and back layout",
       "caption": "Ultra-Slim, All-Terrain"
+    },
+    {
+      "src": "/uploads/callsun/products/180w/hero-06.jpg",
+      "alt": "Callsun CN180W solar module product showcase",
+      "caption": "Callsun Custom Module Series"
+    },
+    {
+      "src": "/uploads/callsun/products/180w/hero-07.jpg",
+      "alt": "Callsun CN180W N-type TOPCon solar module feature highlight",
+      "caption": "180W Advanced Technology"
     }
   ],
   "featured": true,
@@ -187,7 +197,7 @@
     "RoHS",
     "UL (pending)"
   ],
-  "image": "/uploads/callsun/180w-front-back.jpg",
+  "image": "/uploads/callsun/products/180w/front-back.jpg",
   "seoTitle": "180W Custom N-Type TOPCon Solar Module | Callsun",
   "warranty": "10-year product material and workmanship warranty; 25-year linear power performance guarantee (84.5% output at year 25; 1% first-year degradation + 0.4%/year linear)",
   "benefits": [
