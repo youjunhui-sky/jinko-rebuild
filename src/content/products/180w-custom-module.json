@@ -1,10 +1,182 @@
 {
+  "applications": [
+    "RV Roof Vent / Sidewall",
+    "Truck Cab / Trailer",
+    "Off-Grid Remote Power",
+    "Marine / Boat Deck",
+    "Desert / High-Temperature",
+    "Residential Rooftop"
+  ],
+  "h1": "180W Custom N-Type TOPCon Solar Module",
+  "model": "CN180W",
+  "keywords": [
+    "180w solar panel",
+    "180w custom solar module",
+    "n type topcon solar panel",
+    "dual cell parallel solar panel",
+    "rv solar module 180w",
+    "ip68 solar panel supplier",
+    "180w bifacial solar module"
+  ],
+  "downloads": [
+    {
+      "label": "Callsun CN120W / CN180W / CN200W / CN275W Series Datasheet (US V1.4, May 2026)",
+      "url": "/downloads/callsun-cn120-180-200-275w-datasheet.pdf"
+    }
+  ],
   "name": "180W Custom N-Type TOPCon Solar Module",
   "slug": "180w-custom-solar-module",
-  "category": "custom-module",
-  "model": "CN180W",
+  "heroBanners": [
+    {
+      "src": "/uploads/callsun/hero/01-family-rooftop.jpg",
+      "alt": "Callsun CN180W solar module installed on family rooftop, white house with dark tile roof against blue sky",
+      "caption": "Residential Rooftop"
+    },
+    {
+      "src": "/uploads/callsun/hero/02-product-front-back.jpg",
+      "alt": "Callsun CN180W N-type TOPCon module front and back view on white background",
+      "caption": "180W Dual-Cell Parallel Design"
+    },
+    {
+      "src": "/uploads/callsun/hero/03-desert-rv-heat.jpg",
+      "alt": "Callsun CN180W powering RV in desert with +2% gain at 167°F high-temperature performance curve",
+      "caption": "Desert / High-Temperature"
+    },
+    {
+      "src": "/uploads/callsun/hero/04-marine-yacht.jpg",
+      "alt": "Callsun CN180W bifacial modules installed on white boat deck with deep blue sea in background",
+      "caption": "Marine / Boat Deck"
+    },
+    {
+      "src": "/uploads/callsun/hero/05-product-variant.jpg",
+      "alt": "Callsun CN180W product variation showing front and back layout",
+      "caption": "Ultra-Slim, All-Terrain"
+    }
+  ],
+  "featured": true,
+  "imageAlt": "Callsun CN180W TOPCon N-type solar module front and back view, white background, black anodized aluminum frame, dual-cell parallel design with junction box and MC4 connectors",
   "tagline": "High-Current. Ultra-Slim. All-Terrain. Our commercial-grade TOPCon solar module delivers 180W with unique dual-cell parallel design for uninterrupted energy yields under shading, high temperatures and narrow spaces.",
+  "order": 105,
+  "relatedSolutions": [
+    "grid-tied-12kw-28kwh",
+    "off-grid-6-5kw-10kwh",
+    "off-grid-10kw-14kwh"
+  ],
+  "noindex": true,
   "tech": "N-Type 16BB 182mm monocrystalline silicon · SMBB super multi-busbar · Dual-cell parallel circuit",
+  "metaDescription": "Callsun CN180W custom N-type TOPCon solar module for RV, truck, off-grid, marine and narrow-space applications. IP68, 5400Pa snow load, 25-year linear power warranty, up to 30% bifacial gain.",
+  "specs": [
+    {
+      "label": "Maximum Power at STC (Pmax)",
+      "value": "180W",
+      "group": "Electrical"
+    },
+    {
+      "label": "Maximum Power Voltage at STC (Vmp)",
+      "value": "21.93V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Maximum Power Current at STC (Imp)",
+      "value": "8.21A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Open-circuit Voltage at STC (Voc)",
+      "value": "25.56V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Short-circuit Current at STC (Isc)",
+      "value": "8.62A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Cell Efficiency",
+      "value": "25%",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Pmax",
+      "value": "-0.30%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Voc",
+      "value": "-0.25%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Isc",
+      "value": "+0.045%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Operating Temperature",
+      "value": "-40°C ~ 85°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Dimensions",
+      "value": "1180 × 770 × 35 mm (±5mm)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Weight",
+      "value": "9.80 kg (±0.2 kg)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Glass",
+      "value": "3.2mm Tempered Glass",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Frame",
+      "value": "Anodized Aluminium Alloy",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Connector",
+      "value": "MC4-compatible Solar Connector",
+      "group": "Mechanical"
+    },
+    {
+      "label": "IP Rating",
+      "value": "IP68",
+      "group": "System"
+    },
+    {
+      "label": "Max Wind Load / Snow Load",
+      "value": "2400Pa / 5400Pa",
+      "group": "System"
+    },
+    {
+      "label": "Maximum System Voltage",
+      "value": "1000V DC",
+      "group": "System"
+    },
+    {
+      "label": "Maximum Series Fuse Rating",
+      "value": "25A",
+      "group": "System"
+    },
+    {
+      "label": "Power Tolerance",
+      "value": "0~5%",
+      "group": "System"
+    },
+    {
+      "label": "Output Commitment",
+      "value": "84.5% output for 25 years (1% first-year + 0.4%/year linear)",
+      "group": "Warranty"
+    }
+  ],
+  "relatedCases": [
+    "cheng-da-iii-3-5mw",
+    "auto-dealership-800kw",
+    "solar-storage-microgrid-100kw-215kwh"
+  ],
   "certifications": [
     "IEC 61215",
     "IEC 61730",
@@ -15,6 +187,9 @@
     "RoHS",
     "UL (pending)"
   ],
+  "image": "/uploads/callsun/180w-front-back.jpg",
+  "seoTitle": "180W Custom N-Type TOPCon Solar Module | Callsun",
+  "warranty": "10-year product material and workmanship warranty; 25-year linear power performance guarantee (84.5% output at year 25; 1% first-year degradation + 0.4%/year linear)",
   "benefits": [
     "Flagship N-type TOPCon Technology — Industry-leading N-type TOPCon cell technology with record cell efficiency, lower degradation rates and exceptional long-term power generation reliability.",
     "30% Bifacial Power Gain — Advanced bifacial technology with transparent backsheet captures reflected light from white RV roofs, sand or boat decks; delivers up to 30% additional energy in extreme environments.",
@@ -24,74 +199,6 @@
     "All-Terrain, All-Weather Protection — IP68 dust and water resistance, withstands 35mm hail impacts and high-speed highway vibrations; endures high humidity, severe cold and heavy rain for decades of off-grid adventure.",
     "Dual Quality Assurance — 10-year product material and workmanship warranty plus 25-year linear power performance guarantee safeguard your high-value energy assets."
   ],
-  "warranty": "10-year product material and workmanship warranty; 25-year linear power performance guarantee (84.5% output at year 25; 1% first-year degradation + 0.4%/year linear)",
-  "relatedSolutions": [
-    "grid-tied-12kw-28kwh",
-    "off-grid-6-5kw-10kwh",
-    "off-grid-10kw-14kwh"
-  ],
-  "relatedCases": [
-    "cheng-da-iii-3-5mw",
-    "auto-dealership-800kw",
-    "solar-storage-microgrid-100kw-215kwh"
-  ],
-  "image": "/uploads/callsun/180w-front-back.jpg",
-  "imageAlt": "Callsun CN180W TOPCon N-type solar module front and back view, white background, black anodized aluminum frame, dual-cell parallel design with junction box and MC4 connectors",
-  "heroBanners": [
-    { "src": "/uploads/callsun/hero/01-family-rooftop.jpg", "alt": "Callsun CN180W solar module installed on family rooftop, white house with dark tile roof against blue sky", "caption": "Residential Rooftop" },
-    { "src": "/uploads/callsun/hero/02-product-front-back.jpg", "alt": "Callsun CN180W N-type TOPCon module front and back view on white background", "caption": "180W Dual-Cell Parallel Design" },
-    { "src": "/uploads/callsun/hero/03-desert-rv-heat.jpg", "alt": "Callsun CN180W powering RV in desert with +2% gain at 167°F high-temperature performance curve", "caption": "Desert / High-Temperature" },
-    { "src": "/uploads/callsun/hero/04-marine-yacht.jpg", "alt": "Callsun CN180W bifacial modules installed on white boat deck with deep blue sea in background", "caption": "Marine / Boat Deck" },
-    { "src": "/uploads/callsun/hero/05-product-variant.jpg", "alt": "Callsun CN180W product variation showing front and back layout", "caption": "Ultra-Slim, All-Terrain" }
-  ],
   "description": "Callsun CN180W is a 180W custom N-type TOPCon solar module engineered for B2B distributors, RV manufacturers and EPC installers who need compact, slim, high-output modules for mobile, off-grid and space-limited deployments. Dual-cell parallel circuit provides shade resilience, and IP68 + 5400Pa mechanical load rating handles all-terrain all-weather conditions.",
-  "specs": [
-    { "label": "Maximum Power at STC (Pmax)", "value": "180W", "group": "Electrical" },
-    { "label": "Maximum Power Voltage at STC (Vmp)", "value": "21.93V", "group": "Electrical" },
-    { "label": "Maximum Power Current at STC (Imp)", "value": "8.21A", "group": "Electrical" },
-    { "label": "Open-circuit Voltage at STC (Voc)", "value": "25.56V", "group": "Electrical" },
-    { "label": "Short-circuit Current at STC (Isc)", "value": "8.62A", "group": "Electrical" },
-    { "label": "Cell Efficiency", "value": "25%", "group": "Performance" },
-    { "label": "Temperature Coefficient of Pmax", "value": "-0.30%/K", "group": "Performance" },
-    { "label": "Temperature Coefficient of Voc", "value": "-0.25%/K", "group": "Performance" },
-    { "label": "Temperature Coefficient of Isc", "value": "+0.045%/K", "group": "Performance" },
-    { "label": "Operating Temperature", "value": "-40°C ~ 85°C", "group": "Performance" },
-    { "label": "Cell Type", "value": "N-Type 16BB 182mm Monocrystalline Silicon", "group": "Mechanical" },
-    { "label": "Dimensions", "value": "1180 × 770 × 35 mm (±5mm)", "group": "Mechanical" },
-    { "label": "Weight", "value": "9.80 kg (±0.2 kg)", "group": "Mechanical" },
-    { "label": "Glass", "value": "3.2mm Tempered Glass", "group": "Mechanical" },
-    { "label": "Frame", "value": "Anodized Aluminium Alloy", "group": "Mechanical" },
-    { "label": "Connector", "value": "MC4-compatible Solar Connector", "group": "Mechanical" },
-    { "label": "IP Rating", "value": "IP68", "group": "System" },
-    { "label": "Max Wind Load / Snow Load", "value": "2400Pa / 5400Pa", "group": "System" },
-    { "label": "Maximum System Voltage", "value": "1000V DC", "group": "System" },
-    { "label": "Maximum Series Fuse Rating", "value": "25A", "group": "System" },
-    { "label": "Power Tolerance", "value": "0~5%", "group": "System" },
-    { "label": "Output Commitment", "value": "84.5% output for 25 years (1% first-year + 0.4%/year linear)", "group": "Warranty" }
-  ],
-  "applications": [
-    "RV Roof Vent / Sidewall",
-    "Truck Cab / Trailer",
-    "Off-Grid Remote Power",
-    "Marine / Boat Deck",
-    "Desert / High-Temperature",
-    "Residential Rooftop"
-  ],
-  "downloads": [
-    { "label": "Callsun CN120W / CN180W / CN200W / CN275W Series Datasheet (US V1.4, May 2026)", "url": "/downloads/callsun-cn120-180-200-275w-datasheet.pdf" }
-  ],
-  "order": 105,
-  "featured": true,
-  "seoTitle": "180W Custom N-Type TOPCon Solar Module | Callsun",
-  "metaDescription": "Callsun CN180W custom N-type TOPCon solar module for RV, truck, off-grid, marine and narrow-space applications. IP68, 5400Pa snow load, 25-year linear power warranty, up to 30% bifacial gain.",
-  "h1": "180W Custom N-Type TOPCon Solar Module",
-  "keywords": [
-    "180w solar panel",
-    "180w custom solar module",
-    "n type topcon solar panel",
-    "dual cell parallel solar panel",
-    "rv solar module 180w",
-    "ip68 solar panel supplier",
-    "180w bifacial solar module"
-  ]
+  "category": "custom-module"
 }
