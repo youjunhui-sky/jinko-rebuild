@@ -35,7 +35,7 @@ const defaultOrg = {
   '@type': 'Organization',
   name: SITE.organization.legalName,
   url: SITE.domain,
-  logo: new URL('/logo.svg', SITE.domain).href,
+  logo: new URL('/logo.png', SITE.domain).href,
   foundingDate: SITE.organization.foundingDate,
   sameAs: SITE.organization.sameAs,
   contactPoint: {
@@ -108,8 +108,8 @@ const schemas = [defaultOrg, ...(Array.isArray(schema) ? schema : schema ? [sche
     />
 
     <!-- ✅ Favicon (原站只有 png 多尺寸, 这里加 SVG 自适应) -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- ✅ JSON-LD 结构化数据 (原站完全没有, Rich Snippets 必备) -->
     {schemas.map((s) => (

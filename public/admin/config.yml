@@ -10,7 +10,7 @@ public_folder: "/uploads"
 
 site_url: https://jinko-rebuild.youjh120608.workers.dev
 display_url: https://jinko-rebuild.youjh120608.workers.dev
-logo_url: /logo.svg
+logo_url: /logo.png
 locale: "en"
 publish_mode: editorial_workflow
 
