@@ -2,7 +2,7 @@
   "name": "215W Custom Solar Module",
   "slug": "215w-custom-solar-module",
   "category": "custom-module",
-  "model": "215W",
+  "model": "CN215W",
   "tagline": "215W compact N-type module for custom solar product lines.",
   "tech": "N-Type 16BB mono-crystalline silicon",
   "certifications": [

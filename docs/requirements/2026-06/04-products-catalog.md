@@ -13,11 +13,19 @@
 
 ## 2. 非标组件
 
-| 类别 | 品名 | 认证 | 核心参数摘要 |
-|---|---|---|---|
-| 180W | 180W 单玻板 | 待取证（UL） | N-Type 16BB 182mm；Cell Efficiency 25%；系统电压 1000V DC；25年保持 84.5% 输出 |
-| 200W | 200W 单玻板 | 待取证（UL） | N-Type 16BB 182mm；Cell Efficiency 25%；系统电压 1000V DC；25年保持 84.5% 输出 |
-| 215W | 215W 单玻板 | 待取证（UL） | N-Type 16BB 182mm；Cell Efficiency 25%；系统电压 1000V DC；25年保持 84.5% 输出 |
+> 🆕 **2026-06-12 升级**：参考 jinkosolar.us/eagle-modules 风格，4 型号归为 **"Custom Module 系列"**（L1 系列总览页 + L2 SKU 详情页两级）。详细 IA 见 `02-site-architecture.md §2.2`，页面 wireframe 见 `09-180w-product-page-brief.md §二 / §三`。
+
+| 类别 | 品名 | 认证 | 核心参数摘要 | CMS 状态 |
+|---|---|---|---|---|
+| 120W | 120W 单玻板 | 待取证（UL） | Model CN120W；N-Type 16BB 182mm；Cell Efficiency 25%；Pmax 120W；Vmp 20.48V；Imp 5.86A；Voc 24.06V；Isc 6.21A；系统电压 1000V DC；25年保持 84.5% 输出；尺寸 1100×578×30mm；重量 6.85kg；IP68；2400/5400Pa 风/雪载；首年 1% + 线性 0.4% 衰减 | 🟡 **挂起**（L1 卡片占位 + Learn More 跳占位页；不建独立详情页；不建 `src/content/products/120w-*.json`）|
+| 180W | 180W 单玻板 | 待取证（UL） | Model CN180W；N-Type 16BB 182mm；Cell Efficiency 25%；Pmax 180W；Vmp 21.93V；Imp 8.21A；Voc 25.56V；Isc 8.62A；系统电压 1000V DC；25年保持 84.5% 输出；尺寸 1180×770×35mm；重量 9.80kg；IP68；2400/5400Pa 风/雪载；首年 1% + 线性 0.4% 衰减 | ✅active（`src/content/products/180w-custom-module.json` 已升级，22 项 specs + 7 段 benefits + 6 applications + 3 related solutions）|
+| 200W | 200W 单玻板 | 待取证（UL） | Model CN200W；N-Type 16BB 182mm；Cell Efficiency 25%；Pmax 200W；Vmp 23.74V；Imp 8.43A；Voc 27.31V；Isc 8.91A；系统电压 1000V DC；25年保持 84.5% 输出；尺寸 1304×770×35mm；重量 10.80kg；IP68；2400/5400Pa 风/雪载；首年 1% + 线性 0.4% 衰减 | ✅active（`src/content/products/200w-custom-module.json`，具体 specs 待跟 180W 模板对齐）|
+| 215W | 215W 单玻板 | 待取证（UL） | Model CN215W；N-Type 16BB 182mm；Cell Efficiency 25%；系统电压 1000V DC；25年保持 84.5% 输出（215W 详细电气参数 Vmp/Imp/Voc/Isc 待客户提供） | ✅active（`src/content/products/215w-custom-module.json`，Vmp/Imp/Voc/Isc 4 项待客户提供）|
+| 275W | 275W 单玻板 | 待取证（UL） | Model CN275W；N-Type 16BB 182mm；Cell Efficiency 25%；Pmax 275W；Vmp 21.29V；Imp 12.92A；Voc 25.26V；Isc 13.69A；系统电压 1000V DC；25年保持 84.5% 输出；尺寸 1736×766×35mm；重量 13.51kg；IP68；2400/5400Pa 风/雪载；首年 1% + 线性 0.4% 衰减 | 🟡 **挂起**（L1 卡片占位 + Learn More 跳占位页；不建独立详情页；不建 `src/content/products/275w-*.json`）|
+
+> 🟡 **已知存在但 CMS 暂不建**（东家 2026-06-11 挂起）：120W、275W 完整参数见 `09-180w-product-page-brief.md` §十.1。等东家通知再建 `src/content/products/120w-*.json` / `275w-*.json`。
+> 💡 **2026-06-12 调整**：L1 系列总览页 **仍展示 4 张卡片**（120W/180W/200W/275W，215W 暂不进 L1 见说明），Learn More 按钮根据 CMS 状态跳：active → 详情页 / 挂起 → 占位页（"Coming Soon"）。**215W 不在客户 docx + PDF 4 型号范围内**，L1 卡片暂不展示（4 SKU = 120/180/200/275），215W 保留在 `src/content/products/215w-custom-module.json` 用于历史兼容。
+> 🔴 **型号前缀**：2026-06-11 东家确认产品型号前缀统一为 **CN**（CN180W/CN200W/CN215W/CN450W/CN580W/CN620W）。客户原始交付规格书 PDF 文件名虽为 `CS-120w180w200w275w...pdf`，但 PDF 内部表格全部使用 CN 前缀，按 CN 对齐。
 
 ## 3. 并网系统
 

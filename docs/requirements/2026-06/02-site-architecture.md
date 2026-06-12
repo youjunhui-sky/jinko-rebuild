@@ -22,17 +22,40 @@ Home / Products / Solutions / Applications / Resources / News & Cases / Support 
 
 ### 2. 产品中心 Products
 
-#### 2.1 标准组件
-- 2.1.1 450W 组件
-- 2.1.2 580W 组件
-- 2.1.3 620W 组件
+> 🆕 **2026-06-12 09:01 重大调整**：东家明确"产品中心 = Custom Module 系列总览"（仿 jinko `/eagle-modules/` 风格），**`/products/` 顶层 = L1 现状完整 4 段**（标语 / Hero 海上游艇 / 4 SKU 卡 / 3 通用 / ContactCTA），**砍掉**原 §2.1 标准组件段 + Hero 段 + StatStrip + finalCta。`/products/custom-modules/` 改 **301 重定向**到 `/products/`。450W/580W/620W 不在 `/products/` 顶层展示（详情页可访问），Header dropdown 跳 `/products/450w-double-glass-solar-module/`。
 
-#### 2.2 非标组件
-- 2.2.1 180W 组件
-- 2.2.2 200W 组件
-- 2.2.3 215W 组件
+#### 2.1 Custom Module 系列（产品中心主体，`/products/` 顶层）
+- **URL**：`/products/`（L1 + 产品中心合并）
+- **段结构（4 段）**：
+  - 顶部应用场景标语：mobile | off-grid | marine | rooftop
+  - Hero 大场景图（画板 19 海上游艇 + H1 "High-Current. Ultra-Slim. All-Terrain."）
+  - 4 SKU 卡片网格：CN120W / CN180W / CN200W / CN275W
+  - 3 通用 section：QUALITY / SERVICE | SUPPORT / DOWNLOADS | DOCUMENTS
+  - ContactCTA
+- **4 SKU 详情页路由**：
+  - 2.1.1 120W 组件 🟡 `/products/cn120w-solar-panel`（L2，东家挂起，Learn More 跳占位页）
+  - 2.1.2 180W 组件 ✅ `/products/180w-custom-solar-module`（L2）
+  - 2.1.3 200W 组件 ✅ `/products/200w-custom-solar-module`（L2）
+  - 2.1.4 275W 组件 🟡 `/products/cn275w-solar-panel`（L2，东家挂起，Learn More 跳占位页）
 
-**每个产品详情页包含**：产品介绍 / 参数规格 / 认证证书 / 下载（手册/规格书） / 应用场景 / 询盘表单按钮
+#### 2.2 标准组件（Standard Modules，不在 `/products/` 顶层展示）
+- 2.2.1 450W 组件 ✅ `/products/450w-double-glass-solar-module`（L2，Header dropdown 跳此）
+- 2.2.2 580W 组件 ✅ `/products/580w-n-type-solar-module`（L2）
+- 2.2.3 620W 组件 ✅ `/products/620w-n-type-solar-module`（L2）
+- ⚠️ **入口**：Header 顶级 nav "Products" 下拉 → "Standard Modules" 跳 450W 详情页（首推），**后续可加** `/products/standard-modules/` 单独总览页
+
+#### 2.3 历史路由（已合并 / 301）
+- ~~`/products/custom-modules/`~~ → 301 → `/products/`（2026-06-12 合并，文件保留为 redirect 兜底）
+
+> 💡 **2026-06-12 调整说明**：
+> - **L1 + L2 两级**（仿 jinko eagle-modules 模式）—— L1 是系列家族入口，L2 是单 SKU 详情
+> - **215W 移出 L1**：原 §2.2 列的 215W 实际**不在**客户 docx + PDF 4 型号（120/180/200/275）范围内。215W 仅保留在 `src/content/products/215w-custom-module.json`（历史兼容），L1 卡片 4 张 = 120/180/200/275
+> - **型号前缀 CN**：CN120W / CN180W / CN200W / CN275W（与 04 文档一致）
+> - **L2 详情页 URL 暂用现有 slug**（180w-custom-solar-module / 200w-custom-solar-module），CN 前缀路径待 IA 拍板
+
+**每个 L2 产品详情页包含（5 段，2026-06-12 砍）**：hero 5 滚动 banner / 产品本体（白底图）/ 7 段卖点卡 / **Datasheet PDF 下载入口**（参数全在 PDF，不做 5 组结构化参数表） / **询盘 CTA**
+
+**L2 详情页 wireframe** 详见 `09-180w-product-page-brief.md §三`（2026-06-12 升级版）
 
 ### 3. 解决方案 Solutions
 

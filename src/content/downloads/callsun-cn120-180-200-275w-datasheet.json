@@ -1,0 +1,50 @@
+{
+  "title": "Callsun CN120W / CN180W / CN200W / CN275W Series Datasheet (US V1.4)",
+  "slug": "callsun-cn120-180-200-275w-datasheet",
+  "description": "Official US V1.4 datasheet for the Callsun 120W, 180W, 200W and 275W bifacial N-type TOPCon monocrystalline solar module family. Covers electrical parameters, mechanical characteristics, temperature coefficients, certifications (IEC 61215 / 61730, ISO 9001/14001/45001, CE, RoHS), installation guidance, wiring diagrams and warranty policy (10-year product + 25-year linear power, 84.5% output at year 25).",
+  "fileUrl": "/downloads/callsun-cn120-180-200-275w-datasheet.pdf",
+  "fileType": "PDF",
+  "fileSize": "9.4 MB",
+  "category": "Datasheet",
+  "relatedProduct": "180w-custom-solar-module",
+  "relatedProducts": [
+    "180w-custom-solar-module",
+    "200w-custom-solar-module",
+    "450w-double-glass-module"
+  ],
+  "relatedSolutions": [
+    "grid-tied-12kw-28kwh",
+    "off-grid-6-5kw-10kwh",
+    "off-grid-10kw-14kwh"
+  ],
+  "tags": [
+    "120W",
+    "180W",
+    "200W",
+    "275W",
+    "N-Type",
+    "TOPCon",
+    "Bifacial",
+    "US V1.4",
+    "Monocrystalline"
+  ],
+  "version": "US V1.4 (2026-05-29)",
+  "updatedAt": "2026-05-29",
+  "requiresLeadCapture": false,
+  "featured": true,
+  "order": 10,
+  "seoTitle": "Callsun CN120-180-200-275W N-Type TOPCon Datasheet | Callsun Downloads",
+  "metaDescription": "Download the official Callsun CN120W / CN180W / CN200W / CN275W bifacial N-type TOPCon solar module datasheet (US V1.4, May 2026). 9.4 MB, 12 pages, all electrical, mechanical and warranty specs.",
+  "h1": "Callsun 120W / 180W / 200W / 275W Series Datasheet (US V1.4)",
+  "keywords": [
+    "180W solar panel datasheet",
+    "200W solar module PDF",
+    "N-Type TOPCon datasheet",
+    "Callsun datasheet",
+    "120W solar module",
+    "275W bifacial solar panel"
+  ],
+  "canonical": "/resources/downloads",
+  "ogImage": "/uploads/callsun/180w-front-back.jpg",
+  "noindex": false
+}
