@@ -51,7 +51,7 @@ const buildStandard = (p) => {
     ipRating: getSpec(/IP Rating|Junction Box/i) || 'IP68',
     dimensions: getSpec(/Dimensions/i),
     hasDetail: true,
-    subtitle: p.model === 'CN450W' ? 'Double Glass Module' : 'Standard Module',
+    subtitle: p.model === 'CN450W' ? 'Double Glass Module' : 'Custom Module',
   };
 };
 const standardMap = Object.fromEntries(allStandard.filter((p) => ['450w-double-glass-solar-module'].includes(p.slug)).map((p) => [p.slug, buildStandard(p)]));
@@ -60,6 +60,7 @@ const skuCards = [
   placeholderSkus[0],
   standardMap['450w-double-glass-solar-module'],
   activeMap['180w-custom-solar-module'],
+  activeMap['200w-custom-solar-module'],
 ].filter(Boolean);
 
 const productIndexSchema = {
@@ -116,14 +117,14 @@ const productIndexSchema = {
   <!-- 3. SKU 宽图段（仿 jinko eagle-modules EAGLE G7 段视觉：白底 + 左产品图 + 右 h1 + 描述 + 整段是链接） -->
   <!-- 2026-06-12 10:37 东家：product 页面除 CN180W 外还要展示 450W -->
   {(() => {
-    const visibleSkus = skuCards.filter((p) => ['CN180W', 'CN450W'].includes(p.model));
+    const visibleSkus = skuCards.filter((p) => ['CN180W', 'CN200W', 'CN450W'].includes(p.model));
     return visibleSkus.map((p, i) => {
-    const wideImg = [
-      '/uploads/callsun/products/180w/hero-02.jpg',  // CN120W
-      '/uploads/callsun/products/450w/01-front.jpg',             // CN180W
-      '/uploads/callsun/products/180w/hero-05.jpg',     // CN200W
-      '/uploads/callsun/products/180w/hero-02.jpg',  // CN275W
-    ][i];
+    const wideImgMap = {
+      'CN180W': '/uploads/callsun/products/180w/hero-05.jpg',
+      'CN200W': '/uploads/callsun/products/200w/front-back.jpg',
+      'CN450W': '/uploads/callsun/products/450w/01-front.jpg',
+    };
+    const wideImg = wideImgMap[p.model] || p.image;
     const wideHref = p.hasDetail ? `/products/${p.slug}` : '/contact';
     return (
       <a href={wideHref} class="block group">
@@ -138,7 +139,7 @@ const productIndexSchema = {
                 <h2 class="mt-3 text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-tight">
                   {p.model} <span class="text-jinko-accent">{p.subtitle || 'Custom Module'}</span>
                 </h2>
-                <p class="mt-6 text-lg text-jinko-mute leading-relaxed max-w-2xl">{p.model === 'CN180W' ? "High-Current. Ultra-Slim. All-Terrain. Our commercial-grade TOPCon solar modules deliver a high output of 180W. Featuring a unique dual-cell parallel design, they ensure uninterrupted energy yields even under complex conditions—whether it's shading, high temperatures, or narrow spaces." : p.model === 'CN450W' ? "The CN450W series modules feature our latest flagship N-type cutting-edge cell technology, delivering an impressive module efficiency of up to 25.6%. As a high-efficiency monocrystalline bifacial double-glass module, it not only provides industry-leading power output but also significantly enhances long-term energy performance and system reliability, making it the ideal choice for your commercial and industrial solar projects." : p.name}</p>
+                <p class="mt-6 text-lg text-jinko-mute leading-relaxed max-w-2xl">{p.model === 'CN180W' ? "High-Current. Ultra-Slim. All-Terrain. Our commercial-grade TOPCon solar modules deliver a high output of 180W. Featuring a unique dual-cell parallel design, they ensure uninterrupted energy yields even under complex conditions—whether it's shading, high temperatures, or narrow spaces." : p.model === 'CN200W' ? "High-Output 200W with TwinCell Anti-Shade. Our commercial-grade N-Type 16BB solar module delivers 200W with up to 25% efficiency and innovative TwinCell parallel design for uninterrupted, double-sided energy yields under shading, scorching heat, or narrow spaces." : p.model === 'CN450W' ? "The CN450W series modules feature our latest flagship N-type cutting-edge cell technology, delivering an impressive module efficiency of up to 25.6%. As a high-efficiency monocrystalline bifacial double-glass module, it not only provides industry-leading power output but also significantly enhances long-term energy performance and system reliability, making it the ideal choice for your commercial and industrial solar projects." : p.name}</p>
                 <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-jinko-mute max-w-md">
                   <li><span class="text-jinko-ink font-semibold">Pmax</span> {p.pmax}</li>
                   <li><span class="text-jinko-ink font-semibold">Cell Eff</span> {p.cellEff}</li>

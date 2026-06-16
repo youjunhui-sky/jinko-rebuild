@@ -1,29 +1,93 @@
 {
-  "name": "200W Custom Solar Module",
-  "slug": "200w-custom-solar-module",
-  "category": "custom-module",
-  "model": "CN200W",
-  "tagline": "200W N-type custom module for flexible B2B solar supply.",
-  "tech": "N-Type 16BB mono-crystalline silicon",
-  "certifications": [
-    "UL certification pending"
+  "applications": [
+    "RV / Motorhome Roof",
+    "Marine / Boat Deck",
+    "Off-Grid Remote Power",
+    "Desert / High-Temperature",
+    "Residential Rooftop",
+    "Portable Solar Generator"
   ],
-  "image": "/placeholders/solar-panel.svg",
-  "description": "A 200W custom solar module for off-grid, RV, portable and small commercial solar applications.",
+  "h1": "200W Custom N-Type 16BB Bifacial Solar Module",
+  "model": "CN200W",
+  "keywords": [
+    "200w solar panel",
+    "200w custom solar module",
+    "n type 16bb solar panel",
+    "bifacial solar module 200w",
+    "twin cell parallel solar panel",
+    "ip68 solar panel supplier"
+  ],
+  "downloads": [
+    {
+      "label": "Callsun CN120W / CN180W / CN200W / CN275W Series Datasheet (US V1.4, May 2026)",
+      "url": "/downloads/callsun-cn120-180-200-275w-datasheet.pdf"
+    }
+  ],
+  "name": "200W Custom N-Type 16BB Bifacial Solar Module",
+  "slug": "200w-custom-solar-module",
+  "heroBanners": [
+    {
+      "src": "/uploads/callsun/products/200w/hero-01.jpg",
+      "alt": "Callsun CN200W 16BB N-Type 200W bifacial solar panels mounted on RV roof overlooking blue coastline",
+      "caption": "Off-Grid RV Adventure"
+    },
+    {
+      "src": "/uploads/callsun/products/200w/hero-02.jpg",
+      "alt": "Callsun CN200W bifacial vs monofacial solar panel comparison infographic in desert setting",
+      "caption": "Bifacial vs Monofacial"
+    },
+    {
+      "src": "/uploads/callsun/products/200w/hero-03.jpg",
+      "alt": "Callsun CN200W technical feature showcase: IP68 waterproof, 2400Pa wind load, 5400Pa snow load, tempered glass, aluminum frame",
+      "caption": "Industrial-Grade Durability"
+    },
+    {
+      "src": "/uploads/callsun/products/200w/hero-04.jpg",
+      "alt": "Callsun CN200W panels mounted on RV roof in desert landscape for off-grid power",
+      "caption": "Desert / Off-Grid"
+    },
+    {
+      "src": "/uploads/callsun/products/200w/hero-05.jpg",
+      "alt": "Callsun CN200W solar panels installed on modern residential rooftop with dark metal roof",
+      "caption": "Residential Rooftop"
+    }
+  ],
+  "featured": false,
+  "imageAlt": "Callsun CN200W N-Type 16BB bifacial solar module front and back view on white background",
+  "tagline": "High-Output 200W with TwinCell Anti-Shade. Our commercial-grade N-Type 16BB solar module delivers 200W with up to 25% efficiency and innovative TwinCell parallel design for uninterrupted, double-sided energy yields under shading, scorching heat, or narrow spaces.",
+  "order": 106,
+  "relatedSolutions": [
+    "grid-tied-12kw-28kwh",
+    "off-grid-6-5kw-10kwh",
+    "off-grid-10kw-14kwh"
+  ],
+  "noindex": true,
+  "tech": "N-Type 16BB monocrystalline silicon · SMBB super multi-busbar · TwinCell parallel circuit · Bifacial transparent backsheet",
+  "metaDescription": "Callsun CN200W custom N-Type 16BB bifacial solar module for RV, marine, off-grid, residential rooftop and portable applications. 25% efficiency, IP68, 2400Pa/5400Pa mechanical load, 10-year product + 25-year linear power warranty, up to 30% bifacial gain.",
   "specs": [
     {
-      "label": "Maximum Power (Pmax)",
+      "label": "Maximum Power at STC (Pmax)",
       "value": "200W",
       "group": "Electrical"
     },
     {
-      "label": "Maximum Power Voltage (Vmp)",
+      "label": "Maximum Power Voltage at STC (Vmp)",
       "value": "23.74V",
       "group": "Electrical"
     },
     {
-      "label": "Maximum Power Current (Imp)",
+      "label": "Maximum Power Current at STC (Imp)",
       "value": "8.43A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Open-circuit Voltage at STC (Voc)",
+      "value": "27.31V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Short-circuit Current at STC (Isc)",
+      "value": "8.91A",
       "group": "Electrical"
     },
     {
@@ -32,29 +96,113 @@
       "group": "Performance"
     },
     {
+      "label": "Temperature Coefficient of Pmax",
+      "value": "-0.30%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Voc",
+      "value": "-0.25%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Isc",
+      "value": "+0.045%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Operating Temperature",
+      "value": "-40°C ~ 85°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Dimensions",
+      "value": "1304 × 770 × 35 mm (±2mm)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Weight",
+      "value": "10.80 kg (±0.2 kg)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Cell Arrangement",
+      "value": "80 cells (4 × 10) × 2",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Glass",
+      "value": "3.2mm Tempered Glass",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Frame",
+      "value": "Anodized Aluminium Alloy",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Connector",
+      "value": "MC4-compatible Solar Connector",
+      "group": "Mechanical"
+    },
+    {
+      "label": "IP Rating",
+      "value": "IP68",
+      "group": "System"
+    },
+    {
+      "label": "Max Wind Load / Snow Load",
+      "value": "2400Pa / 5400Pa",
+      "group": "System"
+    },
+    {
       "label": "Maximum System Voltage",
       "value": "1000V DC",
       "group": "System"
     },
     {
+      "label": "Maximum Series Fuse Rating",
+      "value": "25A",
+      "group": "System"
+    },
+    {
+      "label": "Power Tolerance",
+      "value": "0~5%",
+      "group": "System"
+    },
+    {
       "label": "Output Commitment",
-      "value": "84.5% output for 25 years",
+      "value": "84.5% output for 25 years (1% first-year + 0.4%/year linear)",
       "group": "Warranty"
     }
   ],
-  "applications": [
-    "RV",
-    "Remote Power",
-    "Custom Projects"
+  "relatedCases": [
+    "cheng-da-iii-3-5mw",
+    "auto-dealership-800kw",
+    "solar-storage-microgrid-100kw-215kwh"
   ],
-  "order": 120,
-  "featured": false,
-  "seoTitle": "200W Custom Solar Module | Callsun",
-  "metaDescription": "Callsun 200W custom N-type solar module for RV, off-grid and compact B2B solar applications.",
-  "keywords": [
-    "200w solar panel",
-    "custom solar panel supplier",
-    "rv solar module"
+  "certifications": [
+    "IEC 61215",
+    "IEC 61730",
+    "ISO 9001:2023",
+    "ISO 14001:2023",
+    "ISO 45001:2023",
+    "CE",
+    "UKCA",
+    "TÜV Rheinland",
+    "UL"
   ],
-  "imageAlt": "Callsun 200W compact custom solar module for RV and remote power applications"
+  "image": "/uploads/callsun/products/200w/front-back.jpg",
+  "seoTitle": "200W Custom N-Type 16BB Bifacial Solar Module | Callsun",
+  "warranty": "10-year product material and workmanship warranty; 25-year linear power performance guarantee (84.5% output at year 25; 1% first-year degradation + 0.4%/year linear)",
+  "benefits": [
+    "N-Type 16BB Technology — Advanced N-type cells with 16BB architecture deliver up to 25% efficiency and superior reliability by minimizing micro-cracks and hot spots.",
+    "Bifacial Power Gain — Transparent backsheet design harnesses direct, reflected, and diffuse light from the backside, increasing total power output by up to 30%.",
+    "TwinCell Anti-Shade Technology — Innovative dual-module parallel design boosts shading tolerance by up to 50%, ensuring uninterrupted power generation even under partial coverage.",
+    "Low Temperature Coefficient — An industry-leading -0.30%/K temperature coefficient minimizes power loss, ensuring stable and consistent performance in extreme heat.",
+    "Industrial Grade & Compact Fit — Built with ultra-strong tempered glass and IP68 waterproofing in a compact footprint, engineered for tight spaces and an extended 30-year lifespan.",
+    "Industry-Leading Warranty — Backed by a 25-year linear performance commitment and 10 years of dedicated technical support for long-term reliability and secure returns."
+  ],
+  "description": "Callsun CN200W is a 200W custom N-Type 16BB bifacial solar module engineered for B2B distributors, RV manufacturers, marine dealers and EPC installers who need compact, high-output modules for mobile, off-grid and space-limited deployments. TwinCell parallel design provides shade resilience, and IP68 + 5400Pa mechanical load rating handles all-terrain all-weather conditions.",
+  "category": "custom-module"
 }
