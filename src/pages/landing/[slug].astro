@@ -57,8 +57,8 @@ const schema = {
         </div>
         {page.data.trustBadges.length > 0 && <div class="mt-8 flex flex-wrap gap-2">{page.data.trustBadges.map((badge) => <span class="rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1.5 text-sm text-sky-100">✓ {badge}</span>)}</div>}
       </div>
-      <div class="rounded-[2rem] bg-white/10 ring-1 ring-white/20 p-4 shadow-2xl">
-        {page.data.hero.image ? <img src={page.data.hero.image} alt={page.data.hero.imageAlt || h1} class="rounded-[1.5rem] w-full object-cover" /> : <div class="rounded-[1.5rem] bg-white/10 min-h-[320px]"></div>}
+      <div class="rounded-none bg-white/10 ring-1 ring-white/20 p-4 shadow-2xl">
+        {page.data.hero.image ? <img src={page.data.hero.image} alt={page.data.hero.imageAlt || h1} class="rounded-none w-full object-cover" /> : <div class="rounded-none bg-white/10 min-h-[320px]"></div>}
       </div>
     </div>
   </section>

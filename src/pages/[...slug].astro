@@ -43,7 +43,7 @@ const schema = {
           {page.data.secondaryCtaHref && <a href={page.data.secondaryCtaHref} class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20 hover:bg-white/15">{page.data.secondaryCtaLabel || 'Learn more'}</a>}
         </div>
       </div>
-      {page.data.coverImage && <div class="rounded-[2rem] bg-white/10 ring-1 ring-white/20 p-4 shadow-2xl"><img src={page.data.coverImage} alt={page.data.imageAlt || h1} class="rounded-[1.5rem] w-full object-cover" /></div>}
+      {page.data.coverImage && <div class="rounded-none bg-white/10 ring-1 ring-white/20 p-4 shadow-2xl"><img src={page.data.coverImage} alt={page.data.imageAlt || h1} class="rounded-none w-full object-cover" /></div>}
     </div>
   </section>
 

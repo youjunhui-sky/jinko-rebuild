@@ -46,8 +46,8 @@ const homeSchema = {
         </div>
       </div>
       <div class="relative">
-        <div class="rounded-[2rem] bg-white/10 ring-1 ring-white/20 p-4 backdrop-blur shadow-2xl">
-          <img src={home.hero.image} alt={home.hero.imageAlt || home.hero.title} width="900" height="680" class="rounded-[1.5rem] w-full object-cover" />
+        <div class="rounded-none bg-white/10 ring-1 ring-white/20 p-4 backdrop-blur shadow-2xl">
+          <img src={home.hero.image} alt={home.hero.imageAlt || home.hero.title} width="900" height="680" class="rounded-none w-full object-cover" />
         </div>
         {(home.hero.floatingTitle || home.hero.floatingDescription) && <div class="absolute -bottom-6 -left-6 bg-white text-jinko-ink rounded-2xl shadow-card p-5 max-w-xs hidden sm:block">
           {home.hero.floatingEyebrow && <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{home.hero.floatingEyebrow}</p>}

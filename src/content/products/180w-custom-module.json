@@ -33,11 +33,6 @@
       "caption": "Residential Rooftop"
     },
     {
-      "src": "/uploads/callsun/products/180w/hero-02.jpg",
-      "alt": "Callsun CN180W N-type TOPCon module front and back view on white background",
-      "caption": "180W Dual-Cell Parallel Design"
-    },
-    {
       "src": "/uploads/callsun/products/180w/hero-03.jpg",
       "alt": "Callsun CN180W powering RV in desert with +2% gain at 167°F high-temperature performance curve",
       "caption": "Desert / High-Temperature"
@@ -46,16 +41,6 @@
       "src": "/uploads/callsun/products/180w/hero-04.jpg",
       "alt": "Callsun CN180W bifacial modules installed on white boat deck with deep blue sea in background",
       "caption": "Marine / Boat Deck"
-    },
-    {
-      "src": "/uploads/callsun/products/180w/hero-05.jpg",
-      "alt": "Callsun CN180W product variation showing front and back layout",
-      "caption": "Ultra-Slim, All-Terrain"
-    },
-    {
-      "src": "/uploads/callsun/products/180w/hero-06.jpg",
-      "alt": "Callsun CN180W solar module product showcase",
-      "caption": "Callsun Custom Module Series"
     },
     {
       "src": "/uploads/callsun/products/180w/hero-07.jpg",
@@ -204,7 +189,6 @@
     "Flagship N-type TOPCon Technology — Industry-leading N-type TOPCon cell technology with record cell efficiency, lower degradation rates and exceptional long-term power generation reliability.",
     "30% Bifacial Power Gain — Advanced bifacial technology with transparent backsheet captures reflected light from white RV roofs, sand or boat decks; delivers up to 30% additional energy in extreme environments.",
     "Excellent Low Temperature Coefficient — Class-leading -0.30%/K temperature coefficient maintains peak voltage output in scorching deserts or intense summer heat, significantly reducing summer power drop-offs.",
-    "Tailored Architecture for Narrow Spaces — Ultra-slim, optimized aspect ratio design for mobile and off-grid scenarios; fits perfectly between RV vents and truck racks, maximizing space and eliminating hazardous overhangs.",
     "Dual-Cell Parallel Circuitry for Shade Resilience — Innovative dual-cell parallel design lets the panel operate as two independent units; even if partially shaded by branches or vents, the unaffected half continues full power output.",
     "All-Terrain, All-Weather Protection — IP68 dust and water resistance, withstands 35mm hail impacts and high-speed highway vibrations; endures high humidity, severe cold and heavy rain for decades of off-grid adventure.",
     "Dual Quality Assurance — 10-year product material and workmanship warranty plus 25-year linear power performance guarantee safeguard your high-value energy assets."

@@ -32,12 +32,9 @@ const navItems = (await getCollection('navigation'))
                 </div>
                 <div class="grid gap-2">
                   {n.children.map((child) => (
-                    <a href={child.href} class="grid grid-cols-[56px_1fr] gap-3 items-center rounded-xl p-2 hover:bg-jinko-bg transition-colors">
-                      {child.image ? <img src={child.image} alt="" width="56" height="42" class="w-14 h-11 rounded-lg object-cover bg-jinko-bg" /> : <div class="w-14 h-11 rounded-lg bg-jinko-bg flex items-center justify-center text-jinko">→</div>}
-                      <span>
-                        <span class="block font-semibold text-jinko-ink">{child.label}</span>
-                        {child.description && <span class="block text-xs text-jinko-mute mt-0.5">{child.description}</span>}
-                      </span>
+                    <a href={child.href} class="block rounded-xl px-3 py-2.5 hover:bg-jinko-bg transition-colors">
+                      <span class="block font-semibold text-jinko-ink">{child.label}</span>
+                      {child.description && <span class="block text-xs text-jinko-mute mt-0.5">{child.description}</span>}
                     </a>
                   ))}
                 </div>

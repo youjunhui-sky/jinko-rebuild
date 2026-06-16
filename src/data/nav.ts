@@ -4,8 +4,8 @@ export const NAV = [
     href: '/products',
     description: 'Standard and custom solar modules',
     children: [
-      { label: 'Standard Modules', href: '/products#standard-modules', image: '/placeholders/solar-panel.svg' },
-      { label: 'Custom Modules', href: '/products#custom-modules', image: '/placeholders/solar-panel.svg' },
+      { label: 'Standard Modules', href: '/products#standard-modules' },
+      { label: 'Custom Modules', href: '/products#custom-modules' },
     ],
   },
   {
@@ -13,8 +13,8 @@ export const NAV = [
     href: '/solutions',
     description: 'Grid-tied and off-grid solar systems',
     children: [
-      { label: 'Grid-Tied Systems', href: '/solutions#grid-tied', image: '/placeholders/battery-system.svg' },
-      { label: 'Off-Grid Systems', href: '/solutions#off-grid', image: '/placeholders/battery-system.svg' },
+      { label: 'Grid-Tied Systems', href: '/solutions#grid-tied' },
+      { label: 'Off-Grid Systems', href: '/solutions#off-grid' },
     ],
   },
   { label: 'Applications', href: '/applications', description: 'Residential, C&I and remote power scenarios' },
