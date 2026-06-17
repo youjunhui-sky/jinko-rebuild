@@ -3,16 +3,8 @@
   "slug": "450w-double-glass-solar-module",
   "category": "standard-module",
   "model": "CN450W",
-  "tagline": "High-efficiency 450W module for residential, commercial and distributed solar projects.",
-  "benefits": [
-    { "title": "N-Type Technology", "description": "N-type cells offer our advanced in-house cell technology with better performance and improved reliability, delivering an exceptional module efficiency of up to 23.04%." },
-    { "title": "Bifacial Power Gain", "description": "N-Type architecture increases bifaciality up to 80% ± 5% for a higher backside bonus and better lifetime yield, optimized by multi-busbar technology." },
-    { "title": "Low Temperature Coefficient", "description": "Features a highly competitive temperature coefficient (Pmax) of -0.290%/°C for the highest lifetime energy yield in all climates." },
-    { "title": "Industrial Grade Construction", "description": "Optimized dual-glass construction (2.0+2.0mm Tempered Glass) with a silver anodized aluminum alloy frame for the highest mechanical load resistance." },
-    { "title": "Protected Against All Environments", "description": "Certified to withstand humidity, heat, rain, marine environments, wind, hailstorms, and packed snow for reliable global deployment." },
-    { "title": "Warranty", "description": "25-year product warranty and 30-year linear power warranty for maximum long-term investment protection." }
-  ],
-  "tech": "Mono-crystalline silicon · Double glass",
+  "tagline": "High-Efficiency 450W Double-Glass N-Type Module. The CN450W features premium N-type monocrystalline technology with bifacial double-glass construction, delivering 450W output at 22.52% module efficiency. Optimized for commercial rooftops, industrial projects and distributed generation where long-term yield, mechanical resilience and 30-year linear power warranty matter most.",
+  "tech": "N-type mono-crystalline silicon · 96 half-cut cells (6×8×2) · 16BB multi-busbar · 2.0+2mm dual-glass construction · IP68 junction box with 3 bypass diodes · Fire Class C",
   "certifications": [
     "IEC 61215",
     "IEC 61730",
@@ -22,7 +14,7 @@
   ],
   "image": "/uploads/callsun/products/450w/01-front.jpg",
   "imageAlt": "Callsun CN450W double glass bifacial solar module — two panels standing vertically on white background showing front and rear bifacial sides",
-  "description": "Callsun CN450W is a 450W double glass solar module designed for B2B distributors, dealers and EPC installers who need reliable modules for repeatable rooftop and distributed generation projects.",
+  "description": "Callsun CN450W is a 450W double glass N-type solar module designed for B2B distributors, dealers and EPC installers who need reliable modules for repeatable rooftop and distributed generation projects. With 22.52% module efficiency, bifacial gain and 30-year linear power warranty, the CN450W delivers bankable long-term performance for commercial rooftops and industrial installations.",
   "specs": [
     {
       "label": "Maximum Power (Pmax)",
@@ -51,13 +43,93 @@
     },
     {
       "label": "Module Efficiency",
-      "value": "23.04%",
+      "value": "22.52%",
       "group": "Performance"
     },
     {
       "label": "Operating Temperature",
-      "value": "-40 ~ +85°C",
+      "value": "-40°C ~ +85°C",
       "group": "Performance"
+    },
+    {
+      "label": "Nominal Operating Cell Temperature (NOCT)",
+      "value": "42°C ± 2°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Pmax",
+      "value": "-0.290%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Voc",
+      "value": "-0.250%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Isc",
+      "value": "+0.045%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Bifaciality Factor",
+      "value": "80% ± 5%",
+      "group": "Performance"
+    },
+    {
+      "label": "First-Year Degradation",
+      "value": "1%",
+      "group": "Performance"
+    },
+    {
+      "label": "Cell Type",
+      "value": "N-type Mono-crystalline silicon, 182×105mm",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Number of Cells",
+      "value": "96 pcs (6×8×2) half-cut",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Dimensions",
+      "value": "1762 × 1134 × 30 mm (±2mm L/W, ±1mm H)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Weight",
+      "value": "24.5 kg",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Glass",
+      "value": "2.0 + 2.0mm Tempered Glass (dual-glass)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Frame",
+      "value": "Anodized Aluminium Alloy",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Junction Box",
+      "value": "IP68, 3 Bypass Diodes",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Cable Length",
+      "value": "300mm",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Fire Performance",
+      "value": "Class C",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Protection Class",
+      "value": "Class II",
+      "group": "System"
     },
     {
       "label": "Maximum System Voltage",
@@ -65,40 +137,33 @@
       "group": "System"
     },
     {
-      "label": "Cell Type",
-      "value": "Mono-crystalline silicon, 182×105mm",
-      "group": "Mechanical"
+      "label": "Maximum Series Fuse Rating",
+      "value": "30A",
+      "group": "System"
     },
     {
-      "label": "Number of Cells",
-      "value": "96 pcs (6×8×2)",
-      "group": "Mechanical"
+      "label": "Power Tolerance",
+      "value": "0~±5W",
+      "group": "System"
     },
     {
-      "label": "Dimensions",
-      "value": "1762×1134×30 mm",
-      "group": "Mechanical"
+      "label": "Packaging Configuration",
+      "value": "40'HQ · 36 pcs/pallet × 26 pallets = 936 pcs/cabinet",
+      "group": "Logistics"
     },
     {
-      "label": "Weight",
-      "value": "24.5kg",
-      "group": "Mechanical"
-    },
-    {
-      "label": "Glass",
-      "value": "2.0+2.0mm Tempered Glass",
-      "group": "Mechanical"
-    },
-    {
-      "label": "Junction Box",
-      "value": "IP68",
-      "group": "Mechanical"
-    },
-    {
-      "label": "Warranty",
-      "value": "25-Year Product Warranty; 30-Year Linear Power Warranty",
+      "label": "Output Commitment",
+      "value": "87.4% output at year 30 (1% first-year + linear degradation thereafter)",
       "group": "Warranty"
     }
+  ],
+  "benefits": [
+    { "title": "N-Type Technology", "description": "N-type cells offer our advanced in-house cell technology with better performance and improved reliability, delivering an exceptional module efficiency of 22.52%." },
+    { "title": "Bifacial Power Gain", "description": "N-Type architecture increases bifaciality up to 80% ± 5% for a higher backside bonus and better lifetime yield, optimized by multi-busbar technology." },
+    { "title": "Low Temperature Coefficient", "description": "Features a highly competitive temperature coefficient (Pmax) of -0.290%/°C for the highest lifetime energy yield in all climates." },
+    { "title": "Industrial Grade Construction", "description": "Optimized dual-glass construction (2.0+2.0mm Tempered Glass) with a silver anodized aluminum alloy frame for the highest mechanical load resistance." },
+    { "title": "Protected Against All Environments", "description": "Certified to withstand humidity, heat, rain, marine environments, wind, hailstorms, and packed snow for reliable global deployment." },
+    { "title": "Warranty", "description": "25-year product warranty and 30-year linear power warranty (87.4% output at year 30) for maximum long-term investment protection." }
   ],
   "applications": [
     "Commercial Rooftop",
@@ -106,7 +171,7 @@
     "Distributed Generation"
   ],
   "downloads": [
-    { "label": "Callsun CN450W Double Glass Solar Module Datasheet (PDF)", "url": "/uploads/callsun/products/450w/CN450W-double-glass-datasheet.pdf" }
+    { "label": "Callsun CN450W Double Glass Solar Module Datasheet (PDF, June 2026)", "url": "/uploads/callsun/products/450w/CN450W-double-glass-datasheet.pdf" }
   ],
   "heroBanners": [
     { "src": "/uploads/callsun/products/450w/hero-01.jpg", "alt": "Callsun 450W double glass solar panels installed on residential roof against blue sky" },
@@ -118,12 +183,14 @@
   ],
   "order": 10,
   "featured": true,
-  "seoTitle": "450W Double Glass Solar Module | Callsun",
-  "metaDescription": "Callsun CN450W double glass solar module with 23.04% efficiency, IEC certifications and 25-year product warranty for B2B solar distributors and EPC installers.",
+  "seoTitle": "450W Double Glass N-Type Solar Module | 22.52% Efficiency | Callsun",
+  "metaDescription": "Callsun CN450W 450W N-type double glass bifacial solar module with 22.52% module efficiency, 96 half-cut cells, 2.0+2mm dual-glass, IP68 junction box, 25-year product + 30-year linear power warranty (87.4% at year 30). IEC 61215/61730 + ISO 9001/14001/45001 certified for commercial rooftop, residential and distributed generation deployments.",
   "h1": "450W Double Glass Solar Module",
   "keywords": [
     "450w solar panel",
     "double glass solar module",
-    "commercial solar panel supplier"
+    "n type 450w solar",
+    "commercial solar module supplier",
+    "bifacial double glass module"
   ]
 }

@@ -92,7 +92,7 @@ const downloadItems = product.downloads.length ? product.downloads : [
             <h1 class="text-lg lg:text-xl font-display font-bold leading-snug truncate">{product.h1 || product.name}</h1>
           </div>
           <div class="flex gap-2 shrink-0">
-            <a href="/contact" data-track-click="product_inquiry_button" data-product={product.slug} class="px-4 py-1.5 rounded bg-jinko-accent text-jinko-ink font-semibold text-xs hover:brightness-110 transition">Request Quote</a>
+            <a href="/contact" data-track-click="product_inquiry_button" data-product={product.slug} class="px-4 py-1.5 rounded bg-white/10 ring-1 ring-white/30 text-white font-semibold text-xs hover:bg-white/20 transition">Request Quote</a>
             <a href="#downloads" data-track-click="datasheet_download" data-product={product.slug} class="px-4 py-1.5 rounded ring-1 ring-white/30 text-white font-semibold text-xs hover:bg-white/10 transition">Datasheet</a>
           </div>
         </div>

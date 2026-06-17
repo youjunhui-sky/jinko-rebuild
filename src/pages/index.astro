@@ -5,7 +5,6 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import ContactCTA from '@/components/ContactCTA.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
-import StatStrip from '@/components/StatStrip.astro';
 import CardGrid from '@/components/CardGrid.astro';
 import { SITE } from '@/data/site';
 
@@ -31,34 +30,25 @@ const homeSchema = {
 <BaseLayout title={home.seoTitle || SITE.defaultTitle} description={home.metaDescription || SITE.defaultDescription} canonical={home.canonical || '/'} ogImage={home.ogImage || SITE.defaultOgImage} noindex={home.noindex} keywords={home.keywords} schema={homeSchema}>
   <Header slot="header" />
 
-  <section class="relative overflow-hidden text-white">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(251,191,36,.28),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(14,165,233,.22),transparent_34%),linear-gradient(135deg,#0f172a,#0f766e_48%,#134e4a)]"></div>
-    <div class="absolute inset-0 opacity-25" style="background-image:linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);background-size:52px 52px;"></div>
-    <div class="max-w-content mx-auto px-4 lg:px-6 py-24 lg:py-32 relative grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-center">
-      <div>
+  <section class="relative overflow-hidden text-white min-h-[640px] lg:min-h-[80vh] flex items-center" style={`background-image: linear-gradient(90deg, rgba(15,23,42,.88) 0%, rgba(15,23,42,.55) 45%, rgba(15,23,42,.15) 100%), url('${home.hero.image}'); background-size: cover; background-position: center;`}>
+    <div class="max-w-content mx-auto px-4 lg:px-6 py-28 lg:py-32 relative w-full">
+      <div class="max-w-3xl">
         <p class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-bold text-jinko-accent bg-white/10 px-3 py-1.5 rounded-full ring-1 ring-white/15">{home.hero.eyebrow}</p>
-        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-4xl">{home.h1 || home.hero.title}</h1>
-        <p class="mt-6 text-lg lg:text-xl text-sky-100 max-w-2xl leading-relaxed">{home.hero.description}</p>
+        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold leading-tight">{home.h1 || home.hero.title}</h1>
+        <p class="mt-6 text-lg lg:text-xl text-white/90 max-w-2xl leading-relaxed">{home.hero.description}</p>
         <div class="mt-9 flex flex-wrap gap-3">
-          <a href={home.hero.primaryCtaHref} data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-bold hover:opacity-90">{home.hero.primaryCtaLabel}</a>
-          <a href={home.hero.secondaryCtaHref} class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20 hover:bg-white/15">{home.hero.secondaryCtaLabel}</a>
-          <a href={home.hero.tertiaryCtaHref} data-track-click="inquiry_cta" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-white text-jinko-ink font-semibold hover:bg-slate-100">{home.hero.tertiaryCtaLabel}</a>
+          <a href={home.hero.primaryCtaHref} data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-white text-jinko-ink font-bold hover:bg-slate-100">{home.hero.primaryCtaLabel}</a>
+          <a href={home.hero.secondaryCtaHref} class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 ring-1 ring-white/30 text-white font-semibold hover:bg-white/20">{home.hero.secondaryCtaLabel}</a>
+          <a href={home.hero.tertiaryCtaHref} data-track-click="inquiry_cta" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 ring-1 ring-white/30 text-white font-semibold hover:bg-white/20">{home.hero.tertiaryCtaLabel}</a>
         </div>
       </div>
-      <div class="relative">
-        <div class="rounded-none bg-white/10 ring-1 ring-white/20 p-4 backdrop-blur shadow-2xl">
-          <img src={home.hero.image} alt={home.hero.imageAlt || home.hero.title} width="900" height="680" class="rounded-none w-full object-cover" />
-        </div>
-        {(home.hero.floatingTitle || home.hero.floatingDescription) && <div class="absolute -bottom-6 -left-6 bg-white text-jinko-ink rounded-2xl shadow-card p-5 max-w-xs hidden sm:block">
-          {home.hero.floatingEyebrow && <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{home.hero.floatingEyebrow}</p>}
-          {home.hero.floatingTitle && <p class="mt-2 font-display font-extrabold text-2xl">{home.hero.floatingTitle}</p>}
-          {home.hero.floatingDescription && <p class="mt-1 text-sm text-jinko-mute">{home.hero.floatingDescription}</p>}
-        </div>}
-      </div>
+      {(home.hero.floatingTitle || home.hero.floatingDescription) && <div class="absolute top-8 right-4 lg:right-6 bg-white/10 ring-1 ring-white/20 backdrop-blur-md text-white rounded-2xl shadow-card p-5 max-w-xs hidden lg:block">
+        {home.hero.floatingEyebrow && <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{home.hero.floatingEyebrow}</p>}
+        {home.hero.floatingTitle && <p class="mt-2 font-display font-extrabold text-2xl">{home.hero.floatingTitle}</p>}
+        {home.hero.floatingDescription && <p class="mt-1 text-sm text-white/85">{home.hero.floatingDescription}</p>}
+      </div>}
     </div>
   </section>
-
-  <StatStrip stats={home.stats} />
 
   {home.why.visible && <section class="py-20 lg:py-24">
     <div class="max-w-content mx-auto px-4 lg:px-6">

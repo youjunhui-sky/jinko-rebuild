@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         jinko: {
-          DEFAULT: '#0066B3',   // Jinko 蓝
-          dark: '#003E6F',
-          accent: '#FFB400',    // 太阳能黄
+          DEFAULT: '#00A86B',   // Callsun 品牌绿 (callsunsolar.com 主色)
+          dark: '#108474',     // 深 teal (callsunsolar.com 暗调)
+          accent: '#7cbe22',   // logo 黄绿 (lime accent)
           ink: '#0F172A',
           mute: '#475569',
           line: '#E2E8F0',

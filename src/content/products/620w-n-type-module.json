@@ -1,48 +1,85 @@
 {
-  "name": "620W N-Type Solar Module",
+  "name": "620W N-Type Bifacial Double-Glass Solar Module",
+  "h1": "620W N-Type Bifacial Double-Glass Solar Module",
   "slug": "620w-n-type-solar-module",
   "category": "standard-module",
   "model": "CN620W",
-  "tagline": "620W high-output N-type module for power-dense commercial solar projects.",
-  "tech": "N-type mono-crystalline silicon",
+  "tagline": "Next-Pinnacle 620W Bifacial Double-Glass Module for Utility & Industrial Scale. The CALLSUN CN620W represents the next pinnacle of N-type monocrystalline technology, achieving a record-high module efficiency of 22.95%. Delivering an ultra-high 620W output, these bifacial double-glass modules combine an optimized high-density architecture with an exceptional -0.28%/°C temperature coefficient to guarantee maximal energy yield and unmatched ROI for large-scale utility and industrial projects.",
+  "tech": "N-type bifacial monocrystalline silicon · 132 half-cut cells (6×11×2) · 16BB multi-busbar · 2.0+2mm dual-glass construction · IP68 junction box with 3 bypass diodes · Fire Class C",
   "certifications": [
     "IEC 61215",
     "IEC 61730",
-    "ISO 9001",
-    "ISO 14001",
-    "ISO 45001"
+    "ISO 9001:2023",
+    "ISO 14001:2023",
+    "ISO 45001:2023"
   ],
-  "image": "/placeholders/solar-panel.svg",
-  "description": "Callsun CN620W helps EPC teams increase project power density with a high-output module platform designed for commercial and industrial solar deployment.",
+  "image": "/uploads/callsun/products/620w/front-back.jpg",
+  "imageAlt": "Callsun CN620W N-Type bifacial double-glass solar module front and back view on white background with junction box and MC4 connectors",
+  "description": "The CALLSUN CN620W modules represent the next pinnacle of our N-type monocrystalline technology, achieving a record-high module efficiency of 22.95%. Delivering an ultra-high 620W power output, these bifacial double-glass modules combine an optimized high-density architecture with an exceptional low temperature coefficient to guarantee maximal energy yield and unmatched ROI for large-scale utility and industrial projects. Built for B2B distributors, EPC installers and utility-scale IPPs who need maximum power density, IEC-certified supply and 30-year linear power warranty.",
   "specs": [
     {
-      "label": "Maximum Power (Pmax)",
+      "label": "Maximum Power at STC (Pmax)",
       "value": "620W",
       "group": "Electrical"
     },
     {
-      "label": "Maximum Power Voltage (Vmp)",
+      "label": "Maximum Power Voltage at STC (Vmp)",
       "value": "40.82V",
       "group": "Electrical"
     },
     {
-      "label": "Maximum Power Current (Imp)",
+      "label": "Maximum Power Current at STC (Imp)",
       "value": "15.19A",
       "group": "Electrical"
     },
     {
-      "label": "Open-circuit Voltage (Voc)",
+      "label": "Open-circuit Voltage at STC (Voc)",
       "value": "48.10V",
       "group": "Electrical"
     },
     {
-      "label": "Short-circuit Current (Isc)",
+      "label": "Short-circuit Current at STC (Isc)",
       "value": "16.06A",
       "group": "Electrical"
     },
     {
       "label": "Module Efficiency",
-      "value": "23%",
+      "value": "22.95%",
+      "group": "Performance"
+    },
+    {
+      "label": "Operating Temperature",
+      "value": "-40°C ~ +85°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Nominal Operating Cell Temperature (NOCT)",
+      "value": "45°C ± 2°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Pmax",
+      "value": "-0.28%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Voc",
+      "value": "-0.24%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Isc",
+      "value": "+0.046%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Bifaciality Factor",
+      "value": "80% ± 5%",
+      "group": "Performance"
+    },
+    {
+      "label": "First-Year Degradation",
+      "value": "1%",
       "group": "Performance"
     },
     {
@@ -51,41 +88,161 @@
       "group": "Mechanical"
     },
     {
-      "label": "Number of Cells",
-      "value": "132 pcs (6×11×2)",
+      "label": "Cell Arrangement",
+      "value": "132 cells (6×11×2) half-cut",
       "group": "Mechanical"
     },
     {
       "label": "Dimensions",
-      "value": "2382×1134×30 mm",
+      "value": "2382 × 1134 × 30 mm (±2mm L/W, ±1mm H)",
       "group": "Mechanical"
     },
     {
       "label": "Weight",
-      "value": "32.5kg",
+      "value": "32.5 kg",
       "group": "Mechanical"
     },
     {
-      "label": "Warranty",
-      "value": "25-Year Product Warranty; 30-Year Linear Power Warranty",
+      "label": "Glass",
+      "value": "2.0 + 2.0mm Tempered Glass (dual-glass)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Frame",
+      "value": "Anodized Aluminium Alloy",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Junction Box",
+      "value": "IP68, 3 Bypass Diodes",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Cable Length",
+      "value": "300mm",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Fire Performance",
+      "value": "Class C",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Maximum System Voltage",
+      "value": "1500V DC",
+      "group": "System"
+    },
+    {
+      "label": "Maximum Series Fuse Rating",
+      "value": "30A",
+      "group": "System"
+    },
+    {
+      "label": "Power Tolerance",
+      "value": "0~±5W",
+      "group": "System"
+    },
+    {
+      "label": "Packaging Configuration",
+      "value": "40'HQ · 36 pcs/pallet × 20 pallets = 720 pcs/cabinet",
+      "group": "Logistics"
+    },
+    {
+      "label": "Output Commitment",
+      "value": "87.4% output at year 30 (1% first-year + linear degradation thereafter)",
       "group": "Warranty"
     }
   ],
+  "benefits": [
+    {
+      "title": "Next-Gen N-Type Efficiency",
+      "description": "Advanced N-type technology drastically minimizes first-year degradation to just 1% while delivering industry-leading low-light performance. Compared to P-type cells, the CN620W harvests more energy during dawn, dusk and overcast conditions—directly boosting daily yield for utility and industrial deployments where every watt-hour counts toward project IRR."
+    },
+    {
+      "title": "Massive 620W Bifacial Yield",
+      "description": "Combines 620W frontal power with an 80% bifaciality factor, unleashing powerful double-sided generation to maximize lifetime power output. The high-density 132-cell architecture on a 2382mm chassis delivers the highest power-per-rack in the Callsun standard module lineup, reducing BOS cost and accelerating project payback on utility-scale farms."
+    },
+    {
+      "title": "Optimized Temperature Coefficient",
+      "description": "An exceptional Pmax temperature coefficient of -0.28%/°C ensures peak energy harvesting even in scorching and high-temperature climates. Industry-leading thermal performance translates to measurably higher daily yield in desert, tropical and high-irradiance deployments—where traditional P-type modules lose 2-3% more output per degree above 25°C."
+    },
+    {
+      "title": "Multi-Busbar (MBB) Precision",
+      "description": "State-of-the-art multi-busbar technology enhances current collection efficiency, reduces internal resistance, and boosts structural reliability. 16BB cell architecture shortens carrier travel distance, lowers hot-spot risk and improves performance under partial shading—ideal for utility-scale ground mounts with mixed light conditions and O&M simplicity."
+    },
+    {
+      "title": "Heavy-Duty Dual-Glass Construction",
+      "description": "Built with 2.0mm tempered dual-glass, an anodized aluminum frame, and an IP68 junction box to withstand extreme mechanical loads and environmental stress. The dual-glass construction eliminates PID pathways, improves fire performance (Class C) and extends service life beyond 30 years—engineered for hail, snow, sand and salt mist without micro-crack propagation."
+    },
+    {
+      "title": "Premium 30-Year Warranty Commitment",
+      "description": "Secured by a 25-year product warranty and a 30-year linear power warranty, guaranteeing an elite 87.4% power performance at year 30. Combined with 1% first-year degradation and rigorous IEC 61215/61730 + ISO 9001/14001/45001 certification, the CN620W delivers bankable long-term returns for EPCs, IPPs and project finance partners on utility-scale solar farms."
+    }
+  ],
   "applications": [
-    "Commercial Rooftop",
+    "Utility-Scale Solar Farm",
     "Industrial Rooftop",
-    "Large C&I"
+    "Large C&I Project",
+    "Distributed Generation"
   ],
-  "downloads": [],
-  "order": 30,
+  "heroBanners": [
+    {
+      "src": "/uploads/callsun/products/620w/hero-01.jpg",
+      "alt": "Large-scale N-type solar panel installation at dawn low-light sky, panels in long row showing scale and next-generation grid",
+      "caption": "Next-Gen N-Type Efficiency"
+    },
+    {
+      "src": "/uploads/callsun/products/620w/hero-02.jpg",
+      "alt": "Wide-angle ground-mounted solar farm with bifacial double-glass panels at golden hour, dramatic perspective showing front face and ground-reflected rear light",
+      "caption": "Massive 620W Bifacial Yield"
+    },
+    {
+      "src": "/uploads/callsun/products/620w/hero-03.jpg",
+      "alt": "Large solar array in harsh hot desert environment, intense sunlight and deep blue sky, panels facing sun at optimal angle demonstrating temperature performance",
+      "caption": "Optimized -0.28%/°C Temperature Coefficient"
+    },
+    {
+      "src": "/uploads/callsun/products/620w/hero-04.jpg",
+      "alt": "Extreme macro close-up of CN620W solar cell surface showing fine multi-busbar grid lines on deep navy blue silicon with silver busbars",
+      "caption": "16BB Multi-Busbar Precision"
+    },
+    {
+      "src": "/uploads/callsun/products/620w/hero-05.jpg",
+      "alt": "Exploded cross-section technical illustration of CN620W dual-glass solar panel: 2.0mm front glass, N-type cells, EVA, 2.0mm rear glass",
+      "caption": "Heavy-Duty Dual-Glass Construction"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Callsun CN620W N-Type Bifacial Double-Glass Datasheet (US V1.0, June 2026)",
+      "url": "/uploads/callsun/products/620w/CN620W-datasheet.pdf"
+    }
+  ],
+  "relatedSolutions": [
+    "grid-tied-12kw-28kwh",
+    "off-grid-6-5kw-10kwh",
+    "off-grid-10kw-14kwh"
+  ],
+  "relatedCases": [
+    "cheng-da-iii-3-5mw",
+    "auto-dealership-800kw",
+    "solar-storage-microgrid-100kw-215kwh"
+  ],
+  "warranty": "25-year product material and workmanship warranty; 30-year linear power performance guarantee (87.4% output at year 30; 1% first-year degradation + linear thereafter).",
+  "order": 25,
   "featured": true,
-  "seoTitle": "620W N-Type Solar Module | Callsun",
-  "metaDescription": "Callsun CN620W N-type solar module delivers 620W power and 23% efficiency for commercial and industrial solar projects.",
-  "h1": "620W N-Type Solar Module",
+  "noindex": true,
+  "seoTitle": "620W N-Type Bifacial Double-Glass Solar Module | Utility & Industrial Scale | Callsun",
+  "metaDescription": "Callsun CN620W 620W N-type bifacial double-glass solar module with 22.95% efficiency, 132 half-cut cells, optimized -0.28%/°C temperature coefficient, 2.0+2mm dual-glass, IP68 junction box, 25-year product + 30-year linear power warranty (87.4% at year 30). IEC 61215/61730 + ISO 9001/14001/45001 certified for utility-scale solar farms and industrial deployments.",
   "keywords": [
-    "620w solar panel",
-    "n type solar module",
-    "high power solar panel supplier"
-  ],
-  "imageAlt": "Callsun 620W N-type high-power solar module for large commercial projects"
+    "620w solar module",
+    "n type bifacial solar panel",
+    "double glass solar module",
+    "utility scale solar module",
+    "high power solar panel supplier",
+    "132 half cut cell module",
+    "iec 61215 61730 solar",
+    "1500v dc solar module",
+    "industrial solar module"
+  ]
 }

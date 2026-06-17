@@ -50,12 +50,12 @@ const schema = {
       <div>
         <p class="inline-flex text-xs uppercase tracking-widest font-bold text-jinko-accent bg-white/10 px-3 py-1.5 rounded-full ring-1 ring-white/15">{page.data.hero.eyebrow || page.data.campaign || 'Landing Page'}</p>
         <h1 class="mt-6 text-4xl lg:text-6xl font-display font-extrabold leading-tight">{h1}</h1>
-        <p class="mt-6 text-lg text-sky-100 max-w-3xl leading-relaxed">{page.data.hero.description}</p>
+        <p class="mt-6 text-lg text-white/85 max-w-3xl leading-relaxed">{page.data.hero.description}</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href={page.data.hero.primaryCtaHref} data-track-click="landing_cta_click" data-campaign={page.data.campaign} data-landing-page={page.data.slug} class="inline-flex items-center px-6 py-3 rounded-md bg-jinko-accent text-jinko-ink font-bold hover:opacity-90">{page.data.hero.primaryCtaLabel}</a>
+          <a href={page.data.hero.primaryCtaHref} data-track-click="landing_cta_click" data-campaign={page.data.campaign} data-landing-page={page.data.slug} class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 ring-1 ring-white/30 text-white font-bold hover:bg-white/20">{page.data.hero.primaryCtaLabel}</a>
           {page.data.hero.secondaryCtaHref && <a href={page.data.hero.secondaryCtaHref} class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white font-semibold ring-1 ring-white/20 hover:bg-white/15">{page.data.hero.secondaryCtaLabel}</a>}
         </div>
-        {page.data.trustBadges.length > 0 && <div class="mt-8 flex flex-wrap gap-2">{page.data.trustBadges.map((badge) => <span class="rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1.5 text-sm text-sky-100">✓ {badge}</span>)}</div>}
+        {page.data.trustBadges.length > 0 && <div class="mt-8 flex flex-wrap gap-2">{page.data.trustBadges.map((badge) => <span class="rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1.5 text-sm text-white/85">✓ {badge}</span>)}</div>}
       </div>
       <div class="rounded-none bg-white/10 ring-1 ring-white/20 p-4 shadow-2xl">
         {page.data.hero.image ? <img src={page.data.hero.image} alt={page.data.hero.imageAlt || h1} class="rounded-none w-full object-cover" /> : <div class="rounded-none bg-white/10 min-h-[320px]"></div>}

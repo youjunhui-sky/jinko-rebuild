@@ -5,9 +5,9 @@ import { getCollection } from 'astro:content';
 import { slugify } from '@/lib/slugify';
 
 const THEMES = {
-  default: { bg1: '#003E6F', bg2: '#0066B3', accent: '#FFB400' },
-  product: { bg1: '#003E6F', bg2: '#0066B3', accent: '#FFB400' },
-  news:    { bg1: '#1E293B', bg2: '#0066B3', accent: '#FFB400' },
+  default: { bg1: '#108474', bg2: '#00A86B', accent: '#7cbe22' },
+  product: { bg1: '#108474', bg2: '#00A86B', accent: '#7cbe22' },
+  news:    { bg1: '#1E293B', bg2: '#00A86B', accent: '#7cbe22' },
 } as const;
 
 function esc(s: string): string {

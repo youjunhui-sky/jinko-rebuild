@@ -1,44 +1,86 @@
 {
-  "name": "580W N-Type Solar Module",
+  "name": "580W N-Type Bifacial Double-Glass Solar Module",
+  "h1": "580W N-Type Bifacial Double-Glass Solar Module",
   "slug": "580w-n-type-solar-module",
   "category": "standard-module",
   "model": "CN580W",
-  "tagline": "Large-format 580W N-type module for commercial and industrial rooftop projects.",
-  "tech": "N-type mono-crystalline silicon",
+  "tagline": "Industrial-Grade 580W Bifacial Double-Glass Module for Commercial & Utility-Scale Projects. The CALLSUN CN580W combines premium N-type monocrystalline cells with 2.0+2mm dual-glass construction to deliver 580W output at 22.45% module efficiency. Engineered for commercial rooftops, industrial installations and utility-scale deployments with 144 half-cut cells, IP68 junction box and a 30-year linear power warranty (87.4% output at year 30).",
+  "tech": "N-type bifacial monocrystalline silicon · 144 half-cut cells (6×12×2) · 16BB multi-busbar · 2.0+2mm dual-glass construction · IP68 junction box with 3 bypass diodes · Fire Class C",
   "certifications": [
     "IEC 61215",
     "IEC 61730",
-    "ISO 9001",
-    "ISO 14001",
-    "ISO 45001"
+    "ISO 9001:2023",
+    "ISO 14001:2023",
+    "ISO 45001:2023"
   ],
-  "image": "/placeholders/solar-panel.svg",
-  "description": "Callsun CN580W is a high-power N-type solar module built for installers and EPC teams that need scalable module supply for commercial and distributed generation projects.",
+  "image": "/uploads/callsun/products/580w/front-back.jpg",
+  "imageAlt": "Callsun CN580W N-Type bifacial double-glass solar module front and back view on white background with junction box and MC4 connectors",
+  "description": "The CALLSUN CN580W modules leverage premium N-type monocrystalline technology to deliver an impressive module efficiency of up to 22.45%. Engineering a massive 580W output, the CN580W bifacial double-glass modules combine superior low-light performance with robust industrial reliability to maximize your commercial project yield. Built for B2B distributors, EPC installers and utility-scale project developers who need scalable, IEC-certified module supply backed by 25-year product + 30-year linear power warranty.",
   "specs": [
     {
-      "label": "Maximum Power (Pmax)",
+      "label": "Maximum Power at STC (Pmax)",
       "value": "580W",
       "group": "Electrical"
     },
     {
-      "label": "Maximum Power Voltage (Vmp)",
+      "label": "Maximum Power Voltage at STC (Vmp)",
       "value": "42.60V",
       "group": "Electrical"
     },
     {
-      "label": "Maximum Power Current (Imp)",
+      "label": "Maximum Power Current at STC (Imp)",
       "value": "13.62A",
       "group": "Electrical"
     },
     {
-      "label": "Open-circuit Voltage (Voc)",
+      "label": "Open-circuit Voltage at STC (Voc)",
       "value": "51.47V",
       "group": "Electrical"
     },
     {
-      "label": "Short-circuit Current (Isc)",
+      "label": "Short-circuit Current at STC (Isc)",
       "value": "14.37A",
       "group": "Electrical"
+    },
+    {
+      "label": "Module Efficiency",
+      "value": "22.45%",
+      "group": "Performance"
+    },
+    {
+      "label": "Operating Temperature",
+      "value": "-40°C ~ +85°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Nominal Operating Cell Temperature (NOCT)",
+      "value": "42°C ± 2°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Pmax",
+      "value": "-0.35%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Voc",
+      "value": "-0.275%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Isc",
+      "value": "+0.045%/°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Bifaciality Factor",
+      "value": "80% ± 5%",
+      "group": "Performance"
+    },
+    {
+      "label": "First-Year Degradation",
+      "value": "1%",
+      "group": "Performance"
     },
     {
       "label": "Cell Type",
@@ -46,41 +88,160 @@
       "group": "Mechanical"
     },
     {
-      "label": "Number of Cells",
-      "value": "144 pcs (6×12×2)",
+      "label": "Cell Arrangement",
+      "value": "144 cells (6×12×2) half-cut",
       "group": "Mechanical"
     },
     {
       "label": "Dimensions",
-      "value": "2278×1134×30 mm",
+      "value": "2278 × 1134 × 30 mm (±2mm L/W, ±1mm H)",
       "group": "Mechanical"
     },
     {
       "label": "Weight",
-      "value": "30kg",
+      "value": "30 kg",
       "group": "Mechanical"
     },
     {
-      "label": "Warranty",
-      "value": "25-Year Product Warranty; 30-Year Linear Power Warranty",
+      "label": "Glass",
+      "value": "2.0 + 2.0mm Tempered Glass (dual-glass)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Frame",
+      "value": "Anodized Aluminium Alloy",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Junction Box",
+      "value": "IP68, 3 Bypass Diodes",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Cable Length",
+      "value": "300mm",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Fire Performance",
+      "value": "Class C",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Maximum System Voltage",
+      "value": "1500V DC",
+      "group": "System"
+    },
+    {
+      "label": "Maximum Series Fuse Rating",
+      "value": "25A",
+      "group": "System"
+    },
+    {
+      "label": "Power Tolerance",
+      "value": "0~±5W",
+      "group": "System"
+    },
+    {
+      "label": "Packaging Configuration",
+      "value": "40'HQ · 36 pcs/pallet × 20 pallets = 720 pcs/cabinet",
+      "group": "Logistics"
+    },
+    {
+      "label": "Output Commitment",
+      "value": "87.4% output at year 30 (1% first-year + linear degradation thereafter)",
       "group": "Warranty"
+    }
+  ],
+  "benefits": [
+    {
+      "title": "Advanced N-Type Technology",
+      "description": "N-type architecture ensures lower LID (Light Induced Degradation) and exceptional low-light performance for sustained energy harvest. Compared to traditional P-type cells, N-type modules deliver higher energy yield under dawn, dusk and overcast conditions—maximizing the commercial value of every installed watt."
+    },
+    {
+      "title": "Bifacial Power Boost",
+      "description": "Double-sided power generation captures additional light from the back, significantly boosting your lifetime energy yield. With 80% ± 5% bifaciality factor, the CN580W harvests meaningful rear-side gain from ground reflection, snow and light-colored rooftops—translating directly into shorter project payback periods."
+    },
+    {
+      "title": "Multi-Busbar (MBB) Design",
+      "description": "Multi-busbar technology effectively enhances product power output, reduces internal loss, and elevates overall module reliability. 16BB cell design shortens the current collection path, lowers series resistance and improves performance under partial shading—ideal for rooftop and ground-mount installations with mixed light conditions."
+    },
+    {
+      "title": "Minimized PID Degradation",
+      "description": "Anti-PID technology ensures the decay rate is strictly minimized, safeguarding your investment against harsh environmental degradation. The CN580W is engineered to resist Potential Induced Degradation in high-humidity, high-temperature and high-voltage (1500V DC) deployments—protecting long-term yield in tropical, coastal and utility-scale environments."
+    },
+    {
+      "title": "Industrial-Grade Dual-Glass Build",
+      "description": "Featuring 2.0mm+2.0mm tempered dual-glass with an anodized aluminum alloy frame and IP68 junction box for ultimate mechanical resistance. The dual-glass construction eliminates PID pathways, improves fire performance (Class C) and extends service life beyond 30 years—designed to withstand hail, snow, sand and salt mist without micro-crack propagation."
+    },
+    {
+      "title": "Industry-Leading Warranty",
+      "description": "Backed by a premium 25-year product warranty and a 30-year linear power warranty, guaranteeing 87.4% performance at year 30. Combined with 1% first-year degradation and rigorous IEC 61215/61730 + ISO 9001/14001/45001 certification, the CN580W delivers bankable long-term returns for EPCs, IPPs and project finance partners."
     }
   ],
   "applications": [
     "Commercial Rooftop",
     "Industrial Rooftop",
+    "Utility-Scale Solar Farm",
     "Distributed Generation"
   ],
-  "downloads": [],
+  "heroBanners": [
+    {
+      "src": "/uploads/callsun/products/580w/hero-01.jpg",
+      "alt": "Callsun CN580W N-type solar module under dawn low-light sky, demonstrating advanced N-type cell technology and superior low-light performance",
+      "caption": "Advanced N-Type Technology"
+    },
+    {
+      "src": "/uploads/callsun/products/580w/hero-03.jpg",
+      "alt": "Extreme macro close-up of CN580W solar cell surface showing 16BB multi-busbar grid pattern on deep blue silicon with silver busbars",
+      "caption": "16BB Multi-Busbar Design"
+    },
+    {
+      "src": "/uploads/callsun/products/580w/hero-04.jpg",
+      "alt": "Callsun CN580W solar panel in harsh marine coastal salt-mist environment, panel surface clean and intact demonstrating anti-PID resistance",
+      "caption": "Minimized PID Degradation"
+    },
+    {
+      "src": "/uploads/callsun/products/580w/hero-05.jpg",
+      "alt": "Exploded cross-section illustration of CN580W double-glass solar panel: 2.0mm front glass, N-type cells, EVA, 2.0mm rear glass",
+      "caption": "Industrial-Grade Dual-Glass Build"
+    },
+    {
+      "src": "/uploads/callsun/products/580w/hero-06.jpg",
+      "alt": "Callsun 25+30 year warranty badge on green technical grid background, representing 87.4% output at year 30",
+      "caption": "87.4% Output at Year 30"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Callsun CN580W N-Type Bifacial Double-Glass Datasheet (US V1.0, June 2026)",
+      "url": "/uploads/callsun/products/580w/CN580W-datasheet.pdf"
+    }
+  ],
+  "relatedSolutions": [
+    "grid-tied-12kw-28kwh",
+    "off-grid-6-5kw-10kwh",
+    "off-grid-10kw-14kwh"
+  ],
+  "relatedCases": [
+    "cheng-da-iii-3-5mw",
+    "auto-dealership-800kw",
+    "solar-storage-microgrid-100kw-215kwh"
+  ],
+  "warranty": "25-year product material and workmanship warranty; 30-year linear power performance guarantee (87.4% output at year 30; 1% first-year degradation + linear thereafter).",
   "order": 20,
   "featured": true,
-  "seoTitle": "580W N-Type Solar Module | Callsun",
-  "metaDescription": "Callsun CN580W N-type solar module for commercial rooftop and distributed generation projects. IEC certified and designed for B2B installers.",
-  "h1": "580W N-Type Solar Module",
+  "noindex": true,
+  "seoTitle": "580W N-Type Bifacial Double-Glass Solar Module | Commercial & Utility-Scale | Callsun",
+  "metaDescription": "Callsun CN580W 580W N-type bifacial double-glass solar module with 22.45% efficiency, 144 half-cut cells, 2.0+2mm dual-glass, IP68 junction box, 25-year product + 30-year linear power warranty (87.4% at year 30). IEC 61215/61730 + ISO 9001/14001/45001 certified for commercial rooftop, industrial and utility-scale deployments.",
   "keywords": [
     "580w solar module",
-    "n type solar panel",
-    "commercial solar module supplier"
-  ],
-  "imageAlt": "Callsun 580W N-type solar module for commercial rooftop and distributor supply"
+    "n type bifacial solar panel",
+    "double glass solar module",
+    "commercial solar module supplier",
+    "utility scale solar module",
+    "144 half cut cell module",
+    "iec 61215 61730 solar",
+    "1500v dc solar module"
+  ]
 }

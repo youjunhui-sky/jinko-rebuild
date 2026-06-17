@@ -4,8 +4,9 @@ export const NAV = [
     href: '/products',
     description: 'Standard and custom solar modules',
     children: [
-      { label: 'Standard Modules', href: '/products#standard-modules' },
-      { label: 'Custom Modules', href: '/products#custom-modules' },
+      { label: '450W Double Glass', href: '/products/450w-double-glass-solar-module/' },
+      { label: '580W N-Type Bifacial', href: '/products/580w-n-type-solar-module/' },
+      { label: '620W N-Type Bifacial', href: '/products/620w-n-type-solar-module/' },
     ],
   },
   {
