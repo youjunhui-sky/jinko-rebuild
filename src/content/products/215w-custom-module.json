@@ -1,29 +1,48 @@
 {
-  "name": "215W Custom Solar Module",
+  "name": "215W Custom N-Type 16BB Bifacial Solar Module",
+  "h1": "215W Custom N-Type 16BB Bifacial Solar Module",
   "slug": "215w-custom-solar-module",
   "category": "custom-module",
   "model": "CN215W",
-  "tagline": "215W compact N-type module for custom solar product lines.",
-  "tech": "N-Type 16BB mono-crystalline silicon",
+  "tagline": "Anti-Shading 215W with 4-Zone Independent Design. Built on N-Type 16BB TOPCon cell technology with a unique 4-zone independent circuit layout, the CN215W keeps Vmp rock-solid even under partial shade—retaining 75% more power when obstructed. Up to 30% bifacial rear-side gain, IP68 protection and 25-year linear power warranty.",
+  "tech": "N-Type 16BB monocrystalline silicon · SMBB super multi-busbar · Quarter-cell technology · 4 independent power zones with multi-bypass diodes · Bifacial transparent backsheet",
   "certifications": [
-    "UL certification pending"
+    "IEC 61215",
+    "IEC 61730",
+    "ISO 9001:2023",
+    "ISO 14001:2023",
+    "ISO 45001:2023",
+    "CE",
+    "RoHS",
+    "EMC"
   ],
-  "image": "/placeholders/solar-panel.svg",
-  "description": "A 215W custom solar module for B2B customers who need compact module formats with reliable N-type cell performance.",
+  "image": "/uploads/callsun/products/215w/front-back.jpg",
+  "imageAlt": "Callsun CN215W N-Type 16BB bifacial solar module front and back view on white background with junction box and MC4 connectors",
+  "description": "Callsun CN215W is a 215W custom N-Type 16BB bifacial solar module engineered for B2B distributors, RV manufacturers, marine dealers, portable power station brands and off-grid system integrators who need a compact, anti-shading module for 12V battery systems and major portable power stations. The 4-zone independent design with multi-bypass diodes keeps power output uninterrupted when partial shade hits the panel, and IP68 + 5400Pa mechanical load rating handles all-terrain all-weather conditions.",
   "specs": [
     {
-      "label": "Maximum Power (Pmax)",
+      "label": "Maximum Power at STC (Pmax)",
       "value": "215W",
       "group": "Electrical"
     },
     {
-      "label": "Maximum Power Voltage (Vmp)",
+      "label": "Maximum Power Voltage at STC (Vmp)",
       "value": "17.37V",
       "group": "Electrical"
     },
     {
-      "label": "Maximum Power Current (Imp)",
+      "label": "Maximum Power Current at STC (Imp)",
       "value": "12.38A",
+      "group": "Electrical"
+    },
+    {
+      "label": "Open-circuit Voltage at STC (Voc)",
+      "value": "20.41V",
+      "group": "Electrical"
+    },
+    {
+      "label": "Short-circuit Current at STC (Isc)",
+      "value": "13.12A",
       "group": "Electrical"
     },
     {
@@ -32,29 +51,189 @@
       "group": "Performance"
     },
     {
+      "label": "Temperature Coefficient of Pmax",
+      "value": "-0.30%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Voc",
+      "value": "-0.25%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Temperature Coefficient of Isc",
+      "value": "+0.045%/K",
+      "group": "Performance"
+    },
+    {
+      "label": "Operating Temperature",
+      "value": "-40°C ~ 85°C",
+      "group": "Performance"
+    },
+    {
+      "label": "Dimensions",
+      "value": "1422 × 766 × 35 mm (±5mm)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Weight",
+      "value": "11.5 kg (±0.2 kg)",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Cell Type",
+      "value": "N-Type 16BB 182mm Monocrystalline Silicon",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Cell Arrangement",
+      "value": "Quarter-cell · MBB super multi-busbar",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Glass",
+      "value": "3.2mm Tempered Glass",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Frame",
+      "value": "Anodized Aluminium Alloy",
+      "group": "Mechanical"
+    },
+    {
+      "label": "Connector",
+      "value": "MC4-compatible Solar Connector",
+      "group": "Mechanical"
+    },
+    {
+      "label": "IP Rating",
+      "value": "IP68",
+      "group": "System"
+    },
+    {
+      "label": "Max Wind Load / Snow Load",
+      "value": "2400Pa / 5400Pa",
+      "group": "System"
+    },
+    {
       "label": "Maximum System Voltage",
       "value": "1000V DC",
       "group": "System"
     },
     {
+      "label": "Maximum Series Fuse Rating",
+      "value": "25A",
+      "group": "System"
+    },
+    {
+      "label": "Power Tolerance",
+      "value": "0~5%",
+      "group": "System"
+    },
+    {
       "label": "Output Commitment",
-      "value": "84.5% output for 25 years",
+      "value": "84.5% output for 25 years (1% first-year + 0.4%/year linear)",
       "group": "Warranty"
     }
   ],
-  "applications": [
-    "RV",
-    "Remote Power",
-    "Custom Projects"
+  "benefits": [
+    {
+      "title": "N-Type 16BB TOPCon Technology",
+      "description": "Built on advanced N-Type architecture with Callsun's in-house TOPCon cell technology and 16BB super multi-busbar layout, the CN215W delivers conversion efficiency of over 25%, superior low-light performance, and exceptional long-term stability."
+    },
+    {
+      "title": "Optimized Bifacial Gain",
+      "description": "The dual-glass N-Type design maximizes bifaciality, capturing up to 30% extra bonus energy from the backside—grass 7.21%, cement 9.54%, sand 9.84%, snow 14.83%, mirror 24.85%—to significantly boost your daily and lifetime yield."
+    },
+    {
+      "title": "Anti-Shading 4-Zone Design",
+      "description": "Featuring 4 independent power zones with multiple bypass diodes, the module keeps Vmp stable even under partial shade from trees, masts or ridges—retaining 75% more power, eliminating MPPT restarts and reducing hot-spot stress."
+    },
+    {
+      "title": "Low Temperature Coefficient",
+      "description": "Engineered with a best-in-class -0.30%/K temperature coefficient, the CN215W minimizes power degradation in intense heat, ensuring stable and consistent performance across desert, marine and high-temperature environments."
+    },
+    {
+      "title": "Protected Against Extreme Environments",
+      "description": "IP68-rated junction box, 3.2mm tempered glass and anodized aluminum frame deliver all-weather durability—certified to withstand marine salt spray, intense humidity, heavy rain, high winds, hailstorms and packed snow with 2400Pa wind load and 5400Pa snow load."
+    },
+    {
+      "title": "Industry-Leading Warranty",
+      "description": "Backed by a comprehensive 12-year product quality warranty and a 25-year linear power warranty (84.5% output at year 25; 1% first-year + 0.4%/year linear), ensuring long-term reliability and secure energy returns."
+    }
   ],
-  "order": 130,
+  "applications": [
+    "RV / Motorhome Roof",
+    "Marine / Boat Deck",
+    "12V Off-Grid Battery Systems",
+    "Portable Power Stations",
+    "Desert / High-Temperature",
+    "Remote Off-Grid Power",
+    "Narrow-Space Custom Projects"
+  ],
+  "heroBanners": [
+    {
+      "src": "/uploads/callsun/products/215w/hero-01.jpg",
+      "alt": "Callsun CN215W 4 independent power zones keep generating solar power when one zone is covered by leaves, charging a portable power station",
+      "caption": "Anti-Shading 4-Zone Design"
+    },
+    {
+      "src": "/uploads/callsun/products/215w/hero-02.jpg",
+      "alt": "Callsun CN215W key technical features: over 25% high efficiency, IP68 waterproof rating, bifacial cell technology",
+      "caption": "Over 25% Efficiency · IP68 · Bifacial"
+    },
+    {
+      "src": "/uploads/callsun/products/215w/hero-03.jpg",
+      "alt": "Callsun CN215W Grade A+ N-Type 16BB 182mm monocrystalline solar cells with over 25% conversion efficiency",
+      "caption": "Grade A+ N-Type 16BB Cells"
+    },
+    {
+      "src": "/uploads/callsun/products/215w/hero-04.jpg",
+      "alt": "Callsun CN215W solar panels on off-road vehicle roof in desert, N-Type cells show lower operating temperature than P-Type PERC",
+      "caption": "More Stable Performance in High Temperatures"
+    },
+    {
+      "src": "/uploads/callsun/products/215w/hero-05.jpg",
+      "alt": "Callsun CN215W bifacial solar panel rear-side energy gain chart: grass 7.21%, cement 9.54%, sandy 9.84%, snow 14.83%, mirror 24.85%",
+      "caption": "Up to 24.85% Rear-Side Gain"
+    },
+    {
+      "src": "/uploads/callsun/products/215w/hero-06.jpg",
+      "alt": "Callsun CN215W flexible solar panels installed on sailboat deck with sail shading, continuing to deliver stable power",
+      "caption": "Marine Sail Shading Resilience"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Callsun CN215W Anti-Shading Solar Panel Datasheet (US V1.2, May 2026)",
+      "url": "/uploads/callsun/products/215w/CN215W-datasheet.pdf"
+    }
+  ],
+  "relatedSolutions": [
+    "off-grid-6-5kw-10kwh",
+    "off-grid-10kw-14kwh",
+    "grid-tied-12kw-28kwh"
+  ],
+  "relatedCases": [
+    "auto-dealership-800kw",
+    "solar-storage-microgrid-100kw-215kwh",
+    "cheng-da-iii-3-5mw"
+  ],
+  "warranty": "12-year product material and workmanship warranty; 25-year linear power performance guarantee (84.5% output at year 25; 1% first-year degradation + 0.4%/year linear).",
+  "order": 105,
   "featured": false,
-  "seoTitle": "215W Custom Solar Module | Callsun",
-  "metaDescription": "Callsun 215W custom N-type solar module for compact and non-standard B2B solar applications.",
+  "noindex": true,
+  "seoTitle": "215W Custom N-Type 16BB Bifacial Solar Module | Anti-Shading 4-Zone Design | Callsun",
+  "metaDescription": "Callsun CN215W custom N-Type 16BB bifacial solar module with 4-zone independent anti-shading design, 25% efficiency, up to 30% bifacial rear gain, IP68 + 5400Pa snow load, 12-year product + 25-year linear power warranty. Perfect for 12V battery systems, RV, marine and portable power stations.",
   "keywords": [
     "215w solar panel",
-    "custom solar module",
-    "compact solar panel"
-  ],
-  "imageAlt": "Callsun 215W compact custom solar module for non-standard solar applications"
+    "215w custom solar module",
+    "anti-shading solar panel",
+    "4 zone solar module",
+    "n type 16bb solar panel",
+    "bifacial solar module 215w",
+    "12v solar panel",
+    "portable power station solar panel",
+    "ip68 solar panel supplier"
+  ]
 }

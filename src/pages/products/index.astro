@@ -14,7 +14,7 @@ const allStandard = (await getCollection('products'))
   .filter((p) => p.data.category === 'standard-module')
   .map((p) => p.data);
 
-// 4 SKU 卡片 = CN120W / CN180W / CN200W / CN275W（02 文档 §2.2 + 04 文档，215W 移出 L1）
+// 5 SKU 卡片 = CN120W / CN450W / CN180W / CN200W / CN215W（2026-06-17 东家加 215W 进 L1，沿用 CN200W 描述）
 // 120W / 275W 东家挂起暂不建 .json（产品 .json 不存在） → 占位数据从 PDF p7 表格 hardcode
 // 180W / 200W 从 collection 拉真实数据
 const placeholderSkus = [
@@ -36,7 +36,7 @@ const buildFromJson = (p) => {
     hasDetail: true,
   };
 };
-const activeMap = Object.fromEntries(allCustom.filter((p) => ['180w-custom-solar-module', '200w-custom-solar-module'].includes(p.slug)).map((p) => [p.slug, buildFromJson(p)]));
+const activeMap = Object.fromEntries(allCustom.filter((p) => ['180w-custom-solar-module', '200w-custom-solar-module', '215w-custom-solar-module'].includes(p.slug)).map((p) => [p.slug, buildFromJson(p)]));
 
 const buildStandard = (p) => {
   const getSpec = (re) => p.specs.find((s) => re.test(s.label))?.value || '';
@@ -61,6 +61,7 @@ const skuCards = [
   standardMap['450w-double-glass-solar-module'],
   activeMap['180w-custom-solar-module'],
   activeMap['200w-custom-solar-module'],
+  activeMap['215w-custom-solar-module'],
 ].filter(Boolean);
 
 const productIndexSchema = {
@@ -76,8 +77,8 @@ const productIndexSchema = {
 };
 ---
 <BaseLayout
-  title="Custom N-Type TOPCon Solar Module Series | CN120W / CN180W / CN200W / CN275W | Callsun"
-  description="Callsun custom N-type TOPCon solar modules for RV, marine, off-grid and rooftop applications. Dual-cell parallel design, IP68, 25-year linear power warranty. 120W-275W output range."
+  title="Custom N-Type TOPCon Solar Module Series | CN120W / CN180W / CN200W / CN215W / CN275W / CN450W | Callsun"
+  description="Callsun custom N-type TOPCon solar modules for RV, marine, off-grid, 12V battery systems and rooftop applications. Anti-shading 4-zone, dual-cell parallel, IP68, 25-year linear power warranty. 120W-450W output range."
   canonical="/products/"
   keywords={['custom solar module', 'n type topcon solar panel', 'rv solar module', 'marine solar panel', 'off-grid solar', '120w solar', '180w solar panel', '275w solar module', 'solar module products']}
   schema={productIndexSchema}
@@ -117,11 +118,12 @@ const productIndexSchema = {
   <!-- 3. SKU 宽图段（仿 jinko eagle-modules EAGLE G7 段视觉：白底 + 左产品图 + 右 h1 + 描述 + 整段是链接） -->
   <!-- 2026-06-12 10:37 东家：product 页面除 CN180W 外还要展示 450W -->
   {(() => {
-    const visibleSkus = skuCards.filter((p) => ['CN180W', 'CN200W', 'CN450W'].includes(p.model));
+    const visibleSkus = skuCards.filter((p) => ['CN180W', 'CN200W', 'CN215W', 'CN450W'].includes(p.model));
     return visibleSkus.map((p, i) => {
     const wideImgMap = {
       'CN180W': '/uploads/callsun/products/180w/hero-05.jpg',
       'CN200W': '/uploads/callsun/products/200w/front-back.jpg',
+      'CN215W': '/uploads/callsun/products/215w/front-back.jpg',
       'CN450W': '/uploads/callsun/products/450w/01-front.jpg',
     };
     const wideImg = wideImgMap[p.model] || p.image;
@@ -139,7 +141,7 @@ const productIndexSchema = {
                 <h2 class="mt-3 text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-tight">
                   {p.model} <span class="text-jinko-accent">{p.subtitle || 'Custom Module'}</span>
                 </h2>
-                <p class="mt-6 text-lg text-jinko-mute leading-relaxed max-w-2xl">{p.model === 'CN180W' ? "High-Current. Ultra-Slim. All-Terrain. Our commercial-grade TOPCon solar modules deliver a high output of 180W. Featuring a unique dual-cell parallel design, they ensure uninterrupted energy yields even under complex conditions—whether it's shading, high temperatures, or narrow spaces." : p.model === 'CN200W' ? "High-Output 200W with TwinCell Anti-Shade. Our commercial-grade N-Type 16BB solar module delivers 200W with up to 25% efficiency and innovative TwinCell parallel design for uninterrupted, double-sided energy yields under shading, scorching heat, or narrow spaces." : p.model === 'CN450W' ? "The CN450W series modules feature our latest flagship N-type cutting-edge cell technology, delivering an impressive module efficiency of up to 25.6%. As a high-efficiency monocrystalline bifacial double-glass module, it not only provides industry-leading power output but also significantly enhances long-term energy performance and system reliability, making it the ideal choice for your commercial and industrial solar projects." : p.name}</p>
+                <p class="mt-6 text-lg text-jinko-mute leading-relaxed max-w-2xl">{p.model === 'CN180W' ? "High-Current. Ultra-Slim. All-Terrain. Our commercial-grade TOPCon solar modules deliver a high output of 180W. Featuring a unique dual-cell parallel design, they ensure uninterrupted energy yields even under complex conditions—whether it's shading, high temperatures, or narrow spaces." : p.model === 'CN200W' ? "High-Output 200W with TwinCell Anti-Shade. Our commercial-grade N-Type 16BB solar module delivers 200W with up to 25% efficiency and innovative TwinCell parallel design for uninterrupted, double-sided energy yields under shading, scorching heat, or narrow spaces." : p.model === 'CN215W' ? "Anti-Shading 215W with 4-Zone Independent Design. Boasting over 25% efficiency and a unique 4-zone independent circuit layout, the CN215W keeps Vmp rock-solid even under partial shade—retaining 75% more power when obstructed. Capturing an extra 7-30% of reflected light from the backside, it perfectly matches 12V systems and major portable power stations." : p.model === 'CN450W' ? "The CN450W series modules feature our latest flagship N-type cutting-edge cell technology, delivering an impressive module efficiency of up to 25.6%. As a high-efficiency monocrystalline bifacial double-glass module, it not only provides industry-leading power output but also significantly enhances long-term energy performance and system reliability, making it the ideal choice for your commercial and industrial solar projects." : p.name}</p>
                 <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-jinko-mute max-w-md">
                   <li><span class="text-jinko-ink font-semibold">Pmax</span> {p.pmax}</li>
                   <li><span class="text-jinko-ink font-semibold">Cell Eff</span> {p.cellEff}</li>
