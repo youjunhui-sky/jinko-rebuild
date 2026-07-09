@@ -14,6 +14,8 @@
     "ISO 45001:2023"
   ],
   "image": "/uploads/callsun/products/620w/front-back.jpg",
+  "cardImage": "/uploads/callsun/products/620w/card-square.jpg",
+  "cardImageAspectRatio": "1",
   "imageAlt": "Callsun CN620W N-Type bifacial double-glass solar module front and back view on white background with junction box and MC4 connectors",
   "description": "The CALLSUN CN620W modules represent the next pinnacle of our N-type monocrystalline technology, achieving a record-high module efficiency of 22.95%. Delivering an ultra-high 620W power output, these bifacial double-glass modules combine an optimized high-density architecture with an exceptional low temperature coefficient to guarantee maximal energy yield and unmatched ROI for large-scale utility and industrial projects. Built for B2B distributors, EPC installers and utility-scale IPPs who need maximum power density, IEC-certified supply and 30-year linear power warranty.",
   "specs": [

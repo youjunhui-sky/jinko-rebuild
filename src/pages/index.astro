@@ -15,7 +15,7 @@ const solutions = (await getCollection('solutions')).map(s => s.data).filter(s=>
 const cases = (await getCollection('cases')).map(c => c.data).filter(c=>c.featured).sort((a,b)=>a.order-b.order).slice(0, 4);
 const news = (await getCollection('news', n => !n.data.draft)).sort((a,b)=>b.data.publishDate.getTime()-a.data.publishDate.getTime()).slice(0, 3);
 
-const productCards = products.map(p => ({ title: p.name, description: p.tagline, href: `/products/${p.slug}`, eyebrow: p.model || p.category, image: p.image }));
+const productCards = products.map(p => ({ title: p.name, description: p.tagline, href: `/products/${p.slug}`, eyebrow: p.model || p.category, image: p.cardImage || p.image, imageAspectRatio: p.cardImageAspectRatio }));
 const solutionCards = solutions.map(s => ({ title: s.title, description: s.summary, href: `/solutions/${s.slug}`, eyebrow: s.type, image: s.image, metric: s.capacityLabel }));
 const caseCards = cases.map(c => ({ title: c.title, description: c.salesAngle || c.description, href: `/cases/${c.slug}`, eyebrow: `${c.segment} · ${c.location}`, image: c.coverImage, metric: c.capacityKW ? (c.capacityKW >= 1000 ? `${c.capacityKW / 1000}MW` : `${c.capacityKW}kW`) : undefined }));
 
@@ -62,7 +62,7 @@ const homeSchema = {
   {home.productsSection.visible && <section class="py-20 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6">
       <SectionHeader eyebrow={home.productsSection.eyebrow} title={home.productsSection.title} description={home.productsSection.description} />
-      <div class="mt-12"><CardGrid items={productCards} /></div>
+      <div class="mt-12"><CardGrid items={productCards} imageFit="contain" showDescription={false} ctaStyle="button" /></div>
     </div>
   </section>}
 

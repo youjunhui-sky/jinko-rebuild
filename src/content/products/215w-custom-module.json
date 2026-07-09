@@ -17,6 +17,8 @@
     "EMC"
   ],
   "image": "/uploads/callsun/products/215w/front-back.jpg",
+  "cardImage": "/uploads/callsun/products/215w/front.jpg",
+  "cardImageAspectRatio": "1",
   "imageAlt": "Callsun CN215W N-Type 16BB bifacial solar module front and back view on white background with junction box and MC4 connectors",
   "description": "Callsun CN215W is a 215W custom N-Type 16BB bifacial solar module engineered for B2B distributors, RV manufacturers, marine dealers, portable power station brands and off-grid system integrators who need a compact, anti-shading module for 12V battery systems and major portable power stations. The 4-zone independent design with multi-bypass diodes keeps power output uninterrupted when partial shade hits the panel, and IP68 + 5400Pa mechanical load rating handles all-terrain all-weather conditions.",
   "specs": [

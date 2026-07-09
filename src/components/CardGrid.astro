@@ -1,20 +1,35 @@
 ---
-interface Item { title: string; description: string; href?: string; eyebrow?: string; image?: string; metric?: string; }
-interface Props { items: Item[]; columns?: '3' | '4'; }
-const { items, columns = '3' } = Astro.props;
+interface Item { title: string; description: string; href?: string; eyebrow?: string; image?: string; metric?: string; imageAspectRatio?: string; }
+interface Props {
+  items: Item[];
+  columns?: '3' | '4';
+  imageFit?: 'cover' | 'contain';
+  showDescription?: boolean;
+  ctaStyle?: 'text' | 'button';
+}
+const { items, columns = '3', imageFit = 'cover', showDescription = true, ctaStyle = 'text' } = Astro.props;
 const gridClass = columns === '4' ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
+const fitClass = imageFit === 'contain' ? 'object-contain' : 'object-cover';
 ---
 <ul class:list={['grid gap-6 md:grid-cols-2', gridClass]}>
   {items.map((item) => {
     const Inner = (
       <>
-        {item.image && <img src={item.image} alt={item.title} loading="lazy" width="640" height="400" class="aspect-[16/10] w-full object-cover bg-jinko-bg" />}
+        {item.image && (
+          <div class:list={['w-full flex items-center justify-center', imageFit === 'contain' ? 'pt-4 bg-white' : 'bg-jinko-bg']} style={item.imageAspectRatio ? `aspect-ratio: ${item.imageAspectRatio};` : undefined}>
+            <img src={item.image} alt={item.title} loading="lazy" class:list={['w-full h-full', fitClass]} />
+          </div>
+        )}
         <div class="p-6">
           {item.eyebrow && <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{item.eyebrow}</p>}
           <h3 class="mt-2 text-xl font-display font-bold text-jinko-ink group-hover:text-jinko">{item.title}</h3>
           {item.metric && <p class="mt-2 text-2xl font-display font-extrabold text-jinko">{item.metric}</p>}
-          <p class="mt-3 text-sm text-jinko-mute leading-relaxed">{item.description}</p>
-          {item.href && <p class="mt-5 text-jinko font-semibold">Learn more →</p>}
+          {showDescription && item.description && <p class="mt-3 text-sm text-jinko-mute leading-relaxed line-clamp-2">{item.description}</p>}
+          {item.href && (
+            ctaStyle === 'button'
+              ? <span class="mt-5 inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-jinko text-white text-sm font-semibold group-hover:bg-jinko-dark transition-colors">Learn more <span aria-hidden="true">→</span></span>
+              : <p class="mt-5 text-jinko font-semibold">Learn more →</p>
+          )}
         </div>
       </>
     );

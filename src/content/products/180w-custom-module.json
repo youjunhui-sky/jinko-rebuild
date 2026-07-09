@@ -183,6 +183,8 @@
     "UL (pending)"
   ],
   "image": "/uploads/callsun/products/180w/front-back.jpg",
+  "cardImage": "/uploads/callsun/products/180w/front-back.jpg",
+  "cardImageAspectRatio": "1",
   "seoTitle": "180W Custom N-Type TOPCon Solar Module | Callsun",
   "warranty": "10-year product material and workmanship warranty; 25-year linear power performance guarantee (84.5% output at year 25; 1% first-year degradation + 0.4%/year linear)",
   "benefits": [

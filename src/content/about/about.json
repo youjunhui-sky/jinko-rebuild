@@ -10,12 +10,17 @@
     "B2B solar microgrid provider"
   ],
   "canonical": "/about",
-  "ogImage": "/og/default.svg",
+  "ogImage": "/uploads/callsun/about/hero-desktop.jpg",
   "noindex": false,
   "hero": {
     "eyebrow": "Empowering the Future with Efficient Energy Solutions",
     "description": "Engineering with Rigor. Powering the Future.",
     "body": "At Callsun, we align with the global transition toward a new era of clean power generation. We are a premier, comprehensive energy solution provider specializing in the integration of high-efficiency photovoltaic systems, advanced energy storage solutions (ESS), and microgrid operations.\n\nDriven by an elite technical supply chain and rigorous engineering standards, Callsun delivers reliable, standardized, and high-performance technical products and services for small-to-medium enterprises (SMEs) and global commercial clients. We are committed to optimizing your energy infrastructure, maximizing investment returns, and accelerating your low-carbon transition.",
+    "image": "/uploads/callsun/about/hero-desktop.jpg",
+    "imageMobile": "/uploads/callsun/about/hero-mobile.jpg",
+    "imageAlt": "Callsun global headquarters — glass facade with brand logo",
+    "dividerImage": "/uploads/callsun/about/divider-solar-farm.jpg",
+    "dividerAlt": "Callsun global solar farm installations",
     "primaryCtaLabel": "Talk to Sales",
     "primaryCtaHref": "/contact",
     "secondaryCtaLabel": "View Products",

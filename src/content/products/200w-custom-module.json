@@ -193,6 +193,8 @@
     "UL"
   ],
   "image": "/uploads/callsun/products/200w/front-back.jpg",
+  "cardImage": "/uploads/callsun/products/200w/front.jpg",
+  "cardImageAspectRatio": "1",
   "seoTitle": "200W Custom N-Type 16BB Bifacial Solar Module | Callsun",
   "warranty": "10-year product material and workmanship warranty; 25-year linear power performance guarantee (84.5% output at year 25; 1% first-year degradation + 0.4%/year linear)",
   "benefits": [
