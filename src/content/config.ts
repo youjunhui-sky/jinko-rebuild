@@ -69,34 +69,56 @@ const about = defineCollection({
   type: 'data',
   schema: z.object({
     title: z.string(),
-    hero: z.object({
-      eyebrow: z.string().default('About Callsun'),
-      description: z.string(),
-      body: z.string().optional(),
-      image: z.string().default('/placeholders/battery-system.svg'),
-      imageMobile: z.string().optional(),
-      imageAlt: z.string().optional(),
-      dividerImage: z.string().optional(),
-      dividerAlt: z.string().optional(),
-      primaryCtaLabel: z.string().default('Talk to Sales'),
-      primaryCtaHref: z.string().default('/contact'),
-      secondaryCtaLabel: z.string().optional(),
-      secondaryCtaHref: z.string().optional(),
-    }),
-    strengths: z.object({
-      eyebrow: z.string().optional(),
-      title: z.string(),
-      description: z.string().optional(),
-      items: z.array(z.object({ title: z.string(), description: z.string(), icon: z.string().optional() })).default([]),
-    }),
-    cases: z.object({
-      eyebrow: z.string().optional(),
-      title: z.string(),
-      description: z.string().optional(),
-      images: z.array(z.object({ src: z.string(), alt: z.string() })).default([]),
-      ctaLabel: z.string().optional(),
-      ctaHref: z.string().optional(),
-    }).optional(),
+    sections: z.array(z.discriminatedUnion('type', [
+      z.object({
+        type: z.literal('manifesto'),
+        lead: z.object({
+          image: z.string(),
+          imageAlt: z.string(),
+          subline: z.string().optional(),
+        }),
+        band: z.object({
+          image: z.string(),
+          imageAlt: z.string(),
+          text: z.string(),
+        }).optional(),
+      }),
+      z.object({
+        type: z.literal('mission'),
+        banner: z.object({
+          image: z.string(),
+          imageAlt: z.string(),
+          eyebrow: z.string().optional(),
+          title: z.string(),
+        }).optional(),
+        body: z.object({
+          image: z.string(),
+          imageAlt: z.string(),
+          paragraphs: z.array(z.string()),
+        }).optional(),
+      }),
+      z.object({
+        type: z.literal('pillars'),
+        header: z.object({
+          image: z.string(),
+          imageAlt: z.string(),
+          eyebrow: z.string().optional(),
+          title: z.string(),
+        }).optional(),
+        cards: z.array(z.object({
+          image: z.string(),
+          imageAlt: z.string(),
+          title: z.string(),
+          description: z.string(),
+        })).default([]),
+        band: z.object({
+          image: z.string(),
+          imageAlt: z.string(),
+          title: z.string(),
+          description: z.string().optional(),
+        }).optional(),
+      }),
+    ])),
     ...seoFields,
   }),
 });

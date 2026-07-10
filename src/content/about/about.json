@@ -1,68 +1,72 @@
 {
   "title": "About Callsun",
   "seoTitle": "Tailored PV & Energy Storage Systems | About Callsun",
-  "metaDescription": "Callsun delivers tailored PV and energy storage system solutions for SMEs and global commercial clients. Rigorous manufacturing, integrated system packages, and local distribution across worldwide markets.",
+  "metaDescription": "Callsun — tailored PV and energy storage systems engineered with rigor, powering the future. Tier-1 supply chain, integrated system packages, and localized distribution for SMEs and global commercial clients.",
   "h1": "TAILORED PV & ENERGY STORAGE SYSTEMS",
   "keywords": [
     "about Callsun",
     "tailored PV system supplier",
     "energy storage system solutions",
-    "B2B solar microgrid provider"
+    "B2B solar microgrid provider",
+    "tier-1 solar supply chain",
+    "integrated solar storage system"
   ],
   "canonical": "/about",
-  "ogImage": "/uploads/callsun/about/hero-desktop.jpg",
+  "ogImage": "/uploads/callsun/about/section1-1.jpg",
   "noindex": false,
-  "hero": {
-    "eyebrow": "Empowering the Future with Efficient Energy Solutions",
-    "description": "Engineering with Rigor. Powering the Future.",
-    "body": "At Callsun, we align with the global transition toward a new era of clean power generation. We are a premier, comprehensive energy solution provider specializing in the integration of high-efficiency photovoltaic systems, advanced energy storage solutions (ESS), and microgrid operations.\n\nDriven by an elite technical supply chain and rigorous engineering standards, Callsun delivers reliable, standardized, and high-performance technical products and services for small-to-medium enterprises (SMEs) and global commercial clients. We are committed to optimizing your energy infrastructure, maximizing investment returns, and accelerating your low-carbon transition.",
-    "image": "/uploads/callsun/about/hero-desktop.jpg",
-    "imageMobile": "/uploads/callsun/about/hero-mobile.jpg",
-    "imageAlt": "Callsun global headquarters — glass facade with brand logo",
-    "dividerImage": "/uploads/callsun/about/divider-solar-farm.jpg",
-    "dividerAlt": "Callsun global solar farm installations",
-    "primaryCtaLabel": "Talk to Sales",
-    "primaryCtaHref": "/contact",
-    "secondaryCtaLabel": "View Products",
-    "secondaryCtaHref": "/products"
-  },
-  "strengths": {
-    "eyebrow": "Rigorous manufacturing & standardized system integration",
-    "title": "Three pillars underpinning every Callsun delivery.",
-    "description": "From factory floor to project site, every Callsun solution rests on standardized tier-1 supply, integrated energy architecture and a responsive local distribution network.",
-    "items": [
-      {
-        "icon": "🏭",
-        "title": "Standardized Tier-1 Supply Chain",
-        "description": "Leveraging a top-tier manufacturing supply chain, Callsun ensures that every solar panel delivers peak performance, structural durability and long-term asset safety under standard operating environments."
+  "sections": [
+    {
+      "type": "manifesto",
+      "lead": {
+        "image": "/uploads/callsun/about/section1-2.jpg",
+        "imageAlt": "Callsun global solar deployment — engineering teams and project sites",
+        "subline": "Engineering with rigor. Powering the future."
+      }
+    },
+    {
+      "type": "mission",
+      "banner": {
+        "image": "/uploads/callsun/about/section2-1.jpg",
+        "imageAlt": "Callsun efficient energy solutions — high-power PV systems for utilities and C&I",
+        "eyebrow": "About Callsun",
+        "title": "Empowering the Future with Efficient Energy Solutions"
       },
-      {
-        "icon": "⚙️",
-        "title": "Integrated Energy Solutions",
-        "description": "We specialize in providing streamlined, branded system packages for off-grid applications. By pre-engineering the compatibility between modules, inverters and storage units, we eliminate system risks and optimize operational efficiency."
+      "body": {
+        "image": "/uploads/callsun/about/section2-2.jpg",
+        "imageAlt": "Callsun PV, ESS and microgrid deployment in action — commercial clean-power assets",
+        "paragraphs": [
+          "At Callsun, we align with the global transition toward a new era of clean power generation. We are a premier, comprehensive energy solution provider specializing in the integration of high-efficiency photovoltaic systems, advanced energy storage solutions (ESS), and microgrid operations.",
+          "Driven by an elite technical supply chain and rigorous engineering standards, Callsun delivers reliable, standardized, and high-performance technical products and services for small-to-medium enterprises (SMEs) and global commercial clients. We are committed to optimizing your energy infrastructure, maximizing investment returns, and accelerating your low-carbon transition."
+        ]
+      }
+    },
+    {
+      "type": "pillars",
+      "header": {
+        "image": "/uploads/callsun/about/section3-title.jpg",
+        "imageAlt": "Callsun rigorous manufacturing — solar module production and standardized system integration",
+        "title": "Rigorous Manufacturing & Standardized System Integration"
       },
-      {
-        "icon": "🚚",
+      "cards": [
+        {
+          "image": "/uploads/callsun/about/section3-card1.jpg",
+          "imageAlt": "Standardized tier-1 supply chain — premium cell and module manufacturing line",
+          "title": "Standardized Tier-1 Supply Chain",
+          "description": "Leveraging a top-tier manufacturing supply chain, Callsun ensures that every solar panel delivers peak performance, structural durability, and long-term asset safety under standard operating environments."
+        },
+        {
+          "image": "/uploads/callsun/about/section3-card2.jpg",
+          "imageAlt": "Integrated energy solutions — pre-engineered modules, inverters and storage packages",
+          "title": "Integrated Energy Solutions",
+          "description": "We specialize in providing streamlined, branded system packages for off-grid applications. By pre-engineering the compatibility between modules, inverters, and storage units, we eliminate system risks and optimize operational efficiency."
+        }
+      ],
+      "band": {
+        "image": "/uploads/callsun/about/section3-band.jpg",
+        "imageAlt": "Localized distribution network — global warehouses and rapid delivery logistics",
         "title": "Localized Distribution & Rapid Delivery",
         "description": "Through our strategic local warehousing networks, Callsun significantly reduces lead times and logistics costs. We provide commercial partners with stable product availability and responsive local supply guarantees."
       }
-    ]
-  },
-  "cases": {
-    "eyebrow": "Global projects",
-    "title": "Global Commercial Portfolios & Microgrid Milestones",
-    "description": "From intense industrial manufacturing zones to critical logistics hubs, Callsun infrastructure delivers unwavering power stability, optimized financial returns and an accelerated low-carbon transition for our global commercial assets.",
-    "images": [
-      { "src": "/uploads/callsun/cases/case-01.jpg", "alt": "Callsun global project — industrial manufacturing zone" },
-      { "src": "/uploads/callsun/cases/case-02.jpg", "alt": "Callsun global project — commercial rooftop" },
-      { "src": "/uploads/callsun/cases/case-03.jpg", "alt": "Callsun global project — logistics hub" },
-      { "src": "/uploads/callsun/cases/case-04.jpg", "alt": "Callsun global project — solar-plus-storage" },
-      { "src": "/uploads/callsun/cases/case-05.jpg", "alt": "Callsun global project — microgrid milestone" },
-      { "src": "/uploads/callsun/cases/case-06.jpg", "alt": "Callsun global project — commercial asset" },
-      { "src": "/uploads/callsun/cases/case-07.jpg", "alt": "Callsun global project — retail deployment" },
-      { "src": "/uploads/callsun/cases/case-08.jpg", "alt": "Callsun global project — field reference" }
-    ],
-    "ctaLabel": "View All Cases",
-    "ctaHref": "/cases"
-  }
+    }
+  ]
 }
