@@ -1,40 +1,36 @@
 {
   "title": "Project Cases",
-  "seoTitle": "Solar Project Cases | C&I Rooftop & Solar Storage References | Callsun",
-  "metaDescription": "Browse Callsun solar project cases for C&I rooftops, auto dealerships, industrial buildings and solar-plus-storage microgrids. Use project proof for B2B sales and EPC evaluation.",
-  "h1": "Solar project case library for B2B sales proof.",
-  "keywords": ["solar project cases", "commercial rooftop solar case", "solar storage microgrid case", "C&I solar reference", "solar EPC case study"],
+  "seoTitle": "Commercial & Microgrid Project Cases | Callsun",
+  "metaDescription": "Browse Callsun global commercial solar project cases — industrial rooftops, logistics hubs and microgrid installations powering C&I enterprises across worldwide markets.",
+  "h1": "Global Commercial Portfolios & Microgrid Milestones",
+  "subtitleZh": "全球工商业项目资产与微电网里程碑",
+  "keywords": [
+    "solar project cases",
+    "commercial solar reference",
+    "industrial rooftop solar case",
+    "solar microgrid case study",
+    "C&I solar deployment"
+  ],
   "canonical": "/cases",
-  "ogImage": "/og/default.svg",
+  "ogImage": "/uploads/callsun/cases/utility-warehouse-solar.jpg",
   "noindex": false,
   "hero": {
-    "eyebrow": "News & Cases",
-    "description": "Use project cases to reduce buyer hesitation. Each case connects capacity, location, application, business results, related products and related solutions into one sales proof page.",
+    "eyebrow": "Project Cases",
+    "description": "At Callsun, our high-performance component architecture and energy storage matrices empower enterprises worldwide to achieve resilient energy autonomy. From intense industrial manufacturing zones to critical logistics hubs, Callsun infrastructure delivers unwavering power stability, optimized financial returns, and an accelerated low-carbon transition for our global commercial assets.",
     "primaryCtaLabel": "Discuss a Similar Project",
     "primaryCtaHref": "/contact",
-    "secondaryCtaLabel": "Read Technical Blog",
-    "secondaryCtaHref": "/resources/blog"
+    "secondaryCtaLabel": "View Applications",
+    "secondaryCtaHref": "/applications"
   },
-  "stats": [
-    { "label": "Case references", "value": "4" },
-    { "label": "Capacity range", "value": "100kW-3.5MW" },
-    { "label": "Segments", "value": "4" },
-    { "label": "Sales proof", "value": "Ready" }
-  ],
-  "intro": {
-    "eyebrow": "Sales proof",
-    "title": "Turn project references into buyer confidence.",
-    "description": "For distributors, dealers and EPC installers, project cases help answer whether a supplier has practical references, application fit and enough context for a credible proposal."
-  },
-  "filtersIntro": {
-    "eyebrow": "Case library",
-    "title": "Browse by segment and application.",
-    "description": "Cases are structured for C&I rooftops, large industrial projects, premium commercial sites and solar-plus-storage references."
-  },
-  "proofPoints": [
-    { "title": "Project parameters", "description": "Capacity, location, segment, application and completion data make each case easier to compare." },
-    { "title": "Buyer concerns", "description": "Pain points and business results help sales teams explain why a similar solution fits a new buyer." },
-    { "title": "Connected content", "description": "Each case can link to related products, solutions, downloads and inquiry CTAs for conversion." }
+  "cases": [
+    { "image": "/uploads/callsun/cases/utility-warehouse-solar.jpg", "alt": "Large-scale warehouse rooftop solar array" },
+    { "image": "/uploads/callsun/cases/factory-rooftop-solar.jpg", "alt": "Factory rooftop solar installation" },
+    { "image": "/uploads/callsun/cases/logistics-rooftop-aerial.jpg", "alt": "Logistics hub rooftop solar aerial view" },
+    { "image": "/uploads/callsun/cases/industrial-park-solar.jpg", "alt": "Industrial park multi-building rooftop solar" },
+    { "image": "/uploads/callsun/cases/industrial-rooftop-aerial.jpg", "alt": "Industrial rooftop solar aerial view" },
+    { "image": "/uploads/callsun/cases/manufacturing-solar-array.jpg", "alt": "Manufacturing facility solar panel array" },
+    { "image": "/uploads/callsun/cases/factory-array-rooftop.jpg", "alt": "Factory rooftop solar array installation" },
+    { "image": "/uploads/callsun/cases/warehouse-solar-array.jpg", "alt": "Warehouse rooftop solar array installation" }
   ],
   "finalCta": {
     "title": "Need a case reference for your target application?",

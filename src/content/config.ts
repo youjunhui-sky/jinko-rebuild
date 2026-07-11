@@ -486,8 +486,13 @@ const caseIndex = defineCollection({
       secondaryCtaHref: z.string().optional(),
     }),
     stats: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
-    intro: z.object({ eyebrow: z.string().optional(), title: z.string(), description: z.string() }),
-    filtersIntro: z.object({ eyebrow: z.string().optional(), title: z.string(), description: z.string().optional() }),
+    subtitleZh: z.string().optional(),
+    cases: z.array(z.object({
+      image: z.string(),
+      alt: z.string().optional(),
+    })).default([]),
+    intro: z.object({ eyebrow: z.string().optional(), title: z.string(), description: z.string() }).optional(),
+    filtersIntro: z.object({ eyebrow: z.string().optional(), title: z.string(), description: z.string().optional() }).optional(),
     proofPoints: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
     finalCta: z.object({
       title: z.string(),
