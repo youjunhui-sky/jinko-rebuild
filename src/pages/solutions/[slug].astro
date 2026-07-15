@@ -17,6 +17,15 @@ export async function getStaticPaths(){
 }
 
 const { solution, allProducts, allApplications, allCases } = Astro.props;
+// Spec 分组预计算（Specs 区 tab 用）
+const panelSpecs = solution.specs.filter(s => (s.group || '').includes('Solar Panel'));
+const batterySpecs = solution.specs.filter(s => (s.group || '').includes('Battery (10kWh'));
+const inverterSpecs = solution.specs.filter(s => (s.group || '').includes('Inverter (6.5kW'));
+const inverterSubGroups = ['Inverter Output', 'Battery', 'PV Input', 'Grid/Generator Input', 'General'];
+const hasPanel = panelSpecs.length > 0;
+const hasBattery = batterySpecs.length > 0;
+const hasInverter = inverterSpecs.length > 0;
+const hasSpecsTabs = hasPanel || hasBattery || hasInverter;
 const fallbackTopology = solution.type === 'grid-tied'
   ? [
       { label: 'PV Array', description: `${solution.pvCapacity || 'PV'} solar module input` },
@@ -42,7 +51,7 @@ const relatedCases = allCases.filter((c) => solution.relatedCases.includes(c.slu
 const productCards = relatedProducts.map(p => ({ title: p.name, description: p.tagline, href: `/products/${p.slug}`, eyebrow: p.model || p.category, image: p.image }));
 const applicationCards = relatedApplications.map(a => ({ title: a.title, description: a.summary, href: `/applications/${a.slug}`, eyebrow: 'Application', image: a.image }));
 const caseCards = relatedCases.map(c => ({ title: c.title, description: c.salesAngle || c.description, href: `/cases/${c.slug}`, eyebrow: c.segment, image: c.coverImage, metric: c.capacityKW ? (c.capacityKW >= 1000 ? `${c.capacityKW / 1000}MW` : `${c.capacityKW}kW`) : undefined }));
-const downloadItems = solution.downloads.length ? solution.downloads : [
+const downloadItems = solution.downloads.length ? solution.downloads.map(d => ({ label: d.label, url: d.fileUrl || d.url || '/resources/downloads' })) : [
   { label: `${solution.title} BOM (placeholder)`, url: '/resources/downloads' },
   { label: `${solution.title} Solution Brief (placeholder)`, url: '/resources/downloads' },
 ];
@@ -59,7 +68,7 @@ const solutionSchema = {
 <BaseLayout title={solution.seoTitle || `${solution.title} | Callsun`} description={solution.metaDescription || solution.summary} canonical={solution.canonical || `/solutions/${solution.slug}`} ogImage={solution.ogImage || solution.image} keywords={solution.keywords} noindex={solution.noindex} schema={solutionSchema}>
   <Header slot="header" />
   <article>
-    <section class="py-14 lg:py-20 bg-jinko-bg">
+    {!solution.descriptionTopImage && <section class="py-14 lg:py-20 bg-jinko-bg">
       <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1.05fr_.95fr] gap-10 items-center">
         <div>
           <nav class="text-sm text-jinko-mute mb-6"><a href="/">Home</a> / <a href="/solutions">Solutions</a> / <span>{solution.title}</span></nav>
@@ -73,40 +82,254 @@ const solutionSchema = {
             <a href="#topology" class="px-6 py-3 rounded-md bg-white border border-jinko-line text-jinko-ink font-semibold">System Diagram</a>
           </div>
         </div>
-        <img src={solution.image} alt={solution.imageAlt || solution.title} class="rounded-3xl border border-jinko-line shadow-card bg-white" width="700" height="525" />
+        <img src={(solution.heroImages && solution.heroImages[0]?.src) || solution.image} alt={(solution.heroImages && solution.heroImages[0]?.alt) || solution.imageAlt || solution.title} class="rounded-3xl border border-jinko-line shadow-card bg-white" width="700" height="525" />
       </div>
-    </section>
+    </section>}
 
-    <section class="py-16">
+    {solution.description && <section class="py-14 lg:py-20"><div class="max-w-content mx-auto px-4 lg:px-6">
+      {solution.descriptionTopImage && <nav class="text-sm text-jinko-mute mb-8"><a href="/">Home</a> / <a href="/solutions">Solutions</a> / <span>{solution.title}</span></nav>}
+      <SectionHeader eyebrow="Description" title={solution.descriptionTitle || solution.title} description={solution.description} />
+      {solution.descriptionTopImage && <figure class="mt-10">
+        <img src={solution.descriptionTopImage.src} alt={solution.descriptionTopImage.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" />
+      </figure>}
+      {solution.descriptionMiddleLabel && <p class="my-10 text-center text-xl lg:text-2xl font-display font-extrabold text-jinko-ink">{solution.descriptionMiddleLabel}</p>}
+      {solution.descriptionBottomImage && <figure>
+        <img src={solution.descriptionBottomImage.src} alt={solution.descriptionBottomImage.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" />
+      </figure>}
+      {!solution.descriptionTopImage && !solution.descriptionBottomImage && solution.heroImages.length > 0 && <figure class="mt-10">
+        <img src={solution.heroImages[0].src} alt={solution.heroImages[0].alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" />
+      </figure>}
+    </div></section>}
+
+    {!solution.descriptionTopImage && <section class="py-16">
       <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[.9fr_1.1fr] gap-10">
         <SectionHeader eyebrow="Solution value" title="Built as a repeatable package, not a one-off quote." description="This page bridges SEO/SEM traffic and B2B inquiry by showing capacity, topology, BOM, applications and case references in one place." />
         <div class="grid gap-4">{benefits.map((b, index) => <div class="rounded-2xl bg-white border border-jinko-line shadow-card p-5 flex gap-4"><span class="w-9 h-9 rounded-full bg-jinko text-white flex items-center justify-center font-display font-bold shrink-0">{index + 1}</span><p class="text-jinko-mute leading-relaxed">{b}</p></div>)}</div>
       </div>
-    </section>
+    </section>}
 
-    <section id="topology" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SystemTopology title={`${solution.title} topology`} steps={topologySteps} /></div></section>
+    {!solution.descriptionTopImage && <section id="topology" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SystemTopology title={`${solution.title} topology`} steps={topologySteps} /></div></section>}
 
-    <section id="bom" class="py-16">
+    {!solution.descriptionTopImage && <section id="bom" class="py-16">
       <div class="max-w-content mx-auto px-4 lg:px-6">
         <SectionHeader eyebrow="BOM" title="System components and package list" description="The component list is CMS-editable and can later be exported into a downloadable BOM PDF." />
         <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {solution.components.map((c) => <div class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{c.category}</p><h3 class="mt-2 text-xl font-display font-bold">{c.name}</h3>{c.quantity && <p class="mt-3 inline-flex px-3 py-1 rounded-full bg-jinko-bg text-sm font-semibold">Qty: {c.quantity}</p>}{c.note && <p class="mt-3 text-sm text-jinko-mute leading-relaxed">{c.note}</p>}</div>)}
         </div>
       </div>
-    </section>
+    </section>}
 
-    <section class="py-16 bg-jinko-bg">
+    {hasSpecsTabs && <section id="specs" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6">
+      <SectionHeader eyebrow="Specifications" title="Panel, battery and inverter parameters" description={solution.specsKeyPoints || 'Full spec table extracted from the kit datasheets, grouped by component for fast scanning.'} />
+      <div class="specs-tabs mt-10">
+        {hasPanel && <input type="radio" name={`specs-${solution.slug}`} id={`specs-${solution.slug}-panel`} class="specs-tab-input" checked />}
+        {hasBattery && <input type="radio" name={`specs-${solution.slug}`} id={`specs-${solution.slug}-battery`} class="specs-tab-input" />}
+        {hasInverter && <input type="radio" name={`specs-${solution.slug}`} id={`specs-${solution.slug}-inverter`} class="specs-tab-input" />}
+
+        <div class="specs-tabs-menu flex flex-wrap gap-2 border-b border-jinko-line">
+          {hasPanel && <label for={`specs-${solution.slug}-panel`} class="specs-tab-btn px-5 py-3 font-display font-bold text-sm lg:text-base cursor-pointer text-jinko-mute border-b-2 border-transparent -mb-px hover:text-jinko-ink">12 Pcs 450W Solar Panels-Reliable and Durable</label>}
+          {hasBattery && <label for={`specs-${solution.slug}-battery`} class="specs-tab-btn px-5 py-3 font-display font-bold text-sm lg:text-base cursor-pointer text-jinko-mute border-b-2 border-transparent -mb-px hover:text-jinko-ink">10kWh Battery-Reliable and Durable</label>}
+          {hasInverter && <label for={`specs-${solution.slug}-inverter`} class="specs-tab-btn px-5 py-3 font-display font-bold text-sm lg:text-base cursor-pointer text-jinko-mute border-b-2 border-transparent -mb-px hover:text-jinko-ink">6.5kW Inverter-Reliable and Durable</label>}
+        </div>
+
+        {hasPanel && <div class="specs-tab-panel mt-8" data-panel="panel">
+          {solution.specsImages?.panel && <figure class="mb-8"><img src={solution.specsImages.panel.src} alt={solution.specsImages.panel.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure>}
+          <h3 class="font-display font-bold text-xl text-jinko-ink">Mechanical Characteristics (STC)</h3>
+          <dl class="mt-4 rounded-2xl bg-white border border-jinko-line divide-y divide-jinko-line overflow-hidden">
+            {panelSpecs.map(s => (
+              <div class="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-2 sm:gap-4 px-5 py-3 hover:bg-jinko-bg/40 transition-colors">
+                <dt class="text-sm text-jinko-mute">{s.label}</dt>
+                <dd class="text-sm font-semibold text-jinko-ink">{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <p class="mt-4 text-xs text-jinko-mute">*STC (Standard Test Condition): Irradiance 1000 W/m², Cell Temperature 25°C, Air Mass 1.5.</p>
+        </div>}
+
+        {hasBattery && <div class="specs-tab-panel mt-8" data-panel="battery">
+          {solution.specsImages?.battery && <figure class="mb-8"><img src={solution.specsImages.battery.src} alt={solution.specsImages.battery.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure>}
+          <h3 class="font-display font-bold text-xl text-jinko-ink">Specifications</h3>
+          <dl class="mt-4 rounded-2xl bg-white border border-jinko-line divide-y divide-jinko-line overflow-hidden">
+            {batterySpecs.map(s => (
+              <div class="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-2 sm:gap-4 px-5 py-3 hover:bg-jinko-bg/40 transition-colors">
+                <dt class="text-sm text-jinko-mute">{s.label}</dt>
+                <dd class="text-sm font-semibold text-jinko-ink">{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>}
+
+        {hasInverter && <div class="specs-tab-panel mt-8" data-panel="inverter">
+          {solution.specsImages?.inverter && <figure class="mb-8"><img src={solution.specsImages.inverter.src} alt={solution.specsImages.inverter.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure>}
+          <div class="space-y-6">
+            {inverterSubGroups.map(sub => {
+              const items = inverterSpecs.filter(s => s.subGroup === sub);
+              return items.length > 0 && (<div>
+                <h3 class="font-display font-bold text-lg text-jinko-ink">{sub}</h3>
+                <dl class="mt-3 rounded-2xl bg-white border border-jinko-line divide-y divide-jinko-line overflow-hidden">
+                  {items.map(s => (
+                    <div class="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-2 sm:gap-4 px-5 py-3 hover:bg-jinko-bg/40 transition-colors">
+                      <dt class="text-sm text-jinko-mute">{s.label}</dt>
+                      <dd class="text-sm font-semibold text-jinko-ink">{s.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>);
+            })}
+          </div>
+        </div>}
+      </div>
+    </div></section>}
+
+    {!hasSpecsTabs && solution.specs.length > 0 && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6">
+      <SectionHeader eyebrow="Detailed specs" title="Panel, battery and inverter parameters" description="Full spec table extracted from the kit datasheets, grouped by component for fast scanning." />
+      <div class="mt-10 space-y-8">
+        {Object.entries(solution.specs.reduce((acc, s) => { const g = s.group || 'General'; (acc[g] ||= []).push(s); return acc; }, {})).map(([group, items]) => (
+          <div>
+            <h3 class="font-display font-bold text-xl text-jinko-ink">{group}</h3>
+            <dl class="mt-4 rounded-2xl bg-white border border-jinko-line divide-y divide-jinko-line overflow-hidden">
+              {items.map(s => (
+                <div class="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-2 sm:gap-4 px-5 py-3 hover:bg-jinko-bg/40 transition-colors">
+                  <dt class="text-sm text-jinko-mute">{s.label}</dt>
+                  <dd class="text-sm font-semibold text-jinko-ink">{s.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-xs text-jinko-mute">*STC (Standard Test Condition): Irradiance 1000 W/m², Cell Temperature 25°C, Air Mass 1.5.</p>
+    </div></section>}
+
+    {solution.scenarios.length > 0 && !solution.descriptionTopImage && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6">
+      <SectionHeader eyebrow="Scenarios" title="Application scenarios" description="Same kit deployed across rooftop, farm and backyard installations." />
+      <div class="scenarios-tabs mt-10">
+        {solution.scenarios.map((sc, i) => (
+          <input type="radio" name={`scenarios-${solution.slug}`} id={`scenarios-${solution.slug}-${i}`} class="scenarios-tab-input" checked={i === 0} />
+        ))}
+        <div class="scenarios-tabs-menu flex flex-wrap gap-2 border-b border-jinko-line">
+          {solution.scenarios.map((sc, i) => (
+            <label for={`scenarios-${solution.slug}-${i}`} class="scenarios-tab-btn px-5 py-3 font-display font-bold text-sm lg:text-base cursor-pointer text-jinko-mute border-b-2 border-transparent -mb-px hover:text-jinko-ink">{sc.label}</label>
+          ))}
+        </div>
+        {solution.scenarios.map((sc, i) => (
+          <div class="scenarios-tab-panel mt-8" data-idx={i}>
+            <figure><img src={sc.image} alt={sc.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure>
+          </div>
+        ))}
+      </div>
+    </div></section>}
+
+    {solution.wiring.length > 0 && !solution.descriptionTopImage && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6">
+      <SectionHeader eyebrow="Wiring" title="How to wire it" description="System wiring diagram and step-by-step instructions for installers." />
+      <div class="wiring-tabs mt-10">
+        {solution.wiring.map((w, i) => (
+          <input type="radio" name={`wiring-${solution.slug}`} id={`wiring-${solution.slug}-${i}`} class="wiring-tab-input" checked={i === 0} />
+        ))}
+        <div class="wiring-tabs-menu flex flex-wrap gap-2 border-b border-jinko-line">
+          {solution.wiring.map((w, i) => (
+            <label for={`wiring-${solution.slug}-${i}`} class="wiring-tab-btn px-5 py-3 font-display font-bold text-sm lg:text-base cursor-pointer text-jinko-mute border-b-2 border-transparent -mb-px hover:text-jinko-ink">{w.label}</label>
+          ))}
+        </div>
+        {solution.wiring.map((w, i) => (
+          <div class="wiring-tab-panel mt-8" data-idx={i}>
+            <figure><img src={w.image} alt={w.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure>
+          </div>
+        ))}
+      </div>
+    </div></section>}
+
+    {solution.includes && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6">
+      <SectionHeader eyebrow="Includes" title="What's in the kit" description="Everything shipped in the package for a complete off-grid installation." />
+      <figure class="mt-10"><img src={solution.includes.image} alt={solution.includes.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure>
+    </div></section>}
+
+    {solution.downloads.length > 0 && solution.downloads.some(d => d.fileUrl) && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6">
+      <SectionHeader eyebrow="Downloads" title="Downloads & View" description="Datasheets and user manuals for this system package." />
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {solution.downloads.filter(d => d.fileUrl).map(d => (
+          <div class="rounded-2xl bg-white border border-jinko-line shadow-card p-6 flex items-center gap-5">
+            <div class="w-14 h-14 shrink-0 flex items-center justify-center bg-jinko-bg text-jinko font-display font-bold text-sm border border-jinko-line">{(d.icon || 'PDF').toUpperCase()}</div>
+            <div class="flex-1 min-w-0">
+              <p class="font-display font-bold text-jinko-ink truncate">{d.label}</p>
+              {d.fileSize && <p class="text-xs text-jinko-mute mt-1">{d.fileSize}</p>}
+              <div class="mt-3 flex gap-2">
+                <a href={d.fileUrl} target="_blank" rel="noopener" data-track-click="catalog_view" data-solution={solution.slug} class="px-4 py-2 ring-1 ring-jinko text-jinko font-semibold text-sm">View</a>
+                <a href={d.fileUrl} download data-track-click="catalog_download" data-solution={solution.slug} class="px-4 py-2 bg-jinko text-white font-semibold text-sm">Download</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div></section>}
+
+    {!solution.descriptionTopImage && <section class="py-16 bg-jinko-bg">
       <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-3 gap-6">
         <div class="rounded-3xl bg-white border border-jinko-line shadow-card p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Use cases</p><h2 class="mt-2 text-2xl font-display font-extrabold">Where it fits</h2><div class="mt-5 flex flex-wrap gap-2">{solution.useCases.map(u => <span class="px-3 py-1.5 rounded-full bg-jinko-bg text-sm font-semibold">{u}</span>)}</div></div>
         <div class="rounded-3xl bg-white border border-jinko-line shadow-card p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">System scale</p><h2 class="mt-2 text-2xl font-display font-extrabold">{solution.capacityLabel}</h2><p class="mt-4 text-jinko-mute">PV capacity: {solution.pvCapacity || 'TBD'}<br/>Battery capacity: {solution.batteryCapacity || 'TBD'}</p></div>
         <div class="rounded-3xl bg-jinko text-white shadow-card p-7"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Downloads</p><h2 class="mt-2 text-2xl font-display font-extrabold">BOM & solution brief</h2><ul class="mt-5 space-y-2">{downloadItems.map(d => <li><a href={d.url} data-track-click="catalog_download" data-solution={solution.slug} class="underline underline-offset-4 hover:text-jinko-accent">{d.label}</a></li>)}</ul></div>
       </div>
-    </section>
+    </section>}
 
-    {productCards.length > 0 && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Related products" title="Products used in this solution." /><div class="mt-10"><CardGrid items={productCards} /></div></div></section>}
-    {applicationCards.length > 0 && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Applications" title="Recommended application scenarios." /><div class="mt-10"><CardGrid items={applicationCards} /></div></div></section>}
-    {caseCards.length > 0 && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Case references" title="Use cases to support distributor sales conversations." /><div class="mt-10"><CardGrid items={caseCards} /></div></div></section>}
+    {!solution.descriptionTopImage && productCards.length > 0 && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Related products" title="Products used in this solution." /><div class="mt-10"><CardGrid items={productCards} /></div></div></section>}
+
+    {solution.faqs.length > 0 && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Application FAQ" title="Common pre-sales questions" description="Answers your installer or end-customer usually asks before specifying a system." /><div class="mt-8 grid gap-4">{solution.faqs.map(f => <details class="rounded-2xl border border-jinko-line bg-white shadow-card p-6"><summary class="font-display font-bold cursor-pointer text-jinko-ink">{f.question}</summary><p class="mt-3 text-jinko-mute leading-relaxed">{f.answer}</p></details>)}</div></div></section>}
+    {applicationCards.length > 0 && !solution.descriptionTopImage && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Applications" title="Recommended application scenarios." /><div class="mt-10"><CardGrid items={applicationCards} /></div></div></section>}
+    {caseCards.length > 0 && !solution.descriptionTopImage && <section class="py-16"><div class="max-w-content mx-auto px-4 lg:px-6"><SectionHeader eyebrow="Case references" title="Use cases to support distributor sales conversations." /><div class="mt-10"><CardGrid items={caseCards} /></div></div></section>}
   </article>
   <ContactCTA />
   <Footer slot="footer" />
 </BaseLayout>
+
+<style>
+  /* CSS-only tabs (specs / scenarios / wiring) */
+  .specs-tab-input, .scenarios-tab-input, .wiring-tab-input {
+    position: absolute; opacity: 0; pointer-events: none;
+    width: 1px; height: 1px; overflow: hidden;
+  }
+  .specs-tab-panel, .scenarios-tab-panel, .wiring-tab-panel { display: none; }
+
+  /* ---- Specs tabs (id 尾部：-panel / -battery / -inverter) ---- */
+  .specs-tab-input[id$="-panel"]:checked    ~ .specs-tabs-menu label[for$="-panel"],
+  .specs-tab-input[id$="-battery"]:checked  ~ .specs-tabs-menu label[for$="-battery"],
+  .specs-tab-input[id$="-inverter"]:checked ~ .specs-tabs-menu label[for$="-inverter"] {
+    color: var(--jinko-active, #00A86B);
+    border-bottom-color: var(--jinko-active, #00A86B);
+  }
+  .specs-tab-input[id$="-panel"]:checked    ~ .specs-tab-panel[data-panel="panel"],
+  .specs-tab-input[id$="-battery"]:checked  ~ .specs-tab-panel[data-panel="battery"],
+  .specs-tab-input[id$="-inverter"]:checked ~ .specs-tab-panel[data-panel="inverter"] {
+    display: block;
+  }
+
+  /* ---- Scenarios tabs (id 尾部：-0 / -1 / -2；inputs 共享前缀 scenarios-) ---- */
+  .scenarios-tab-input[id*="scenarios-"][id$="-0"]:checked ~ .scenarios-tabs-menu label[for*="scenarios-"][for$="-0"],
+  .scenarios-tab-input[id*="scenarios-"][id$="-1"]:checked ~ .scenarios-tabs-menu label[for*="scenarios-"][for$="-1"],
+  .scenarios-tab-input[id*="scenarios-"][id$="-2"]:checked ~ .scenarios-tabs-menu label[for*="scenarios-"][for$="-2"] {
+    color: var(--jinko-active, #00A86B);
+    border-bottom-color: var(--jinko-active, #00A86B);
+  }
+  .scenarios-tab-input[id*="scenarios-"][id$="-0"]:checked ~ .scenarios-tab-panel[data-idx="0"],
+  .scenarios-tab-input[id*="scenarios-"][id$="-1"]:checked ~ .scenarios-tab-panel[data-idx="1"],
+  .scenarios-tab-input[id*="scenarios-"][id$="-2"]:checked ~ .scenarios-tab-panel[data-idx="2"] {
+    display: block;
+  }
+
+  /* ---- Wiring tabs (id 尾部：-0 / -1；inputs 共享前缀 wiring-) ---- */
+  .wiring-tab-input[id*="wiring-"][id$="-0"]:checked ~ .wiring-tabs-menu label[for*="wiring-"][for$="-0"],
+  .wiring-tab-input[id*="wiring-"][id$="-1"]:checked ~ .wiring-tabs-menu label[for*="wiring-"][for$="-1"] {
+    color: var(--jinko-active, #00A86B);
+    border-bottom-color: var(--jinko-active, #00A86B);
+  }
+  .wiring-tab-input[id*="wiring-"][id$="-0"]:checked ~ .wiring-tab-panel[data-idx="0"],
+  .wiring-tab-input[id*="wiring-"][id$="-1"]:checked ~ .wiring-tab-panel[data-idx="1"] {
+    display: block;
+  }
+
+  /* Focus a11y */
+  .specs-tab-input:focus-visible ~ .specs-tabs-menu label,
+  .scenarios-tab-input:focus-visible ~ .scenarios-tabs-menu label,
+  .wiring-tab-input:focus-visible ~ .wiring-tabs-menu label {
+    outline-offset: 2px;
+  }
+</style>
