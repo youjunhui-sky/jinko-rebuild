@@ -204,6 +204,7 @@ const solutions = defineCollection({
     pvCapacity: z.string().optional(),
     batteryCapacity: z.string().optional(),
     image: z.string().default('/placeholders/battery-system.svg'),
+    homepageImage: z.string().optional(),
     imageAlt: z.string().optional(),
     summary: z.string(),
     description: z.string().optional(),

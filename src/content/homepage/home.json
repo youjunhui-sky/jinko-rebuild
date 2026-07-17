@@ -22,7 +22,7 @@
   },
   "ogImage": "/og/default.svg",
   "why": {
-    "visible": true,
+    "visible": false,
     "eyebrow": "Why Callsun",
     "title": "Answer the three questions every B2B solar buyer asks.",
     "description": "The site now directly addresses product reliability, delivery flexibility and repeatable experience — the key concerns of distributors, dealers and EPC installers.",
@@ -94,7 +94,7 @@
     }
   ],
   "marketingSection": {
-    "visible": true,
+    "visible": false,
     "eyebrow": "SEO + SEM ready",
     "title": "The marketing stack is reserved before the first ad dollar is spent.",
     "description": "GTM, GA4, Google Ads conversion IDs, Cookie Consent and dataLayer events are already structured. When the customer provides account IDs, tracking can be enabled without rebuilding the site architecture.",
