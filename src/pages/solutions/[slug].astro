@@ -19,13 +19,18 @@ export async function getStaticPaths(){
 const { solution, allProducts, allApplications, allCases } = Astro.props;
 // Spec 分组预计算（Specs 区 tab 用）
 const panelSpecs = solution.specs.filter(s => (s.group || '').includes('Solar Panel'));
-const batterySpecs = solution.specs.filter(s => (s.group || '').includes('Battery (10kWh'));
-const inverterSpecs = solution.specs.filter(s => (s.group || '').includes('Inverter (6.5kW'));
+const batterySpecs = solution.specs.filter(s => (s.group || '').startsWith('Battery ('));
+const inverterSpecs = solution.specs.filter(s => (s.group || '').startsWith('Inverter ('));
 const inverterSubGroups = ['Inverter Output', 'Battery', 'PV Input', 'Grid/Generator Input', 'General'];
 const hasPanel = panelSpecs.length > 0;
 const hasBattery = batterySpecs.length > 0;
 const hasInverter = inverterSpecs.length > 0;
 const hasSpecsTabs = hasPanel || hasBattery || hasInverter;
+const sequentialProductLayout = Boolean(solution.descriptionTopImage);
+const batteryCapacityTitle = batterySpecs[0]?.group?.match(/\(([\d.]+\s*kWh)/i)?.[1] || solution.batteryCapacity || 'Battery';
+const inverterCapacityTitle = inverterSpecs[0]?.group?.match(/\(([\d.]+\s*kW)/i)?.[1] || 'Inverter';
+const batteryTitle = `${batteryCapacityTitle} Battery-Reliable and Durable`;
+const inverterTitle = `${inverterCapacityTitle} Inverter-Reliable and Durable`;
 const fallbackTopology = solution.type === 'grid-tied'
   ? [
       { label: 'PV Array', description: `${solution.pvCapacity || 'PV'} solar module input` },
@@ -119,7 +124,56 @@ const solutionSchema = {
       </div>
     </section>}
 
-    {hasSpecsTabs && <section id="specs" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6">
+    {hasSpecsTabs && sequentialProductLayout && <section id="specs" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6">
+      <h2 class="text-3xl lg:text-4xl font-display font-extrabold text-jinko-ink">Specifications</h2>
+      {solution.specsKeyPoints && <p class="mt-4 text-jinko-mute leading-relaxed">{solution.specsKeyPoints}</p>}
+
+      {hasPanel && <div class="mt-10">
+        <h3 class="font-display font-bold text-xl text-jinko-ink">Mechanical Characteristics (STC)</h3>
+        <dl class="mt-4 rounded-2xl bg-white border border-jinko-line divide-y divide-jinko-line overflow-hidden">
+          {panelSpecs.map(s => <div class="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-2 sm:gap-4 px-5 py-3"><dt class="text-sm text-jinko-mute">{s.label}</dt><dd class="text-sm font-semibold text-jinko-ink">{s.value}</dd></div>)}
+        </dl>
+        <p class="mt-4 text-xs text-jinko-mute">*STC (Standard Test Condition): Irradiance 1000 W/m², Cell Temperature 25°C, Air Mass 1.5.</p>
+      </div>}
+
+      {hasBattery && <div class="mt-12">
+        <h3 class="font-display font-bold text-xl text-jinko-ink">{batteryTitle}</h3>
+        {solution.specsImages?.battery && <figure class="mt-6"><img src={solution.specsImages.battery.src} alt={solution.specsImages.battery.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure>}
+        <h4 class="mt-8 font-display font-bold text-xl text-jinko-ink">Specifications</h4>
+        <dl class="mt-4 rounded-2xl bg-white border border-jinko-line divide-y divide-jinko-line overflow-hidden">
+          {batterySpecs.map(s => <div class="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-2 sm:gap-4 px-5 py-3"><dt class="text-sm text-jinko-mute">{s.label}</dt><dd class="text-sm font-semibold text-jinko-ink">{s.value}</dd></div>)}
+        </dl>
+      </div>}
+
+      {hasInverter && <div class="mt-12">
+        <h3 class="font-display font-bold text-xl text-jinko-ink">{inverterTitle}</h3>
+        {solution.specsImages?.inverter && <figure class="mt-6"><img src={solution.specsImages.inverter.src} alt={solution.specsImages.inverter.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure>}
+        <div class="mt-8 space-y-6">
+          {inverterSubGroups.map(sub => { const items = inverterSpecs.filter(s => s.subGroup === sub); return items.length > 0 && <div><h4 class="font-display font-bold text-lg text-jinko-ink">{sub}</h4><dl class="mt-3 rounded-2xl bg-white border border-jinko-line divide-y divide-jinko-line overflow-hidden">{items.map(s => <div class="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-2 sm:gap-4 px-5 py-3"><dt class="text-sm text-jinko-mute">{s.label}</dt><dd class="text-sm font-semibold text-jinko-ink">{s.value}</dd></div>)}</dl></div>; })}
+        </div>
+      </div>}
+
+      {solution.scenarios.length > 0 && <div class="scenarios-tabs mt-12">
+        {solution.scenarios.map((sc, i) => <input type="radio" name={`scenarios-${solution.slug}`} id={`scenarios-${solution.slug}-${i}`} class="scenarios-tab-input" checked={i === 0} />)}
+        <div class="scenarios-tabs-menu flex flex-wrap gap-2 border-b border-jinko-line">{solution.scenarios.map((sc, i) => <label for={`scenarios-${solution.slug}-${i}`} class="scenarios-tab-btn px-5 py-3 font-display font-bold text-sm lg:text-base cursor-pointer text-jinko-mute border-b-2 border-transparent -mb-px hover:text-jinko-ink">{sc.label}</label>)}</div>
+        {solution.scenarios.map((sc, i) => <div class="scenarios-tab-panel mt-8" data-idx={i}><figure><img src={sc.image} alt={sc.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure></div>)}
+      </div>}
+
+      {solution.additionalSpecs && <div class="mt-12">
+        <h3 class="font-display font-bold text-xl text-jinko-ink">{solution.additionalSpecs.title}</h3>
+        <dl class="mt-4 rounded-2xl bg-white border border-jinko-line divide-y divide-jinko-line overflow-hidden">
+          {solution.additionalSpecs.items.map(s => <div class="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-2 sm:gap-4 px-5 py-3"><dt class="text-sm text-jinko-mute">{s.label}</dt><dd class="text-sm font-semibold text-jinko-ink">{s.value}</dd></div>)}
+        </dl>
+      </div>}
+
+      {solution.wiring.length > 0 && <div class="wiring-tabs mt-12">
+        {solution.wiring.map((w, i) => <input type="radio" name={`wiring-${solution.slug}`} id={`wiring-${solution.slug}-${i}`} class="wiring-tab-input" checked={i === 0} />)}
+        <div class="wiring-tabs-menu flex flex-wrap gap-2 border-b border-jinko-line">{solution.wiring.map((w, i) => <label for={`wiring-${solution.slug}-${i}`} class="wiring-tab-btn px-5 py-3 font-display font-bold text-sm lg:text-base cursor-pointer text-jinko-mute border-b-2 border-transparent -mb-px hover:text-jinko-ink">{w.label}</label>)}</div>
+        {solution.wiring.map((w, i) => <div class="wiring-tab-panel mt-8" data-idx={i}><figure><img src={w.image} alt={w.alt} class="w-full rounded-2xl border border-jinko-line shadow-card bg-white" loading="lazy" /></figure></div>)}
+      </div>}
+    </div></section>}
+
+    {hasSpecsTabs && !sequentialProductLayout && <section id="specs" class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6">
       <SectionHeader eyebrow="Specifications" title="Panel, battery and inverter parameters" description={solution.specsKeyPoints || 'Full spec table extracted from the kit datasheets, grouped by component for fast scanning.'} />
       <div class="specs-tabs mt-10">
         {hasPanel && <input type="radio" name={`specs-${solution.slug}`} id={`specs-${solution.slug}-panel`} class="specs-tab-input" checked />}

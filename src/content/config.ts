@@ -219,6 +219,10 @@ const solutions = defineCollection({
       inverter: z.object({ src: z.string(), alt: z.string() }).optional(),
     }).optional(),
     specsKeyPoints: z.string().optional(),
+    additionalSpecs: z.object({
+      title: z.string(),
+      items: z.array(z.object({ label: z.string(), value: z.string() })),
+    }).optional(),
     scenarios: z.array(z.object({ label: z.string(), image: z.string(), alt: z.string() })).default([]),
     wiring: z.array(z.object({ label: z.string(), image: z.string(), alt: z.string() })).default([]),
     includes: z.object({ image: z.string(), alt: z.string() }).optional(),

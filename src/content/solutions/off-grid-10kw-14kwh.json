@@ -5,49 +5,145 @@
   "capacityLabel": "10kW / 14kWh / 7.2kW-PV",
   "pvCapacity": "7.2kW-PV",
   "batteryCapacity": "14kWh",
-  "image": "/placeholders/battery-system.svg",
-  "summary": "A higher-capacity off-grid system package for installers targeting larger residential, rural commercial and solar-plus-storage opportunities.",
-  "components": [
-    {
-      "category": "Solar Module",
-      "name": "450W Solar Module",
-      "quantity": "16 pcs",
-      "note": "7.2kW PV array"
+  "image": "/uploads/callsun/solutions/10kw/01-system-overview.jpg",
+  "imageAlt": "Callsun 7.2kW solar generator system with 10kW hybrid inverter and 14kWh LiFePO4 battery storage kit",
+  "summary": "A complete 7.2kW solar energy storage solution designed for whole-home backup and off-grid power, combining 16 x 450W N-Type bifacial panels, a 10kW hybrid inverter and a 14.34kWh LiFePO4 battery.",
+  "description": "A complete solar energy storage solution designed for whole-home backup and off-grid power. The system combines a 10kW hybrid inverter with a 14kWh LiFePO4 battery pack to deliver reliable, clean, and independent energy anytime.",
+  "descriptionTitle": "7.2kW Solar Generator System with 14kWh Battery Storage",
+  "descriptionTopImage": {
+    "src": "/uploads/callsun/solutions/10kw/01-system-overview.jpg",
+    "alt": "Callsun 7.2kW solar generator system with 10kW hybrid inverter and 14kWh LiFePO4 battery storage"
+  },
+  "descriptionMiddleLabel": "16 Pcs 450W Solar Panels-Reliable and Durable",
+  "descriptionBottomImage": {
+    "src": "/uploads/callsun/solutions/10kw/02-panel-closeup.jpg",
+    "alt": "Callsun bifacial solar panel with N-Type technology, anti-shading design, 16 busbars and long-term performance commitment"
+  },
+  "heroImages": [],
+  "specsKeyPoints": "Key Specs at a Glance: 450W output · N-Type · 25.6% efficiency · Bifacial · Anti-Shade · 16BB · IP68",
+  "additionalSpecs": {
+    "title": "200W Solar Panel Specifications",
+    "items": [
+      { "label": "Maximum Power (Pmax)", "value": "200W" },
+      { "label": "Maximum Power Voltage (Vmp)", "value": "23.74V" },
+      { "label": "Maximum Power Current (Imp)", "value": "8.43A" },
+      { "label": "Open-circuit Voltage (Voc)", "value": "27.31V" },
+      { "label": "Short-circuit Current (Isc)", "value": "8.91A" },
+      { "label": "Cell Type", "value": "Monocrystalline Silicon, TOPCon" },
+      { "label": "Cell Efficiency", "value": "25%" },
+      { "label": "Power Tolerance", "value": "0~5%" },
+      { "label": "Maximum System Voltage", "value": "1000V DC" },
+      { "label": "Maximum Series Fuse Rating", "value": "25A" },
+      { "label": "First Year Degradation Rate", "value": "<1%" },
+      { "label": "Linear Degradation Rate", "value": "0.4%" },
+      { "label": "Commitment to maintain 84.5% output", "value": "25 years" }
+    ]
+  },
+  "specsImages": {
+    "battery": {
+      "src": "/uploads/callsun/solutions/10kw/03-battery.jpg",
+      "alt": "Callsun 14.34kWh LiFePO4 battery with 280Ah capacity and integrated battery management system"
     },
-    {
-      "category": "Inverter",
-      "name": "SPI-10K-UP",
-      "quantity": "1 set",
-      "note": "10kW inverter, split-phase/single-phase output"
-    },
-    {
-      "category": "Battery",
-      "name": "GSL-051280A-B-GBP2",
-      "quantity": "1 set",
-      "note": "14.34kWh wall-mounted LiFePO4 battery"
-    },
-    {
-      "category": "Accessories",
-      "name": "MC4 tools, cables, brackets, PV DC breaker, combiner box"
+    "inverter": {
+      "src": "/uploads/callsun/solutions/10kw/04-inverter.jpg",
+      "alt": "Callsun 10kW hybrid inverter with pure sine wave output, dual MPPT and split-phase output"
     }
+  },
+  "specs": [
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Maximum Power (Pmax)", "value": "450W" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Maximum Power Voltage (Vmp)", "value": "30.08V" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Maximum Power Current (Imp)", "value": "14.97A" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Open-circuit Voltage (Voc)", "value": "35.03V" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Short-circuit Current (Isc)", "value": "16.05A" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Cell Type", "value": "N-Type, 16BB, 182mm, Monocrystalline Silicon" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Cell Efficiency", "value": "25.6%" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "First Year Degradation Rate", "value": "<1%" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Commitment to maintain 84.5% output", "value": "25 years" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Dimension", "value": "1762 × 1134 × 30mm (±5mm) / 69.4 × 44.7 × 1.2in (±0.1in)" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Weight", "value": "24.5kg (±0.2kg) / 54.01lb (±0.5lb)" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "IP Rating", "value": "IP68" },
+    { "group": "Solar Panel (16 x 450W N-Type Bifacial)", "label": "Connector", "value": "Solar Connector Compatible" },
+
+    { "group": "Battery (14kWh LiFePO4)", "label": "Nominal Voltage", "value": "51.2V" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Rated Capacity", "value": "280Ah" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Energy", "value": "14.34kWh" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Dimensions (L x W x D)", "value": "900 × 675 × 200mm / 35.4 × 26.6 × 7.8in" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Weight", "value": "128.5kg / 283.29lb" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Max. discharge voltage", "value": "56VDC" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "End of discharge voltage", "value": "46VDC" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Maximum discharge current", "value": "150A" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Maximum charge current", "value": "150A" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Charging temperature range", "value": "0–55℃" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Discharge temperature range", "value": "-20–55℃" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Number of cells in battery pack", "value": "16S1P" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Lithium Battery Standard", "value": "UL1973, UL9540A, CB-IEC62619, CE-EMC, UN38.3, MSDS" },
+    { "group": "Battery (14kWh LiFePO4)", "label": "Enclosure protection rating", "value": "IP20" },
+
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Inverter Output", "label": "Rated Output Power", "value": "10000W" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Inverter Output", "label": "Max. Peak Power", "value": "20000 W" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Inverter Output", "label": "Rated Output Voltage", "value": "120/240 VAC (single-phase/split-phase)" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Inverter Output", "label": "Rated AC Frequency", "value": "50/60 Hz" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Inverter Output", "label": "Waveform", "value": "Pure sine wave" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Inverter Output", "label": "Switch Time", "value": "10 ms (typical)" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Inverter Output", "label": "Parallel Capacity", "value": "1–6 units" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Battery", "label": "Battery Type", "value": "Lithium-ion / lead-acid / user-defined" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Battery", "label": "Rated Battery Voltage", "value": "48 Vdc" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Battery", "label": "Rated Voltage Range", "value": "40 Vdc – 60 Vdc" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Battery", "label": "Max. grid/generator charge current", "value": "120 A" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Battery", "label": "Max. hybrid charge current", "value": "200 A" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "PV Input", "label": "No. of MPPT Trackers", "value": "2" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "PV Input", "label": "Max. PV Input Power", "value": "5500W + 5500W" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "PV Input", "label": "Max. PV Input Current", "value": "22A + 22A" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "PV Input", "label": "Max. Open Circuit Voltage", "value": "550 Vdc + 550 Vdc" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "PV Input", "label": "MPPT Voltage Range", "value": "125 Vdc – 425 Vdc" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Grid/Generator Input", "label": "Input Voltage Range", "value": "90 VAC – 140 VAC" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Grid/Generator Input", "label": "Input Frequency Range", "value": "50/60 Hz" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "Grid/Generator Input", "label": "Bypass Overload Current", "value": "63A" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "Dimensions", "value": "723 × 448 × 150mm / 28.46 × 17.64 × 5.91in" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "Weight", "value": "28kg / 61.73lb" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "Protection Degree", "value": "IP20, indoor only" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "Operating Temperature Range", "value": "-10°C – 55°C, >45°C derated" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "Noise", "value": "<60dB" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "Built-in Interface", "value": "RS485 / CAN / USB / dry contact" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "External Module (optional)", "value": "Wi-Fi / GPRS" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "Safety", "value": "IEC62109-1, IEC62109-2" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "EMC", "value": "EN61000-6-1, EN61000-6-3" },
+    { "group": "Inverter (10kW Hybrid)", "subGroup": "General", "label": "RoHS", "value": "Yes" }
   ],
-  "useCases": [
-    "Large off-grid home",
-    "Commercial backup",
-    "Rural power",
-    "Solar + storage package"
+  "scenarios": [
+    { "label": "RoofTop", "image": "/uploads/callsun/solutions/10kw/05-scenario-rooftop.jpg", "alt": "Callsun 7.2kW solar generator system installed for residential rooftop power" },
+    { "label": "Farm", "image": "/uploads/callsun/solutions/10kw/06-scenario-farm.jpg", "alt": "Callsun 10kW hybrid solar system providing off-grid energy for a farm" },
+    { "label": "Backyard", "image": "/uploads/callsun/solutions/10kw/07-scenario-backyard.jpg", "alt": "Callsun residential solar generator system installed in a backyard setting" }
   ],
-  "relatedProducts": [
-    "450w-double-glass-solar-module"
+  "wiring": [
+    { "label": "How to wire it", "image": "/uploads/callsun/solutions/10kw/08-wiring-diagram.jpg", "alt": "Callsun 7.2kW solar generator system connection overview" },
+    { "label": "Wiring Instructions", "image": "/uploads/callsun/solutions/10kw/09-wiring-instructions.jpg", "alt": "Solar system wiring diagram connecting panels, combiner box, hybrid inverter and battery storage" }
   ],
+  "includes": {
+    "image": "/uploads/callsun/solutions/10kw/10-includes.jpg",
+    "alt": "Complete Callsun 7.2kW solar generator kit contents with panels, 10kW inverter, 14kWh battery and accessories"
+  },
+  "components": [
+    { "category": "Solar Module", "name": "450W N-Type Bifacial Solar Module", "quantity": "16 pcs", "note": "7.2kW PV array, N-Type, anti-shade, 16BB" },
+    { "category": "Inverter", "name": "SPI-10K-UP", "quantity": "1 set", "note": "10kW hybrid inverter, split-phase/single-phase output" },
+    { "category": "Battery", "name": "GSL-051280A-B-GBP2", "quantity": "1 set", "note": "14.34kWh wall-mounted LiFePO4 battery" },
+    { "category": "Accessories", "name": "MC4 tools, cables, brackets, PV DC breaker, combiner box" }
+  ],
+  "useCases": ["Large off-grid home", "Commercial backup", "Rural power", "Solar + storage package"],
+  "downloads": [
+    { "label": "User Manual", "fileUrl": "/downloads/callsun/10kw/CS-450W-user-manual.pdf", "icon": "pdf", "fileSize": "1.6 MB" }
+  ],
+  "faqs": [
+    { "question": "What can the 7.2kW Solar Generator System power?", "answer": "The Callsun 7.2kW Solar Generator System is designed to provide reliable backup power for homes, cabins, RVs, and off-grid applications. With a 10kW hybrid inverter and 14kWh battery storage capacity, it can support essential household appliances such as refrigerators, lights, WiFi routers, TVs, computers, pumps, and other high-demand devices depending on the total power requirements." },
+    { "question": "Does this solar generator system work off-grid?", "answer": "Yes. The Callsun solar generator system can operate in off-grid mode when paired with solar panels. The hybrid inverter intelligently manages solar input, battery storage, and energy output, allowing you to create an independent power system without relying entirely on the electrical grid." },
+    { "question": "How long can the 14kWh battery storage power my home?", "answer": "The backup time depends on your energy consumption. For example, if your home uses approximately 1kW of power continuously, the 14kWh battery can theoretically provide around 14 hours of backup power. Actual runtime may vary depending on appliance loads, inverter efficiency, and battery conditions." },
+    { "question": "Can I expand the battery capacity or solar panel system in the future?", "answer": "Yes. The Callsun energy storage system is designed with scalability in mind. You can expand your solar panel capacity or increase battery storage based on your future energy needs. Please ensure additional components are compatible with the inverter specifications." },
+    { "question": "Is installation required for this solar generator system?", "answer": "Professional installation is recommended for the 10kW hybrid inverter and 14kWh battery storage system to ensure safe operation and proper system configuration. Installation requirements may vary depending on your location, electrical setup, and local regulations." }
+  ],
+  "relatedProducts": ["450w-double-glass-solar-module"],
   "order": 30,
   "featured": true,
   "seoTitle": "10kW Off-Grid Solar System with 14kWh Battery | Callsun",
-  "metaDescription": "Callsun 10kW off-grid solar system with 14kWh battery and 7.2kW PV for B2B installers and dealers.",
-  "keywords": [
-    "10kw off grid solar system",
-    "14kwh solar battery system",
-    "solar plus storage supplier"
-  ],
-  "imageAlt": "Callsun 10kW off-grid solar system with 14kWh battery package illustration"
+  "metaDescription": "Callsun 7.2kW solar generator system with 10kW hybrid inverter and 14kWh LiFePO4 battery for whole-home backup and off-grid power.",
+  "keywords": ["10kw off grid solar system", "14kwh solar battery system", "7.2kw solar generator", "solar plus storage supplier"]
 }
