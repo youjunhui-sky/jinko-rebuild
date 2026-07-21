@@ -8,3 +8,7 @@ dist/
 .DS_Store
 .vscode/
 .idea/
+
+# Local-only archives / originals (kept out of repo, kept on disk)
+archive/
+public/blog/original/

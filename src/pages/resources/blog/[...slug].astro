@@ -26,6 +26,10 @@ const relatedCases = cases.filter((c) => post.data.relatedCases.includes(c.data.
 const title = post.data.seoTitle || `${post.data.title} | Callsun`;
 const description = post.data.metaDescription || post.data.description;
 const canonical = post.data.canonical || `/resources/blog/${post.slug}`;
+
+const catSlug = (c: string) => c.toLowerCase().replaceAll(' ', '-');
+const fmtDate = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -41,35 +45,328 @@ const articleSchema = {
 ---
 <BaseLayout title={title} description={description} canonical={canonical} ogImage={post.data.ogImage || post.data.cover || undefined} keywords={post.data.keywords} noindex={post.data.noindex} ogType="article" schema={articleSchema}>
   <Header slot="header" />
-  <article>
-    <section class="py-14 bg-jinko-bg">
-      <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1fr_320px] gap-10 items-end">
-        <div><nav class="text-sm text-jinko-mute mb-5"><a href="/">Home</a> / <a href="/resources/blog">Blog</a> / <a href={`/resources/blog/category/${post.data.category.toLowerCase().replaceAll(' ', '-')}`}>{post.data.category}</a></nav><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{post.data.category}</p><h1 class="mt-2 text-4xl lg:text-5xl font-display font-extrabold">{post.data.h1 || post.data.title}</h1><p class="mt-4 text-lg text-jinko-mute max-w-3xl">{post.data.description}</p><p class="mt-4 text-sm text-jinko-mute">Published {post.data.publishDate.toLocaleDateString('en-US')} · Updated {(post.data.updatedDate || post.data.publishDate).toLocaleDateString('en-US')} · {post.data.author}</p><div class="mt-5 flex flex-wrap gap-2">{post.data.tags.map((tag) => <a href={`/resources/blog/tag/${tag.toLowerCase().replaceAll(' ', '-')}`} class="rounded-full bg-white border border-jinko-line px-3 py-1 text-sm text-jinko-mute">#{tag}</a>)}</div></div>
-        {post.data.cover && <img src={post.data.cover} alt={post.data.coverAlt || post.data.title} class="rounded-3xl border border-jinko-line shadow-card" />}
+
+  <article class="bg-white">
+
+    <!-- 1. Hero: breadcrumb + eyebrow + big title + meta (centered narrow column) -->
+    <section class="pt-14 lg:pt-20 pb-10 bg-jinko-bg">
+      <div class="max-w-4xl mx-auto px-4 lg:px-6 text-center">
+        <nav class="text-sm text-jinko-mute mb-6">
+          <a href="/" class="hover:text-jinko">Home</a>
+          <span class="mx-2 text-jinko-line">/</span>
+          <a href="/resources/blog" class="hover:text-jinko">Blog</a>
+          <span class="mx-2 text-jinko-line">/</span>
+          <a href={`/resources/blog/category/${catSlug(post.data.category)}`} class="hover:text-jinko">{post.data.category}</a>
+        </nav>
+        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{post.data.category}</p>
+        <h1 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-[1.15]">
+          {post.data.h1 || post.data.title}
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-jinko-mute leading-relaxed max-w-3xl mx-auto">
+          {post.data.description}
+        </p>
+        <div class="mt-8 flex items-center justify-center gap-3 flex-wrap text-sm text-jinko-mute">
+          <span class="font-semibold text-jinko-ink">{post.data.author}</span>
+          <span>·</span>
+          <time datetime={post.data.publishDate.toISOString()}>Published {fmtDate(post.data.publishDate)}</time>
+          {post.data.updatedDate && post.data.updatedDate.getTime() !== post.data.publishDate.getTime() && (
+            <>
+              <span>·</span>
+              <time datetime={post.data.updatedDate.toISOString()}>Updated {fmtDate(post.data.updatedDate)}</time>
+            </>
+          )}
+        </div>
       </div>
     </section>
 
-    <section class="py-14">
-      <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[minmax(0,1fr)_300px] gap-10 items-start">
-        <div class="prose prose-slate max-w-none prose-a:text-jinko prose-h2:font-display prose-h2:text-jinko-ink prose-h3:text-jinko-ink"><Content /></div>
-        <aside class="rounded-3xl bg-white border border-jinko-line shadow-card p-6 sticky top-24">
-          <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">In this article</p>
-          <h2 class="mt-2 text-xl font-display font-bold">Next action</h2>
-          <p class="mt-3 text-sm text-jinko-mute">Use this article as a content-to-conversion path for products, solutions and downloads.</p>
-          <a href="/resources/downloads" class="mt-5 inline-flex w-full justify-center px-4 py-2 rounded-md bg-jinko text-white font-semibold">Download resources</a>
-          <a href="/contact" class="mt-3 inline-flex w-full justify-center px-4 py-2 rounded-md border border-jinko-line font-semibold">Contact sales</a>
-        </aside>
+    <!-- 2. Hero cover: full-width big image -->
+    {post.data.cover && (
+      <section class="bg-jinko-bg pb-14">
+        <div class="max-w-content mx-auto px-4 lg:px-6">
+          <div class="aspect-[16/9] overflow-hidden border border-jinko-line shadow-card bg-white">
+            <img
+              src={post.data.cover}
+              alt={post.data.coverAlt || post.data.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- 3. Body: single centered column, comfortable long-form typography -->
+    <section class="py-16 lg:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 lg:px-6">
+        <div class="blog-content">
+          <Content />
+        </div>
+
+        <!-- Tags below article body -->
+        {post.data.tags.length > 0 && (
+          <div class="mt-14 pt-8 border-t border-jinko-line">
+            <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold mb-4">Tagged</p>
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags.map((tag) => (
+                <a
+                  href={`/resources/blog/tag/${catSlug(tag)}`}
+                  class="bg-jinko-bg border border-jinko-line px-4 py-2 text-sm text-jinko-mute hover:text-jinko hover:border-jinko transition"
+                >#{tag}</a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
 
-    {(post.data.ctaTitle || post.data.ctaDescription) && <section class="py-10"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="rounded-3xl bg-jinko text-white p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6"><div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Article CTA</p><h2 class="mt-2 text-3xl font-display font-extrabold">{post.data.ctaTitle}</h2>{post.data.ctaDescription && <p class="mt-3 text-white/85 max-w-2xl">{post.data.ctaDescription}</p>}</div>{post.data.ctaHref && <a href={post.data.ctaHref} data-track-click="blog_cta_click" data-post={post.slug} class="inline-flex px-6 py-3 rounded-md bg-white/10 ring-1 ring-white/30 text-white font-bold hover:bg-white/20">{post.data.ctaLabel || 'Learn more'}</a>}</div></div></section>}
+    <!-- 4. Article-specific CTA (from frontmatter) -->
+    {(post.data.ctaTitle || post.data.ctaDescription) && (
+      <section class="py-12 lg:py-16 bg-white">
+        <div class="max-w-content mx-auto px-4 lg:px-6">
+          <div class="relative overflow-hidden bg-jinko-ink text-white p-8 lg:p-14">
+            <div
+              class="absolute inset-0 opacity-30 pointer-events-none"
+              style="background: linear-gradient(135deg, #00A86B 0%, transparent 55%), radial-gradient(circle at 85% 30%, #7cbe22 0%, transparent 45%);"
+            ></div>
+            <div class="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+              <div class="max-w-2xl">
+                <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Next step</p>
+                {post.data.ctaTitle && (
+                  <h2 class="mt-3 text-2xl lg:text-4xl font-display font-extrabold leading-tight">{post.data.ctaTitle}</h2>
+                )}
+                {post.data.ctaDescription && (
+                  <p class="mt-4 text-white/85 leading-relaxed">{post.data.ctaDescription}</p>
+                )}
+              </div>
+              <div class="flex flex-wrap gap-3 shrink-0">
+                {post.data.ctaHref && (
+                  <a
+                    href={post.data.ctaHref}
+                    data-track-click="blog_cta_click"
+                    data-post={post.slug}
+                    class="inline-flex px-7 py-4 bg-jinko text-white font-bold hover:bg-jinko-dark transition"
+                  >{post.data.ctaLabel || 'Learn more'} →</a>
+                )}
+                <a
+                  href="/resources/downloads"
+                  class="inline-flex px-7 py-4 border border-white/30 text-white font-bold hover:bg-white/10 transition"
+                >Downloads</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
-    {(relatedProducts.length > 0 || relatedSolutions.length > 0 || relatedCases.length > 0 || relatedPosts.length > 0) && <section class="py-16 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6 space-y-12">
-      {relatedProducts.length > 0 && <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Related products</p><h2 class="mt-2 text-3xl font-display font-extrabold">Products mentioned in this topic</h2><div class="mt-8"><CardGrid items={relatedProducts} columns="3" /></div></div>}
-      {relatedSolutions.length > 0 && <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Related solutions</p><h2 class="mt-2 text-3xl font-display font-extrabold">Solution pages to continue reading</h2><div class="mt-8"><CardGrid items={relatedSolutions} columns="3" /></div></div>}
-      {relatedCases.length > 0 && <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Related cases</p><h2 class="mt-2 text-3xl font-display font-extrabold">Proof points for this article</h2><div class="mt-8"><CardGrid items={relatedCases} columns="3" /></div></div>}
-      {relatedPosts.length > 0 && <div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Related articles</p><div class="mt-6 grid gap-6 md:grid-cols-3">{relatedPosts.map((p) => <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{p.data.category}</p><h3 class="mt-2 text-xl font-display font-bold"><a href={`/resources/blog/${p.slug}`}>{p.data.title}</a></h3><p class="mt-2 text-sm text-jinko-mute">{p.data.description}</p></article>)}</div></div>}
-    </div></section>}
+    <!-- 5. Related sections -->
+    {(relatedProducts.length > 0 || relatedSolutions.length > 0 || relatedCases.length > 0 || relatedPosts.length > 0) && (
+      <section class="py-20 bg-jinko-bg">
+        <div class="max-w-content mx-auto px-4 lg:px-6 space-y-16">
+          {relatedProducts.length > 0 && (
+            <div>
+              <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">Related products</p>
+              <h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold text-jinko-ink">Products mentioned in this topic</h2>
+              <div class="mt-8"><CardGrid items={relatedProducts} columns="3" /></div>
+            </div>
+          )}
+          {relatedSolutions.length > 0 && (
+            <div>
+              <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">Related solutions</p>
+              <h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold text-jinko-ink">Solution pages to continue reading</h2>
+              <div class="mt-8"><CardGrid items={relatedSolutions} columns="3" /></div>
+            </div>
+          )}
+          {relatedCases.length > 0 && (
+            <div>
+              <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">Related cases</p>
+              <h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold text-jinko-ink">Proof points for this article</h2>
+              <div class="mt-8"><CardGrid items={relatedCases} columns="3" /></div>
+            </div>
+          )}
+          {relatedPosts.length > 0 && (
+            <div>
+              <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">Related articles</p>
+              <h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold text-jinko-ink">Continue reading</h2>
+              <div class="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {relatedPosts.map((p) => (
+                  <article class="group flex flex-col bg-white border border-jinko-line shadow-card overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition">
+                    <a href={`/resources/blog/${p.slug}`} class="block relative aspect-[16/10] overflow-hidden bg-jinko-bg">
+                      {p.data.cover && (
+                        <img
+                          src={p.data.cover}
+                          alt={p.data.coverAlt || p.data.title}
+                          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                          loading="lazy"
+                        />
+                      )}
+                    </a>
+                    <div class="p-6 flex-1 flex flex-col">
+                      <p class="text-xs uppercase tracking-[0.2em] text-jinko-accent font-extrabold">{p.data.category}</p>
+                      <h3 class="mt-3 text-lg font-display font-bold text-jinko-ink leading-snug flex-1">
+                        <a href={`/resources/blog/${p.slug}`} class="hover:text-jinko transition">{p.data.title}</a>
+                      </h3>
+                      <p class="mt-3 text-sm text-jinko-mute leading-relaxed">{p.data.description}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
   </article>
+
   <Footer slot="footer" />
 </BaseLayout>
+
+<style is:global>
+  .blog-content {
+    color: rgba(15, 23, 42, 0.88);
+    font-size: 1.125rem;
+    line-height: 1.85;
+  }
+  @media (min-width: 768px) {
+    .blog-content { font-size: 1.1875rem; line-height: 1.9; }
+  }
+  .blog-content p {
+    margin: 1.4em 0;
+  }
+  .blog-content p:first-child {
+    margin-top: 0;
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #0F172A;
+    font-weight: 500;
+  }
+  @media (min-width: 768px) {
+    .blog-content p:first-child { font-size: 1.375rem; }
+  }
+  .blog-content h2 {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    color: #0F172A;
+    font-weight: 800;
+    font-size: 1.875rem;
+    line-height: 1.25;
+    margin-top: 3.25rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  @media (min-width: 768px) {
+    .blog-content h2 { font-size: 2.125rem; }
+  }
+  .blog-content h2::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #00A86B;
+    margin-bottom: 1rem;
+  }
+  .blog-content h3 {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    color: #0F172A;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-top: 2.25rem;
+    margin-bottom: 0.875rem;
+  }
+  .blog-content a {
+    color: #00A86B;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 168, 107, 0.35);
+  }
+  .blog-content a:hover {
+    color: #108474;
+    border-bottom-color: #108474;
+  }
+  .blog-content strong {
+    color: #0F172A;
+    font-weight: 700;
+  }
+  .blog-content ul,
+  .blog-content ol {
+    margin: 1.4em 0;
+    padding-left: 1.5rem;
+  }
+  .blog-content ul { list-style: none; padding-left: 0; }
+  .blog-content ul > li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin: 0.6em 0;
+  }
+  .blog-content ul > li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 8px;
+    height: 8px;
+    background: #00A86B;
+  }
+  .blog-content ol > li {
+    margin: 0.6em 0;
+    padding-left: 0.5rem;
+  }
+  .blog-content blockquote {
+    border-left: 4px solid #00A86B;
+    background: #F8FAFC;
+    padding: 1.25rem 1.5rem;
+    margin: 1.75em 0;
+    color: #0F172A;
+    font-style: normal;
+  }
+  .blog-content blockquote p { margin: 0.5em 0; }
+  .blog-content code {
+    background: #F1F5F9;
+    padding: 0.15em 0.4em;
+    font-size: 0.92em;
+    color: #0F172A;
+    border: 1px solid #E2E8F0;
+  }
+  .blog-content pre {
+    background: #0F172A;
+    color: #F8FAFC;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1.75em 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .blog-content pre code {
+    background: transparent;
+    padding: 0;
+    border: none;
+    color: inherit;
+  }
+  .blog-content img {
+    width: 100%;
+    height: auto;
+    margin: 2em 0;
+    border: 1px solid #E2E8F0;
+  }
+  .blog-content hr {
+    border: none;
+    border-top: 1px solid #E2E8F0;
+    margin: 3em 0;
+  }
+  .blog-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.75em 0;
+    font-size: 0.95rem;
+  }
+  .blog-content th,
+  .blog-content td {
+    border: 1px solid #E2E8F0;
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+  .blog-content th {
+    background: #F8FAFC;
+    font-weight: 700;
+    color: #0F172A;
+  }
+</style>

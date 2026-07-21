@@ -3,50 +3,300 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-import SectionHeader from '@/components/SectionHeader.astro';
 
-const posts = (await getCollection('news', n=>!n.data.draft)).sort((a,b)=>b.data.publishDate.getTime()-a.data.publishDate.getTime());
-const featured = posts.filter((p) => p.data.featured).slice(0, 3);
+const posts = (await getCollection('news', (n) => !n.data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+const featured = posts.find((p) => p.data.featured) || posts[0];
+const rest = posts.filter((p) => p.slug !== featured?.slug);
 const categories = Array.from(new Set(posts.map((p) => p.data.category))).sort();
 const tags = Array.from(new Set(posts.flatMap((p) => p.data.tags))).sort();
+
+const catSlug = (c: string) => c.toLowerCase().replaceAll(' ', '-');
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
   name: 'Callsun Technical Blog',
-  description: 'Technical blog for B2B solar distributors, dealers and EPC installers.',
+  description:
+    'Technical blog for B2B solar distributors, OEMs, EPC installers and project buyers.',
 };
 ---
-<BaseLayout title="Technical Blog | Callsun" description="Technical blog for B2B solar distributors, dealers and EPC installers." canonical="/resources/blog" ogImage="/og/default.svg" keywords={["solar technical blog", "B2B solar distributor blog", "solar EPC resources"]} schema={schema}>
+<BaseLayout
+  title="Technical Blog | Callsun"
+  description="Technical blog for B2B solar distributors, OEMs, EPC installers and project buyers."
+  canonical="/resources/blog"
+  ogImage="/og/default.svg"
+  keywords={[
+    'solar technical blog',
+    'B2B solar distributor blog',
+    'solar EPC resources',
+    'PV module manufacturer blog',
+  ]}
+  schema={schema}
+>
   <Header slot="header" />
 
-  <section class="py-16 bg-jinko-bg">
-    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-end">
-      <SectionHeader eyebrow="Resources" title="Technical Blog" description="Articles, checklists and sales enablement notes for distributors, dealers and EPC installers." />
-      <div class="rounded-2xl bg-white border border-jinko-line shadow-card p-5">
-        <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Browse by category</p>
-        <div class="mt-3 flex flex-wrap gap-2">{categories.map((category) => <a class="rounded-full bg-jinko-bg px-3 py-1.5 text-sm font-semibold text-jinko" href={`/resources/blog/category/${category.toLowerCase().replaceAll(' ', '-')}`}>{category}</a>)}</div>
+  <!-- 1. Hero banner -->
+  <section class="relative bg-jinko-ink text-white overflow-hidden">
+    <div
+      class="absolute inset-0 opacity-25 pointer-events-none"
+      style="background: radial-gradient(circle at 20% 20%, #00A86B 0%, transparent 45%), radial-gradient(circle at 80% 70%, #7cbe22 0%, transparent 40%);"
+    ></div>
+    <div class="relative max-w-content mx-auto px-4 lg:px-6 py-20 lg:py-28">
+      <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Callsun Resources</p>
+      <h1 class="mt-4 text-4xl lg:text-6xl font-display font-extrabold leading-tight max-w-3xl">
+        Technical Blog
+      </h1>
+      <p class="mt-5 text-lg lg:text-xl text-white/80 max-w-2xl leading-relaxed">
+        Articles, checklists and sales enablement notes for distributors, OEMs,
+        EPC installers and project buyers evaluating PV modules and off-grid
+        systems.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="#latest"
+          class="inline-flex px-6 py-3 bg-jinko text-white font-bold hover:bg-jinko-dark transition"
+        >Browse articles →</a>
+        <a
+          href="/resources/downloads"
+          class="inline-flex px-6 py-3 border border-white/30 text-white font-bold hover:bg-white/10 transition"
+        >Download resources</a>
       </div>
     </div>
   </section>
 
-  {featured.length > 0 && <section class="py-14"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="flex items-end justify-between gap-4 flex-wrap"><div><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Featured</p><h2 class="mt-2 text-3xl font-display font-extrabold">Recommended reading</h2></div><a href="/resources/downloads" class="text-jinko font-semibold">Download resources →</a></div><div class="mt-8 grid gap-6 lg:grid-cols-3">{featured.map((p) => <article class="rounded-3xl bg-white border border-jinko-line shadow-card overflow-hidden"><a href={`/resources/blog/${p.slug}`}>{p.data.cover && <img src={p.data.cover} alt={p.data.coverAlt || p.data.title} class="w-full h-44 object-cover" />}</a><div class="p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{p.data.category}</p><h3 class="mt-2 text-xl font-display font-bold"><a href={`/resources/blog/${p.slug}`}>{p.data.title}</a></h3><p class="mt-2 text-sm text-jinko-mute">{p.data.description}</p><p class="mt-4 text-xs text-jinko-mute">{p.data.publishDate.toLocaleDateString('en-US')} · {p.data.author}</p></div></article>)}</div></div></section>}
+  <!-- 2. Featured post (wide card) -->
+  {featured && (
+    <section class="py-16 bg-white">
+      <div class="max-w-content mx-auto px-4 lg:px-6">
+        <div class="flex items-end justify-between gap-4 flex-wrap mb-8">
+          <div>
+            <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">Featured</p>
+            <h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold text-jinko-ink">
+              Recommended reading
+            </h2>
+          </div>
+          <a href={`/resources/blog/${featured.slug}`} class="text-jinko font-semibold hover:text-jinko-dark">
+            Read article →
+          </a>
+        </div>
+        <article class="grid lg:grid-cols-[1.15fr_1fr] gap-0 border border-jinko-line shadow-card overflow-hidden bg-white">
+          <a href={`/resources/blog/${featured.slug}`} class="block relative aspect-[16/10] lg:aspect-auto lg:min-h-[420px] overflow-hidden bg-jinko-bg">
+            {featured.data.cover && (
+              <img
+                src={featured.data.cover}
+                alt={featured.data.coverAlt || featured.data.title}
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                loading="eager"
+              />
+            )}
+          </a>
+          <div class="p-8 lg:p-12 flex flex-col justify-center">
+            <div class="flex items-center gap-3 flex-wrap">
+              <a
+                href={`/resources/blog/category/${catSlug(featured.data.category)}`}
+                class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold hover:text-jinko"
+              >{featured.data.category}</a>
+              <span class="text-xs text-jinko-mute">·</span>
+              <span class="text-xs text-jinko-mute">{fmtDate(featured.data.publishDate)}</span>
+            </div>
+            <h3 class="mt-4 text-2xl lg:text-3xl font-display font-extrabold text-jinko-ink leading-tight">
+              <a href={`/resources/blog/${featured.slug}`} class="hover:text-jinko transition">
+                {featured.data.title}
+              </a>
+            </h3>
+            <p class="mt-4 text-jinko-mute leading-relaxed">{featured.data.description}</p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {featured.data.tags.slice(0, 4).map((tag) => (
+                <a
+                  href={`/resources/blog/tag/${catSlug(tag)}`}
+                  class="text-xs bg-jinko-bg border border-jinko-line px-3 py-1 text-jinko-mute hover:text-jinko"
+                >#{tag}</a>
+              ))}
+            </div>
+            <div class="mt-8">
+              <a
+                href={`/resources/blog/${featured.slug}`}
+                class="inline-flex items-center gap-2 text-jinko font-bold hover:text-jinko-dark"
+              >
+                Continue reading
+                <span aria-hidden>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  )}
 
-  <section class="py-14 bg-jinko-bg">
-    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1fr_300px] gap-8 items-start">
-      <div>
-        <div class="flex items-center justify-between gap-4 flex-wrap"><h2 class="text-3xl font-display font-extrabold">Latest articles</h2><p class="text-jinko-mute">{posts.length} articles</p></div>
-        <div class="mt-8 grid gap-6 md:grid-cols-2">
-          {posts.map(p=><article class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold"><a href={`/resources/blog/category/${p.data.category.toLowerCase().replaceAll(' ', '-')}`}>{p.data.category}</a></p><h2 class="mt-2 text-xl font-display font-bold"><a href={`/resources/blog/${p.slug}`}>{p.data.title}</a></h2><p class="mt-2 text-sm text-jinko-mute">{p.data.description}</p><div class="mt-4 flex flex-wrap gap-2">{p.data.tags.map((tag) => <a href={`/resources/blog/tag/${tag.toLowerCase().replaceAll(' ', '-')}`} class="text-xs rounded-full bg-jinko-bg px-3 py-1 text-jinko-mute">#{tag}</a>)}</div><p class="mt-4 text-xs text-jinko-mute">{p.data.publishDate.toLocaleDateString('en-US')} · {p.data.author}</p></article>)}
+  <!-- 3. Category tabs + grid -->
+  <section id="latest" class="py-16 bg-jinko-bg">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <div class="flex items-end justify-between gap-4 flex-wrap mb-8">
+        <div>
+          <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">Latest articles</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-display font-extrabold text-jinko-ink">
+            All posts
+          </h2>
+        </div>
+        <p class="text-jinko-mute text-sm">{posts.length} articles</p>
+      </div>
+
+      <!-- Category tabs -->
+      <div class="mb-10 border-b border-jinko-line" role="tablist">
+        <div class="flex flex-wrap gap-1 -mb-px" id="blog-tabs">
+          <button
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-category="all"
+            class="tab-btn px-4 lg:px-6 py-3 text-sm font-bold uppercase tracking-wider border-b-2 border-jinko text-jinko-ink transition"
+          >All</button>
+          {categories.map((c) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category={catSlug(c)}
+              class="tab-btn px-4 lg:px-6 py-3 text-sm font-bold uppercase tracking-wider border-b-2 border-transparent text-jinko-mute hover:text-jinko-ink transition"
+            >{c}</button>
+          ))}
         </div>
       </div>
-      <aside class="rounded-3xl bg-white border border-jinko-line shadow-card p-6 sticky top-24">
-        <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Blog sidebar</p>
-        <h3 class="mt-2 text-xl font-display font-bold">SEO topic clusters</h3>
-        <div class="mt-5"><p class="font-semibold">Tags</p><div class="mt-3 flex flex-wrap gap-2">{tags.map((tag) => <a href={`/resources/blog/tag/${tag.toLowerCase().replaceAll(' ', '-')}`} class="rounded-full bg-jinko-bg px-3 py-1 text-sm text-jinko-mute">#{tag}</a>)}</div></div>
-        <div class="mt-6 rounded-2xl bg-jinko text-white p-5"><p class="font-display font-bold text-xl">Need product documents?</p><p class="mt-2 text-sm text-white/85">Download datasheets, certificates and installation guides.</p><a href="/resources/downloads" class="mt-4 inline-flex text-jinko-accent font-bold">Downloads →</a></div>
-      </aside>
+
+      <!-- Grid -->
+      <div id="blog-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((p) => (
+          <article
+            class="blog-card group flex flex-col bg-white border border-jinko-line shadow-card overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition"
+            data-category={catSlug(p.data.category)}
+          >
+            <a href={`/resources/blog/${p.slug}`} class="block relative aspect-[16/10] overflow-hidden bg-jinko-bg">
+              {p.data.cover && (
+                <img
+                  src={p.data.cover}
+                  alt={p.data.coverAlt || p.data.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+              )}
+            </a>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-center gap-3">
+                <a
+                  href={`/resources/blog/category/${catSlug(p.data.category)}`}
+                  class="text-xs uppercase tracking-[0.2em] text-jinko-accent font-extrabold hover:text-jinko"
+                >{p.data.category}</a>
+                <span class="text-xs text-jinko-mute">·</span>
+                <span class="text-xs text-jinko-mute">{fmtDate(p.data.publishDate)}</span>
+              </div>
+              <h3 class="mt-3 text-lg font-display font-bold text-jinko-ink leading-snug">
+                <a href={`/resources/blog/${p.slug}`} class="hover:text-jinko transition">
+                  {p.data.title}
+                </a>
+              </h3>
+              <p class="mt-3 text-sm text-jinko-mute leading-relaxed flex-1">{p.data.description}</p>
+              <div class="mt-4 pt-4 border-t border-jinko-line flex items-center justify-between">
+                <span class="text-xs text-jinko-mute">{p.data.author}</span>
+                <a
+                  href={`/resources/blog/${p.slug}`}
+                  class="text-xs font-bold text-jinko hover:text-jinko-dark uppercase tracking-wider"
+                >Read →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p id="blog-empty" class="hidden mt-12 text-center text-jinko-mute">
+        No articles in this category yet.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. Tag cloud + Newsletter/Downloads band -->
+  <section class="py-16 bg-white">
+    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[1fr_1.15fr] gap-10 items-start">
+      <div>
+        <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">Topics</p>
+        <h2 class="mt-2 text-3xl font-display font-extrabold text-jinko-ink">Browse by tag</h2>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <a
+              href={`/resources/blog/tag/${catSlug(tag)}`}
+              class="bg-jinko-bg border border-jinko-line px-4 py-2 text-sm text-jinko-mute hover:text-jinko hover:border-jinko transition"
+            >#{tag}</a>
+          ))}
+        </div>
+      </div>
+      <div class="bg-jinko-ink text-white p-8 lg:p-10 relative overflow-hidden">
+        <div
+          class="absolute inset-0 opacity-30 pointer-events-none"
+          style="background: linear-gradient(135deg, #00A86B 0%, transparent 60%);"
+        ></div>
+        <div class="relative">
+          <p class="text-xs uppercase tracking-[0.22em] text-jinko-accent font-extrabold">Product documents</p>
+          <h3 class="mt-2 text-2xl lg:text-3xl font-display font-extrabold leading-tight">
+            Datasheets, certificates and installation guides for every Callsun product line.
+          </h3>
+          <p class="mt-4 text-white/80">
+            Get the technical documentation your team needs to shortlist,
+            specify and install Callsun modules and systems.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="/resources/downloads"
+              class="inline-flex px-6 py-3 bg-jinko text-white font-bold hover:bg-jinko-dark transition"
+            >Downloads →</a>
+            <a
+              href="/contact"
+              class="inline-flex px-6 py-3 border border-white/30 text-white font-bold hover:bg-white/10 transition"
+            >Contact sales</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <Footer slot="footer" />
 </BaseLayout>
+
+<script is:inline>
+  (function () {
+    const tabs = document.querySelectorAll('#blog-tabs .tab-btn');
+    const cards = document.querySelectorAll('#blog-grid .blog-card');
+    const empty = document.getElementById('blog-empty');
+    if (!tabs.length || !cards.length) return;
+
+    function setActive(btn) {
+      tabs.forEach((t) => {
+        t.setAttribute('aria-selected', 'false');
+        t.classList.remove('border-jinko', 'text-jinko-ink');
+        t.classList.add('border-transparent', 'text-jinko-mute');
+      });
+      btn.setAttribute('aria-selected', 'true');
+      btn.classList.remove('border-transparent', 'text-jinko-mute');
+      btn.classList.add('border-jinko', 'text-jinko-ink');
+    }
+
+    function applyFilter(cat) {
+      let visible = 0;
+      cards.forEach((c) => {
+        const match = cat === 'all' || c.dataset.category === cat;
+        c.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    }
+
+    tabs.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setActive(btn);
+        applyFilter(btn.dataset.category);
+      });
+    });
+  })();
+</script>
