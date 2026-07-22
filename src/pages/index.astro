@@ -135,30 +135,28 @@ const homeSchema = {
     </div>
   </section>}
 
-  <!-- 4. Certifications — 双列 左字右图 -->
+  <!-- 4. Certifications — 上下布局：文字上/图下 -->
   {home.certificationsSection?.visible && <section class="py-20 lg:py-24 bg-white">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <div class="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
-        <div>
-          <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.certificationsSection.eyebrow}</p>
-          <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
-            {home.certificationsSection.title}
-          </h2>
-          {home.certificationsSection.description && <p class="mt-6 text-jinko-mute leading-relaxed text-base lg:text-lg">
-            {home.certificationsSection.description}
-          </p>}
-          {home.certificationsSection.linkHref && <a href={home.certificationsSection.linkHref} class="mt-8 inline-flex items-center text-jinko-ink font-bold uppercase tracking-wider text-sm hover:text-jinko-accent transition">
-            {home.certificationsSection.linkLabel || 'View Certificates & Documents →'}
-          </a>}
-        </div>
-        <div class="order-first lg:order-last">
-          <img
-            src={home.certificationsSection.image}
-            alt={home.certificationsSection.imageAlt || home.certificationsSection.title}
-            class="w-full h-auto"
-            loading="lazy"
-          />
-        </div>
+      <div class="max-w-3xl">
+        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.certificationsSection.eyebrow}</p>
+        <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
+          {home.certificationsSection.title}
+        </h2>
+        {home.certificationsSection.description && <p class="mt-6 text-jinko-mute leading-relaxed text-base lg:text-lg">
+          {home.certificationsSection.description}
+        </p>}
+        {home.certificationsSection.linkHref && <a href={home.certificationsSection.linkHref} class="mt-8 inline-flex items-center text-jinko-ink font-bold uppercase tracking-wider text-sm hover:text-jinko-accent transition">
+          {home.certificationsSection.linkLabel || 'View Certificates & Documents →'}
+        </a>}
+      </div>
+      <div class="mt-12 lg:mt-14">
+        <img
+          src={home.certificationsSection.image}
+          alt={home.certificationsSection.imageAlt || home.certificationsSection.title}
+          class="w-full h-auto"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>}
