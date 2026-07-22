@@ -11,13 +11,8 @@ import { SITE } from '@/data/site';
 const homepageEntries = await getCollection('homepage');
 const home = homepageEntries[0].data;
 const products = (await getCollection('products')).map(p => p.data).sort((a,b)=>a.order-b.order).slice(0, 6);
-const solutions = (await getCollection('solutions')).map(s => s.data).filter(s=>s.featured).sort((a,b)=>a.order-b.order);
-const cases = (await getCollection('cases')).map(c => c.data).filter(c=>c.featured).sort((a,b)=>a.order-b.order).slice(0, 4);
-const news = (await getCollection('news', n => !n.data.draft)).sort((a,b)=>b.data.publishDate.getTime()-a.data.publishDate.getTime()).slice(0, 3);
 
 const productCards = products.map(p => ({ title: p.name, description: p.tagline, href: `/products/${p.slug}`, eyebrow: p.model || p.category, image: p.cardImage || p.image, imageAspectRatio: p.cardImageAspectRatio }));
-const solutionCards = solutions.map(s => ({ title: s.title, description: s.summary, href: `/solutions/${s.slug}`, eyebrow: s.type, image: s.homepageImage || s.image, metric: s.capacityLabel }));
-const caseCards = cases.map(c => ({ title: c.title, description: c.salesAngle || c.description, href: `/cases/${c.slug}`, eyebrow: `${c.segment} · ${c.location}`, image: c.coverImage, metric: c.capacityKW ? (c.capacityKW >= 1000 ? `${c.capacityKW / 1000}MW` : `${c.capacityKW}kW`) : undefined }));
 
 const homeSchema = {
   '@context': 'https://schema.org',
@@ -30,73 +25,114 @@ const homeSchema = {
 <BaseLayout title={home.seoTitle || SITE.defaultTitle} description={home.metaDescription || SITE.defaultDescription} canonical={home.canonical || '/'} ogImage={home.ogImage || SITE.defaultOgImage} noindex={home.noindex} keywords={home.keywords} schema={homeSchema}>
   <Header slot="header" />
 
-  <section class="relative overflow-hidden text-white min-h-[640px] lg:min-h-[80vh] flex items-center" style={`background-image: linear-gradient(90deg, rgba(15,23,42,.88) 0%, rgba(15,23,42,.55) 45%, rgba(15,23,42,.15) 100%), url('${home.hero.image}'); background-size: cover; background-position: center;`}>
-    <div class="max-w-content mx-auto px-4 lg:px-6 py-28 lg:py-32 relative w-full">
+  <!-- 1. HERO — About v4 风格：暗底 image opacity + gradient overlay -->
+  <section class="relative overflow-hidden bg-jinko-ink">
+    <img
+      src={home.hero.image}
+      alt={home.hero.imageAlt || home.hero.title}
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-60"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-jinko-ink via-jinko-ink/80 to-transparent"></div>
+    <div class="relative max-w-content mx-auto px-4 lg:px-6 py-28 lg:py-40">
       <div class="max-w-3xl">
-        <p class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-bold text-jinko-accent bg-white/10 px-3 py-1.5 rounded-full ring-1 ring-white/15">{home.hero.eyebrow}</p>
-        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold leading-tight">{home.h1 || home.hero.title}</h1>
-        <p class="mt-6 text-lg lg:text-xl text-white/90 max-w-2xl leading-relaxed">{home.hero.description}</p>
-        <div class="mt-9 flex flex-wrap gap-3">
-          <a href={home.hero.primaryCtaHref} data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-white text-jinko-ink font-bold hover:bg-slate-100">{home.hero.primaryCtaLabel}</a>
-          <a href={home.hero.secondaryCtaHref} class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 ring-1 ring-white/30 text-white font-semibold hover:bg-white/20">{home.hero.secondaryCtaLabel}</a>
-          <a href={home.hero.tertiaryCtaHref} data-track-click="inquiry_cta" data-track-location="home_hero" class="inline-flex items-center px-6 py-3 rounded-md bg-white/10 ring-1 ring-white/30 text-white font-semibold hover:bg-white/20">{home.hero.tertiaryCtaLabel}</a>
+        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.hero.eyebrow}</p>
+        <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.1]">
+          {home.hero.title}
+        </h1>
+        <p class="mt-8 text-base md:text-lg text-white/85 leading-relaxed max-w-2xl">
+          {home.hero.description}
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href={home.hero.primaryCtaHref} data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-7 py-4 bg-jinko-accent text-jinko-ink font-bold hover:bg-jinko-accent/90 transition">{home.hero.primaryCtaLabel}</a>
+          <a href={home.hero.secondaryCtaHref} class="inline-flex items-center px-7 py-4 border border-white/40 text-white font-bold hover:bg-white/10 transition">{home.hero.secondaryCtaLabel}</a>
         </div>
       </div>
-      {(home.hero.floatingTitle || home.hero.floatingDescription) && <div class="absolute top-8 right-4 lg:right-6 bg-white/10 ring-1 ring-white/20 backdrop-blur-md text-white rounded-2xl shadow-card p-5 max-w-xs hidden lg:block">
-        {home.hero.floatingEyebrow && <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{home.hero.floatingEyebrow}</p>}
-        {home.hero.floatingTitle && <p class="mt-2 font-display font-extrabold text-2xl">{home.hero.floatingTitle}</p>}
-        {home.hero.floatingDescription && <p class="mt-1 text-sm text-white/85">{home.hero.floatingDescription}</p>}
-      </div>}
     </div>
   </section>
 
-  {home.why.visible && <section class="py-20 lg:py-24">
-    <div class="max-w-content mx-auto px-4 lg:px-6">
-      <SectionHeader eyebrow={home.why.eyebrow} title={home.why.title} description={home.why.description} />
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {home.why.cards.map((card, index) => <article class="rounded-2xl bg-white border border-jinko-line shadow-card p-7"><p class="text-3xl">{String(index + 1).padStart(2, '0')}</p><h3 class="mt-4 text-xl font-display font-bold">{card.title}</h3><p class="mt-3 text-jinko-mute">{card.description}</p></article>)}
+  <!-- 1b. STATS BAND — 与 About v4 一致 -->
+  {home.stats.length > 0 && <section class="bg-jinko-ink border-t border-white/10">
+    <div class="max-w-content mx-auto px-4 lg:px-6 py-14 lg:py-16">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-4">
+        {home.stats.map((s, i) => (
+          <div class={`text-center lg:text-left ${i > 0 ? 'lg:border-l lg:border-white/10 lg:pl-8' : ''}`}>
+            <p class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-none">{s.value}</p>
+            <div class="mt-3 flex items-center gap-2 justify-center lg:justify-start">
+              <span class="w-2 h-2 bg-jinko-accent"></span>
+              <p class="text-[11px] uppercase tracking-[0.22em] text-white/70 font-semibold">{s.label}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>}
 
-  {home.productsSection.visible && <section class="py-20 bg-jinko-bg">
+  <!-- 2. 产品橱窗 -->
+  {home.productsSection.visible && <section class="py-20 lg:py-24 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <SectionHeader eyebrow={home.productsSection.eyebrow} title={home.productsSection.title} description={home.productsSection.description} />
+      <div class="flex items-end justify-between flex-wrap gap-4">
+        <SectionHeader eyebrow={home.productsSection.eyebrow} title={home.productsSection.title} description={home.productsSection.description} />
+        {home.productsSection.linkHref && <a href={home.productsSection.linkHref} class="text-jinko font-semibold">{home.productsSection.linkLabel || 'Learn more →'}</a>}
+      </div>
       <div class="mt-12"><CardGrid items={productCards} imageFit="contain" showDescription={false} ctaStyle="button" /></div>
     </div>
   </section>}
 
-  {home.solutionsSection.visible && <section class="py-20 lg:py-24">
+  <!-- 3. 证书 -->
+  {home.certificationsSection?.visible && <section class="py-20 lg:py-24 bg-white">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <div class="flex items-end justify-between flex-wrap gap-4">
-        <SectionHeader eyebrow={home.solutionsSection.eyebrow} title={home.solutionsSection.title} description={home.solutionsSection.description} />
-        {home.solutionsSection.linkHref && <a href={home.solutionsSection.linkHref} class="text-jinko font-semibold">{home.solutionsSection.linkLabel || 'Learn more →'}</a>}
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.certificationsSection.eyebrow}</p>
+        <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
+          {home.certificationsSection.title}
+        </h2>
+        {home.certificationsSection.description && <p class="mt-6 text-jinko-mute leading-relaxed text-base lg:text-lg">
+          {home.certificationsSection.description}
+        </p>}
       </div>
-      <div class="mt-12"><CardGrid items={solutionCards} /></div>
+      <div class="mt-12 lg:mt-14">
+        <img
+          src={home.certificationsSection.image}
+          alt={home.certificationsSection.imageAlt || home.certificationsSection.title}
+          class="w-full h-auto"
+          loading="lazy"
+        />
+      </div>
     </div>
   </section>}
 
-  {home.casesSection.visible && <section class="py-20 bg-jinko-bg">
+  <!-- 4. 全球市场地图 -->
+  {home.globalSection?.visible && <section class="py-20 lg:py-24 bg-jinko-ink">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <div class="flex items-end justify-between flex-wrap gap-4">
-        <SectionHeader eyebrow={home.casesSection.eyebrow} title={home.casesSection.title} description={home.casesSection.description} />
-        {home.casesSection.linkHref && <a href={home.casesSection.linkHref} class="text-jinko font-semibold">{home.casesSection.linkLabel || 'Learn more →'}</a>}
+      <div class="max-w-3xl">
+        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.globalSection.eyebrow}</p>
+        <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">
+          {home.globalSection.title}
+        </h2>
+        {home.globalSection.description && <p class="mt-6 text-white/80 leading-relaxed text-base lg:text-lg">
+          {home.globalSection.description}
+        </p>}
       </div>
-      <div class="mt-12"><CardGrid items={caseCards} columns="4" /></div>
+
+      <div class="mt-14 border border-white/10 bg-white/5 p-6 lg:p-10">
+        <img
+          src={home.globalSection.image}
+          alt={home.globalSection.imageAlt || home.globalSection.title}
+          class="w-full h-auto"
+          loading="lazy"
+        />
+        {home.globalSection.markets.length > 0 && <div class="mt-8 flex flex-wrap gap-x-6 gap-y-3 justify-center items-center border-t border-white/10 pt-6">
+          <p class="text-[10px] uppercase tracking-[0.24em] text-jinko-accent font-bold">Manufacturing & Logistics Network</p>
+          {home.globalSection.markets.map((m) => (
+            <span class="text-[11px] uppercase tracking-[0.22em] text-white/70 font-semibold">· {m}</span>
+          ))}
+        </div>}
+      </div>
     </div>
   </section>}
 
-  {home.marketingSection.visible && <section class="py-20 lg:py-24">
-    <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-start">
-      <SectionHeader eyebrow={home.marketingSection.eyebrow} title={home.marketingSection.title} description={home.marketingSection.description} />
-      <div class="grid gap-4 sm:grid-cols-2">
-        {home.marketingSection.checklist.map((item) => <div class="rounded-2xl border border-jinko-line bg-white p-5 shadow-card"><p class="font-semibold text-jinko-ink">✓ {item}</p></div>)}
-      </div>
-    </div>
-  </section>}
-
-  {home.resourcesSection.visible && news.length > 0 && <section class="py-20 bg-jinko-bg"><div class="max-w-content mx-auto px-4 lg:px-6"><div class="flex items-end justify-between"><SectionHeader eyebrow={home.resourcesSection.eyebrow} title={home.resourcesSection.title} />{home.resourcesSection.linkHref && <a href={home.resourcesSection.linkHref} class="text-jinko font-semibold">{home.resourcesSection.linkLabel || 'Learn more →'}</a>}</div><ul class="mt-10 grid gap-6 md:grid-cols-3">{news.map((n)=><li class="rounded-2xl bg-white border border-jinko-line shadow-card p-6"><p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{n.data.category}</p><h3 class="mt-2 text-lg font-display font-bold"><a href={`/resources/blog/${n.slug}`}>{n.data.title}</a></h3><p class="mt-2 text-sm text-jinko-mute">{n.data.description}</p></li>)}</ul></div></section>}
-
+  <!-- 5. 询盘联络 -->
   <ContactCTA />
   <Footer slot="footer" />
 </BaseLayout>

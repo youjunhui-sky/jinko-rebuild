@@ -1,110 +1,104 @@
 {
-  "resourcesSection": {
+  "title": "Callsun Homepage",
+  "seoTitle": "Callsun — PV Module Brand & Manufacturer",
+  "metaDescription": "Callsun supplies solar modules for global B2B partners — 55,000 m² manufacturing base, 180–720W standard and custom modules, verified quality, worldwide supply.",
+  "canonical": "/",
+  "ogImage": "/uploads/callsun/about/v4-hero.webp",
+  "keywords": [
+    "solar panel manufacturer",
+    "photovoltaic module brand",
+    "commercial solar panels for installers",
+    "custom solar module supplier",
+    "global solar module supply"
+  ],
+  "h1": "Photovoltaic Module Brand & Manufacturer",
+  "hero": {
+    "eyebrow": "PV Module Brand & Manufacturer",
+    "title": "Photovoltaic Module Brand & Manufacturer",
+    "description": "Backed by in-house manufacturing capabilities, we provide photovoltaic modules designed for reliable performance, practical application requirements, and long-term use.",
+    "image": "/uploads/callsun/about/v4-hero.webp",
+    "imageAlt": "Callsun solar module manufacturing base with adjacent solar farm and city skyline",
+    "primaryCtaLabel": "Explore Our Products",
+    "primaryCtaHref": "/products",
+    "secondaryCtaLabel": "View Company Profile →",
+    "secondaryCtaHref": "/about/v4"
+  },
+  "stats": [
+    { "label": "Manufacturing Base", "value": "55,000 m²" },
+    { "label": "Manufacturing Regions", "value": "4" },
+    { "label": "Global Logistics Markets", "value": "6+" },
+    { "label": "Module Power Range", "value": "180–720W" }
+  ],
+  "productsSection": {
     "visible": true,
+    "eyebrow": "Products",
+    "title": "Standard PV Modules at Scale. Custom Modules Engineered to Fit.",
+    "description": "From high-efficiency utility-scale panels to size-customized modules, our product portfolio covers a wide range of project and application requirements.",
+    "linkLabel": "View All Products →",
+    "linkHref": "/products"
+  },
+  "certificationsSection": {
+    "visible": true,
+    "eyebrow": "Certifications & Manufacturing",
+    "title": "Verified Quality Backed by Advanced Manufacturing",
+    "description": "From cell and material testing to module-level validation, our production and quality control ensure product performance, safety, and long-term reliability.",
+    "image": "/uploads/callsun/homepage/certifications.webp",
+    "imageAlt": "Callsun certifications wall including IEC 61215, IEC 61730, CE, TÜV, ISO 9001 and other quality standards"
+  },
+  "globalSection": {
+    "visible": true,
+    "eyebrow": "Global Supply",
+    "title": "Global Supply for Long-Term Channel Partnerships",
+    "description": "Supported by manufacturing operations in China, Vietnam, Indonesia, and Saudi Arabia, together with overseas warehousing and logistics capabilities across key markets, we provide flexible and efficient delivery support for global customers.",
+    "image": "/uploads/callsun/homepage/global-map.webp",
+    "imageAlt": "Callsun global manufacturing and logistics network map covering key markets",
+    "markets": [
+      "China",
+      "Vietnam",
+      "Indonesia",
+      "Saudi Arabia",
+      "USA",
+      "Germany",
+      "Australia",
+      "Canada",
+      "Japan"
+    ]
+  },
+  "why": {
+    "visible": false,
+    "eyebrow": "Why Callsun",
+    "title": "",
+    "description": "",
+    "cards": []
+  },
+  "solutionsSection": {
+    "visible": false,
+    "eyebrow": "Solutions",
+    "title": "Repeatable packages for grid-tied and off-grid sales.",
+    "description": "",
+    "linkLabel": "All solutions →",
+    "linkHref": "/solutions"
+  },
+  "casesSection": {
+    "visible": false,
+    "eyebrow": "Cases",
+    "title": "Sales-ready references for the U.S. distributor channel.",
+    "description": "",
+    "linkLabel": "All cases →",
+    "linkHref": "/cases"
+  },
+  "resourcesSection": {
+    "visible": false,
     "eyebrow": "Resources",
     "title": "Content hub for long-tail SEO.",
     "linkLabel": "Blog →",
     "linkHref": "/resources/blog"
   },
-  "productsSection": {
-    "visible": true,
-    "eyebrow": "Products",
-    "title": "Solar modules structured for SEO, datasheets and inquiry conversion.",
-    "description": "The product center is CMS-driven. Each product supports specs, certifications, downloads, image alt text and SEO metadata."
-  },
-  "casesSection": {
-    "visible": true,
-    "eyebrow": "Cases",
-    "title": "Sales-ready references for the U.S. distributor channel.",
-    "description": "Each case includes a sales angle, capacity, segment and application — not just a photo gallery.",
-    "linkLabel": "All cases →",
-    "linkHref": "/cases"
-  },
-  "ogImage": "/og/default.svg",
-  "why": {
-    "visible": false,
-    "eyebrow": "Why Callsun",
-    "title": "Answer the three questions every B2B solar buyer asks.",
-    "description": "The site now directly addresses product reliability, delivery flexibility and repeatable experience — the key concerns of distributors, dealers and EPC installers.",
-    "cards": [
-      {
-        "title": "Will product quality reduce after-sales risk?",
-        "description": "Product pages emphasize certifications, warranty placeholders, specs and image-alt SEO fields so buyers can evaluate reliability."
-      },
-      {
-        "title": "Can supply match project schedules?",
-        "description": "The CMS supports module families, system packages and future MOQ/logistics policies for faster sales conversations."
-      },
-      {
-        "title": "Are there proven projects to copy?",
-        "description": "Case pages convert commercial rooftop, auto dealership and solar-plus-storage references into sales narratives."
-      }
-    ]
-  },
-  "h1": "Sell solar modules, storage packages and cl systems with less project friction.",
-  "keywords": [
-    "solar panel distributor",
-    "commercial solar panels for installers",
-    "off grid solar system supplier",
-    "solar storage system supplier"
-  ],
-  "solutionsSection": {
-    "visible": true,
-    "eyebrow": "Solutions",
-    "title": "Repeatable packages for grid-tied and off-grid sales.",
-    "description": "System pages turn product components into package-level landing pages for Google Ads, SEO and distributor conversations.",
-    "linkLabel": "All solutions →",
-    "linkHref": "/solutions"
-  },
-  "metaDescription": "Callsun supplies solar modules, off-grid and grid-tied solar storage systems for distributors, dealers and EPC installers. Built for B2B inquiry, SEO and Google Ads landing pages.",
-  "title": "Callsun Homepage",
-  "hero": {
-    "floatingEyebrow": "For U.S. partners",
-    "primaryCtaLabel": "Explore Products →",
-    "secondaryCtaHref": "/solutions",
-    "tertiaryCtaHref": "/contact",
-    "eyebrow": "Callsun B2B Solar Platform",
-    "imageAlt": "Callsun ground-mounted solar panel array installation with pine forest background, B2B commercial scale",
-    "floatingTitle": "Distributors · Dealers · EPC",
-    "floatingDescription": "Built around quality, supply flexibility and repeatable C&I references.",
-    "tertiaryCtaLabel": "Request Quote",
-    "secondaryCtaLabel": "View System Packages",
-    "title": "Sell solar modules, storage packages and C&I systems with less project friction.",
-    "primaryCtaHref": "/products",
-    "image": "/uploads/callsun/products/450w/hero-05.jpg",
-    "description": "Callsun provides a structured product and solution portfolio for distributors, dealers and EPC installers: module specs, repeatable system packages, sales-ready case references and inquiry-focused landing pages."
-  },
-  "seoTitle": "Callsun — Solar Modules & Energy Storage for B2B Installers Test",
-  "stats": [
-    {
-      "label": "Module Range",
-      "value": "180W-620W"
-    },
-    {
-      "label": "System Packages",
-      "value": "6.5kW-12kW"
-    },
-    {
-      "label": "Storage Range",
-      "value": "10-28kWh"
-    },
-    {
-      "label": "Case References",
-      "value": "100kW-13.75MW"
-    }
-  ],
   "marketingSection": {
     "visible": false,
     "eyebrow": "SEO + SEM ready",
-    "title": "The marketing stack is reserved before the first ad dollar is spent.",
-    "description": "GTM, GA4, Google Ads conversion IDs, Cookie Consent and dataLayer events are already structured. When the customer provides account IDs, tracking can be enabled without rebuilding the site architecture.",
-    "checklist": [
-      "GTM Container placeholder",
-      "GA4 Measurement placeholder",
-      "Google Ads Conversion placeholder",
-      "Cookie Consent base layer",
-      "Contact / RFQ submit event",
-      "Email / WhatsApp / download events"
-    ]
+    "title": "",
+    "description": "",
+    "checklist": []
   }
 }
