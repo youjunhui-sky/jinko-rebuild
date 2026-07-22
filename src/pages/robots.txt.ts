@@ -25,7 +25,6 @@ Disallow: /about/v1
 Disallow: /about/v2
 Disallow: /about/v3
 Disallow: /applications/
-Disallow: /cases/
 Disallow: /support/
 
 Sitemap: ${SITE.domain}/sitemap-index.xml

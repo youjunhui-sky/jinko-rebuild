@@ -30,7 +30,6 @@ export default defineConfig({
           '/about/v3',
           '/about',
           '/applications/',
-          '/cases/',
           '/support/',
         ];
         const url = new URL(page);

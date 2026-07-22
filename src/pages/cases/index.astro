@@ -10,7 +10,7 @@ if (!indexEntry) throw new Error('Missing case index content entry: src/content/
 const page = indexEntry.data;
 const cases = page.cases || [];
 ---
-<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/cases'} ogImage={page.ogImage} keywords={page.keywords} noindex={true}>
+<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/cases'} ogImage={page.ogImage} keywords={page.keywords} noindex={page.noindex}>
   <Header slot="header" />
 
   <!-- Hero — eyebrow + H1 + 中文章节副标 + 描述段 + 双 CTA -->

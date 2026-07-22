@@ -13,7 +13,7 @@
     "description": "The product center is CMS-driven. Each product supports specs, certifications, downloads, image alt text and SEO metadata."
   },
   "casesSection": {
-    "visible": false,
+    "visible": true,
     "eyebrow": "Cases",
     "title": "Sales-ready references for the U.S. distributor channel.",
     "description": "Each case includes a sales angle, capacity, segment and application — not just a photo gallery.",
