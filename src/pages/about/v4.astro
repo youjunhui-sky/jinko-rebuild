@@ -7,49 +7,58 @@ const stats = [
   { value: '55,000 m²', label: 'Manufacturing Base' },
   { value: '4', label: 'Manufacturing Regions' },
   { value: '6+', label: 'Global Logistics Markets' },
-  { value: '180–720W', label: 'Module Power Coverage' },
+  { value: '180–720W', label: 'Module Power Range' },
 ];
 
 const whoCards = [
-  { num: '01', cn: '标准光伏组件规模制造', en: 'Volume Production' },
-  { num: '02', cn: '非标光伏组件工程开发', en: 'Custom Engineering' },
-  { num: '03', cn: '质量控制与可靠性验证', en: 'Verified Quality' },
-  { num: '04', cn: '场景化系统配置支持', en: 'System Support' },
+  { num: '01', title: 'Standard PV Module Manufacturing', sub: 'Volume Production' },
+  { num: '02', title: 'Custom Module Engineering', sub: 'Custom Engineering' },
+  { num: '03', title: 'Quality Control & Reliability Validation', sub: 'Verified Quality' },
+  { num: '04', title: 'Application-Specific System Support', sub: 'System Support' },
 ];
 
 const mfgSteps = [
-  { num: '01', cn: '工程评估', en: 'Feasibility Review' },
-  { num: '02', cn: '产品试制', en: 'Sample Trial' },
-  { num: '03', cn: '可靠性验证', en: 'Reliability Test' },
-  { num: '04', cn: '批量导入', en: 'Volume Ramp-up' },
+  { num: '01', title: 'Engineering Review' },
+  { num: '02', title: 'Sample Validation' },
+  { num: '03', title: 'Reliable Production' },
+  { num: '04', title: 'Volume Delivery' },
 ];
 
 const qualityTiles = [
-  { cn: 'EL 检测', en: 'EL Testing' },
-  { cn: '实验室级太阳模拟器', en: 'Solar Simulator' },
-  { cn: '高低温交变湿热', en: 'Temperature & Humidity' },
-  { cn: '紫外老化试验', en: 'UV Aging Test' },
-  { cn: '静态机械载荷', en: 'Mechanical Load' },
-  { cn: '耐压与绝缘测试', en: 'Insulation Test' },
+  { title: 'EL Testing', sub: 'Electroluminescence Testing' },
+  { title: 'Solar Simulator Testing', sub: 'I-V Performance Testing' },
+  { title: 'Temperature & Humidity Testing', sub: 'Environmental Reliability' },
+  { title: 'UV Aging Testing', sub: '' },
+  { title: 'Mechanical Load Testing', sub: '' },
+  { title: 'Insulation Resistance Testing', sub: 'Electrical Safety Test' },
 ];
 
 const globalCards = [
-  { cn: '多区域制造基地', en: 'Multi-Region Manufacturing', body: '中国、越南、印度尼西亚、沙特阿拉伯多点制造能力，覆盖不同贸易与物流条件下的稳定交付。' },
-  { cn: '长周期渠道合作', en: 'Long-Term Channel Programs', body: '为分销商与项目客户提供长期合作合约、集中采购规划与稳定的供应节奏。' },
-  { cn: '海外仓储与安装支持', en: 'Overseas Warehousing', body: '美国、英国、德国、澳大利亚、加拿大、日本等地仓储物流网络支持项目导入。' },
+  {
+    title: 'Multi-Region Manufacturing Support',
+    body: 'Production in multiple countries to support global project delivery.',
+  },
+  {
+    title: 'Warehousing & Logistics Network',
+    body: 'Global warehousing and logistics for flexible, efficient fulfillment.',
+  },
+  {
+    title: 'Channel & Project Support',
+    body: 'Dedicated support for distributors and project partners.',
+  },
 ];
 
 const applications = [
-  { cn: '家庭光伏系统', en: 'Residential' },
-  { cn: '房车与移动场景', en: 'RV & Mobile' },
-  { cn: '阳台光伏', en: 'Balcony' },
-  { cn: '离网系统', en: 'Off-Grid' },
-  { cn: '小型商业空间', en: 'Small Commercial' },
+  'Residential PV Systems',
+  'RVs & Mobile Applications',
+  'Balcony Solar',
+  'Off-Grid Buildings',
+  'Small Commercial Systems',
 ];
 
-const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', 'Germany', 'Australia', 'Canada', 'Japan'];
+const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'Germany', 'Australia', 'Canada', 'Japan'];
 ---
-<BaseLayout title="Callsun — PV Module Brand & Manufacturer | About v4" description="Callsun: PV module brand and manufacturer with 55,000 m² manufacturing base, 180–720W standard and custom modules, verified quality, and global supply." canonical="/about/v4" ogImage="/uploads/callsun/about/v4-hero.webp">
+<BaseLayout title="Callsun — PV Module Brand & Manufacturer" description="Callsun is a photovoltaic module brand and manufacturer with 55,000 m² manufacturing base, 180–720W standard and custom modules, verified quality, and global supply." canonical="/about/v4" ogImage="/uploads/callsun/about/v4-hero.webp">
   <Header slot="header" />
 
   <!-- 1. HERO -->
@@ -64,18 +73,15 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
     <div class="relative max-w-content mx-auto px-4 lg:px-6 py-28 lg:py-40">
       <div class="max-w-3xl">
         <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">PV Module Brand & Manufacturer</p>
-        <h1 class="mt-6 text-3xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.1]">
-          光伏组件品牌与制造商
+        <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.1]">
+          Photovoltaic Module<br class="hidden md:inline" /> Brand &amp; Manufacturer
         </h1>
-        <p class="mt-3 text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-jinko-accent leading-tight">
-          Photovoltaic Module Brand & Manufacturer
-        </p>
         <p class="mt-8 text-base md:text-lg text-white/85 leading-relaxed max-w-2xl">
-          Callsun 是一家具备规模化制造能力的光伏组件品牌，专注于标准与非标组件研发、制造与全球合作，为分销商、系统集成商与项目客户提供从产品选型到批量交付的一体化支持。
+          Backed by in-house manufacturing capabilities, we provide photovoltaic modules designed for reliable performance, practical application requirements, and long-term use.
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
-          <a href="#manufacturing" class="inline-flex items-center px-7 py-4 bg-jinko-accent text-jinko-ink font-bold hover:bg-jinko-accent/90 transition">探索制造能力</a>
-          <a href="/contact" class="inline-flex items-center px-7 py-4 border border-white/40 text-white font-bold hover:bg-white/10 transition">详谈项目预算 →</a>
+          <a href="#manufacturing" class="inline-flex items-center px-7 py-4 bg-jinko-accent text-jinko-ink font-bold hover:bg-jinko-accent/90 transition">Explore Our Capabilities</a>
+          <a href="/contact" class="inline-flex items-center px-7 py-4 border border-white/40 text-white font-bold hover:bg-white/10 transition">View Company Profile →</a>
         </div>
       </div>
     </div>
@@ -105,20 +111,20 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
         <div>
           <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Who We Are</p>
           <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
-            让产品更贴近实际空间与长期使用需求
+            Products Built Around Real-World Space and Long-Term Use
           </h2>
         </div>
         <div class="space-y-5 text-jinko-mute leading-relaxed text-base lg:text-lg">
-          <p>Callsun 聚焦于稳定可靠的光伏组件产品线，标准与非标并行，覆盖屋顶、工商业、阳台、离网与移动等多类应用场景。</p>
-          <p>我们围绕组件的电气架构、结构设计、可靠性验证与规模化生产进行长期投入，以工程化的方式满足不同项目对空间、功率与工况的实际要求。</p>
+          <p>Callsun focuses on the development and manufacturing of photovoltaic modules, with products covering both standard PV modules and custom-engineered modules.</p>
+          <p>Our solutions are designed for a wide range of project and application requirements, supporting customers from product selection and engineering evaluation to volume production and delivery.</p>
         </div>
       </div>
       <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {whoCards.map((c) => (
           <div class="border border-jinko-line bg-white p-7 hover:border-jinko-accent transition-colors">
             <p class="text-3xl font-display font-extrabold text-jinko-accent leading-none">{c.num}</p>
-            <h3 class="mt-6 text-lg font-display font-bold text-jinko-ink leading-snug">{c.cn}</h3>
-            <p class="mt-3 text-[11px] uppercase tracking-[0.22em] text-jinko-mute font-semibold">{c.en}</p>
+            <h3 class="mt-6 text-lg font-display font-bold text-jinko-ink leading-snug">{c.title}</h3>
+            <p class="mt-3 text-[11px] uppercase tracking-[0.22em] text-jinko-mute font-semibold">{c.sub}</p>
           </div>
         ))}
       </div>
@@ -139,17 +145,16 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
       <div class="px-6 lg:px-16 py-16 lg:py-24 flex flex-col justify-center">
         <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Manufacturing</p>
         <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">
-          从产品需求，到稳定交付
+          From Product Requirements to Consistent Delivery
         </h2>
         <p class="mt-6 text-white/80 leading-relaxed text-base lg:text-lg max-w-xl">
-          Callsun 依托约 55,000 平方米的制造基地，同时具备标准组件的自动化规模生产能力与非标组件的柔性工程化产线，从工程评估到批量交付形成闭环。
+          We combine automated production for standard PV modules with flexible engineering capabilities for custom modules, supporting reliable manufacturing, consistent quality, and scalable delivery.
         </p>
         <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 border-t border-white/10 pt-8">
           {mfgSteps.map((s) => (
             <div>
               <p class="text-2xl lg:text-3xl font-display font-extrabold text-white leading-none">{s.num}</p>
-              <p class="mt-3 text-sm text-white font-semibold">{s.cn}</p>
-              <p class="mt-1 text-[10px] uppercase tracking-[0.22em] text-white/50 font-semibold">{s.en}</p>
+              <p class="mt-3 text-sm text-white font-semibold leading-snug">{s.title}</p>
             </div>
           ))}
         </div>
@@ -163,43 +168,36 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
       <div class="max-w-3xl">
         <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Product Portfolio</p>
         <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
-          标准组件规模制造，非标组件工程适配
+          Standard PV Modules at Scale. Custom Modules Engineered to Fit.
         </h2>
-        <p class="mt-4 text-[11px] uppercase tracking-[0.22em] text-jinko-mute font-semibold">Standard PV Modules at Scale · Custom Modules Engineered to Fit</p>
       </div>
       <div class="mt-14 grid lg:grid-cols-2 gap-8">
         <!-- Card 1: Standard -->
         <div class="relative bg-white border border-jinko-line p-8 lg:p-10 flex flex-col">
           <span class="absolute left-0 top-0 bottom-0 w-1 bg-jinko-accent"></span>
-          <div class="flex items-baseline gap-3">
-            <h3 class="text-2xl lg:text-3xl font-display font-extrabold text-jinko-ink">标准光伏组件</h3>
-            <p class="text-[11px] uppercase tracking-[0.22em] text-jinko-mute font-semibold">Standard PV Modules</p>
-          </div>
-          <p class="mt-5 text-jinko-mute leading-relaxed">面向屋顶分布式、离网、阳台、小型工商业等主流应用，追求功率密度、批次一致性与规模化交付效率。</p>
+          <h3 class="text-2xl lg:text-3xl font-display font-extrabold text-jinko-ink">Standard PV Modules</h3>
+          <p class="mt-5 text-jinko-mute leading-relaxed">Mass production of high-efficiency modules, with reliable performance and stable output for utility-scale, commercial, and industrial PV projects.</p>
           <div class="mt-8">
             <p class="text-[11px] uppercase tracking-[0.22em] text-jinko-mute font-semibold mb-3">Power Coverage</p>
             <p class="text-2xl lg:text-3xl font-display font-extrabold text-jinko-ink">450W · 580W · 620W · 720W</p>
           </div>
           <div class="mt-8 flex flex-wrap gap-2">
-            <span class="px-4 py-1.5 rounded-full bg-jinko-accent/15 text-jinko-dark text-xs font-bold uppercase tracking-wider">高功率密度</span>
-            <span class="px-4 py-1.5 rounded-full bg-jinko-accent/15 text-jinko-dark text-xs font-bold uppercase tracking-wider">批次一致性</span>
+            <span class="px-4 py-1.5 rounded-full bg-jinko-accent/15 text-jinko-dark text-xs font-bold uppercase tracking-wider">High-Efficiency Cells</span>
+            <span class="px-4 py-1.5 rounded-full bg-jinko-accent/15 text-jinko-dark text-xs font-bold uppercase tracking-wider">Stable Output</span>
           </div>
         </div>
         <!-- Card 2: Custom -->
         <div class="relative bg-white border border-jinko-line p-8 lg:p-10 flex flex-col">
           <span class="absolute left-0 top-0 bottom-0 w-1 bg-jinko-accent"></span>
-          <div class="flex items-baseline gap-3">
-            <h3 class="text-2xl lg:text-3xl font-display font-extrabold text-jinko-ink">非标光伏组件</h3>
-            <p class="text-[11px] uppercase tracking-[0.22em] text-jinko-mute font-semibold">Custom PV Modules</p>
-          </div>
-          <p class="mt-5 text-jinko-mute leading-relaxed">面向长尾场景：房车、船舶、阳台、便携电源、遮阳系统、门窗一体化等。以工程化方法完成尺寸适配与结构对接。</p>
+          <h3 class="text-2xl lg:text-3xl font-display font-extrabold text-jinko-ink">Custom PV Modules</h3>
+          <p class="mt-5 text-jinko-mute leading-relaxed">Flexible customization of size, shape, and performance parameters to support project-specific requirements across voltage, size, mounting, and connector configurations.</p>
           <div class="mt-8">
             <p class="text-[11px] uppercase tracking-[0.22em] text-jinko-mute font-semibold mb-3">Power Coverage</p>
             <p class="text-2xl lg:text-3xl font-display font-extrabold text-jinko-ink">180W · 200W · 215W</p>
           </div>
           <div class="mt-8 flex flex-wrap gap-2">
-            <span class="px-4 py-1.5 rounded-full bg-jinko-accent/15 text-jinko-dark text-xs font-bold uppercase tracking-wider">尺寸适配</span>
-            <span class="px-4 py-1.5 rounded-full bg-jinko-accent/15 text-jinko-dark text-xs font-bold uppercase tracking-wider">结构灵活</span>
+            <span class="px-4 py-1.5 rounded-full bg-jinko-accent/15 text-jinko-dark text-xs font-bold uppercase tracking-wider">Size Customization</span>
+            <span class="px-4 py-1.5 rounded-full bg-jinko-accent/15 text-jinko-dark text-xs font-bold uppercase tracking-wider">Application Fit</span>
           </div>
         </div>
       </div>
@@ -212,18 +210,18 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
       <div class="max-w-3xl">
         <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Verified Quality</p>
         <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
-          可验证的质量，贯穿每个环节
+          Verifiable Quality at Every Stage
         </h2>
         <p class="mt-6 text-jinko-mute leading-relaxed text-base lg:text-lg">
-          Callsun 在自有实验室及产线设置全流程检测：EL 检测、I-V 曲线测量、太阳模拟器、温湿度交变、紫外老化、静态机械载荷、耐压与绝缘等测试，覆盖从来料到成品的关键节点。
+          From cell and material testing to module-level validation, we implement a comprehensive quality control process to ensure product performance, safety, and long-term reliability.
         </p>
       </div>
       <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {qualityTiles.map((t) => (
           <div class="relative bg-jinko-ink p-8 min-h-[160px] flex flex-col justify-between">
             <span class="absolute left-0 right-0 top-0 h-0.5 bg-jinko-accent"></span>
-            <h3 class="text-xl lg:text-2xl font-display font-extrabold text-white leading-snug">{t.cn}</h3>
-            <p class="mt-6 text-[11px] uppercase tracking-[0.22em] text-jinko-accent font-bold">{t.en}</p>
+            <h3 class="text-xl lg:text-2xl font-display font-extrabold text-white leading-snug">{t.title}</h3>
+            {t.sub && <p class="mt-6 text-[11px] uppercase tracking-[0.22em] text-jinko-accent font-bold">{t.sub}</p>}
           </div>
         ))}
       </div>
@@ -236,11 +234,10 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
       <div class="max-w-3xl">
         <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Global Supply</p>
         <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">
-          全球供应，支持长期渠道合作
+          Global Supply for Long-Term Channel Partnerships
         </h2>
-        <p class="mt-4 text-[11px] uppercase tracking-[0.22em] text-white/60 font-semibold">Global Supply for Long-Term Channel Partnerships</p>
         <p class="mt-6 text-white/80 leading-relaxed text-base lg:text-lg">
-          Callsun 通过多区域制造与海外仓储物流网络，覆盖中国、越南、印度尼西亚、沙特阿拉伯的制造能力，并在美国、英国、德国、澳大利亚、加拿大、日本等地建立仓储与项目支持能力。
+          Supported by manufacturing operations in China, Vietnam, Indonesia, and Saudi Arabia, together with overseas warehousing and logistics capabilities across key markets, we provide flexible and efficient delivery support for global customers.
         </p>
       </div>
 
@@ -265,9 +262,8 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
         {globalCards.map((g) => (
           <div class="relative bg-jinko-ink border border-white/15 p-7 lg:p-8">
             <span class="absolute left-0 right-0 top-0 h-0.5 bg-jinko-accent"></span>
-            <h3 class="text-lg font-display font-bold text-white leading-snug">{g.cn}</h3>
-            <p class="mt-2 text-[10px] uppercase tracking-[0.22em] text-jinko-accent font-bold">{g.en}</p>
-            <p class="mt-5 text-sm text-white/75 leading-relaxed">{g.body}</p>
+            <h3 class="text-lg font-display font-bold text-white leading-snug">{g.title}</h3>
+            <p class="mt-4 text-sm text-white/75 leading-relaxed">{g.body}</p>
           </div>
         ))}
       </div>
@@ -281,18 +277,17 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
         <div>
           <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Real-World Applications</p>
           <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
-            从可靠组件，到真实应用
+            From Reliable Modules to Real-World Applications
           </h2>
         </div>
         <p class="text-jinko-mute leading-relaxed text-base lg:text-lg lg:text-right">
-          屋顶分布式、阳台、离网与移动、小型工商业等场景，Callsun 组件均以稳定、可控、可安装的方式落地。
+          Our modules serve diverse installation environments and support reliable, stable, and durable power generation across a wide range of applications.
         </p>
       </div>
       <div class="mt-14 grid gap-4 md:grid-cols-3 lg:grid-cols-5">
         {applications.map((a) => (
-          <div class="bg-white border border-jinko-line p-6 lg:p-7 hover:border-jinko-accent hover:-translate-y-0.5 transition">
-            <h3 class="text-lg lg:text-xl font-display font-bold text-jinko-ink leading-snug">{a.cn}</h3>
-            <p class="mt-3 text-[10px] uppercase tracking-[0.22em] text-jinko-mute font-semibold">{a.en}</p>
+          <div class="bg-white border border-jinko-line p-6 lg:p-7 hover:border-jinko-accent hover:-translate-y-0.5 transition min-h-[110px] flex items-center">
+            <h3 class="text-lg lg:text-xl font-display font-bold text-jinko-ink leading-snug">{a}</h3>
           </div>
         ))}
       </div>
@@ -311,14 +306,11 @@ const markets = ['China', 'Vietnam', 'Indonesia', 'Saudi Arabia', 'USA', 'UK', '
         </div>
         <div>
           <p class="text-lg lg:text-xl font-display font-bold text-jinko-accent leading-snug">
-            基于先进制造和可验证的品质，让有限空间产生更多能源价值。
-          </p>
-          <p class="mt-2 text-[11px] uppercase tracking-[0.22em] text-white/50 font-semibold">
-            Built on Advanced Manufacturing and Verified Quality.
+            Built on Advanced Manufacturing and Verified Quality, Creating More Energy Value per Square Meter.
           </p>
         </div>
         <a href="/contact" class="inline-flex items-center px-7 py-4 bg-jinko-accent text-jinko-ink font-bold hover:bg-jinko-accent/90 transition whitespace-nowrap">
-          讨论您的项目与场景需求 →
+          Discuss Your Project Requirements →
         </a>
       </div>
     </div>
