@@ -1,0 +1,144 @@
+{
+  "name": "720W N-Type Bifacial Dual-Glass Solar Module",
+  "h1": "720W N-Type Bifacial Dual-Glass Solar Module",
+  "slug": "720w-n-type-solar-module",
+  "category": "standard-module",
+  "model": "CN720W",
+  "tagline": "More Power for High-Capacity Solar Projects. The Callsun CN720W combines high-power N-type cells, bifacial energy generation, and a durable dual-glass structure in a module engineered for utility-scale, commercial, and large distributed solar projects. With up to 720W of front-side power and 23.18% module efficiency, it helps increase installed capacity while supporting efficient system design and long-term energy generation.",
+  "tech": "N-type bifacial monocrystalline silicon (210×105mm wafer) · 132 half-cut cells (6×11×2) · 2.0+2.0mm dual-glass construction · IP68 junction box with 3 bypass diodes · Fire Class C · 1500V DC max system voltage",
+  "certifications": [
+    "IEC 61215",
+    "IEC 61730",
+    "ISO 9001:2023",
+    "ISO 14001:2023",
+    "ISO 45001:2023"
+  ],
+  "image": "/uploads/callsun/products/720w/front-back.jpg",
+  "cardImage": "/uploads/callsun/products/720w/card-square.jpg",
+  "cardImageAspectRatio": "1",
+  "imageAlt": "Callsun CN720W N-Type bifacial dual-glass 720W solar module front view on white background with visible half-cut cell grid and anodized aluminum frame",
+  "description": "The Callsun CN720W is an N-type bifacial dual-glass module designed for projects that require higher installed capacity, reliable electrical performance, and long-term durability. Its 132-cell architecture built on 210mm wafers delivers up to 720W of rated power, while the bifacial design allows the rear side to capture reflected and diffused light for additional energy generation under suitable installation conditions. The 2.0 mm front and rear heat-strengthened glass construction provides balanced protection for the cells, helping the module withstand long-term outdoor exposure and demanding operating environments. Built for B2B distributors, EPC installers and utility-scale IPPs who need maximum power density, IEC-certified supply and a 30-year linear power warranty.",
+  "specs": [
+    { "label": "Maximum Power at STC (Pmax)", "value": "720W", "group": "Electrical" },
+    { "label": "Maximum Power Voltage at STC (Vmp)", "value": "41.03V", "group": "Electrical" },
+    { "label": "Maximum Power Current at STC (Imp)", "value": "17.55A", "group": "Electrical" },
+    { "label": "Open-circuit Voltage at STC (Voc)", "value": "49.28V", "group": "Electrical" },
+    { "label": "Short-circuit Current at STC (Isc)", "value": "18.55A", "group": "Electrical" },
+    { "label": "Module Efficiency", "value": "23.18%", "group": "Performance" },
+    { "label": "Operating Temperature", "value": "-40°C ~ +85°C", "group": "Performance" },
+    { "label": "Nominal Operating Cell Temperature (NOCT)", "value": "45°C ± 2°C", "group": "Performance" },
+    { "label": "Temperature Coefficient of Pmax", "value": "-0.35%/°C", "group": "Performance" },
+    { "label": "Temperature Coefficient of Voc", "value": "-0.275%/°C", "group": "Performance" },
+    { "label": "Temperature Coefficient of Isc", "value": "+0.045%/°C", "group": "Performance" },
+    { "label": "Bifaciality Factor", "value": "80% ± 5%", "group": "Performance" },
+    { "label": "First-Year Degradation", "value": "1%", "group": "Performance" },
+    { "label": "Cell Type", "value": "N-type Mono-crystalline silicon, 210×105mm", "group": "Mechanical" },
+    { "label": "Cell Arrangement", "value": "132 cells (6×11×2) half-cut", "group": "Mechanical" },
+    { "label": "Dimensions", "value": "2384 × 1303 × 33 mm (±2mm L/W, ±1mm H)", "group": "Mechanical" },
+    { "label": "Weight", "value": "37.9 kg", "group": "Mechanical" },
+    { "label": "Front Glass", "value": "2.0 mm AR-Coating Heat-Strengthened Glass", "group": "Mechanical" },
+    { "label": "Back Glass", "value": "2.0 mm Heat-Strengthened Glass", "group": "Mechanical" },
+    { "label": "Frame", "value": "Anodized Aluminium Alloy", "group": "Mechanical" },
+    { "label": "Junction Box", "value": "IP68, 3 Bypass Diodes", "group": "Mechanical" },
+    { "label": "Cable Length", "value": "300 mm", "group": "Mechanical" },
+    { "label": "Fire Performance", "value": "Class C", "group": "Mechanical" },
+    { "label": "Maximum System Voltage", "value": "1500V DC", "group": "System" },
+    { "label": "Maximum Series Fuse Rating", "value": "35A", "group": "System" },
+    { "label": "Power Tolerance", "value": "0 ~ +3%", "group": "System" },
+    { "label": "Packaging Configuration", "value": "40'HQ · 33 pcs/pallet × 18 pallets = 594 pcs/cabinet", "group": "Logistics" },
+    { "label": "Output Commitment", "value": "87.4% output at year 30 (1% first-year + linear degradation thereafter)", "group": "Warranty" }
+  ],
+  "benefits": [
+    {
+      "title": "N-Type Cell Technology",
+      "description": "N-type monocrystalline cells offer lower light-induced degradation and better low-light response, helping the module maintain stable energy generation throughout its operating life. Lower degradation and reliable power generation over the full 30-year module lifetime translate directly into more bankable long-term yield for project developers and asset owners."
+    },
+    {
+      "title": "Bifacial Energy Gain",
+      "description": "The bifacial cell architecture generates electricity from both the front and rear sides of the module. When installed above reflective surfaces or in optimized system configurations, rear-side irradiance can contribute additional energy yield. With a bifaciality factor of 80% ± 5%, the CN720W is designed to make better use of available sunlight across a wider range of project environments—supporting additional energy generation in optimized installations."
+    },
+    {
+      "title": "720W High-Power Output",
+      "description": "Delivering up to 720W of rated output with 23.18% module efficiency, the CN720W enables more installed capacity per module. Its high-power design can help reduce the number of modules required for a target system capacity, potentially simplifying array layout, mounting structure requirements, cabling, and installation planning—so higher power per module supports efficient system design and project deployment."
+    },
+    {
+      "title": "Durable Dual-Glass Structure",
+      "description": "The CN720W features 2.0 mm AR-coated heat-strengthened front glass and 2.0 mm heat-strengthened rear glass. The symmetrical dual-glass construction provides enhanced protection against moisture ingress, mechanical stress, and long-term environmental exposure, while supporting stable performance throughout the module lifecycle. Balanced 2.0 mm front and rear heat-strengthened glass provides long-term cell protection."
+    },
+    {
+      "title": "Designed for 1500V PV Systems",
+      "description": "With a maximum system voltage of 1500V and a maximum series fuse rating of 35A, the CN720W is designed to support modern high-capacity PV system architectures. An IP68-rated junction box, three bypass diodes, and an anodized aluminum alloy frame provide the electrical protection and structural reliability required for professional project deployment—engineered for utility-scale and commercial solar applications."
+    },
+    {
+      "title": "Wide Operating Temperature Range",
+      "description": "The CN720W is designed to operate across a temperature range of -40°C to +85°C. Its N-type cells, dual-glass construction, IP68-rated junction box, and anodized aluminum frame work together to support stable operation across a wide range of outdoor project environments—from arid desert climates to cold high-altitude installations, delivering reliable performance across demanding operating conditions."
+    }
+  ],
+  "applications": [
+    "Utility-Scale Solar Farm",
+    "Large Commercial & Industrial Rooftop",
+    "Ground-Mounted Distributed Generation",
+    "High-Capacity Project Deployment"
+  ],
+  "heroBanners": [
+    {
+      "src": "/uploads/callsun/products/720w/hero-01.jpg",
+      "alt": "Utility-scale solar farm at sunrise with rows of Callsun CN720W N-type bifacial 720W modules stretching to horizon in golden light",
+      "caption": "N-Type Cell Technology"
+    },
+    {
+      "src": "/uploads/callsun/products/720w/hero-02.jpg",
+      "alt": "Bifacial ground-mounted solar array at golden hour showing rear-side light gain from ground reflection illuminating the CN720W module underside",
+      "caption": "Bifacial Energy Gain"
+    },
+    {
+      "src": "/uploads/callsun/products/720w/hero-03.jpg",
+      "alt": "Large-scale desert solar installation at high noon with CN720W high-power 720W modules under intense sunlight demonstrating high-capacity system design",
+      "caption": "720W High-Power Output"
+    },
+    {
+      "src": "/uploads/callsun/products/720w/hero-04.jpg",
+      "alt": "Extreme macro close-up of Callsun CN720W N-type monocrystalline solar cell surface showing multi-busbar grid lines on deep navy silicon",
+      "caption": "Durable Dual-Glass Structure"
+    },
+    {
+      "src": "/uploads/callsun/products/720w/hero-05.jpg",
+      "alt": "Exploded cross-section 3D illustration of CN720W dual-glass module: 2.0mm AR-coated front glass, EVA, N-type cells, EVA, 2.0mm rear heat-strengthened glass",
+      "caption": "1500V System Design"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Callsun CN720W N-Type Bifacial Dual-Glass Datasheet (V1.0, July 2026)",
+      "url": "/uploads/callsun/products/720w/CN720W-datasheet.pdf"
+    }
+  ],
+  "relatedSolutions": [
+    "grid-tied-12kw-28kwh",
+    "off-grid-6-5kw-10kwh",
+    "off-grid-10kw-14kwh"
+  ],
+  "relatedCases": [
+    "cheng-da-iii-3-5mw",
+    "auto-dealership-800kw",
+    "solar-storage-microgrid-100kw-215kwh"
+  ],
+  "warranty": "25-year product material and workmanship warranty; 30-year linear power performance guarantee (87.4% output at year 30; 1% first-year degradation + linear thereafter).",
+  "order": 26,
+  "featured": true,
+  "noindex": true,
+  "seoTitle": "720W N-Type Bifacial Dual-Glass Solar Module | High-Capacity Utility & Commercial | Callsun",
+  "metaDescription": "Callsun CN720W 720W N-type bifacial dual-glass solar module with 23.18% efficiency, 132 half-cut cells built on 210×105mm wafers, 2.0+2.0mm dual-glass, 1500V DC max system voltage, 35A fuse rating, IP68 junction box, 25-year product + 30-year linear power warranty (87.4% at year 30). IEC 61215/61730 + ISO 9001/14001/45001 certified for utility-scale and large commercial solar projects.",
+  "keywords": [
+    "720w solar module",
+    "n type bifacial solar panel",
+    "dual glass solar module",
+    "high power solar panel",
+    "utility scale solar module",
+    "132 half cut cell module",
+    "210mm wafer solar module",
+    "1500v dc solar module",
+    "iec 61215 61730 solar",
+    "callsun cn720w"
+  ]
+}

@@ -10,7 +10,7 @@ import { SITE } from '@/data/site';
 
 const homepageEntries = await getCollection('homepage');
 const home = homepageEntries[0].data;
-const products = (await getCollection('products')).map(p => p.data).sort((a,b)=>a.order-b.order).slice(0, 6);
+const products = (await getCollection('products')).map(p => p.data).sort((a,b)=>a.order-b.order).slice(0, 8);
 
 const productCards = products.map(p => ({ title: p.name, description: p.tagline, href: `/products/${p.slug}`, eyebrow: p.model || p.category, image: p.cardImage || p.image, imageAspectRatio: p.cardImageAspectRatio }));
 

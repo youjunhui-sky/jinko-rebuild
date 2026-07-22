@@ -55,13 +55,14 @@ const buildStandard = (p) => {
     subtitle,
   };
 };
-const activeStandard = Object.fromEntries(allStandard.filter((p) => ['450w-double-glass-solar-module', '580w-n-type-solar-module', '620w-n-type-solar-module'].includes(p.slug)).map((p) => [p.slug, buildStandard(p)]));
+const activeStandard = Object.fromEntries(allStandard.filter((p) => ['450w-double-glass-solar-module', '580w-n-type-solar-module', '620w-n-type-solar-module', '720w-n-type-solar-module'].includes(p.slug)).map((p) => [p.slug, buildStandard(p)]));
 
 const skuCards = [
   placeholderSkus[0],
   activeStandard['450w-double-glass-solar-module'],
   activeStandard['580w-n-type-solar-module'],
   activeStandard['620w-n-type-solar-module'],
+  activeStandard['720w-n-type-solar-module'],
   activeMap['180w-custom-solar-module'],
   activeMap['200w-custom-solar-module'],
   activeMap['215w-custom-solar-module'],
@@ -80,8 +81,8 @@ const productIndexSchema = {
 };
 ---
 <BaseLayout
-  title="Custom & Standard N-Type TOPCon Solar Module Series | CN120W / CN180W / CN200W / CN215W / CN275W / CN450W / CN580W / CN620W | Callsun"
-  description="Callsun custom N-type TOPCon solar modules for RV, marine, off-grid, 12V battery systems, commercial rooftops and utility-scale farms. Anti-shading 4-zone, dual-cell parallel, 620W bifacial double-glass, IP68, 25-year linear power warranty. 120W-620W output range."
+  title="Custom & Standard N-Type TOPCon Solar Module Series | CN120W / CN180W / CN200W / CN215W / CN275W / CN450W / CN580W / CN620W / CN720W | Callsun"
+  description="Callsun custom N-type TOPCon solar modules for RV, marine, off-grid, 12V battery systems, commercial rooftops and utility-scale farms. Anti-shading 4-zone, dual-cell parallel, 720W bifacial dual-glass, IP68, 25-year linear power warranty. 120W-720W output range."
   canonical="/products/"
   keywords={['custom solar module', 'n type topcon solar panel', 'rv solar module', 'marine solar panel', 'off-grid solar', '120w solar', '180w solar panel', '275w solar module', 'solar module products']}
   schema={productIndexSchema}
@@ -97,7 +98,7 @@ const productIndexSchema = {
   <section class="bg-jinko text-white">
     <div class="max-w-content mx-auto px-4 lg:px-6 pt-5 pb-4 lg:pt-6 lg:pb-5">
       <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-        <p class="flex-1 min-w-0 text-sm lg:text-base text-white/75 leading-relaxed max-w-4xl">We offer a full-range solar module portfolio covering 450W–620W high-power standard modules and 180W–215W customized modules, serving utility, commercial &amp; industrial, and residential applications with consistent quality and stable delivery.</p>
+        <p class="flex-1 min-w-0 text-sm lg:text-base text-white/75 leading-relaxed max-w-4xl">We offer a full-range solar module portfolio covering 450W–720W high-power standard modules and 180W–215W customized modules, serving utility, commercial &amp; industrial, and residential applications with consistent quality and stable delivery.</p>
         <div class="flex gap-3 shrink-0">
           <a href="/contact" data-track-click="series_inquiry_button" class="px-5 py-2.5 rounded bg-white/10 ring-1 ring-white/30 text-white font-semibold text-sm hover:bg-white/20 transition">Request a Quote</a>
           <a href="#sku-grid" class="px-5 py-2.5 rounded ring-1 ring-white/30 text-white font-semibold text-sm hover:bg-white/10 transition">View SKUs</a>
@@ -109,7 +110,7 @@ const productIndexSchema = {
   <!-- 3. SKU 宽图段（仿 jinko eagle-modules EAGLE G7 段视觉：白底 + 左产品图 + 右 h1 + 描述 + 整段是链接） -->
   <!-- 2026-06-12 10:37 东家：product 页面除 CN180W 外还要展示 450W -->
   {(() => {
-    const visibleSkus = skuCards.filter((p) => ['CN180W', 'CN200W', 'CN215W', 'CN450W', 'CN580W', 'CN620W'].includes(p.model));
+    const visibleSkus = skuCards.filter((p) => ['CN180W', 'CN200W', 'CN215W', 'CN450W', 'CN580W', 'CN620W', 'CN720W'].includes(p.model));
     return visibleSkus.map((p, i) => {
     const wideImgMap = {
       'CN180W': '/uploads/callsun/products/180w/hero-05.jpg',
@@ -118,6 +119,7 @@ const productIndexSchema = {
       'CN450W': '/uploads/callsun/products/450w/01-front.jpg',
       'CN580W': '/uploads/callsun/products/580w/front-back.jpg',
       'CN620W': '/uploads/callsun/products/620w/front-back.jpg',
+      'CN720W': '/uploads/callsun/products/720w/front-back.jpg',
     };
     const wideImg = wideImgMap[p.model] || p.image;
     const wideHref = p.hasDetail ? `/products/${p.slug}` : '/contact';
