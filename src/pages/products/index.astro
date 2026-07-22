@@ -1,178 +1,158 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import ContactCTA from '@/components/ContactCTA.astro';
-import SectionHeader from '@/components/SectionHeader.astro';
 import { SITE } from '@/data/site';
 
-const allCustom = (await getCollection('products'))
-  .filter((p) => p.data.category === 'custom-module')
-  .map((p) => p.data);
-const allStandard = (await getCollection('products'))
-  .filter((p) => p.data.category === 'standard-module')
-  .map((p) => p.data);
-
-// 5 SKU 卡片 = CN120W / CN450W / CN180W / CN200W / CN215W（2026-06-17 东家加 215W 进 L1）—— 580W/620W 是 standard-module 单独总览页不混在这里
-// 120W / 275W 东家挂起暂不建 .json（产品 .json 不存在） → 占位数据从 PDF p7 表格 hardcode
-// 180W / 200W 从 collection 拉真实数据
-const placeholderSkus = [
-  { slug: 'cn120w-solar-panel', model: 'CN120W', name: '120W Custom N-Type TOPCon Solar Module', image: '/placeholders/solar-panel.svg', imageAlt: 'Callsun CN120W 120W custom N-type TOPCon solar module placeholder', pmax: '120W', cellEff: '25%', ipRating: 'IP68', dimensions: '1100 × 578 × 30 mm', hasDetail: false },
-  { slug: 'cn275w-solar-panel', model: 'CN275W', name: '275W Custom N-Type TOPCon Solar Module', image: '/placeholders/solar-panel.svg', imageAlt: 'Callsun CN275W 275W custom N-type TOPCon solar module placeholder', pmax: '275W', cellEff: '25%', ipRating: 'IP68', dimensions: '1736 × 766 × 35 mm', hasDetail: false },
+const categories = [
+  {
+    slug: 'standard-modules',
+    label: 'Standard Modules',
+    tag: 'High-Power · Utility & Commercial',
+    title: 'High-Power Bifacial Modules',
+    range: '450W – 720W',
+    lineup: 'CN450W · CN580W · CN620W · CN720W',
+    description: 'Bifacial dual-glass N-type TOPCon modules engineered for commercial rooftops, industrial installations and utility-scale solar farms. Up to 23.18% module efficiency and 30-year linear power warranty.',
+    features: [
+      'Up to 23.18% module efficiency',
+      'Bifacial dual-glass 2.0+2.0mm construction',
+      '1500V DC system voltage',
+      '30-year linear power warranty (87.4% at year 30)',
+    ],
+    image: '/uploads/callsun/products/720w/front-back.jpg',
+    imageAlt: 'Callsun standard N-type bifacial dual-glass solar module lineup',
+    href: '/products/standard-modules/',
+    ctaLabel: 'Explore Standard Modules',
+  },
+  {
+    slug: 'custom-modules',
+    label: 'Custom Modules',
+    tag: 'Compact · RV, Marine & 12V',
+    title: 'Compact Modules for Off-Grid & Mobility',
+    range: '180W – 215W',
+    lineup: 'CN180W · CN200W · CN215W',
+    description: 'Compact N-type TOPCon modules with anti-shading circuits and dual-cell parallel design. Engineered for RVs, boats, off-grid battery systems and portable power stations that demand reliability under partial shade and complex conditions.',
+    features: [
+      'Anti-shading 4-zone independent circuit',
+      'TwinCell / dual-cell parallel design',
+      'High current output for 12V battery systems',
+      'IP68, ultra-slim all-terrain frame',
+    ],
+    image: '/uploads/callsun/products/215w/front-back.jpg',
+    imageAlt: 'Callsun custom N-type solar module lineup for RV, marine and 12V systems',
+    href: '/products/custom-modules/',
+    ctaLabel: 'Explore Custom Modules',
+  },
 ];
-const buildFromJson = (p) => {
-  const getSpec = (re) => p.specs.find((s) => re.test(s.label))?.value || '';
-  return {
-    slug: p.slug,
-    model: p.model,
-    name: p.name,
-    image: p.image,
-    imageAlt: p.imageAlt,
-    pmax: getSpec(/Pmax/i),
-    cellEff: getSpec(/Cell Efficiency/i),
-    ipRating: getSpec(/IP Rating/i),
-    dimensions: getSpec(/Dimensions/i),
-    hasDetail: true,
-  };
-};
-const activeMap = Object.fromEntries(allCustom.filter((p) => ['180w-custom-solar-module', '200w-custom-solar-module', '215w-custom-solar-module'].includes(p.slug)).map((p) => [p.slug, buildFromJson(p)]));
 
-const buildStandard = (p) => {
-  const getSpec = (re) => p.specs.find((s) => re.test(s.label))?.value || '';
-  const subtitle = p.model === 'CN450W' ? 'Double Glass Module' : p.model === 'CN580W' ? 'N-Type Bifacial Module' : p.model === 'CN620W' ? 'N-Type Bifacial Module' : 'Standard Module';
-  return {
-    slug: p.slug,
-    model: p.model,
-    name: p.name,
-    image: p.image,
-    imageAlt: p.imageAlt,
-    pmax: getSpec(/Pmax/i),
-    cellEff: getSpec(/Cell Efficiency|Module Efficiency/i),
-    ipRating: getSpec(/IP Rating|Junction Box/i) || 'IP68',
-    dimensions: getSpec(/Dimensions/i),
-    hasDetail: true,
-    subtitle,
-  };
-};
-const activeStandard = Object.fromEntries(allStandard.filter((p) => ['450w-double-glass-solar-module', '580w-n-type-solar-module', '620w-n-type-solar-module', '720w-n-type-solar-module'].includes(p.slug)).map((p) => [p.slug, buildStandard(p)]));
-
-const skuCards = [
-  placeholderSkus[0],
-  activeStandard['450w-double-glass-solar-module'],
-  activeStandard['580w-n-type-solar-module'],
-  activeStandard['620w-n-type-solar-module'],
-  activeStandard['720w-n-type-solar-module'],
-  activeMap['180w-custom-solar-module'],
-  activeMap['200w-custom-solar-module'],
-  activeMap['215w-custom-solar-module'],
-].filter(Boolean);
-
-const productIndexSchema = {
+const productHubSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Callsun Custom Module Series',
-  itemListElement: skuCards.map((s, i) => ({
+  name: 'Callsun Solar Module Categories',
+  itemListElement: categories.map((c, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    name: s.model,
-    url: new URL(`/products/${s.slug}`, SITE.domain).href,
+    name: c.label,
+    url: new URL(c.href, SITE.domain).href,
   })),
 };
 ---
 <BaseLayout
-  title="Custom & Standard N-Type TOPCon Solar Module Series | CN120W / CN180W / CN200W / CN215W / CN275W / CN450W / CN580W / CN620W / CN720W | Callsun"
-  description="Callsun custom N-type TOPCon solar modules for RV, marine, off-grid, 12V battery systems, commercial rooftops and utility-scale farms. Anti-shading 4-zone, dual-cell parallel, 720W bifacial dual-glass, IP68, 25-year linear power warranty. 120W-720W output range."
+  title="Solar Modules | Standard 450W–720W & Custom 180W–215W | Callsun"
+  description="Callsun N-type TOPCon solar module portfolio. Standard Modules (450W, 580W, 620W, 720W) for commercial and utility solar. Custom Modules (180W, 200W, 215W) for RV, marine and 12V battery systems."
   canonical="/products/"
-  keywords={['custom solar module', 'n type topcon solar panel', 'rv solar module', 'marine solar panel', 'off-grid solar', '120w solar', '180w solar panel', '275w solar module', 'solar module products']}
-  schema={productIndexSchema}
+  keywords={['solar modules', 'n type topcon solar', 'standard solar module', 'custom solar module', 'utility solar module', 'rv solar panel']}
+  schema={productHubSchema}
 >
   <Header slot="header" />
 
-  <!-- 1. Hero 大场景图 — 纯图片，突出视觉冲击 -->
-  <section class="relative h-[520px] md:h-[640px] lg:h-[760px] overflow-hidden">
+  <!-- 1. Hero 大场景图 -->
+  <section class="relative h-[520px] md:h-[640px] lg:h-[720px] overflow-hidden">
     <img src="/uploads/callsun/products/180w/hero-04.jpg" alt="Callsun CN series bifacial modules installed on white boat deck with deep blue sea" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-r from-jinko-ink/70 via-jinko-ink/40 to-transparent"></div>
+    <div class="relative h-full flex items-center">
+      <div class="max-w-content mx-auto px-4 lg:px-6 w-full">
+        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Product Portfolio</p>
+        <h1 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-tight max-w-3xl">
+          N-Type TOPCon Solar Modules for <span class="text-jinko-accent">Every Application</span>
+        </h1>
+        <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-2xl">
+          Choose from two module lineups engineered for distinct application needs — high-power standard modules for commercial and utility solar, or compact custom modules for RV, marine and 12V systems.
+        </p>
+      </div>
+    </div>
   </section>
 
-  <!-- 2. Product Info Strip — 段落 + 按钮 -->
+  <!-- 2. Info Strip -->
   <section class="bg-jinko text-white">
     <div class="max-w-content mx-auto px-4 lg:px-6 pt-5 pb-4 lg:pt-6 lg:pb-5">
       <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-        <p class="flex-1 min-w-0 text-sm lg:text-base text-white/75 leading-relaxed max-w-4xl">We offer a full-range solar module portfolio covering 450W–720W high-power standard modules and 180W–215W customized modules, serving utility, commercial &amp; industrial, and residential applications with consistent quality and stable delivery.</p>
+        <p class="flex-1 min-w-0 text-sm lg:text-base text-white/75 leading-relaxed max-w-4xl">We offer a full-range solar module portfolio — 450W–720W high-power standard modules and 180W–215W customized modules — serving utility, commercial & industrial, and residential applications with consistent quality and stable global delivery.</p>
         <div class="flex gap-3 shrink-0">
-          <a href="/contact" data-track-click="series_inquiry_button" class="px-5 py-2.5 rounded bg-white/10 ring-1 ring-white/30 text-white font-semibold text-sm hover:bg-white/20 transition">Request a Quote</a>
-          <a href="#sku-grid" class="px-5 py-2.5 rounded ring-1 ring-white/30 text-white font-semibold text-sm hover:bg-white/10 transition">View SKUs</a>
+          <a href="/contact" data-track-click="portfolio_inquiry" class="px-5 py-2.5 rounded bg-white/10 ring-1 ring-white/30 text-white font-semibold text-sm hover:bg-white/20 transition">Request a Quote</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. SKU 宽图段（仿 jinko eagle-modules EAGLE G7 段视觉：白底 + 左产品图 + 右 h1 + 描述 + 整段是链接） -->
-  <!-- 2026-06-12 10:37 东家：product 页面除 CN180W 外还要展示 450W -->
-  {(() => {
-    const visibleSkus = skuCards.filter((p) => ['CN180W', 'CN200W', 'CN215W', 'CN450W', 'CN580W', 'CN620W', 'CN720W'].includes(p.model));
-    return visibleSkus.map((p, i) => {
-    const wideImgMap = {
-      'CN180W': '/uploads/callsun/products/180w/hero-05.jpg',
-      'CN200W': '/uploads/callsun/products/200w/front-back.jpg',
-      'CN215W': '/uploads/callsun/products/215w/front-back.jpg',
-      'CN450W': '/uploads/callsun/products/450w/01-front.jpg',
-      'CN580W': '/uploads/callsun/products/580w/front-back.jpg',
-      'CN620W': '/uploads/callsun/products/620w/front-back.jpg',
-      'CN720W': '/uploads/callsun/products/720w/front-back.jpg',
-    };
-    const wideImg = wideImgMap[p.model] || p.image;
-    const wideHref = p.hasDetail ? `/products/${p.slug}` : '/contact';
-    return (
-      <a href={wideHref} class="block group">
-        <section class="bg-white text-jinko-ink py-16 lg:py-24 border-y border-jinko-line">
-          <div class="max-w-content mx-auto px-4 lg:px-6">
-            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-              <div class="flex justify-center order-1">
-                <img src={wideImg} alt={p.imageAlt || p.name} class="max-h-[480px] w-auto object-contain" loading="lazy" />
-              </div>
-              <div class="order-2">
-                <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">SKU {i + 1} of {visibleSkus.length} · {p.pmax}</p>
-                <h2 class="mt-3 text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-tight">
-                  {p.model} <span class="text-jinko-accent">{p.subtitle || 'Custom Module'}</span>
-                </h2>
-                <p class="mt-6 text-lg text-jinko-mute leading-relaxed max-w-2xl">{p.model === 'CN180W' ? "High-Current. Ultra-Slim. All-Terrain. Our commercial-grade TOPCon solar modules deliver a high output of 180W. Featuring a unique dual-cell parallel design, they ensure uninterrupted energy yields even under complex conditions—whether it's shading, high temperatures, or narrow spaces." : p.model === 'CN200W' ? "High-Output 200W with TwinCell Anti-Shade. Our commercial-grade N-Type 16BB solar module delivers 200W with up to 25% efficiency and innovative TwinCell parallel design for uninterrupted, double-sided energy yields under shading, scorching heat, or narrow spaces." : p.model === 'CN215W' ? "Anti-Shading 215W with 4-Zone Independent Design. Boasting over 25% efficiency and a unique 4-zone independent circuit layout, the CN215W keeps Vmp rock-solid even under partial shade—retaining 75% more power when obstructed. Capturing an extra 7-30% of reflected light from the backside, it perfectly matches 12V systems and major portable power stations." : p.model === 'CN450W' ? "The CN450W series modules feature our latest N-type monocrystalline cell technology, delivering an impressive module efficiency of 22.52%. As a high-efficiency bifacial double-glass module, it not only provides industry-leading power output but also significantly enhances long-term energy performance and system reliability, making it the ideal choice for your commercial and industrial solar projects." : p.model === 'CN580W' ? "Industrial-Grade 580W Bifacial Double-Glass Module. The CN580W combines premium N-type monocrystalline cells with 2.0+2mm dual-glass construction to deliver 580W output at 22.45% efficiency. Built for commercial rooftops, industrial projects and utility-scale deployments with a 30-year linear power warranty (87.4% output at year 30)." : p.model === 'CN620W' ? "Next-Pinnacle 620W Bifacial Double-Glass Module. The CN620W achieves a record-high 22.95% module efficiency with 132-cell high-density architecture and an exceptional -0.28%/°C temperature coefficient. Built for utility-scale solar farms and large industrial projects with a 30-year linear power warranty (87.4% at year 30)." : p.name}</p>
-                <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-jinko-mute max-w-md">
-                  <li><span class="text-jinko-ink font-semibold">Pmax</span> {p.pmax}</li>
-                  <li><span class="text-jinko-ink font-semibold">Cell Eff</span> {p.cellEff}</li>
-                  <li><span class="text-jinko-ink font-semibold">IP</span> {p.ipRating}</li>
-                  <li><span class="text-jinko-ink font-semibold">Size</span> {p.dimensions}</li>
-                </ul>
-                <p class="mt-8 text-jinko font-semibold text-lg group-hover:text-jinko-accent group-hover:underline inline-flex items-center gap-2">
-                  {p.hasDetail ? 'Learn More' : 'Coming Soon · Contact Us'}
-                  <span aria-hidden="true">→</span>
-                </p>
-              </div>
+  <!-- 3. 两大分类入口卡 -->
+  <section class="py-20 lg:py-24 bg-white">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <div class="max-w-2xl mb-12 lg:mb-16">
+        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Explore by Category</p>
+        <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">Two Lineups. One Standard of Quality.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
+        {categories.map((c) => (
+          <a href={c.href} class="group block bg-white border border-jinko-line hover:border-jinko-accent transition-all overflow-hidden">
+            <div class="aspect-[4/3] overflow-hidden bg-jinko-bg flex items-center justify-center p-8">
+              <img src={c.image} alt={c.imageAlt} class="max-h-full w-auto object-contain group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
-          </div>
-        </section>
-      </a>
-    );
-    });
-  })()}
+            <div class="p-8 lg:p-10 border-t border-jinko-line">
+              <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">{c.tag}</p>
+              <h3 class="mt-3 text-3xl lg:text-4xl font-display font-extrabold text-jinko-ink leading-tight">{c.label}</h3>
+              <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="inline-block px-4 py-1.5 bg-jinko-accent text-white font-bold text-sm rounded">{c.range}</span>
+                <span class="text-sm text-jinko-mute font-semibold">{c.lineup}</span>
+              </div>
+              <p class="mt-5 text-jinko-mute leading-relaxed">{c.description}</p>
+              <ul class="mt-6 space-y-2">
+                {c.features.map((f) => (
+                  <li class="flex items-start gap-3 text-sm text-jinko-mute">
+                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-jinko-accent flex-shrink-0"></span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-8 text-jinko font-bold uppercase tracking-wider text-sm group-hover:text-jinko-accent inline-flex items-center gap-2">
+                {c.ctaLabel}
+                <span aria-hidden="true">→</span>
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <!-- 4. 3 通用 section（仿 jinko eagle-modules 底部 QUALITY / SERVICE | SUPPORT / DOWNLOADS | DOCUMENTS） -->
+  <!-- 4. Quality / Service / Downloads 3 通用卡 -->
   <section class="py-16 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6 grid md:grid-cols-3 gap-6">
       <div class="rounded-2xl bg-white border border-jinko-line p-7">
         <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Quality</p>
-        <h2 class="mt-2 text-2xl font-display font-extrabold">Tested &amp; validated</h2>
-        <p class="mt-4 text-jinko-mute leading-relaxed">Callsun modules are manufactured under rigorous quality-control standards. Each module passes UL and IEC testing. We work with the world's leading third-party organizations to audit our facilities, test our products, and refine our state-of-the-art manufacturing process.</p>
-        <p class="mt-3 text-xs text-jinko-mute">Certifications: IEC 61215 · IEC 61730 · ISO 9001:2023 · ISO 14001:2023 · ISO 45001:2023 · CE · RoHS</p>
+        <h3 class="mt-2 text-2xl font-display font-extrabold">Tested &amp; validated</h3>
+        <p class="mt-4 text-jinko-mute leading-relaxed">Callsun modules are manufactured under rigorous quality-control standards. Each module passes UL and IEC testing. We work with the world's leading third-party organizations to audit our facilities and test our products.</p>
+        <p class="mt-3 text-xs text-jinko-mute">IEC 61215 · IEC 61730 · ISO 9001:2023 · ISO 14001:2023 · ISO 45001:2023 · CE · RoHS</p>
       </div>
       <div class="rounded-2xl bg-white border border-jinko-line p-7">
         <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Service | Support</p>
-        <h2 class="mt-2 text-2xl font-display font-extrabold">B2B confidence</h2>
-        <p class="mt-4 text-jinko-mute leading-relaxed">We stand behind every module we ship. If you have a warranty claim, contact your installer first. If you cannot reach your installer or you were the direct purchaser, contact us at <a href="mailto:callsun-service@outlook.com" class="underline">callsun-service@outlook.com</a> with your order details and a description of the issue. Our service team responds within 1 business day.</p>
+        <h3 class="mt-2 text-2xl font-display font-extrabold">B2B confidence</h3>
+        <p class="mt-4 text-jinko-mute leading-relaxed">We stand behind every module we ship. Contact us at <a href="mailto:callsun-service@outlook.com" class="underline">callsun-service@outlook.com</a> with your order details. Our service team responds within 1 business day.</p>
       </div>
       <div class="rounded-2xl bg-white border border-jinko-line p-7">
         <p class="text-xs uppercase tracking-widest text-jinko-accent font-bold">Downloads | Documents</p>
-        <h2 class="mt-2 text-2xl font-display font-extrabold">Datasheets &amp; more</h2>
+        <h3 class="mt-2 text-2xl font-display font-extrabold">Datasheets &amp; more</h3>
         <p class="mt-4 text-jinko-mute leading-relaxed">Datasheets, installation manuals, warranty terms, certifications, brochures, and more — all available in our <a href="/resources/" class="underline">Download Center</a>.</p>
       </div>
     </div>
