@@ -188,8 +188,8 @@ const homeSchema = {
     </div>
   </section>}
 
-  <!-- 6. Start a Conversation — 浅灰底（与 footer 暗底天然分层）-->
-  {home.contactSection?.visible && <section class="py-20 lg:py-24 bg-jinko-bg">
+  <!-- 6. Start a Conversation — 白底（与 Global 灰底 / Footer 暗底自然分层）-->
+  {home.contactSection?.visible && <section class="py-20 lg:py-24 bg-white">
     <div class="max-w-content mx-auto px-4 lg:px-6">
       <div class="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
         <div>
@@ -201,7 +201,7 @@ const homeSchema = {
             {home.contactSection.description}
           </p>}
         </div>
-        <div class="bg-white p-8 lg:p-10 border border-jinko-line shadow-sm">
+        <div class="bg-jinko-bg p-8 lg:p-10 border border-jinko-line">
           <h3 class="text-2xl font-display font-extrabold text-jinko-ink">{home.contactSection.formTitle}</h3>
           <form action="/contact" method="get" class="mt-6 flex flex-col gap-4">
             <div class="grid sm:grid-cols-2 gap-4">
