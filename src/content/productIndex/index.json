@@ -36,7 +36,7 @@
     "description": "Send target wattage, quantity, market and certification requirements. Callsun can respond with matching module options and document links.",
     "primaryLabel": "Request Product Quote",
     "primaryHref": "/contact",
-    "secondaryLabel": "View Applications",
-    "secondaryHref": "/applications"
+    "secondaryLabel": "View Solutions",
+    "secondaryHref": "/solutions"
   }
 }

@@ -20,6 +20,13 @@ Disallow: /news/
 Disallow: /es/
 Disallow: /zh/
 Disallow: /admin/
+# Hidden until content ready (2026-07-22)
+Disallow: /about/v1
+Disallow: /about/v2
+Disallow: /about/v3
+Disallow: /applications/
+Disallow: /cases/
+Disallow: /support/
 
 Sitemap: ${SITE.domain}/sitemap-index.xml
 `;

@@ -31,7 +31,7 @@ const caseCards = app.relatedCases.map(slug => cases.find(c => c.slug === slug))
 const downloadCards = app.recommendedDownloads.map(slug => downloads.find(d => d.slug === slug)).filter(Boolean).map(d => ({ title: d.title, description: d.description || d.category, href: d.fileUrl, eyebrow: d.category, metric: d.fileType }));
 const faqSchema = app.faqs?.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: app.faqs.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) } : undefined;
 ---
-<BaseLayout title={app.seoTitle || `${app.title} | Callsun`} description={app.metaDescription || app.summary} canonical={app.canonical || `/applications/${app.slug}`} ogImage={app.ogImage || app.image} keywords={app.keywords} noindex={app.noindex} schema={faqSchema}>
+<BaseLayout title={app.seoTitle || `${app.title} | Callsun`} description={app.metaDescription || app.summary} canonical={app.canonical || `/applications/${app.slug}`} ogImage={app.ogImage || app.image} keywords={app.keywords} noindex={true} schema={faqSchema}>
   <Header slot="header" />
   <section class="py-16 lg:py-20 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6 grid lg:grid-cols-2 gap-10 items-center">

@@ -15,7 +15,7 @@ const apps=(await getCollection('applications')).map(a=>a.data).sort((a,b)=>a.or
 const appCards = apps.map(a => ({ title: a.title, description: a.summary, href: `/applications/${a.slug}`, image: a.image, eyebrow: a.hero?.eyebrow || 'Application', metric: a.recommendedSolutions.length ? `${a.recommendedSolutions.length} solutions` : undefined }));
 const faqSchema = page.faq.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faq.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) } : undefined;
 ---
-<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/applications'} ogImage={page.ogImage || '/og/default.svg'} keywords={page.keywords} noindex={page.noindex} schema={faqSchema}>
+<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/applications'} ogImage={page.ogImage || '/og/default.svg'} keywords={page.keywords} noindex={true} schema={faqSchema}>
   <Header slot="header" />
 
   <section class="py-16 lg:py-20 bg-jinko-bg">

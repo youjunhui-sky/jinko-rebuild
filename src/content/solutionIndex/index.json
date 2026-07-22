@@ -12,8 +12,8 @@
     "description": "Repeatable grid-tied and off-grid packages combine modules, batteries, inverters and accessories so partners can move from component search to system-level RFQ faster.",
     "primaryCtaLabel": "Discuss a System Package",
     "primaryCtaHref": "/contact",
-    "secondaryCtaLabel": "View Applications",
-    "secondaryCtaHref": "/applications"
+    "secondaryCtaLabel": "Browse Products",
+    "secondaryCtaHref": "/products"
   },
   "stats": [
     { "label": "Package types", "value": "2" },
@@ -36,7 +36,7 @@
     "description": "Send application, target capacity, backup-hour expectation and market. Callsun can suggest a starting package and supporting documents.",
     "primaryLabel": "Request System Advice",
     "primaryHref": "/contact",
-    "secondaryLabel": "Compare Applications",
-    "secondaryHref": "/applications"
+    "secondaryLabel": "Browse Products",
+    "secondaryHref": "/products"
   }
 }

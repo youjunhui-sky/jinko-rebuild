@@ -24,6 +24,14 @@ export default defineConfig({
           '/case-studies/',
           '/es/',
           '/zh/',
+          // Hidden modules (2026-07-22 客户要求隐藏，资料齐后再完善)
+          '/about/v1',
+          '/about/v2',
+          '/about/v3',
+          '/about',
+          '/applications/',
+          '/cases/',
+          '/support/',
         ];
         const url = new URL(page);
         return !legacyPaths.some((path) => url.pathname === path || url.pathname.startsWith(path));

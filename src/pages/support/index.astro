@@ -15,7 +15,7 @@ const supportPages=(await getCollection('supportPages')).map(p=>p.data).sort((a,
 const supportCards = supportPages.map(p => ({ title: p.title, description: p.summary, href: `/support/${p.slug}`, eyebrow: 'Support topic' }));
 const faqSchema = page.faq.length ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faq.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) } : undefined;
 ---
-<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/support'} ogImage={page.ogImage || '/og/default.svg'} keywords={page.keywords} noindex={page.noindex} schema={faqSchema}>
+<BaseLayout title={page.seoTitle || `${page.title} | Callsun`} description={page.metaDescription || page.hero.description} canonical={page.canonical || '/support'} ogImage={page.ogImage || '/og/default.svg'} keywords={page.keywords} noindex={true} schema={faqSchema}>
   <Header slot="header" />
 
   <section class="py-16 lg:py-20 bg-jinko-bg">

@@ -69,7 +69,7 @@
     "description": "Send the product, application, market and document requirement. Callsun can route the inquiry to sales or technical support.",
     "primaryLabel": "Ask a Question",
     "primaryHref": "/contact",
-    "secondaryLabel": "View Support",
-    "secondaryHref": "/support"
+    "secondaryLabel": "Read Blog",
+    "secondaryHref": "/resources/blog"
   }
 }
