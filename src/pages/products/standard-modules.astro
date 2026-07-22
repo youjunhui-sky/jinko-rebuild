@@ -7,29 +7,32 @@ import ContactCTA from '@/components/ContactCTA.astro';
 import { SITE } from '@/data/site';
 
 const all = (await getCollection('products'))
-  .filter((p) => p.data.category === 'custom-module')
+  .filter((p) => p.data.category === 'standard-module')
   .map((p) => p.data)
-  .filter((p) => ['180w-custom-solar-module', '200w-custom-solar-module', '215w-custom-solar-module'].includes(p.slug))
+  .filter((p) => ['450w-double-glass-solar-module', '580w-n-type-solar-module', '620w-n-type-solar-module', '720w-n-type-solar-module'].includes(p.slug))
   .sort((a, b) => (a.order || 0) - (b.order || 0));
 
 const getSpec = (p, re) => p.specs.find((s) => re.test(s.label))?.value || '';
 
 const cardImgMap = {
-  'CN180W': '/uploads/callsun/products/180w/hero-05.jpg',
-  'CN200W': '/uploads/callsun/products/200w/front-back.jpg',
-  'CN215W': '/uploads/callsun/products/215w/front-back.jpg',
+  'CN450W': '/uploads/callsun/products/450w/01-front.jpg',
+  'CN580W': '/uploads/callsun/products/580w/front-back.jpg',
+  'CN620W': '/uploads/callsun/products/620w/front-back.jpg',
+  'CN720W': '/uploads/callsun/products/720w/front-back.jpg',
 };
 
 const subtitleMap = {
-  'CN180W': 'Custom TOPCon Module',
-  'CN200W': 'Custom TwinCell 16BB',
-  'CN215W': 'Anti-Shading 4-Zone',
+  'CN450W': 'Double Glass Module',
+  'CN580W': 'N-Type Bifacial Module',
+  'CN620W': 'N-Type Bifacial Module',
+  'CN720W': 'N-Type Bifacial Dual-Glass',
 };
 
 const summaryMap = {
-  'CN180W': 'Commercial-grade 180W TOPCon with dual-cell parallel design for uninterrupted energy yield under shading, high temperature or narrow spaces.',
-  'CN200W': 'High-output 200W with TwinCell parallel design, 25% efficiency and innovative anti-shade circuit for RV, marine and 12V systems.',
-  'CN215W': '4-zone independent circuit for exceptional partial-shade tolerance — retains 75% more power when obstructed. Perfect for portable power stations and 12V systems.',
+  'CN450W': 'Bifacial double-glass module with 22.52% efficiency for commercial rooftops and utility solar projects.',
+  'CN580W': '580W N-type bifacial dual-glass module at 22.45% efficiency with 30-year linear power warranty (87.4% at year 30).',
+  'CN620W': 'Record-high 22.95% efficiency with 132-cell high-density architecture and exceptional -0.28%/°C temperature coefficient.',
+  'CN720W': 'Flagship 720W bifacial dual-glass at 23.18% efficiency with 132-cell (6×11×2) 210×105mm wafer design for utility-scale farms.',
 };
 
 const cards = all.map((p) => ({
@@ -38,7 +41,7 @@ const cards = all.map((p) => ({
   name: p.name,
   image: cardImgMap[p.model] || p.image,
   imageAlt: p.imageAlt,
-  subtitle: subtitleMap[p.model] || 'Custom Module',
+  subtitle: subtitleMap[p.model] || 'Standard Module',
   summary: summaryMap[p.model] || '',
   pmax: getSpec(p, /Pmax/i),
   cellEff: getSpec(p, /Cell Efficiency|Module Efficiency/i),
@@ -49,7 +52,7 @@ const cards = all.map((p) => ({
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Callsun Custom N-Type Solar Module Series',
+  name: 'Callsun Standard N-Type Solar Module Series',
   itemListElement: cards.map((c, i) => ({
     '@type': 'ListItem',
     position: i + 1,
@@ -59,10 +62,10 @@ const schema = {
 };
 ---
 <BaseLayout
-  title="Custom N-Type TOPCon Solar Modules | 180W, 200W, 215W | Callsun"
-  description="Callsun custom N-type TOPCon solar module lineup — CN180W, CN200W and CN215W engineered for RV, marine, 12V battery systems and portable power stations. Anti-shading circuits, dual-cell parallel design, high current output."
-  canonical="/products/custom-modules/"
-  keywords={['custom solar module', 'rv solar panel', 'marine solar module', '12v solar module', '180w solar', '200w solar module', '215w solar module', 'anti shading solar panel']}
+  title="Standard N-Type TOPCon Solar Modules | 450W, 580W, 620W, 720W | Callsun"
+  description="Callsun standard N-type TOPCon solar modules — CN450W, CN580W, CN620W and CN720W bifacial dual-glass modules for commercial rooftops, industrial installations and utility-scale solar farms. Up to 23.18% efficiency, 30-year linear power warranty."
+  canonical="/products/standard-modules/"
+  keywords={['standard solar module', 'n type topcon solar panel', 'bifacial dual glass module', '450w solar panel', '580w solar module', '620w solar module', '720w solar module', 'utility solar module']}
   schema={schema}
 >
   <Header slot="header" />
@@ -70,12 +73,12 @@ const schema = {
   <!-- Hero -->
   <section class="bg-jinko-ink text-white py-20 lg:py-28">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Custom Modules</p>
+      <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">Standard Modules</p>
       <h1 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-extrabold leading-tight max-w-4xl">
-        Compact Modules for <span class="text-jinko-accent">RV, Marine & 12V Systems</span>
+        High-Power Bifacial Modules for <span class="text-jinko-accent">Commercial & Utility Solar</span>
       </h1>
       <p class="mt-6 text-lg text-white/80 leading-relaxed max-w-3xl">
-        Callsun custom N-type TOPCon module lineup covers 180W to 215W output with anti-shading circuits, dual-cell parallel design and high current output. Engineered for RVs, boats, off-grid battery systems and portable power stations.
+        Callsun standard N-type TOPCon module lineup covers 450W to 720W output, engineered for commercial rooftops, industrial installations and utility-scale solar farms. Up to 23.18% module efficiency, dual-glass construction, 30-year linear power warranty.
       </p>
     </div>
   </section>
@@ -83,7 +86,7 @@ const schema = {
   <!-- Cards Grid -->
   <section class="py-20 lg:py-24 bg-white">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
         {cards.map((c) => (
           <a href={`/products/${c.slug}/`} class="group block bg-white border border-jinko-line hover:border-jinko-accent transition overflow-hidden">
             <div class="aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-6">

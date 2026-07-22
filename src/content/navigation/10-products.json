@@ -9,16 +9,16 @@
   "children": [
     {
       "label": "Standard Modules",
-      "href": "/products/450w-double-glass-solar-module/",
-      "description": "450W, 580W and 620W module lineup",
+      "href": "/products/standard-modules/",
+      "description": "450W, 580W, 620W and 720W lineup",
       "image": "/placeholders/solar-panel.svg",
       "order": 10,
       "visible": true
     },
     {
       "label": "Custom Modules",
-      "href": "/products/#sku-grid",
-      "description": "120W, 180W, 200W and 275W custom formats",
+      "href": "/products/custom-modules/",
+      "description": "180W, 200W and 215W custom formats",
       "image": "/uploads/image.png",
       "order": 20,
       "visible": true
