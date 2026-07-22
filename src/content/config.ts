@@ -30,6 +30,7 @@ const homepage = defineCollection({
     hero: z.object({
       eyebrow: z.string(),
       title: z.string(),
+      subhead: z.string().optional(),
       description: z.string(),
       image: z.string().default('/placeholders/battery-system.svg'),
       imageAlt: z.string().optional(),
@@ -59,6 +60,8 @@ const homepage = defineCollection({
       description: z.string().optional(),
       image: z.string(),
       imageAlt: z.string().optional(),
+      linkLabel: z.string().optional(),
+      linkHref: z.string().optional(),
     }).optional(),
     globalSection: z.object({
       visible: z.boolean().default(true),
@@ -69,7 +72,24 @@ const homepage = defineCollection({
       imageAlt: z.string().optional(),
       markets: z.array(z.string()).default([]),
     }).optional(),
-    solutionsSection: z.object({ visible: z.boolean().default(true), eyebrow: z.string(), title: z.string(), description: z.string().optional(), linkLabel: z.string().optional(), linkHref: z.string().optional() }),
+    solutionsSection: z.object({
+      visible: z.boolean().default(true),
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string().optional(),
+      linkLabel: z.string().optional(),
+      linkHref: z.string().optional(),
+      solutionSlugs: z.array(z.string()).default([]),
+    }),
+    contactSection: z.object({
+      visible: z.boolean().default(true),
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string().optional(),
+      formTitle: z.string().default('Discuss Your Requirements'),
+      formSubmitLabel: z.string().default('Submit Inquiry'),
+      steps: z.array(z.object({ label: z.string(), description: z.string().optional() })).default([]),
+    }).optional(),
     casesSection: z.object({ visible: z.boolean().default(true), eyebrow: z.string(), title: z.string(), description: z.string().optional(), linkLabel: z.string().optional(), linkHref: z.string().optional() }),
     marketingSection: z.object({
       visible: z.boolean().default(true),

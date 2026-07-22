@@ -1,7 +1,7 @@
 {
   "title": "Callsun Homepage",
   "seoTitle": "Callsun — PV Module Brand & Manufacturer",
-  "metaDescription": "Callsun supplies solar modules for global B2B partners — 55,000 m² manufacturing base, 180–720W standard and custom modules, verified quality, worldwide supply.",
+  "metaDescription": "Callsun supplies solar modules and system solutions for global B2B partners — 55,000 m² manufacturing base, 180–720W standard and custom modules, off-grid & hybrid system packages, verified quality, worldwide supply.",
   "canonical": "/",
   "ogImage": "/uploads/callsun/about/v4-hero.webp",
   "keywords": [
@@ -9,19 +9,21 @@
     "photovoltaic module brand",
     "commercial solar panels for installers",
     "custom solar module supplier",
+    "off grid solar system supplier",
     "global solar module supply"
   ],
   "h1": "Photovoltaic Module Brand & Manufacturer",
   "hero": {
     "eyebrow": "PV Module Brand & Manufacturer",
     "title": "Photovoltaic Module Brand & Manufacturer",
-    "description": "Backed by in-house manufacturing capabilities, we provide photovoltaic modules designed for reliable performance, practical application requirements, and long-term use.",
+    "subhead": "In-House R&D, Manufacturing, and Testing",
+    "description": "Callsun focuses on standard PV modules, custom PV modules, and application-specific solar products, supporting global partners from product selection and engineering development to sample validation and volume delivery.",
     "image": "/uploads/callsun/about/v4-hero.webp",
     "imageAlt": "Callsun solar module manufacturing base with adjacent solar farm and city skyline",
-    "primaryCtaLabel": "Explore Our Products",
+    "primaryCtaLabel": "Explore Products",
     "primaryCtaHref": "/products",
-    "secondaryCtaLabel": "View Company Profile →",
-    "secondaryCtaHref": "/about/v4"
+    "secondaryCtaLabel": "Discuss Requirements",
+    "secondaryCtaHref": "/contact"
   },
   "stats": [
     { "label": "Manufacturing Base", "value": "55,000 m²" },
@@ -31,27 +33,42 @@
   ],
   "productsSection": {
     "visible": true,
-    "eyebrow": "Products",
-    "title": "Standard PV Modules at Scale. Custom Modules Engineered to Fit.",
-    "description": "From high-efficiency utility-scale panels to size-customized modules, our product portfolio covers a wide range of project and application requirements.",
+    "eyebrow": "Product Portfolio",
+    "title": "Standard Modules at Scale. Custom Modules Engineered to Fit.",
+    "description": "From high-power standard modules to application-specific formats, Callsun supports product selection, sample validation and reliable volume supply.",
     "linkLabel": "View All Products →",
     "linkHref": "/products"
   },
+  "solutionsSection": {
+    "visible": true,
+    "eyebrow": "Solar System Solutions",
+    "title": "Configured for Real-World Energy Requirements",
+    "description": "Reference configurations matching PV modules, battery storage, hybrid inverters, cables and protection devices for residential and off-grid applications.",
+    "linkLabel": "View All Solutions →",
+    "linkHref": "/solutions",
+    "solutionSlugs": [
+      "6-5kw-off-grid-solar-system",
+      "10kw-off-grid-solar-system",
+      "12kw-grid-tied-solar-storage-system"
+    ]
+  },
   "certificationsSection": {
     "visible": true,
-    "eyebrow": "Certifications & Manufacturing",
-    "title": "Verified Quality Backed by Advanced Manufacturing",
-    "description": "From cell and material testing to module-level validation, our production and quality control ensure product performance, safety, and long-term reliability.",
+    "eyebrow": "Certifications & Verified Quality",
+    "title": "Quality You Can Verify",
+    "description": "Callsun maintains quality control across incoming materials, cell inspection, lamination, EL testing, and final module validation. Product performance, safety, and reliability are backed by IEC 61215, IEC 61730, CE, TÜV, ISO 9001, ISO 14001 and other industry-recognized standards, with complete documentation available on request for compliance and channel partners.",
     "image": "/uploads/callsun/homepage/certifications.webp",
-    "imageAlt": "Callsun certifications wall including IEC 61215, IEC 61730, CE, TÜV, ISO 9001 and other quality standards"
+    "imageAlt": "Callsun certifications wall including IEC 61215, IEC 61730, CE, TÜV, ISO 9001 and other quality standards",
+    "linkLabel": "View Certificates & Documents →",
+    "linkHref": "/resources/downloads"
   },
   "globalSection": {
     "visible": true,
     "eyebrow": "Global Supply",
     "title": "Global Supply for Long-Term Channel Partnerships",
-    "description": "Supported by manufacturing operations in China, Vietnam, Indonesia, and Saudi Arabia, together with overseas warehousing and logistics capabilities across key markets, we provide flexible and efficient delivery support for global customers.",
+    "description": "Manufacturing and supply resources across multiple regions, supported by warehousing and logistics resources in key international markets — designed for stable delivery and long-term channel partnerships.",
     "image": "/uploads/callsun/homepage/global-map.webp",
-    "imageAlt": "Callsun global manufacturing and logistics network map covering key markets",
+    "imageAlt": "Callsun global manufacturing and logistics network map — green highlighted markets across North America, South America, Europe, Middle East, Africa, Asia and Oceania",
     "markets": [
       "China",
       "Vietnam",
@@ -64,20 +81,26 @@
       "Japan"
     ]
   },
+  "contactSection": {
+    "visible": true,
+    "eyebrow": "Start a Conversation",
+    "title": "From Product Requirements to Consistent Delivery",
+    "description": "Share your target power, module dimensions, application conditions or system requirements. We'll help match products, run sample validation and align on volume delivery.",
+    "formTitle": "Discuss Your Requirements",
+    "formSubmitLabel": "Submit Inquiry",
+    "steps": [
+      { "label": "Requirement Review", "description": "Share target power, dimensions, application and volume." },
+      { "label": "Product Selection", "description": "Match standard SKUs or engineer a custom module." },
+      { "label": "Sample Validation", "description": "Ship samples for on-site or third-party testing." },
+      { "label": "Volume Delivery", "description": "Confirm PO, production schedule and global logistics." }
+    ]
+  },
   "why": {
     "visible": false,
     "eyebrow": "Why Callsun",
     "title": "",
     "description": "",
     "cards": []
-  },
-  "solutionsSection": {
-    "visible": false,
-    "eyebrow": "Solutions",
-    "title": "Repeatable packages for grid-tied and off-grid sales.",
-    "description": "",
-    "linkLabel": "All solutions →",
-    "linkHref": "/solutions"
   },
   "casesSection": {
     "visible": false,

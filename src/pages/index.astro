@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-import ContactCTA from '@/components/ContactCTA.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 import CardGrid from '@/components/CardGrid.astro';
 import { SITE } from '@/data/site';
@@ -13,6 +12,12 @@ const home = homepageEntries[0].data;
 const products = (await getCollection('products')).map(p => p.data).sort((a,b)=>a.order-b.order).slice(0, 8);
 
 const productCards = products.map(p => ({ title: p.name, description: p.tagline, href: `/products/${p.slug}`, eyebrow: p.model || p.category, image: p.cardImage || p.image, imageAspectRatio: p.cardImageAspectRatio }));
+
+const allSolutions = (await getCollection('solutions')).map(s => s.data);
+const solutionSlugList = home.solutionsSection.solutionSlugs || [];
+const solutionsForHome = solutionSlugList
+  .map((slug) => allSolutions.find((s) => s.slug === slug))
+  .filter(Boolean);
 
 const homeSchema = {
   '@context': 'https://schema.org',
@@ -25,7 +30,7 @@ const homeSchema = {
 <BaseLayout title={home.seoTitle || SITE.defaultTitle} description={home.metaDescription || SITE.defaultDescription} canonical={home.canonical || '/'} ogImage={home.ogImage || SITE.defaultOgImage} noindex={home.noindex} keywords={home.keywords} schema={homeSchema}>
   <Header slot="header" />
 
-  <!-- 1. HERO — About v4 风格：暗底 image opacity + gradient overlay -->
+  <!-- 1. HERO — dark image overlay + accent green subhead -->
   <section class="relative overflow-hidden bg-jinko-ink">
     <img
       src={home.hero.image}
@@ -40,99 +45,210 @@ const homeSchema = {
         <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.1]">
           {home.hero.title}
         </h1>
-        <p class="mt-8 text-base md:text-lg text-white/85 leading-relaxed max-w-2xl">
+        {home.hero.subhead && <p class="mt-5 text-lg md:text-xl lg:text-2xl font-display font-bold text-jinko-accent leading-snug">
+          {home.hero.subhead}
+        </p>}
+        <p class="mt-6 text-base md:text-lg text-white/85 leading-relaxed max-w-2xl">
           {home.hero.description}
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
-          <a href={home.hero.primaryCtaHref} data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-7 py-4 bg-jinko-accent text-jinko-ink font-bold hover:bg-jinko-accent/90 transition">{home.hero.primaryCtaLabel}</a>
-          <a href={home.hero.secondaryCtaHref} class="inline-flex items-center px-7 py-4 border border-white/40 text-white font-bold hover:bg-white/10 transition">{home.hero.secondaryCtaLabel}</a>
+          <a href={home.hero.primaryCtaHref} data-track-click="product_inquiry_button" data-track-location="home_hero" class="inline-flex items-center px-7 py-4 bg-jinko-accent text-jinko-ink font-bold uppercase tracking-wider text-sm hover:bg-jinko-accent/90 transition">{home.hero.primaryCtaLabel}</a>
+          <a href={home.hero.secondaryCtaHref} class="inline-flex items-center px-7 py-4 border border-white/40 text-white font-bold uppercase tracking-wider text-sm hover:bg-white/10 transition">{home.hero.secondaryCtaLabel}</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 1b. STATS BAND — 与 About v4 一致 -->
+  <!-- 1b. STATS BAND -->
   {home.stats.length > 0 && <section class="bg-jinko-ink border-t border-white/10">
     <div class="max-w-content mx-auto px-4 lg:px-6 py-14 lg:py-16">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-4">
         {home.stats.map((s, i) => (
           <div class={`text-center lg:text-left ${i > 0 ? 'lg:border-l lg:border-white/10 lg:pl-8' : ''}`}>
-            <p class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-none">{s.value}</p>
-            <div class="mt-3 flex items-center gap-2 justify-center lg:justify-start">
-              <span class="w-2 h-2 bg-jinko-accent"></span>
-              <p class="text-[11px] uppercase tracking-[0.22em] text-white/70 font-semibold">{s.label}</p>
-            </div>
+            <p class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-accent leading-none">{s.value}</p>
+            <p class="mt-3 text-[11px] uppercase tracking-[0.22em] text-white/70 font-semibold">{s.label}</p>
           </div>
         ))}
       </div>
     </div>
   </section>}
 
-  <!-- 2. 产品橱窗 -->
-  {home.productsSection.visible && <section class="py-20 lg:py-24 bg-jinko-bg">
+  <!-- 2. Product Portfolio — 双列 header + card grid -->
+  {home.productsSection.visible && <section class="py-20 lg:py-24 bg-white">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <div class="flex items-end justify-between flex-wrap gap-4">
-        <SectionHeader eyebrow={home.productsSection.eyebrow} title={home.productsSection.title} description={home.productsSection.description} />
-        {home.productsSection.linkHref && <a href={home.productsSection.linkHref} class="text-jinko font-semibold">{home.productsSection.linkLabel || 'Learn more →'}</a>}
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-end">
+        <div>
+          <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.productsSection.eyebrow}</p>
+          <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
+            {home.productsSection.title}
+          </h2>
+        </div>
+        <div class="flex flex-col gap-4">
+          {home.productsSection.description && <p class="text-jinko-mute leading-relaxed text-base lg:text-lg">
+            {home.productsSection.description}
+          </p>}
+          {home.productsSection.linkHref && <a href={home.productsSection.linkHref} class="inline-flex items-center text-jinko-ink font-bold uppercase tracking-wider text-sm hover:text-jinko-accent transition">
+            {home.productsSection.linkLabel || 'View All Products →'}
+          </a>}
+        </div>
       </div>
-      <div class="mt-12"><CardGrid items={productCards} imageFit="contain" showDescription={false} ctaStyle="button" /></div>
+      <div class="mt-12 lg:mt-14"><CardGrid items={productCards} imageFit="contain" showDescription={false} ctaStyle="button" /></div>
     </div>
   </section>}
 
-  <!-- 3. 证书 -->
+  <!-- 3. Solar System Solutions — 暗底 + 3 solution 白卡 -->
+  {home.solutionsSection.visible && solutionsForHome.length > 0 && <section class="py-20 lg:py-24 bg-jinko-ink">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-end">
+        <div>
+          <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.solutionsSection.eyebrow}</p>
+          <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">
+            {home.solutionsSection.title}
+          </h2>
+        </div>
+        <div class="flex flex-col gap-4">
+          {home.solutionsSection.description && <p class="text-white/75 leading-relaxed text-base lg:text-lg">
+            {home.solutionsSection.description}
+          </p>}
+          {home.solutionsSection.linkHref && <a href={home.solutionsSection.linkHref} class="inline-flex items-center text-jinko-accent font-bold uppercase tracking-wider text-sm hover:text-white transition">
+            {home.solutionsSection.linkLabel || 'View All Solutions →'}
+          </a>}
+        </div>
+      </div>
+      <div class="mt-12 lg:mt-14 grid md:grid-cols-3 gap-6 lg:gap-8">
+        {solutionsForHome.map((s) => (
+          <a href={`/solutions/${s.slug}`} class="group block bg-white overflow-hidden border border-white/10 hover:border-jinko-accent transition">
+            <div class="aspect-[4/3] overflow-hidden bg-jinko-bg">
+              <img src={s.homepageImage || s.image} alt={s.imageAlt || s.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="p-6 lg:p-7">
+              <p class="text-[10px] uppercase tracking-[0.24em] text-jinko-accent font-bold">{s.type === 'grid-tied' ? 'Hybrid Solar System' : 'Off-Grid Solar System'}</p>
+              <h3 class="mt-2 text-lg lg:text-xl font-display font-extrabold text-jinko-ink leading-snug">{s.title}</h3>
+              <p class="mt-3 text-sm text-jinko-mute font-semibold">{s.capacityLabel}</p>
+              <span class="mt-5 inline-flex items-center text-xs uppercase tracking-wider font-bold text-jinko-ink group-hover:text-jinko-accent transition">
+                View Solution →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>}
+
+  <!-- 4. Certifications — 双列 左字右图 -->
   {home.certificationsSection?.visible && <section class="py-20 lg:py-24 bg-white">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <div class="max-w-3xl mx-auto text-center">
-        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.certificationsSection.eyebrow}</p>
-        <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
-          {home.certificationsSection.title}
-        </h2>
-        {home.certificationsSection.description && <p class="mt-6 text-jinko-mute leading-relaxed text-base lg:text-lg">
-          {home.certificationsSection.description}
-        </p>}
-      </div>
-      <div class="mt-12 lg:mt-14">
-        <img
-          src={home.certificationsSection.image}
-          alt={home.certificationsSection.imageAlt || home.certificationsSection.title}
-          class="w-full h-auto"
-          loading="lazy"
-        />
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
+        <div>
+          <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.certificationsSection.eyebrow}</p>
+          <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
+            {home.certificationsSection.title}
+          </h2>
+          {home.certificationsSection.description && <p class="mt-6 text-jinko-mute leading-relaxed text-base lg:text-lg">
+            {home.certificationsSection.description}
+          </p>}
+          {home.certificationsSection.linkHref && <a href={home.certificationsSection.linkHref} class="mt-8 inline-flex items-center text-jinko-ink font-bold uppercase tracking-wider text-sm hover:text-jinko-accent transition">
+            {home.certificationsSection.linkLabel || 'View Certificates & Documents →'}
+          </a>}
+        </div>
+        <div class="order-first lg:order-last">
+          <img
+            src={home.certificationsSection.image}
+            alt={home.certificationsSection.imageAlt || home.certificationsSection.title}
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   </section>}
 
-  <!-- 4. 全球市场地图 -->
-  {home.globalSection?.visible && <section class="py-20 lg:py-24 bg-jinko-ink">
+  <!-- 5. Global Supply — 白底 + 左字右地图 -->
+  {home.globalSection?.visible && <section class="py-20 lg:py-24 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6">
-      <div class="max-w-3xl">
-        <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.globalSection.eyebrow}</p>
-        <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">
-          {home.globalSection.title}
-        </h2>
-        {home.globalSection.description && <p class="mt-6 text-white/80 leading-relaxed text-base lg:text-lg">
-          {home.globalSection.description}
-        </p>}
-      </div>
-
-      <div class="mt-14 border border-white/10 bg-white/5 p-6 lg:p-10">
-        <img
-          src={home.globalSection.image}
-          alt={home.globalSection.imageAlt || home.globalSection.title}
-          class="w-full h-auto"
-          loading="lazy"
-        />
-        {home.globalSection.markets.length > 0 && <div class="mt-8 flex flex-wrap gap-x-6 gap-y-3 justify-center items-center border-t border-white/10 pt-6">
-          <p class="text-[10px] uppercase tracking-[0.24em] text-jinko-accent font-bold">Manufacturing & Logistics Network</p>
-          {home.globalSection.markets.map((m) => (
-            <span class="text-[11px] uppercase tracking-[0.22em] text-white/70 font-semibold">· {m}</span>
-          ))}
-        </div>}
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
+        <div>
+          <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.globalSection.eyebrow}</p>
+          <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
+            {home.globalSection.title}
+          </h2>
+          {home.globalSection.description && <p class="mt-6 text-jinko-mute leading-relaxed text-base lg:text-lg">
+            {home.globalSection.description}
+          </p>}
+          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+            <span class="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-jinko-ink"><span class="w-3 h-3 rounded-full bg-jinko-accent"></span> Manufacturing & Supply Network</span>
+            <span class="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-jinko-mute"><span class="w-3 h-3 rounded-full bg-jinko-mute/50"></span> Warehousing & Logistics Coverage</span>
+          </div>
+        </div>
+        <div>
+          <img
+            src={home.globalSection.image}
+            alt={home.globalSection.imageAlt || home.globalSection.title}
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   </section>}
 
-  <!-- 5. 询盘联络 -->
-  <ContactCTA />
+  <!-- 6. Start a Conversation — 暗底 + 左 4 步 process + 右 form 卡 -->
+  {home.contactSection?.visible && <section class="py-20 lg:py-24 bg-jinko-ink">
+    <div class="max-w-content mx-auto px-4 lg:px-6">
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
+        <div>
+          <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.contactSection.eyebrow}</p>
+          <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">
+            {home.contactSection.title}
+          </h2>
+          {home.contactSection.description && <p class="mt-6 text-white/80 leading-relaxed text-base lg:text-lg max-w-lg">
+            {home.contactSection.description}
+          </p>}
+          {home.contactSection.steps.length > 0 && <div class="mt-10 grid sm:grid-cols-2 gap-6">
+            {home.contactSection.steps.map((step, i) => (
+              <div class="flex gap-4">
+                <span class="text-3xl font-display font-extrabold text-jinko-accent leading-none">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <p class="text-sm font-bold text-white uppercase tracking-wider">{step.label}</p>
+                  {step.description && <p class="mt-2 text-sm text-white/70 leading-relaxed">{step.description}</p>}
+                </div>
+              </div>
+            ))}
+          </div>}
+        </div>
+        <div class="bg-white p-8 lg:p-10">
+          <h3 class="text-2xl font-display font-extrabold text-jinko-ink">{home.contactSection.formTitle}</h3>
+          <form action="/contact" method="get" class="mt-6 flex flex-col gap-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <label class="flex flex-col gap-1.5">
+                <span class="text-xs uppercase tracking-wider font-bold text-jinko-mute">Name</span>
+                <input name="name" type="text" required class="px-3 py-2.5 border border-jinko-line focus:border-jinko-accent focus:outline-none text-jinko-ink" />
+              </label>
+              <label class="flex flex-col gap-1.5">
+                <span class="text-xs uppercase tracking-wider font-bold text-jinko-mute">Business Email</span>
+                <input name="email" type="email" required class="px-3 py-2.5 border border-jinko-line focus:border-jinko-accent focus:outline-none text-jinko-ink" />
+              </label>
+              <label class="flex flex-col gap-1.5">
+                <span class="text-xs uppercase tracking-wider font-bold text-jinko-mute">Company</span>
+                <input name="company" type="text" class="px-3 py-2.5 border border-jinko-line focus:border-jinko-accent focus:outline-none text-jinko-ink" />
+              </label>
+              <label class="flex flex-col gap-1.5">
+                <span class="text-xs uppercase tracking-wider font-bold text-jinko-mute">Country / Region</span>
+                <input name="country" type="text" class="px-3 py-2.5 border border-jinko-line focus:border-jinko-accent focus:outline-none text-jinko-ink" />
+              </label>
+            </div>
+            <label class="flex flex-col gap-1.5">
+              <span class="text-xs uppercase tracking-wider font-bold text-jinko-mute">Product, specifications or project requirements</span>
+              <textarea name="message" rows="4" class="px-3 py-2.5 border border-jinko-line focus:border-jinko-accent focus:outline-none text-jinko-ink resize-none"></textarea>
+            </label>
+            <button type="submit" data-track-click="home_form_submit" class="mt-2 w-full px-6 py-4 bg-jinko-accent text-jinko-ink font-bold uppercase tracking-wider text-sm hover:bg-jinko-accent/90 transition">
+              {home.contactSection.formSubmitLabel}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>}
+
   <Footer slot="footer" />
 </BaseLayout>
