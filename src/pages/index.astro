@@ -188,20 +188,20 @@ const homeSchema = {
     </div>
   </section>}
 
-  <!-- 6. Start a Conversation — 暗底 + 左 4 步 process + 右 form 卡 -->
-  {home.contactSection?.visible && <section class="py-20 lg:py-24 bg-jinko-ink">
+  <!-- 6. Start a Conversation — 浅灰底（与 footer 暗底天然分层）-->
+  {home.contactSection?.visible && <section class="py-20 lg:py-24 bg-jinko-bg">
     <div class="max-w-content mx-auto px-4 lg:px-6">
       <div class="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
         <div>
           <p class="text-xs uppercase tracking-[0.28em] text-jinko-accent font-extrabold">{home.contactSection.eyebrow}</p>
-          <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">
+          <h2 class="mt-4 text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-jinko-ink leading-tight">
             {home.contactSection.title}
           </h2>
-          {home.contactSection.description && <p class="mt-6 text-white/80 leading-relaxed text-base lg:text-lg max-w-lg">
+          {home.contactSection.description && <p class="mt-6 text-jinko-mute leading-relaxed text-base lg:text-lg max-w-lg">
             {home.contactSection.description}
           </p>}
         </div>
-        <div class="bg-white p-8 lg:p-10">
+        <div class="bg-white p-8 lg:p-10 border border-jinko-line shadow-sm">
           <h3 class="text-2xl font-display font-extrabold text-jinko-ink">{home.contactSection.formTitle}</h3>
           <form action="/contact" method="get" class="mt-6 flex flex-col gap-4">
             <div class="grid sm:grid-cols-2 gap-4">
