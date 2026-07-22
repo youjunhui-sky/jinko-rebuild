@@ -11,7 +11,7 @@ const navItems = (await getCollection('navigation'))
     children: item.children.filter((child) => child.visible).sort((a, b) => a.order - b.order),
   }));
 ---
-<header class="sticky top-0 z-40 bg-white/92 backdrop-blur-md border-b border-jinko-line">
+<header class="sticky top-0 z-40 bg-white border-b border-jinko-line">
   <div class="max-w-content mx-auto px-4 lg:px-6 h-16 flex items-center justify-between gap-6">
     <a href="/" class="flex items-center gap-2 shrink-0" aria-label={SITE.name + ' home'}>
       <img src="/logo.png" alt="Callsun" width="150" height="40" class="h-9 w-auto" />
