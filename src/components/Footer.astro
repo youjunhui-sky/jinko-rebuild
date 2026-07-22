@@ -7,7 +7,7 @@ const navItems = (await getCollection('navigation'))
   .filter((item) => item.visible && item.footerVisible)
   .sort((a, b) => a.order - b.order);
 ---
-<footer class="bg-jinko-ink text-slate-300">
+<footer class="bg-jinko-ink text-slate-300 border-t border-white/10">
   <div class="max-w-content mx-auto px-4 lg:px-6 py-14 grid gap-10 lg:grid-cols-4">
     <div>
       <img src="/logo-footer.png" alt="Callsun" width="170" height="46" class="h-10 w-auto" />
