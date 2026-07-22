@@ -200,17 +200,6 @@ const homeSchema = {
           {home.contactSection.description && <p class="mt-6 text-white/80 leading-relaxed text-base lg:text-lg max-w-lg">
             {home.contactSection.description}
           </p>}
-          {home.contactSection.steps.length > 0 && <div class="mt-10 grid sm:grid-cols-2 gap-6">
-            {home.contactSection.steps.map((step, i) => (
-              <div class="flex gap-4">
-                <span class="text-3xl font-display font-extrabold text-jinko-accent leading-none">{String(i + 1).padStart(2, '0')}</span>
-                <div>
-                  <p class="text-sm font-bold text-white uppercase tracking-wider">{step.label}</p>
-                  {step.description && <p class="mt-2 text-sm text-white/70 leading-relaxed">{step.description}</p>}
-                </div>
-              </div>
-            ))}
-          </div>}
         </div>
         <div class="bg-white p-8 lg:p-10">
           <h3 class="text-2xl font-display font-extrabold text-jinko-ink">{home.contactSection.formTitle}</h3>
